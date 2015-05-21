@@ -135,8 +135,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
-				F9F23D611B0DC18200D56F7D /* libs */,
-				F9F23D731B0DC18200D56F7D /* src */,
+				F9F23D8B1B0E80D600D56F7D /* ofxLeapMotion2 */,
 			);
 			name = addons;
 			sourceTree = "<group>";
@@ -287,6 +286,15 @@
 			);
 			name = src;
 			path = ../../addons/ofxLeapMotion2/src;
+			sourceTree = "<group>";
+		};
+		F9F23D8B1B0E80D600D56F7D /* ofxLeapMotion2 */ = {
+			isa = PBXGroup;
+			children = (
+				F9F23D611B0DC18200D56F7D /* libs */,
+				F9F23D731B0DC18200D56F7D /* src */,
+			);
+			name = ofxLeapMotion2;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
