@@ -8,21 +8,21 @@ void ofApp::setup(){
     ofBackground(10, 10, 10);
     ofEnableDepthTest();
     ofEnableLighting();
-    light.setPointLight();
     
     
     verts = plane.getMesh().getVertices();
     
-    for (int i = 0; i < verts.size(); i++) {
+    for (int i = 0; i < 8; i++) {
         ofLight temp;
+        temp.setSpecularColor(ofColor(255.f, 255.f, 255.f));
+        temp.setDiffuseColor( ofColor(255.f, 255.f, 255.f));
         lights.push_back(temp);
+        
     }
     
     
     // turn on smooth lighting //
     ofSetSmoothLighting(true);
-    
-    light.setDiffuseColor( ofColor(255.f, 255.f, 255.f));
     
     float planeScale = .5;
     int planeWidth = 1000;
@@ -42,6 +42,7 @@ void ofApp::setup(){
 //    colorHue = 170;
     lightColor.setBrightness(255);
     lightColor.setSaturation(255);
+
     
 //    material.setShininess( 128 );
     materialColor.setHue(colorHue);
@@ -49,7 +50,7 @@ void ofApp::setup(){
     materialColor.setSaturation(400);
     materialColor.set(0, 255, 0, .5);
     
-    light.setPosition(-200, 70, -300);
+//    light.setPosition(-200, 70, -300);
 
 }
 
@@ -65,13 +66,15 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
     
+    ofSetColor(255, 255, 255);
     ofDrawBitmapString(ofToString(ofGetFrameRate())+"fps", 10, 15);
     
     cam.begin();
 //    light.enable();
     for (int i = 0; i < lights.size(); i++) {
         lights[i].enable();
-        lights[i].setPosition(verts[i]);
+//        lights[i].setPosition(verts[i]);
+        lights[i].draw();
     }
     material.begin();
     
@@ -136,10 +139,12 @@ void ofApp::keyReleased(int key){
 //--------------------------------------------------------------
 void ofApp::mouseMoved(int x, int y ){
     if (lightMove){
-        light.setPosition(light.getPosition().x, mouseX, mouseY);
-        cout << "X" << mouseX << endl;
-        cout << "Y" << mouseY << endl;
+        for (int i = 0; i < lights.size(); i++) {
+            lights[i].setPosition(lights[i].getPosition().x, mouseX, mouseY);
+        }
     }
+    cout << "X" << mouseX << endl;
+    cout << "Y" << mouseY << endl;
 }
 
 //--------------------------------------------------------------
