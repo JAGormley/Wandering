@@ -19,11 +19,20 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
     
-    bool camSet;
-    
     ofShader shader;
     ofPlanePrimitive plane;
+    vector<ofBoxPrimitive> boxes;
     
+    vector<ofVec3f> verts;
+    ofBoxPrimitive box;
+    ofMaterial material;
+    
+    ofColor lightColor;
+    float colorHue;
+    ofColor materialColor;
+    
+    
+    ofLight light;
 //    ofCamera cam;
     ofEasyCam cam;
 };

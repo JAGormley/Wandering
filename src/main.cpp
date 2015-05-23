@@ -5,7 +5,7 @@
 //========================================================================
 int main( ){
     
-    ofSetCurrentRenderer(ofGLProgrammableRenderer::TYPE);
+//    ofSetCurrentRenderer(ofGLProgrammableRenderer::TYPE);
     
 	ofSetupOpenGL(1024,768,OF_WINDOW);			// <-------- setup the GL context
 
