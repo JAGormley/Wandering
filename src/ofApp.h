@@ -23,7 +23,10 @@ class ofApp : public ofBaseApp{
     ofPlanePrimitive plane;
     vector<ofBoxPrimitive> boxes;
     
+    bool lightMove;
+    
     vector<ofVec3f> verts;
+    vector<ofLight> lights;
     ofBoxPrimitive box;
     ofMaterial material;
     
