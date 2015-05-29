@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>BF9DE056-314A-4000-95DC-F4B7EB21E314</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Wandering2</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>D58557FC8F5B0F6A8C8D72DEECDD60BD08B5FE04</key>
+		<string>https://github.com/JAGormley/Wandering.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Wandering2.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>D58557FC8F5B0F6A8C8D72DEECDD60BD08B5FE04</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/JAGormley/Wandering.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>D58557FC8F5B0F6A8C8D72DEECDD60BD08B5FE04</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D58557FC8F5B0F6A8C8D72DEECDD60BD08B5FE04</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Wandering2</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -23,15 +23,13 @@ public:
     Player();
     
     void move();
+    ofVec3f getLocation();
     void draw();
     void startCam();
     void stopCam();
     
-    
-//    Controls controls;
+    Controls controls;
     ofCamera cam;
-    ofxLeapMotion leap;
-    vector <ofxLeapMotionSimpleHand> simpleHands;
-    ofPoint handPos;
-    ofPoint handNormal;
+    int k;
+    
 };

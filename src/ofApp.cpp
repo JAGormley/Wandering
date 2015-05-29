@@ -3,12 +3,12 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     
-    Player player;
+//    Player player;
     
     //    ofSetVerticalSync(true);
     
     ofSetFrameRate(60);
-    ofBackground(30, 30, 30);
+    ofBackground(70, 70, 70);
     ofEnableDepthTest();
     ofEnableLighting();
     
@@ -42,12 +42,13 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
     verts = plane.getMesh().getVertices();
-    player.move();
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
     player.startCam();
+    player.move();
     
     ofSetColor(255, 255, 255);
     ofDrawBitmapString(ofToString(ofGetFrameRate())+"fps", 10, 15);
@@ -112,6 +113,7 @@ void ofApp::keyReleased(int key){
             lightOr = false;
             break;
     }
+
 }
 
 //--------------------------------------------------------------
