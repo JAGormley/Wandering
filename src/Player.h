@@ -28,8 +28,9 @@ public:
     void startCam();
     void stopCam();
     
-    Controls controls;
+    
     ofCamera cam;
+    Controls controls;
     int k;
     
 };

@@ -42,6 +42,7 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
     verts = plane.getMesh().getVertices();
+    player.getLocation();
     
 }
 

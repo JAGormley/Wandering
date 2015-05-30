@@ -13,9 +13,6 @@ Player::Player(){};
 
 void Player::move(){
     controls.move(cam);
-//    float dir = cam.getHeading();
-//    ofVec3f jimmy(dir.x+100, dir.y+100, dir.z+1000);
-//    ofDrawArrow(dir, jimmy);
 }
 
 void Player::draw(){
@@ -34,7 +31,8 @@ void Player::draw(){
 }
 
 ofVec3f Player::getLocation(){
-    return cam.getPosition();
+    ofVec3f pos = cam.getPosition();   
+    return pos;
 }
 
 void Player::startCam(){
