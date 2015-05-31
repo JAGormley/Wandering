@@ -3,8 +3,6 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     
-//    Player player;
-    
     //    ofSetVerticalSync(true);
     
     ofSetFrameRate(60);
@@ -36,6 +34,9 @@ void ofApp::setup(){
     materialColor.set(0, 255, 0, .5);
     //    light.setAttenuation(1.f, 0, 0.00005f);
     
+    Seed seed;
+    crystal = new Crystal(seed);
+    
     
 }
 
@@ -63,18 +64,7 @@ void ofApp::draw(){
     plane.drawWireframe();
 //    shader.end();
     
-    material.begin();
-    ofPushMatrix();
-    ofSetColor(0, 0, 255, 100);
-    ofRotate(90, 1, 0, 0);
-    for (int i = 0; i < verts.size(); i++) {
-        ofDrawBox(verts[i].x, verts[i].y, verts[i].z, 5);
-    }
-    
-    ofFill();
-    ofPopMatrix();
-    
-    material.end();
+    crystal->draw();
     light.disable();
     
     
@@ -86,15 +76,6 @@ void ofApp::keyPressed(int key){
     //TODO: change to Leap controls
     
     switch(key) {
-//        case 'w':
-//            cam.dolly(-10);
-//            break;
-//        case 'a':
-//            cam.setOrientation(ofVec3f(cam.getOrientationEuler().x, cam.getOrientationEuler().y + 5, cam.getOrientationEuler().z));
-//            break;
-//        case 'd':
-//            cam.setOrientation(ofVec3f(cam.getOrientationEuler().x, cam.getOrientationEuler().y - 5, cam.getOrientationEuler().z));
-//            break;
 //        case 'v':
 //            lightMove = true;
 //            break;

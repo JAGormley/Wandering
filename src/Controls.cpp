@@ -31,13 +31,13 @@ void Controls::move(ofCamera &cam){
     }
     
     if (simpleHands.size() > 0){
-        move_helper(cam);
+        moveType(cam);
     }
     
     leap.markFrameAsOld();
 }
 
-void Controls::move_helper(ofCamera &cam){
+void Controls::moveType(ofCamera &cam){
     float up;
     float down;
     float back_forth;

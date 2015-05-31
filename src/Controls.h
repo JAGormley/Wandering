@@ -22,8 +22,8 @@ public:
     Controls();
     
     void move(ofCamera &cam);
-    void move_helper(ofCamera &cam);
-    enum Type {FLOAT, WALK, FLY};
+    void moveType(ofCamera &cam);
+    enum Type {FLOAT, WALK, FLY, ORBIT};
     Type type;
     
     ofxLeapMotion leap;

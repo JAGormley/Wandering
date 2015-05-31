@@ -11,13 +11,20 @@
 
 #include <stdio.h>
 #include <iostream>
+#include "ofMain.h"
+//#include "ofApp.h"
+#include "Seed.h"
 
 #endif /* defined(__Wandering2__Sprite__) */
 
 class Sprite {
 public:
     
-    Sprite();    
-    void move();
+    Sprite(Seed seed){};
+    virtual void move() =0;
+    virtual void activate() =0;
+    virtual void setActivated(bool activated) =0;
+    virtual void draw() =0;
+    virtual ofVec3f getLocation() =0;
     
 };

@@ -3,6 +3,9 @@
 #include "ofMain.h"
 #include "ofxLeapMotion2.h"
 #include "Player.h"
+//#include "Seed.h"
+//#include "Sprite.h"
+#include "Crystal.h"
 
 class ofApp : public ofBaseApp{
     
@@ -39,4 +42,6 @@ public:
     Player player;
 
     ofLight light;
+    
+    Sprite * crystal;
 };

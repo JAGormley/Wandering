@@ -6,10 +6,6 @@
 //
 //
 
-#include "Sprite.h"
+//#include "Sprite.h"
 
-Sprite::Sprite(){};
-
-void Sprite::move(){
-    std::cout << "HIII";
-}
+//Sprite::Sprite(Seed seed){};
