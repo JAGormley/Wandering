@@ -4,8 +4,10 @@
 #include "ofxLeapMotion2.h"
 #include "Player.h"
 //#include "Seed.h"
-//#include "Sprite.h"
-#include "Crystal.h"
+#include "Sprite.h"
+#include "Animal.h"
+#include "Plant.h"
+#include "Environment.h"
 
 class ofApp : public ofBaseApp{
     
@@ -25,13 +27,12 @@ public:
     void gotMessage(ofMessage msg);
     
     ofShader shader;
-    ofPlanePrimitive plane;
+//    ofPlanePrimitive plane;
     vector<ofBoxPrimitive> boxes;
     
     bool lightMove;
     bool lightOr;
     
-    vector<ofVec3f> verts;
     ofBoxPrimitive box;
     ofMaterial material;
     
@@ -43,5 +44,8 @@ public:
 
     ofLight light;
     
-    Sprite * crystal;
+    Seed seed;
+    vector< shared_ptr<Sprite> > sprites;
+    
+    Environment environment;
 };

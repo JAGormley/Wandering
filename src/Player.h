@@ -24,7 +24,6 @@ public:
     
     void move();
     ofVec3f getLocation();
-    void draw();
     void startCam();
     void stopCam();
     

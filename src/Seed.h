@@ -15,7 +15,4 @@
 #endif /* defined(__Wandering2__Seed__) */
 
 
-class Seed {
-public:
-//    Seed();
-};
+class Seed {};

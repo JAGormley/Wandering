@@ -6,17 +6,11 @@ void ofApp::setup(){
     //    ofSetVerticalSync(true);
     
     ofSetFrameRate(60);
-    ofBackground(70, 70, 70);
+    ofBackground(0, 0, 0);
     ofEnableDepthTest();
     ofEnableLighting();
     
-    int planeWidth = 500;
-    int planeHeight = 500;
-    int planeColums = 20;
-    int planeRows = 20;
-    plane.set(planeWidth, planeHeight, planeColums, planeRows, OF_PRIMITIVE_TRIANGLES);
-    plane.rotate(90, 1, 0, 0);
-    verts = plane.getMesh().getVertices();
+    light.setPosition(-700, 0, 0);
     
     light.setSpecularColor(ofColor(255.f, 255.f, 255.f));
     light.setDiffuseColor( ofColor(255.f, 255.f, 255.f));
@@ -34,40 +28,48 @@ void ofApp::setup(){
     materialColor.set(0, 255, 0, .5);
     //    light.setAttenuation(1.f, 0, 0.00005f);
     
-    Seed seed;
-    crystal = new Crystal(seed);
     
+    sprites.push_back(shared_ptr<Sprite>(new Plant(seed)));
+    sprites.push_back(shared_ptr<Sprite>(new Animal(seed)));
     
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    verts = plane.getMesh().getVertices();
+//    verts = plane.getMesh().getVertices();
     player.getLocation();
     
+    for (int i = 0; i < sprites.size(); i++) {
+        sprites[i]->move();
+    }
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+    ofSetColor(255, 255, 255);
+    ofDrawBitmapString(ofToString(ofGetFrameRate())+"fps", 10, 15);
+    
     player.startCam();
     player.move();
     
-    ofSetColor(255, 255, 255);
-    ofDrawBitmapString(ofToString(ofGetFrameRate())+"fps", 10, 15);
     //    shader.begin();
 
     light.enable();
     light.draw();
-    
-    player.draw();
-    
-    plane.drawWireframe();
+    environment.draw();
+//    player.draw();
 //    shader.end();
+
+    for (int i = 0; i < sprites.size(); i++) {
+        sprites[i]->draw();
+    }
     
-    crystal->draw();
+    
+    ofSetColor(0, 0, 255, 100);
+    ofDrawSphere(0, -250, 500);
+    ofSetColor(0, 0, 0);
+    
     light.disable();
-    
-    
     player.stopCam();
 }
 
@@ -76,12 +78,12 @@ void ofApp::keyPressed(int key){
     //TODO: change to Leap controls
     
     switch(key) {
-//        case 'v':
-//            lightMove = true;
-//            break;
-//        case 'b':
-//            lightOr = true;
-//            break;
+        case 'v':
+            lightMove = true;
+            break;
+        case 'b':
+            lightOr = true;
+            break;
     }
 }
 
@@ -105,7 +107,7 @@ void ofApp::mouseMoved(int x, int y ){
         light.setPosition(light.getPosition().x, mouseX, mouseY);
     }
     else if (lightOr){
-        light.setOrientation(ofVec3f(light.getOrientationEuler().x, mouseX, mouseY));
+        light.setOrientation(ofVec3f(mouseX, mouseY, 0));
     }
 }
 

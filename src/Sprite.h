@@ -12,15 +12,15 @@
 #include <stdio.h>
 #include <iostream>
 #include "ofMain.h"
-//#include "ofApp.h"
-#include "Seed.h"
 
 #endif /* defined(__Wandering2__Sprite__) */
+
+#include "Seed.h"
 
 class Sprite {
 public:
     
-    Sprite(Seed seed){};
+    Sprite(Seed &seed){};
     virtual void move() =0;
     virtual void activate() =0;
     virtual void setActivated(bool activated) =0;

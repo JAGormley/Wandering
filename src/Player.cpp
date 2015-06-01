@@ -9,25 +9,12 @@
 #include "Player.h"
 
 
-Player::Player(){};
+Player::Player(){
+    cam.setPosition(0, 20, 0);
+};
 
 void Player::move(){
     controls.move(cam);
-}
-
-void Player::draw(){
-    //    for(int i = 0; i < simpleHands.size(); i++){
-    //        bool isLeft        = simpleHands[i].isLeft;
-    //        handPos    = simpleHands[i].handPos;
-    //        handNormal = simpleHands[i].handNormal;
-    //
-    //
-    //
-    //        ofSetColor(0, 0, 255);
-    //        ofDrawSphere(handPos.z, handPos.y, handPos.x, 20);
-    //        ofSetColor(255, 255, 0);
-    //        ofDrawArrow(handPos, handPos + 100*handNormal);
-    //    }
 }
 
 ofVec3f Player::getLocation(){
