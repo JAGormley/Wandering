@@ -10,7 +10,7 @@
 #include <stdio.h>
 
 Controls::Controls(){
-    type = WALK;
+    type = FLY;
 };
 
 void Controls::move(ofCamera &cam){

@@ -23,4 +23,6 @@ public:
 //
     ofPlanePrimitive plane;
     vector<ofVec3f> verts;
+    
+    ofSpherePrimitive world;
 };

@@ -10,7 +10,7 @@
 
 
 Player::Player(){
-    cam.setPosition(0, 20, 0);
+    cam.setPosition(0, 2020, 0);
 };
 
 void Player::move(){

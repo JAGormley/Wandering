@@ -29,7 +29,7 @@ void Plant::draw(){
     ofPushMatrix();
     ofSetColor(0, 255, 0, 100);
     ofRotate(90, 1, 0, 0);
-    plant.draw();
+    plant.drawWireframe();
     
     ofFill();
     ofPopMatrix();

@@ -6,7 +6,7 @@ void ofApp::setup(){
     //    ofSetVerticalSync(true);
     
     ofSetFrameRate(60);
-    ofBackground(0, 0, 0);
+    ofBackground(210, 210, 210);
     ofEnableDepthTest();
     ofEnableLighting();
     
