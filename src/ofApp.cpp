@@ -27,10 +27,12 @@ void ofApp::setup(){
     materialColor.setSaturation(400);
     materialColor.set(0, 255, 0, .5);
     //    light.setAttenuation(1.f, 0, 0.00005f);
-    
+        
     
     sprites.push_back(shared_ptr<Sprite>(new Plant(seed)));
     sprites.push_back(shared_ptr<Sprite>(new Animal(seed)));
+    
+    environment = new Environment(moon, *new Ground(seed), *new Void(seed));
     
 }
 
@@ -56,7 +58,7 @@ void ofApp::draw(){
 
     light.enable();
     light.draw();
-    environment.draw();
+    environment->draw();
 //    player.draw();
 //    shader.end();
 
@@ -68,6 +70,7 @@ void ofApp::draw(){
     ofSetColor(0, 0, 255, 100);
     ofDrawSphere(0, -250, 500);
     ofSetColor(0, 0, 0);
+    
     
     light.disable();
     player.stopCam();

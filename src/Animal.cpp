@@ -28,7 +28,7 @@ void Animal::setActivated(bool activated){
 void Animal::draw(){
     material.begin();
     ofPushMatrix();
-    ofSetColor(0, 0, 255, 100);
+    ofSetColor(255, 0, 0, 100);
     ofRotate(90, 1, 0, 0);
     box.draw();
  
