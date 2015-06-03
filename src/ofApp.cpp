@@ -10,35 +10,28 @@ void ofApp::setup(){
     ofEnableDepthTest();
     ofEnableLighting();
     
-    light.setPosition(-700, 0, 0);
     
-    light.setSpecularColor(ofColor(255.f, 255.f, 255.f));
-    light.setDiffuseColor( ofColor(255.f, 255.f, 255.f));
-    light.setSpotlight();
-    ofSetSmoothLighting(true);
-    lightColor.setBrightness( 180.f );
-    lightColor.setSaturation( 150.f );
-    lightColor.setBrightness(255);
-    lightColor.setSaturation(255);
     
-    material.setShininess( 128 );
-    materialColor.setHue(colorHue);
-    materialColor.setBrightness(500.f);
-    materialColor.setSaturation(400);
-    materialColor.set(0, 255, 0, .5);
+//    material.setShininess( 128 );
+//    materialColor.setHue(colorHue);
+//    materialColor.setBrightness(500.f);
+//    materialColor.setSaturation(400);
+//    materialColor.set(0, 255, 0, .5);
     //    light.setAttenuation(1.f, 0, 0.00005f);
         
-    
+    for (int i = 0; i < 500; i++) {
+        sprites.push_back(shared_ptr<Sprite>(new Plant(seed)));
+    }
     sprites.push_back(shared_ptr<Sprite>(new Plant(seed)));
-    sprites.push_back(shared_ptr<Sprite>(new Animal(seed)));
+//    sprites.push_back(shared_ptr<Sprite>(new Animal(seed)));
     
     environment = new Environment(moon, *new Ground(seed), *new Void(seed));
+    Light::light.setup();
     
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-//    verts = plane.getMesh().getVertices();
     player.getLocation();
     
     for (int i = 0; i < sprites.size(); i++) {
@@ -48,16 +41,17 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    ofSetColor(255, 255, 255);
+//    ofSetColor(255, 255, 255);
     ofDrawBitmapString(ofToString(ofGetFrameRate())+"fps", 10, 15);
-    
+    ofEnableLighting();
     player.startCam();
     player.move();
     
     //    shader.begin();
 
-    light.enable();
-    light.draw();
+    Light::light.enable();
+    
+//    Light::light.draw();
     environment->draw();
 //    player.draw();
 //    shader.end();
@@ -67,12 +61,13 @@ void ofApp::draw(){
     }
     
     
-    ofSetColor(0, 0, 255, 100);
-    ofDrawSphere(0, -250, 500);
-    ofSetColor(0, 0, 0);
+//    ofSetColor(0, 0, 255, 100);
+//    ofDrawSphere(0, -250, 500);
+//    ofSetColor(0, 0, 0);
     
     
-    light.disable();
+    Light::light.disable();
+    ofDisableLighting();
     player.stopCam();
 }
 
@@ -107,10 +102,10 @@ void ofApp::keyReleased(int key){
 void ofApp::mouseMoved(int x, int y ){
     if (lightMove){
         
-        light.setPosition(light.getPosition().x, mouseX, mouseY);
+//        light.setPosition(light.getPosition().x, mouseX, mouseY);
     }
     else if (lightOr){
-        light.setOrientation(ofVec3f(mouseX, mouseY, 0));
+//        light.setOrientation(ofVec3f(mouseX, mouseY, 0));
     }
 }
 
@@ -144,6 +139,3 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
     
 }
 //--------------------------------------------------------------
-//void ofApp::exit(){
-//    leap.close();
-//}

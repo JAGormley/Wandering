@@ -6,11 +6,14 @@
 //
 //
 
+
+#pragma once
 #ifndef __Wandering2__Animal__
 #define __Wandering2__Animal__
 #include <stdio.h>
 #include <iostream>
 #include "ofMain.h"
+#include "Light.h"
 #endif /* defined(__Wandering2__Animal__) */
 
 #ifndef __Wandering2__Sprite__
@@ -29,4 +32,6 @@ public:
     
     ofMaterial material;
     ofBoxPrimitive box;
+    ofColor materialColor;
+    float colorHue;
 };

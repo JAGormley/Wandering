@@ -6,6 +6,8 @@
 //
 //
 
+#pragma once
+
 #ifndef __Wandering2__Ground__
 #define __Wandering2__Ground__
 #include <stdio.h>
@@ -29,5 +31,6 @@ public:
     ofMaterial material;
     
     ofPlanePrimitive plane;
+    ofVboMesh groundMesh;
 
 };

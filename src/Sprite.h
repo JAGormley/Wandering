@@ -6,6 +6,8 @@
 //
 //
 
+#pragma once
+
 #ifndef __Wandering2__Sprite__
 #define __Wandering2__Sprite__
 

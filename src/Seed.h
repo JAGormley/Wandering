@@ -6,6 +6,8 @@
 //
 //
 
+
+#pragma once
 #ifndef __Wandering2__Seed__
 #define __Wandering2__Seed__
 

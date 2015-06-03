@@ -17,13 +17,14 @@ Environment::Environment(){
 //    }
 }
 
-Environment::Environment(Light light, Domain &up, Domain &down){
+Environment::Environment(Light light, Domain &down, Domain &up){
     this->light = light;
     this->up = &up;
     this->down = &down;
 }
 
 void Environment::draw(){
-//    up->draw();
-    down->draw();
+    
+    up->draw();
+//    down->draw();
 }

@@ -6,11 +6,14 @@
 //
 //
 
+#pragma once
+
 #ifndef __Wandering2__Player__
 #define __Wandering2__Player__
 
 #include "ofxLeapMotion2.h"
 #include "Controls.h"
+#include "Light.h"
 
 #include <stdio.h>
 

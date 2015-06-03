@@ -34,7 +34,7 @@ void Controls::move(ofCamera &cam){
         moveType(cam);
     }
     
-    leap.markFrameAsOld();
+//    leap.markFrameAsOld();
 }
 
 void Controls::moveType(ofCamera &cam){

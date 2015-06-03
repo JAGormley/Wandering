@@ -14,11 +14,16 @@ Ground::Ground(Seed seed) : Domain(seed){
     int planeColums = 20;
     int planeRows = 20;
     plane.set(planeWidth, planeHeight, planeColums, planeRows, OF_PRIMITIVE_TRIANGLES);
-    plane.rotate(90, 1, 0, 0);
+//    plane.rotate(90, 0, 0, 1);
+    groundMesh = plane.getMesh();
+    
 }
 
 void Ground::draw(){
-    plane.drawWireframe();
+    ofPushMatrix();
+    ofRotate(90, 1, 0, 0);
+    groundMesh.drawWireframe();
+    ofPopMatrix();
 }
 
 void Ground::setColor(ofColor hue){

@@ -6,6 +6,8 @@
 //
 //
 
+#pragma once
+
 #ifndef __Wandering2__History__
 #define __Wandering2__History__
 

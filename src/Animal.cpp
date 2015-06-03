@@ -10,13 +10,20 @@
 
 
 Animal::Animal(Seed seed) : Sprite(seed){
+    ofVec3f rawPos = Light::getLightPos();
     box.set(5,5,10,5,5,10);
-    box.setPosition(ofVec3f(0,-100,0));
+    box.setPosition(ofVec3f(rawPos.x, rawPos.y ,rawPos.z));
+    materialColor.setBrightness(250.f);
+    materialColor.setSaturation(200);
+    //    colorHue = ofRandom(0, 250);
+    colorHue = 100;
+    materialColor.setHue(colorHue);
+    material.setEmissiveColor(100);
 }
 
 void Animal::move(){
     ofVec3f loc = box.getPosition();
-    box.setPosition(loc.x, loc.y+0.1f, loc.z);
+    box.setPosition(loc.x, loc.y, loc.z-0.1f);
 }
 void Animal::activate(){
     
@@ -27,14 +34,10 @@ void Animal::setActivated(bool activated){
 
 void Animal::draw(){
     material.begin();
-    ofPushMatrix();
-    ofSetColor(255, 0, 0, 100);
-    ofRotate(90, 1, 0, 0);
+//    ofSetColor(255, 255, 0, 100);
     box.draw();
  
-    ofFill();
-    ofPopMatrix();
-    
+//    ofFill();
     material.end();
 }
 ofVec3f Animal::getLocation(){

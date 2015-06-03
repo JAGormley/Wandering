@@ -6,9 +6,9 @@
 #include "Sprite.h"
 #include "Animal.h"
 #include "Plant.h"
-#include "Environment.h"
 #include "Void.h"
 #include "Ground.h"
+#include "Environment.h"
 
 class ofApp : public ofBaseApp{
     
@@ -26,6 +26,7 @@ public:
     void windowResized(int w, int h);
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
+    static int getLightPos();
     
     ofShader shader;
 //    ofPlanePrimitive plane;
@@ -42,13 +43,9 @@ public:
     ofColor materialColor;    
     
     Player player;
-
-    ofLight light;
     
     Seed seed;
     vector< shared_ptr<Sprite> > sprites;
-    
-    
     
     Light moon;
     Environment * environment;

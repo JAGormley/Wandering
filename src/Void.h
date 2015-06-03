@@ -6,6 +6,8 @@
 //
 //
 
+#pragma once
+
 #ifndef __Wandering2__Void__
 #define __Wandering2__Void__
 
@@ -31,5 +33,6 @@ public:
     ofMaterial material;
     ofSpherePrimitive world;
     ofMaterial voidMaterial;
+    ofVboMesh voidMesh;
 
 };

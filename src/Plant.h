@@ -6,6 +6,8 @@
 //
 //
 
+#pragma once
+
 #ifndef __Wandering2__Plant__
 #define __Wandering2__Plant__
 #include <stdio.h>
@@ -29,4 +31,7 @@ public:
     
     ofMaterial material;
     ofSpherePrimitive plant;
+    ofColor materialColor;
+    float colorHue;
+    
 };

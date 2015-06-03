@@ -6,6 +6,8 @@
 //
 //
 
+#pragma once
+
 #ifndef __Wandering2__Domain__
 #define __Wandering2__Domain__
 #include <stdio.h>

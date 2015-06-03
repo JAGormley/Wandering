@@ -12,11 +12,12 @@ Void::Void(Seed seed) : Domain(seed){
     world.set(2000, 50);
     voidMaterial.setColors(50, 0, 0, 0);
     voidMaterial.setShininess(200);
+    voidMesh = world.getMesh();
     }
 
 void Void::draw(){
     voidMaterial.begin();
-    world.drawWireframe();
+    voidMesh.drawWireframe();
     voidMaterial.end();
 }
 
@@ -28,5 +29,5 @@ void Void::update(){
     
 }
 vector<ofVec3f> Void::getMeshVerts(){
-    return world.getMesh().getVertices();
+    return voidMesh.getVertices();
 }
