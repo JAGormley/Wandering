@@ -40,9 +40,13 @@ public:
     
     ofColor lightColor;
     float colorHue;
-    ofColor materialColor;    
+    ofColor materialColor;
     
     Player player;
+    
+    ofFbo fbo;
+    ofVboMesh vboMesh;
+    ofVbo vbo;
     
     Seed seed;
     vector< shared_ptr<Sprite> > sprites;

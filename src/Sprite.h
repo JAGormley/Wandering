@@ -28,5 +28,6 @@ public:
     virtual void setActivated(bool activated) =0;
     virtual void draw() =0;
     virtual ofVec3f getLocation() =0;
+    virtual vector<ofVec3f> getVerts() =0;
     
 };

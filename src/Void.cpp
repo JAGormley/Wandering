@@ -9,15 +9,33 @@
 #include "Void.h"
 
 Void::Void(Seed seed) : Domain(seed){
-    world.set(2000, 50);
-    voidMaterial.setColors(50, 0, 0, 0);
+    world.set(1200, 32);
+    world2.set(400, 60);
     voidMaterial.setShininess(200);
     voidMesh = world.getMesh();
+    
+    materialColor.setBrightness(100.f);
+    materialColor.setSaturation(160);
+    materialColor.setHue(130);
+    voidMaterial.setEmissiveColor(materialColor);
+    materialColor.setBrightness(100.f);
+    materialColor.setSaturation(200);
+    materialColor.setHue(85);
+    voidMaterial.setDiffuseColor(materialColor);
+    materialColor.setBrightness(95.f);
+    materialColor.setSaturation(200);
+    voidMaterial.setSpecularColor(materialColor);
+    
+    
     }
 
 void Void::draw(){
+    
+    ofSetColor(0,0,0);
+    voidMesh.draw();
+    ofSetColor(0,120,255);
     voidMaterial.begin();
-    voidMesh.drawWireframe();
+    world2.draw();
     voidMaterial.end();
 }
 

@@ -28,6 +28,4 @@ public:
     Domain * up;
     Domain * down;
     Light light;
-    
-    
 };

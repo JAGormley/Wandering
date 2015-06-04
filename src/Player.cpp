@@ -10,7 +10,7 @@
 
 
 Player::Player(){
-    cam.setPosition(Light::getLightPos());
+    cam.setPosition(ofVec3f(0, 0, 0));
 };
 
 void Player::move(){

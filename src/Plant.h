@@ -28,6 +28,7 @@ public:
     void setActivated(bool activated);
     void draw();
     ofVec3f getLocation();
+    vector<ofVec3f> getVerts();
     
     ofMaterial material;
     ofSpherePrimitive plant;

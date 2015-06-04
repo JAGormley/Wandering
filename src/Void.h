@@ -30,8 +30,11 @@ public:
     void update();
     vector<ofVec3f> getMeshVerts();
     
-    ofMaterial material;
+    float colorHue;
+//    ofMaterial material;
+    ofColor materialColor;
     ofSpherePrimitive world;
+    ofSpherePrimitive world2;
     ofMaterial voidMaterial;
     ofVboMesh voidMesh;
 
