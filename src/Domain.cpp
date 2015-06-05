@@ -7,3 +7,8 @@
 //
 
 #include "Domain.h"
+
+
+Domain::Type Domain::getType(){
+    return type;
+}

@@ -68,6 +68,13 @@ void Controls::moveType(ofCamera &cam){
         pitch_ud = handPos.y/100;
         back_forth = handPos.z/100;
     }
+    else if (type == ORBIT){
+        up = 1.f;
+        down = 0.f;
+        pitch_lr = handPos.x/100;
+        pitch_ud = handPos.y/100;
+        back_forth = handPos.z/100;
+    }
     
     cam.dolly(back_forth);
     cam.setPosition(ofVec3f(cam.getPosition().x, cam.getPosition().y, cam.getPosition().z));

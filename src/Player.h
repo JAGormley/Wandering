@@ -29,9 +29,14 @@ public:
     ofVec3f getLocation();
     void startCam();
     void stopCam();
+    void setMovementType(Controls::Type type);
+    void setLocation(ofVec3f location);
+    Controls::Type getMovementType();
     
     ofCamera cam;
+    
+private:
     Controls controls;
-    int k;
+    
     
 };

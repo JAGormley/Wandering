@@ -6,8 +6,8 @@
 #include "Sprite.h"
 #include "Animal.h"
 #include "Plant.h"
-#include "Void.h"
-#include "Ground.h"
+#include "Scenario.h"
+
 #include "Environment.h"
 
 class ofApp : public ofBaseApp{
@@ -42,7 +42,7 @@ public:
     float colorHue;
     ofColor materialColor;
     
-    Player player;
+//    Player player;
     
     ofFbo fbo;
     ofVboMesh vboMesh;
@@ -52,6 +52,6 @@ public:
     vector< shared_ptr<Sprite> > sprites;
     
     Light moon;
-    Environment * environment;
+    Scenario scenario;
     
 };

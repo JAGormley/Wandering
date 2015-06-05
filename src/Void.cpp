@@ -9,10 +9,12 @@
 #include "Void.h"
 
 Void::Void(Seed seed) : Domain(seed){
-    world.set(1200, 32);
-    world2.set(400, 60);
+    type = VOID;
+    
+    outer.set(1200, 32);
+    inner.set(400, 32);
     voidMaterial.setShininess(200);
-    voidMesh = world.getMesh();
+    voidMesh = outer.getMesh();
     
     materialColor.setBrightness(100.f);
     materialColor.setSaturation(160);
@@ -35,7 +37,7 @@ void Void::draw(){
     voidMesh.draw();
     ofSetColor(0,120,255);
     voidMaterial.begin();
-    world2.draw();
+    inner.draw();
     voidMaterial.end();
 }
 

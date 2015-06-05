@@ -28,3 +28,7 @@ void Environment::draw(){
     up->draw();
 //    down->draw();
 }
+
+int Environment::getType(){
+    return type;
+}

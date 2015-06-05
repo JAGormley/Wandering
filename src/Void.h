@@ -33,8 +33,8 @@ public:
     float colorHue;
 //    ofMaterial material;
     ofColor materialColor;
-    ofSpherePrimitive world;
-    ofSpherePrimitive world2;
+    ofSpherePrimitive outer;
+    ofSpherePrimitive inner;
     ofMaterial voidMaterial;
     ofVboMesh voidMesh;
 

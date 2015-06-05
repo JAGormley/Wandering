@@ -31,3 +31,13 @@ void Player::stopCam(){
     cam.end();
 }
 
+void Player::setMovementType(Controls::Type type){
+    controls.type = type;
+}
+Controls::Type Player::getMovementType(){
+    return controls.type;
+}
+
+void Player::setLocation(ofVec3f location){
+    cam.setPosition(location);
+}

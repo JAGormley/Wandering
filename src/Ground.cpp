@@ -9,6 +9,8 @@
 #include "Ground.h"
 
 Ground::Ground(Seed seed) : Domain(seed){
+    type = GROUND;
+    
     int planeWidth = 4000;
     int planeHeight = 4000;
     int planeColums = 20;

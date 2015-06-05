@@ -23,7 +23,12 @@ class Environment {
 public:
     Environment();
     Environment(Light light, Domain &down, Domain &up);
+    
+    enum Type {ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN};
+    Type type;
+    
     void draw();
+    int getType();
     
     Domain * up;
     Domain * down;
