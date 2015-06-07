@@ -38,8 +38,8 @@ void ofApp::update(){
 void ofApp::draw(){
     ofDrawBitmapString(ofToString(ofGetFrameRate())+"fps", 10, 15);
     ofEnableLighting();
-//    scenario.player.startCam();
-    cam.begin();
+    scenario.player.startCam();
+//    cam.begin();
     scenario.player.move();
     
     Light::light.enable();
@@ -54,13 +54,13 @@ void ofApp::draw(){
     for (int i = 0; i < sprites.size(); i++) {
         sprites[i]->draw();
     }
-//    shader.end();
+    shader.end();
 
     
     Light::light.disable();
     ofDisableLighting();
-//    scenario.player.stopCam();
-    cam.end();
+    scenario.player.stopCam();
+//    cam.end();
 }
 
 //--------------------------------------------------------------
@@ -97,6 +97,11 @@ void ofApp::mouseMoved(int x, int y ){
     }
     else if (lightOr){
         Light::light.setOrientation(ofVec3f(mouseX, mouseY, 0));
+        
+//        scenario.player.cam.setOrientation(ofVec3f(mouseY,
+//                                    mouseX,
+//                                    cam.getOrientationEuler().z));
+//        cout << scenario.player.cam.getOrientationEuler() << endl;
     }
 }
 

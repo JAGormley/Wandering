@@ -12,6 +12,7 @@
 Controls::Controls(){
     type = ORBIT;
     orbiter = 0;
+    sp.set(1050, 32);
 };
 
 void Controls::setCam(ofCamera &cam) {
@@ -83,29 +84,27 @@ void Controls::moveType(){
         up = 1.f;
         down = 0.f;
 //        pitch_lr = ;
-//        pitch_lr = handPos.x/100;
+        pitch_lr = handPos.x/100;
 //        pitch_ud = handPos.y/100;
 //        strafe = handPos.x*10;
 //        back_forth = handPos.z/100;
 //        pitch_ud = back_forth/orbitRadius*2*M_PI;
-        orbiter += handPos.z/10000;
-        float y = orbitRadius * sin(orbiter);
-        float z = orbitRadius * cos(orbiter);
-        cam->setPosition(ofVec3f(cam->getPosition().x,
-                                 y,
-                                 z));
         
         
-        cout << "x: " << cam->getPosition().x << endl;
-        cout << "y: " << cam->getPosition().y << endl;
-        cout << "z: " << cam->getPosition().z << endl;
+        cam->rotateAround(-1, sp.getXAxis(), ofVec3f(0,0,0));
+
+        sp.rotate(-handPos.x/1500, 0, 1, 0);
+        
+        sp.drawWireframe();
+
+//        cam->rotateAround(10, sp.getZAxis(), ofVec3f(0,0,0));
+        
+        
+//        cout << "x: " << cam->getPosition().x << endl;
+//        cout << "y: " << cam->getPosition().y << endl;
+//        cout << "z: " << cam->getPosition().z << endl;
 
         
-//        float x = orbitRadius * sin(orbiter);
-//        y = orbitRadius * cos(orbiter);
-//        cam->setPosition(ofVec3f(x,
-//                                 y,
-//                                 cam->getPosition().z));
         
     }
     
@@ -115,9 +114,9 @@ void Controls::moveType(){
 //                            cam->getPosition().y,
 //                            cam->getPosition().z));
 //    
-    cam->setOrientation(ofVec3f(cam->getOrientationEuler().x + pitch_ud,
-                               cam->getOrientationEuler().y - pitch_lr,
-                               cam->getOrientationEuler().z));
+//    cam->setOrientation(ofVec3f(cam->getOrientationEuler().x,
+//                               cam->getOrientationEuler().y,
+//                               cam->getOrientationEuler().z));
     
     
     
