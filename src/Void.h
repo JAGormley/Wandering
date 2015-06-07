@@ -14,15 +14,15 @@
 #include <stdio.h>
 #include "ofMain.h"
 
-#ifndef __Wandering2__Domain__
-#define __Wandering2__Domain__
-#include "Domain.h"
-#endif /* defined(__Wandering2__Domain__) */
+#ifndef __Wandering2__Medium__
+#define __Wandering2__Medium__
+#include "Medium.h"
+#endif /* defined(__Wandering2__Medium__) */
 
 
 #endif /* defined(__Wandering2__Void__) */
 
-class Void: public Domain {
+class Void: public Medium {
 public:
     Void(Seed seed);
     void draw();
@@ -33,8 +33,8 @@ public:
     float colorHue;
 //    ofMaterial material;
     ofColor materialColor;
-    ofSpherePrimitive outer;
-    ofSpherePrimitive inner;
+//    ofSpherePrimitive outer;
+//    ofSpherePrimitive inner;
     ofMaterial voidMaterial;
     ofVboMesh voidMesh;
 

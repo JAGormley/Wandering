@@ -19,7 +19,7 @@ void ofApp::setup(){
 //    sprites.push_back(shared_ptr<Sprite>(new Animal(seed)));
     
     
-
+    cam.setPosition(0, 0, -2500);
     Light::light.setup();
     scenario.setNew();
     
@@ -38,7 +38,8 @@ void ofApp::update(){
 void ofApp::draw(){
     ofDrawBitmapString(ofToString(ofGetFrameRate())+"fps", 10, 15);
     ofEnableLighting();
-    scenario.player.startCam();
+//    scenario.player.startCam();
+    cam.begin();
     scenario.player.move();
     
     Light::light.enable();
@@ -48,7 +49,6 @@ void ofApp::draw(){
     
     vboMesh.drawWireframe();
     scenario.draw();
-//    player.draw();
     
 //    shader.begin();
     for (int i = 0; i < sprites.size(); i++) {
@@ -59,7 +59,8 @@ void ofApp::draw(){
     
     Light::light.disable();
     ofDisableLighting();
-    scenario.player.stopCam();
+//    scenario.player.stopCam();
+    cam.end();
 }
 
 //--------------------------------------------------------------

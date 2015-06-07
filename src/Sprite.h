@@ -8,6 +8,8 @@
 
 #pragma once
 
+#include "Seed.h"
+
 #ifndef __Wandering2__Sprite__
 #define __Wandering2__Sprite__
 
@@ -17,7 +19,7 @@
 
 #endif /* defined(__Wandering2__Sprite__) */
 
-#include "Seed.h"
+
 
 class Sprite {
 public:

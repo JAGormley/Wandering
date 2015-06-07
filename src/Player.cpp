@@ -10,11 +10,11 @@
 
 
 Player::Player(){
-    cam.setPosition(ofVec3f(0, 0, 0));
+    controls.setCam(cam);
 };
 
 void Player::move(){
-    controls.move(cam);
+    controls.move();
     // debug: lock camera in place:
 //    cam.setPosition(ofVec3f(Light::getLightPos().x+10, Light::getLightPos().y+30,Light::getLightPos().z+10));
 }
@@ -31,6 +31,10 @@ void Player::stopCam(){
     cam.end();
 }
 
+void Player::draw(){
+    cam.draw();
+}
+
 void Player::setMovementType(Controls::Type type){
     controls.type = type;
 }
@@ -40,4 +44,6 @@ Controls::Type Player::getMovementType(){
 
 void Player::setLocation(ofVec3f location){
     cam.setPosition(location);
+    controls.setOrbitRadius(location.y);
 }
+

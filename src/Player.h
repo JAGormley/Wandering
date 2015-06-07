@@ -27,6 +27,7 @@ public:
     
     void move();
     ofVec3f getLocation();
+    void draw();
     void startCam();
     void stopCam();
     void setMovementType(Controls::Type type);
@@ -37,6 +38,4 @@ public:
     
 private:
     Controls controls;
-    
-    
 };

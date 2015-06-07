@@ -10,10 +10,15 @@
 #include <stdio.h>
 
 Controls::Controls(){
-    type = FLY;
+    type = ORBIT;
+    orbiter = 0;
 };
 
-void Controls::move(ofCamera &cam){
+void Controls::setCam(ofCamera &cam) {
+    this->cam = &cam;
+}
+
+void Controls::move(){
     leap.open();
     simpleHands = leap.getSimpleHands();
     
@@ -31,18 +36,24 @@ void Controls::move(ofCamera &cam){
     }
     
     if (simpleHands.size() > 0){
-        moveType(cam);
+        moveType();
     }
     
-//    leap.markFrameAsOld();
+    leap.markFrameAsOld();
 }
 
-void Controls::moveType(ofCamera &cam){
-    float up;
-    float down;
-    float back_forth;
-    float pitch_lr;
-    float pitch_ud;
+void Controls::setOrbitRadius(float radius){
+    orbitRadius = radius;
+}
+
+
+void Controls::moveType(){
+    float up = 0;
+    float down = 0;
+    float back_forth = 0;
+    float pitch_lr = 0;
+    float pitch_ud = 0;
+    float strafe = 0;
     
     
     if (type == FLOAT){
@@ -71,16 +82,43 @@ void Controls::moveType(ofCamera &cam){
     else if (type == ORBIT){
         up = 1.f;
         down = 0.f;
-        pitch_lr = handPos.x/100;
-        pitch_ud = handPos.y/100;
-        back_forth = handPos.z/100;
+//        pitch_lr = ;
+//        pitch_lr = handPos.x/100;
+//        pitch_ud = handPos.y/100;
+//        strafe = handPos.x*10;
+//        back_forth = handPos.z/100;
+//        pitch_ud = back_forth/orbitRadius*2*M_PI;
+        orbiter += handPos.z/10000;
+        float y = orbitRadius * sin(orbiter);
+        float z = orbitRadius * cos(orbiter);
+        cam->setPosition(ofVec3f(cam->getPosition().x,
+                                 y,
+                                 z));
+        
+        
+        cout << "x: " << cam->getPosition().x << endl;
+        cout << "y: " << cam->getPosition().y << endl;
+        cout << "z: " << cam->getPosition().z << endl;
+
+        
+//        float x = orbitRadius * sin(orbiter);
+//        y = orbitRadius * cos(orbiter);
+//        cam->setPosition(ofVec3f(x,
+//                                 y,
+//                                 cam->getPosition().z));
+        
     }
     
-    cam.dolly(back_forth);
-    cam.setPosition(ofVec3f(cam.getPosition().x, cam.getPosition().y, cam.getPosition().z));
-    cam.setOrientation(ofVec3f(cam.getOrientationEuler().x + pitch_ud,
-                               cam.getOrientationEuler().y - pitch_lr,
-                               cam.getOrientationEuler().z));
+//    cam->dolly(back_forth);
+//    
+//    cam->setPosition(ofVec3f(cam->getPosition().x+strafe,
+//                            cam->getPosition().y,
+//                            cam->getPosition().z));
+//    
+    cam->setOrientation(ofVec3f(cam->getOrientationEuler().x + pitch_ud,
+                               cam->getOrientationEuler().y - pitch_lr,
+                               cam->getOrientationEuler().z));
+    
     
     
     

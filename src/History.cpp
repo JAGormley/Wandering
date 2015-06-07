@@ -8,9 +8,9 @@
 
 #include "History.h"
 
-History::History(){};
+//History::History(){};
 
 
-void History::addHistory(int type){
-    envHistory.push_back(type);
-}
+//void History::addHistory(int type){
+//    envHistory.push_back(type);
+//}

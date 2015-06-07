@@ -14,13 +14,13 @@
 #include "ofMain.h"
 #endif /* defined(__Wandering2__Ground__) */
 
-#ifndef __Wandering2__Domain__
-#define __Wandering2__Domain__
-#include "Domain.h"
-#endif /* defined(__Wandering2__Domain__) */
+#ifndef __Wandering2__Surface__
+#define __Wandering2__Surface__
+#include "Surface.h"
+#endif /* defined(__Wandering2__Surface__) */
 
 
-class Ground: public Domain {
+class Ground: public Surface {
 public:
     Ground(Seed seed);
     void draw();

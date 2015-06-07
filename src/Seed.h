@@ -17,4 +17,10 @@
 #endif /* defined(__Wandering2__Seed__) */
 
 
-class Seed {};
+class Seed {
+public:
+    
+    of3dPrimitive getShape();
+    float getRadius();
+
+};

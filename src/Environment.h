@@ -13,7 +13,8 @@
 
 #include <stdio.h>
 #include "Light.h"
-#include "Domain.h"
+#include "Medium.h"
+#include "Surface.h"
 
 #endif /* defined(__Wandering2__Environment__) */
 
@@ -22,7 +23,7 @@
 class Environment {
 public:
     Environment();
-    Environment(Light light, Domain &down, Domain &up);
+    Environment(Light light, Surface &surface, Medium &medium);
     
     enum Type {ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN};
     Type type;
@@ -30,7 +31,7 @@ public:
     void draw();
     int getType();
     
-    Domain * up;
-    Domain * down;
+    Medium * medium;
+    Surface * surface;
     Light light;
 };

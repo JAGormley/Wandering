@@ -15,6 +15,7 @@
 #include <iostream>
 #include "ofMain.h"
 #include "ofxLeapMotion2.h"
+#include <math.h>
 
 #endif /* defined(__Wandering2__Controls_) */
 
@@ -23,14 +24,21 @@ class Controls {
 public:
     Controls();
     
-    void move(ofCamera &cam);
-    void moveType(ofCamera &cam);
+    void setCam(ofCamera &cam);
+    void move();
+    void moveType();
+    void setOrbitRadius(float radius);
+    
+    
+    
     enum Type {FLOAT, WALK, FLY, ORBIT};
     Type type;
-    
     ofxLeapMotion leap;
     vector <ofxLeapMotionSimpleHand> simpleHands;
+    ofCamera * cam;
     ofPoint handPos;
     ofPoint handNormal;
+    float orbitRadius;
+    float orbiter;
     
 };

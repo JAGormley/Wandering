@@ -17,16 +17,17 @@ Environment::Environment(){
 //    }
 }
 
-Environment::Environment(Light light, Domain &down, Domain &up){
+Environment::Environment(Light light, Surface &surface, Medium &medium){
     this->light = light;
-    this->up = &up;
-    this->down = &down;
+    this->surface = &surface;
+    this->medium = &medium;
+    
 }
 
 void Environment::draw(){
     
-    up->draw();
-//    down->draw();
+    medium->draw();
+    surface->draw();
 }
 
 int Environment::getType(){

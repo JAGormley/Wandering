@@ -30,7 +30,7 @@ public:
     
     Environment * environment;
     Player player;
-    History history;
+//    History history;
     Light moon;
     Seed seed;
     

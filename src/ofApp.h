@@ -42,6 +42,8 @@ public:
     float colorHue;
     ofColor materialColor;
     
+    ofEasyCam cam;
+    
 //    Player player;
     
     ofFbo fbo;

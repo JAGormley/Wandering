@@ -8,13 +8,13 @@
 
 #include "Void.h"
 
-Void::Void(Seed seed) : Domain(seed){
+Void::Void(Seed seed) : Medium(seed){
     type = VOID;
     
-    outer.set(1200, 32);
-    inner.set(400, 32);
+//    outer.set(1200, 32);
+//    inner.set(400, 32);
     voidMaterial.setShininess(200);
-    voidMesh = outer.getMesh();
+//    voidMesh = outer.getMesh();
     
     materialColor.setBrightness(100.f);
     materialColor.setSaturation(160);
@@ -37,7 +37,7 @@ void Void::draw(){
     voidMesh.draw();
     ofSetColor(0,120,255);
     voidMaterial.begin();
-    inner.draw();
+//    inner.draw();
     voidMaterial.end();
 }
 

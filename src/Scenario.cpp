@@ -15,12 +15,13 @@ Scenario::Scenario(){
 
 void Scenario::setNew(){
     environment = new Environment(moon, *new Ground(seed), *new Void(seed));
-    history.addHistory(1);
+//    history.addHistory(1);
     this->setPlayer();
 }
 
 void Scenario::draw(){
     environment->draw();
+    player.draw();
 //    this->setPlayer();
 }
 
@@ -48,7 +49,7 @@ void Scenario::setPlayerLocation(){
             cout << "FLY" << endl;
             break;
         case Controls::ORBIT:
-            player.setLocation(ofVec3f(1100, 1100, 0));
+            player.setLocation(ofVec3f(0, seed.getRadius(), 0));
             break;
     }
 }

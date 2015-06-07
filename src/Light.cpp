@@ -10,7 +10,7 @@
 
 ofLight Light::light = *new ofLight();
 Light::Light(){
-    light.setPosition(600, 600, 0);
+    light.setPosition(600, 1200, 0);
     ofSetSmoothLighting(true);
     
     // Point lights emit light in all directions //

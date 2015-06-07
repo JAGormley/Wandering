@@ -17,12 +17,12 @@
 #endif /* defined(__Wandering2__History__) */
 
 
-class History {
-public:
-    History();
-    void addHistory(int type);
-    
-    
-    vector<int> envHistory;
-    
-};
+//class History {
+//public:
+//    History();
+//    void addHistory(int type);
+//    
+//    
+//    vector<int> envHistory;
+//    
+//};
