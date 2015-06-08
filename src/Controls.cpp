@@ -97,13 +97,66 @@ void Controls::moveType(){
 
         sp.rotate(-handPos.x/1500, 1, 0, 0);
         sp.rotate(-handPos.z/1500, 0, 0, 1);
+        
+//                cout << rotated << endl;
+//        ofVec3f camPos = sp.getLocalTransformMatrix() * -sp.getMesh().getVertices()[0];
+        
+        
+        
+        
+//        ofVec3f camLook = sp.getLocalTransformMatrix() * -sp.getMesh().getVertices()[100];
+//        cam->lookAt(camLook);
+        
+        ofVec3f camPos = cam->getPosition();
+        float lat = atan2(camPos.z, (camPos.x*camPos.x + camPos.y*camPos.y));
+        float lng = atan2(camPos.y, camPos.z);
+        
+        ofMatrix4x4 rotationY;
+        ofMatrix4x4 rotationX;
+        ofMatrix4x4 translation;
+        ofMatrix4x4 matrix;
+        
+        rotationY.rotate(lng, 0, 1, 0);
+        rotationX.rotate(-lat, 1, 0, 0);
+        translation.setTranslation(0, 0, 1100);
+        
+//        matrix = rotationX * rotationY;
+        matrix.translate(0, 0, 1100);
+        cam->rotate(lng, 1, 0, 0);
+//        cam->rotate(-lat, 1, 0, 0);
+
+        
+        
+        
+        
         cam->setPosition(sp.getUpDir()*1100);
-        cam->lookAt(sp.getUpDir()*1100);
+        
+        
+//        cam->setOrientation(sp.getGlobalOrientation());
+        
+//        cam->setTransformMatrix(sp.getLocalTransformMatrix());
+//        cam->lookAt(ofVec3f(0,0,0));
+//        ofDrawSphere(camPos, 50);
+//        ofDrawSphere(camLook, 50);
+//        cam->lookAt(ofVec3f(camPos.x+1, camPos.y+1, camPos.z+1).normalize());
+//
+        
+//        cam->orbit(10, 100, 1100, ofVec3f(0,0,0));
+//        cam->
+//        cam->lookAt(camLook);
+//        for (int i = 0; i < sp.getMesh().getVertices().size(); i++) {
+//            ofVec3f tmp = sp.getMesh().getVertices()[i];
+////            cout << i << ": " << sp.getMesh().getVertices()[i].x << endl;
+//            ofDrawSphere(tmp.x, tmp.y, tmp.z, 10);
+//        }
+        
+        
+        
+//        cam->rotate(90, 1, 0, 0);
         
 //        cam->rotate(90, 1, 0, 0);
 //        cam->rotate(90, 0, 1, 0);
 //        cout << sp.getUpDir() << endl;
-        
         sp.drawWireframe();
 
 

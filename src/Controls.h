@@ -43,4 +43,5 @@ public:
     float orbiter2;
     ofSpherePrimitive sp;
     ofSpherePrimitive sp2;
+    ofVec3f rotated;
 };

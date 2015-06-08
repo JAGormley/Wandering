@@ -120,10 +120,10 @@ void ofApp::mouseMoved(int x, int y ){
     else if (lightOr){
         Light::light.setOrientation(ofVec3f(mouseX, mouseY, 0));
         
-//        scenario.player.cam.lookAt(ofVec3f(mouseY,
-//                                    mouseX,
-//                                    0));
-        cout << scenario.player.cam.getOrientationEuler() << endl;
+//        scenario.player.cam.lookAt(ofVec3f(mouseX,
+//                                    0,
+//                                    0));o
+//        cout << scenario.player.cam.getOrientationEuler() << endl;
     }
 }
 

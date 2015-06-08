@@ -12,6 +12,7 @@ ofLight Light::light = *new ofLight();
 Light::Light(){
     light.setPosition(600, 1200, 0);
     ofSetSmoothLighting(true);
+//    light.set
     
     // Point lights emit light in all directions //
     // set the diffuse color, color reflected from the light source //
