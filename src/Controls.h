@@ -42,4 +42,5 @@ public:
     float orbiter;
     float orbiter2;
     ofSpherePrimitive sp;
+    ofSpherePrimitive sp2;
 };

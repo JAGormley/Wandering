@@ -13,6 +13,8 @@ Controls::Controls(){
     type = ORBIT;
     orbiter = 0;
     sp.set(1050, 32);
+    
+    sp2.set(1050, 32);
 };
 
 void Controls::setCam(ofCamera &cam) {
@@ -91,13 +93,23 @@ void Controls::moveType(){
 //        pitch_ud = back_forth/orbitRadius*2*M_PI;
         
         
-        cam->rotateAround(-1, sp.getXAxis(), ofVec3f(0,0,0));
+//        cam->rotateAround(-1, sp.getXAxis(), ofVec3f(0,0,0));
 
-        sp.rotate(-handPos.x/1500, 0, 1, 0);
+        sp.rotate(-handPos.x/1500, 1, 0, 0);
+        sp.rotate(-handPos.z/1500, 0, 0, 1);
+        cam->setPosition(sp.getUpDir()*1100);
+        cam->lookAt(sp.getUpDir()*1100);
+        
+//        cam->rotate(90, 1, 0, 0);
+//        cam->rotate(90, 0, 1, 0);
+//        cout << sp.getUpDir() << endl;
         
         sp.drawWireframe();
 
-//        cam->rotateAround(10, sp.getZAxis(), ofVec3f(0,0,0));
+
+//        cam->rotateAround(0.000001, sp.getYAxis(), ofVec3f(0,0,0));
+//        cam->
+//        sp.
         
         
 //        cout << "x: " << cam->getPosition().x << endl;

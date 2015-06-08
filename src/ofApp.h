@@ -34,6 +34,7 @@ public:
     
     bool lightMove;
     bool lightOr;
+    bool outCam;
     
     ofBoxPrimitive box;
     ofMaterial material;

@@ -7,6 +7,8 @@ void ofApp::setup(){
     
     //    ofSetVerticalSync(true);
     
+    outCam = false;
+    
     ofSetFrameRate(60);
     ofBackground(10, 80, 210);
     ofEnableDepthTest();
@@ -38,8 +40,14 @@ void ofApp::update(){
 void ofApp::draw(){
     ofDrawBitmapString(ofToString(ofGetFrameRate())+"fps", 10, 15);
     ofEnableLighting();
-    scenario.player.startCam();
-//    cam.begin();
+    if (outCam == true){
+        cam.begin();
+    }
+    else {
+        scenario.player.startCam();
+    }
+//
+    
     scenario.player.move();
     
     Light::light.enable();
@@ -59,8 +67,18 @@ void ofApp::draw(){
     
     Light::light.disable();
     ofDisableLighting();
-    scenario.player.stopCam();
-//    cam.end();
+    
+    
+    
+    if (outCam == true){
+        cam.end();
+    }
+    else {
+        scenario.player.stopCam();
+    }
+    
+//
+    
 }
 
 //--------------------------------------------------------------
@@ -72,6 +90,9 @@ void ofApp::keyPressed(int key){
             break;
         case 'b':
             lightOr = true;
+            break;
+        case 'o':
+            outCam = !outCam;
             break;
     }
 }
@@ -91,6 +112,7 @@ void ofApp::keyReleased(int key){
 
 //--------------------------------------------------------------
 void ofApp::mouseMoved(int x, int y ){
+    lightOr = true;
     if (lightMove){
         
         Light::light.setPosition(Light::light.getPosition().x, mouseX, mouseY);
@@ -98,10 +120,10 @@ void ofApp::mouseMoved(int x, int y ){
     else if (lightOr){
         Light::light.setOrientation(ofVec3f(mouseX, mouseY, 0));
         
-//        scenario.player.cam.setOrientation(ofVec3f(mouseY,
+//        scenario.player.cam.lookAt(ofVec3f(mouseY,
 //                                    mouseX,
-//                                    cam.getOrientationEuler().z));
-//        cout << scenario.player.cam.getOrientationEuler() << endl;
+//                                    0));
+        cout << scenario.player.cam.getOrientationEuler() << endl;
     }
 }
 
