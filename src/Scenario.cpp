@@ -14,7 +14,8 @@ Scenario::Scenario(){
 }
 
 void Scenario::setNew(){
-    environment = new Environment(moon, *new Ground(seed), *new Void(seed));
+    
+    environment = new Environment(moon, *getSurface(), *getMedium());
 //    history.addHistory(1);
     this->setPlayer();
 }
@@ -50,5 +51,33 @@ void Scenario::setPlayerLocation(){
         case Controls::ORBIT:
             player.setLocation(ofVec3f(0, seed.getRadius(), 0));
             break;
+    }
+}
+
+Medium * Scenario::getMedium(){
+    switch (seed.getMedium()){
+        case Seed::M_VOID:
+            return new Void(seed);
+            break;
+        case Seed::AIR:
+            break;
+        case Seed::M_WATER:
+            break;
+    }
+}
+
+Surface * Scenario::getSurface(){
+    switch (seed.getSurfaceType()){
+        case Seed::GROUND:
+            return new Ground(seed);
+            break;
+        case Seed::S_VOID:
+            break;
+        case Seed::S_WATER:
+            return new Water(seed);
+            break;
+        case Seed::NONE:
+            break;
+            
     }
 }

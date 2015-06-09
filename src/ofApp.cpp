@@ -16,14 +16,16 @@ void ofApp::setup(){
     
 //    light.setAttenuation(1.f, 0, 0.00005f);
     for (int i = 0; i < 500; i++) {
-        sprites.push_back(shared_ptr<Sprite>(new Plant(seed)));
+        sprites.push_back(shared_ptr<Sprite>(new Plant()));
     }
 //    sprites.push_back(shared_ptr<Sprite>(new Animal(seed)));
     
     
     cam.setPosition(0, 0, -2500);
+    
     Light::light.setup();
     scenario.setNew();
+    
     
 }
 

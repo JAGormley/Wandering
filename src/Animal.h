@@ -23,7 +23,7 @@
 
 class Animal: public Sprite {
 public:
-    Animal(Seed seed);
+    Animal();
     void move();
     void activate();
     void setActivated(bool activated);

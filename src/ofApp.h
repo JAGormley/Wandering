@@ -51,7 +51,6 @@ public:
     ofVboMesh vboMesh;
     ofVbo vbo;
     
-    Seed seed;
     vector< shared_ptr<Sprite> > sprites;
     
     Light moon;

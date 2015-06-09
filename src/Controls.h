@@ -45,5 +45,6 @@ public:
     ofSpherePrimitive sp2;
     ofVec3f rotated;
     
-    ofVec3f origUp;
+private:
+    ofMatrix4x4 transformer;
 };

@@ -8,7 +8,7 @@
 
 #include "Plant.h"
 
-Plant::Plant(Seed seed) : Sprite(seed){
+Plant::Plant() : Sprite(){
     
     materialColor.setBrightness(250.f);
     materialColor.setSaturation(250);

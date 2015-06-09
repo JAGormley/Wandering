@@ -44,6 +44,5 @@ Controls::Type Player::getMovementType(){
 
 void Player::setLocation(ofVec3f location){
     cam.setPosition(location);
-    controls.setOrbitRadius(location.y);
 }
 

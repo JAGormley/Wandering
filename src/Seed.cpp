@@ -9,6 +9,13 @@
 #include "Seed.h"
 
 
+Seed::Seed(){
+    sShape = SPHERE;
+    sType = GROUND;
+    medium = M_VOID;
+}
+
+
 of3dPrimitive Seed::getShape(){
     // TODO: Dynamically generate using Seed structure; this will come from SurfaceSeed
     
@@ -18,4 +25,16 @@ of3dPrimitive Seed::getShape(){
 
 float Seed::getRadius(){
     return 1100;
+}
+//
+Seed::SurfaceShape Seed::getSurfaceShape(){
+    return sShape;
+}
+
+Seed::SurfaceType Seed::getSurfaceType(){
+    return sType;
+}
+
+Seed::Medium Seed::getMedium(){
+    return medium;
 }

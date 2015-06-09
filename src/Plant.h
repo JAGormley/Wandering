@@ -22,7 +22,7 @@
 
 class Plant: public Sprite {
 public:
-    Plant(Seed seed);
+    Plant();
     void move();
     void activate();
     void setActivated(bool activated);

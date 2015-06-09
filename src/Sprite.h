@@ -24,7 +24,7 @@
 class Sprite {
 public:
     
-    Sprite(Seed &seed){};
+    Sprite(){};
     virtual void move() =0;
     virtual void activate() =0;
     virtual void setActivated(bool activated) =0;

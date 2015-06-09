@@ -15,6 +15,7 @@
 #include "History.h"
 #include "Void.h"
 #include "Ground.h"
+#include "Water.h"
 
 #endif /* defined(__Wandering2__Scenario__) */
 
@@ -27,6 +28,8 @@ public:
     void setNew();
     void setPlayer();
     void draw();
+    Medium * getMedium();
+    Surface * getSurface();
     
     Environment * environment;
     Player player;

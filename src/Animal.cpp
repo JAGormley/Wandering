@@ -9,7 +9,7 @@
 #include "Animal.h"
 
 
-Animal::Animal(Seed seed) : Sprite(seed){
+Animal::Animal() : Sprite(){
     ofVec3f rawPos = Light::getLightPos();
     box.set(5,5,10,5,5,10);
     box.setPosition(ofVec3f(rawPos.x, rawPos.y ,rawPos.z));

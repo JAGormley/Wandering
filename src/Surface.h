@@ -15,12 +15,12 @@
 
 #endif /* defined(__Wandering2__Surface__) */
 
-#include "SurfaceWrap.h"
 
 #ifndef __Wandering2__Surface__
 #define __Wandering2__Surface__
 #include <stdio.h>
 #include "ofMain.h"
+//#include "Ground.h"
 #endif /* defined(__Wandering2__Surface__) */
 
 #ifndef __Wandering2__Seed__
@@ -28,10 +28,11 @@
 #define __Wandering2__Seed__
 #endif /* defined(__Wandering2__Seed__) */
 
+
 class Surface {
 public:
     Surface(Seed seed);
-    enum Shape {SPHERE, PLANE};
+    static enum Shape {SPHERE, PLANE} shape;
     of3dPrimitive rawShape;
     virtual void setColor(ofColor hue) =0;
     virtual void draw() =0;

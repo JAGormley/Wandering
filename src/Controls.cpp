@@ -13,9 +13,6 @@ Controls::Controls(){
     type = ORBIT;
     orbiter = 0;
     sp.set(1050, 32);
-    
-    sp2.set(1050, 32);
-    sp.rotate(10, 1, 0, 0);
 };
 
 void Controls::setCam(ofCamera &cam) {
@@ -85,29 +82,28 @@ void Controls::moveType(){
     }
     else if (type == ORBIT){
         
-        up = 1.f;
-        down = 0.f;
-        
         sp.rotate(handPos.z/1000, sp.getXAxis());
         sp.rotate(-handPos.x/1000, sp.getZAxis());
         
-        ofMatrix4x4 transformer = sp.getLocalTransformMatrix();
-        transformer.setTranslation(sp.getUpDir()*1050);
+        transformer = sp.getLocalTransformMatrix();
+        transformer.setTranslation(sp.getUpDir()*(sp.getRadius()));
         cam->setTransformMatrix(transformer);
         
         sp.drawWireframe();
         
     }
     
-    //    cam->dolly(back_forth);
-    //
-    //    cam->setPosition(ofVec3f(cam->getPosition().x+strafe,
-    //                            cam->getPosition().y,
-    //                            cam->getPosition().z));
-    //
-    //    cam->setOrientation(ofVec3f(cam->getOrientationEuler().x,
-    //                               cam->getOrientationEuler().y,
-    //                               cam->getOrientationEuler().z));
+    if (type != ORBIT){
+        cam->dolly(back_forth);
+        
+        cam->setPosition(ofVec3f(cam->getPosition().x+strafe,
+                                 cam->getPosition().y,
+                                 cam->getPosition().z));
+        
+        cam->setOrientation(ofVec3f(cam->getOrientationEuler().x,
+                                    cam->getOrientationEuler().y,
+                                    cam->getOrientationEuler().z));
+    }
     
     
     
