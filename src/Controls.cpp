@@ -15,6 +15,7 @@ Controls::Controls(){
     sp.set(1050, 32);
     
     sp2.set(1050, 32);
+    sp.rotate(10, 1, 0, 0);
 };
 
 void Controls::setCam(ofCamera &cam) {
@@ -86,27 +87,27 @@ void Controls::moveType(){
         
         up = 1.f;
         down = 0.f;
-
-        sp.rotate(handPos.z/1000, 1, 0, 0);
-        sp.rotate(-handPos.x/1000, 0, 0, 1);
         
-        ofMatrix4x4 jimmy = sp.getLocalTransformMatrix();
-        jimmy.setTranslation(sp.getUpDir()*1050);
-        cam->setTransformMatrix(jimmy);
-
+        sp.rotate(handPos.z/1000, sp.getXAxis());
+        sp.rotate(-handPos.x/1000, sp.getZAxis());
+        
+        ofMatrix4x4 transformer = sp.getLocalTransformMatrix();
+        transformer.setTranslation(sp.getUpDir()*1050);
+        cam->setTransformMatrix(transformer);
+        
         sp.drawWireframe();
-
+        
     }
     
-//    cam->dolly(back_forth);
-//    
-//    cam->setPosition(ofVec3f(cam->getPosition().x+strafe,
-//                            cam->getPosition().y,
-//                            cam->getPosition().z));
-//    
-//    cam->setOrientation(ofVec3f(cam->getOrientationEuler().x,
-//                               cam->getOrientationEuler().y,
-//                               cam->getOrientationEuler().z));
+    //    cam->dolly(back_forth);
+    //
+    //    cam->setPosition(ofVec3f(cam->getPosition().x+strafe,
+    //                            cam->getPosition().y,
+    //                            cam->getPosition().z));
+    //
+    //    cam->setOrientation(ofVec3f(cam->getOrientationEuler().x,
+    //                               cam->getOrientationEuler().y,
+    //                               cam->getOrientationEuler().z));
     
     
     

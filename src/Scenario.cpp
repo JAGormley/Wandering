@@ -21,7 +21,6 @@ void Scenario::setNew(){
 
 void Scenario::draw(){
     environment->draw();
-//    player.draw();
 //    this->setPlayer();
 }
 

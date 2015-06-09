@@ -42,6 +42,7 @@ void ofApp::draw(){
     ofEnableLighting();
     if (outCam == true){
         cam.begin();
+        scenario.player.draw();
     }
     else {
         scenario.player.startCam();

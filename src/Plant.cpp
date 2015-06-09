@@ -14,7 +14,15 @@ Plant::Plant(Seed seed) : Sprite(seed){
     materialColor.setSaturation(250);
     
     plant.set(10, 10);
-    plant.setPosition(ofVec3f(ofRandom(2000)-1000, ofRandom(2000)-1000, ofRandom(2000)-1000));
+    float xRand = ofRandom(1000)-500;
+    if (xRand < 0) xRand-=500; else xRand +=500;
+    float yRand = ofRandom(1000)-500;;
+    if (yRand < 0) yRand-=500; else yRand +=500;
+    float zRand = ofRandom(1000)-500;;
+    if (zRand < 0) zRand-=500; else zRand +=500;
+    
+    
+    plant.setPosition(ofVec3f(xRand, yRand, zRand));
     
     colorHue = ofRandom(0, 250);
     materialColor.setHue(colorHue);
