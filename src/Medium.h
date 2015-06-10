@@ -8,11 +8,9 @@
 
 #pragma once
 
-#ifndef __Wandering2__Medium__
-#define __Wandering2__Medium__
 #include <stdio.h>
 #include "ofMain.h"
-#endif /* defined(__Wandering2__Medium__) */
+
 
 #ifndef __Wandering2__Seed__
 #include "Seed.h"

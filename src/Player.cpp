@@ -35,14 +35,14 @@ void Player::draw(){
     cam.draw();
 }
 
-void Player::setMovementType(Controls::Type type){
-    controls.type = type;
+void Player::setMovementType(Seed lSeed){
+    controls.type = lSeed.getTraversal();
 }
-Controls::Type Player::getMovementType(){
+Seed::Traversal Player::getMovementType(){
     return controls.type;
 }
 
-void Player::setLocation(ofVec3f location){
-    cam.setPosition(location);
+void Player::setLocation(Seed lSeed){
+    cam.setPosition(ofVec3f(0, lSeed.getPlayerLocation(), 0));
 }
 

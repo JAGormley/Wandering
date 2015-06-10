@@ -19,27 +19,31 @@
 
 #endif /* defined(__Wandering2__Scenario__) */
 
-
 class Scenario {
 public:
     
     Scenario();
     
     void setNew();
-    void setPlayer();
+    
     void draw();
+    
+    // ENVIRONMENT
     Medium * getMedium();
     Surface * getSurface();
-    
     Environment * environment;
+    
+    // PLAYER
+    void setPlayer(Seed lSeed);
+    void setPlayerMovement(Seed lSeed);
+    void setPlayerLocation(Seed lSeed);
     Player player;
-//    History history;
+    
     Light moon;
     Seed seed;
     
     
-private:
-    void setPlayerMovement();
-    void setPlayerLocation();
+
+    
 };
 

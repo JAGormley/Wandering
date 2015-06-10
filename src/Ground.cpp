@@ -9,12 +9,6 @@
 #include "Ground.h"
 
 Ground::Ground(Seed seed) : Surface(seed){
-//    type = GROUNDSPHERE;
-    
-    rawShape = seed.getShape();
-    
-    
-    
     
 //    int planeWidth = 4000;
 //    int planeHeight = 4000;
@@ -26,14 +20,13 @@ Ground::Ground(Seed seed) : Surface(seed){
     
 }
 
-void Ground::draw(){
-    ofSetColor(255, 200, 0);
-    ofPushMatrix();
-    ofRotate(90, 1, 0, 0);
-    
-    rawShape.draw();
-    ofPopMatrix();
-}
+//void Ground::draw(){
+//    ofSetColor(255, 200, 0);
+//    ofPushMatrix();
+//    ofRotate(90, 1, 0, 0);
+//    rawShape.draw();
+//    ofPopMatrix();
+//}
 
 void Ground::setColor(ofColor hue){
     

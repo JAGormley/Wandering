@@ -8,17 +8,10 @@
 
 #pragma once
 
-#ifndef __Wandering2__Player__
-#define __Wandering2__Player__
-
 #include "ofxLeapMotion2.h"
 #include "Controls.h"
 #include "Light.h"
-
 #include <stdio.h>
-
-#endif /* defined(__Wandering2__Player__) */
-
 
 class Player {
 public:
@@ -30,9 +23,9 @@ public:
     void draw();
     void startCam();
     void stopCam();
-    void setMovementType(Controls::Type type);
-    void setLocation(ofVec3f location);
-    Controls::Type getMovementType();
+    void setMovementType(Seed lSeed);
+    void setLocation(Seed lSeed);
+    Seed::Traversal getMovementType();
     
     ofCamera cam;
     

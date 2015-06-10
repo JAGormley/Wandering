@@ -10,7 +10,6 @@
 
 #include <stdio.h>
 #include "ofMain.h"
-#include "Controls.h"
 
 
 //#ifndef __Wandering2__Surface__
@@ -24,28 +23,38 @@ class Seed {
 public:
     
     Seed();
-//
-    enum Traversal {FLOAT, WALK, FLY, ORBIT};
+    void populate();
+    
+    // ENVIRONMENT
+    
     enum Medium {M_WATER, M_VOID, AIR};
     enum SurfaceShape {SPHERE, PLANE};
     enum SurfaceType {S_WATER, S_VOID, GROUND, NONE};
-//
-    Traversal getTraversal();
+    
     Medium getMedium();
     SurfaceShape getSurfaceShape();
     SurfaceType getSurfaceType();
     
-    void setTraversal();
     void setMedium();
     void setSurfaceShape();
     void setSurfaceType();
     
-    of3dPrimitive getShape();
-    float getRadius();
-    
-    Traversal traversal;
     Medium medium;
     SurfaceShape sShape;
     SurfaceType sType;
+    float shapeSize;
+    
+    
+    // PLAYER
+    enum Traversal {FLOAT, WALK, FLY, ORBIT};
+    Traversal getTraversal();
+    void setTraversal();
+    float getPlayerLocation();
+    
+    Traversal traversal;
+    
+    
+    
+    // LIGHT
 
 };

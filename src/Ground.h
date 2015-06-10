@@ -23,7 +23,7 @@
 class Ground: public Surface {
 public:
     Ground(Seed seed);
-    void draw();
+//    void draw();
     void setColor(ofColor hue);
     void update();
     vector<ofVec3f> getMeshVerts();

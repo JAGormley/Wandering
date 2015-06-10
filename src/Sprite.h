@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "Seed.h"
+//#include "Seed.h"
 
 #ifndef __Wandering2__Sprite__
 #define __Wandering2__Sprite__

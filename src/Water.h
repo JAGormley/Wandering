@@ -11,7 +11,6 @@
 #include <stdio.h>
 #include "ofMain.h"
 
-
 #ifndef __Wandering2__Surface__
 #define __Wandering2__Surface__
 #include "Surface.h"
@@ -21,7 +20,7 @@
 class Water: public Surface {
 public:
     Water(Seed seed);
-    void draw();
+//    void draw();
     void setColor(ofColor hue);
     void update();
     vector<ofVec3f> getMeshVerts();

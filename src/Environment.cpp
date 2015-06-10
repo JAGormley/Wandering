@@ -22,6 +22,8 @@ Environment::Environment(Light light, Surface &surface, Medium &medium){
     this->surface = &surface;
     this->medium = &medium;
     
+    this->surface->generate();
+    
 }
 
 void Environment::draw(){

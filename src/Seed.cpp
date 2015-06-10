@@ -4,29 +4,26 @@
 //
 //  Created by J Andrew Gormley on 2015-05-30.
 
-
+// TODO: SETTERS USE HISTORY AND SOIL TO GET THEIR VALUES
 
 #include "Seed.h"
 
 
 Seed::Seed(){
-    sShape = SPHERE;
+    
+    
     sType = GROUND;
     medium = M_VOID;
 }
 
-
-of3dPrimitive Seed::getShape(){
-    // TODO: Dynamically generate using Seed structure; this will come from SurfaceSeed
-    
-    return *new ofSpherePrimitive(1000, 32);
-//    return *new ofPlanePrimitive(ofPlanePrimitive(5000, 5000, 50, 50));
+void Seed::populate(){
+    setTraversal();
+    setSurfaceShape();
 }
 
-float Seed::getRadius(){
-    return 1100;
-}
-//
+
+// ENVIRONMENT
+
 Seed::SurfaceShape Seed::getSurfaceShape(){
     return sShape;
 }
@@ -37,4 +34,30 @@ Seed::SurfaceType Seed::getSurfaceType(){
 
 Seed::Medium Seed::getMedium(){
     return medium;
+}
+
+void Seed::setMedium(){
+    
+}
+void Seed::setSurfaceShape(){
+    sShape = SPHERE;
+    shapeSize = 1050.f;
+}
+void Seed::setSurfaceType(){
+    
+}
+
+
+// PLAYER
+
+void Seed::setTraversal(){
+    traversal = ORBIT;
+}
+
+Seed::Traversal Seed::getTraversal(){
+    return traversal;
+}
+
+float Seed::getPlayerLocation(){
+    return shapeSize;
 }

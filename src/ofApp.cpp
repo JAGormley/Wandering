@@ -15,11 +15,13 @@ void ofApp::setup(){
     ofEnableLighting();
     
 //    light.setAttenuation(1.f, 0, 0.00005f);
+    
+    
+    // TODO: MOVE SPRITES OUT OF MAIN
     for (int i = 0; i < 500; i++) {
         sprites.push_back(shared_ptr<Sprite>(new Plant()));
     }
 //    sprites.push_back(shared_ptr<Sprite>(new Animal(seed)));
-    
     
     cam.setPosition(0, 0, -2500);
     
@@ -122,11 +124,6 @@ void ofApp::mouseMoved(int x, int y ){
     }
     else if (lightOr){
         Light::light.setOrientation(ofVec3f(mouseX, mouseY, 0));
-        
-//        scenario.player.cam.lookAt(ofVec3f(mouseX,
-//                                    0,
-//                                    0));o
-//        cout << scenario.player.cam.getOrientationEuler() << endl;
     }
 }
 

@@ -8,16 +8,18 @@
 
 #pragma once
 
-#ifndef __Wandering2__Controls__
-#define __Wandering2__Controls__
-
+#include <math.h>
 #include <stdio.h>
 #include <iostream>
 #include "ofMain.h"
 #include "ofxLeapMotion2.h"
-#include <math.h>
 
-#endif /* defined(__Wandering2__Controls_) */
+
+
+#ifndef __Wandering2__Seed__
+#include "Seed.h"
+#define __Wandering2__Seed__
+#endif /* defined(__Wandering2__Seed__) */
 
 
 class Controls {
@@ -29,10 +31,7 @@ public:
     void moveType();
     void setOrbitRadius(float radius);
     
-    
-    
-    enum Type {FLOAT, WALK, FLY, ORBIT};
-    Type type;
+    Seed::Traversal type;
     ofxLeapMotion leap;
     vector <ofxLeapMotionSimpleHand> simpleHands;
     ofCamera * cam;
@@ -44,6 +43,7 @@ public:
     ofSpherePrimitive sp;
     ofSpherePrimitive sp2;
     ofVec3f rotated;
+    
     
 private:
     ofMatrix4x4 transformer;

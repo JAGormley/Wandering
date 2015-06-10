@@ -8,15 +8,11 @@
 
 
 #pragma once
-#ifndef __Wandering2__Environment__
-#define __Wandering2__Environment__
 
 #include <stdio.h>
 #include "Light.h"
 #include "Medium.h"
 #include "Surface.h"
-
-#endif /* defined(__Wandering2__Environment__) */
 
 //#include "ofApp.h"
 

@@ -10,7 +10,6 @@
 #include <stdio.h>
 
 Controls::Controls(){
-    type = ORBIT;
     orbiter = 0;
     sp.set(1050, 32);
 };
@@ -57,7 +56,7 @@ void Controls::moveType(){
     float strafe = 0;
     
     
-    if (type == FLOAT){
+    if (type == Seed::FLOAT){
         // maybe this has a slow set forward z
         up = 1.f;
         down = 0.f;
@@ -65,7 +64,7 @@ void Controls::moveType(){
         pitch_ud = handPos.y/100;
         back_forth = handPos.z/100;
     }
-    else if (type == WALK){
+    else if (type == Seed::WALK){
         // TODO needs indepedent head movement!!
         up = 1.f;
         down = 0.f;
@@ -73,14 +72,14 @@ void Controls::moveType(){
         pitch_ud = 0;
         back_forth = handPos.z/200;
     }
-    else if (type == FLY){
+    else if (type == Seed::FLY){
         up = 1.f;
         down = 0.f;
         pitch_lr = handPos.x/100;
         pitch_ud = handPos.y/100;
         back_forth = handPos.z/100;
     }
-    else if (type == ORBIT){
+    else if (type == Seed::ORBIT){
         
         sp.rotate(handPos.z/1000, sp.getXAxis());
         sp.rotate(-handPos.x/1000, sp.getZAxis());
@@ -93,7 +92,7 @@ void Controls::moveType(){
         
     }
     
-    if (type != ORBIT){
+    if (type != Seed::ORBIT){
         cam->dolly(back_forth);
         
         cam->setPosition(ofVec3f(cam->getPosition().x+strafe,

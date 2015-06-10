@@ -2,13 +2,11 @@
 
 #include "ofMain.h"
 #include "ofxLeapMotion2.h"
-#include "Player.h"
+//#include "Player.h"
 #include "Sprite.h"
-#include "Animal.h"
+//#include "Animal.h"
 #include "Plant.h"
 #include "Scenario.h"
-
-#include "Environment.h"
 
 class ofApp : public ofBaseApp{
     
