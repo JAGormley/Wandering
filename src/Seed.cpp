@@ -40,8 +40,10 @@ void Seed::setMedium(){
     
 }
 void Seed::setSurfaceShape(){
+    // TODO: set for other types of movement/shape
+    
     sShape = SPHERE;
-    shapeSize = 1050.f;
+    shapeSize = 1000.f;
 }
 void Seed::setSurfaceType(){
     

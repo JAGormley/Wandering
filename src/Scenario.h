@@ -29,16 +29,16 @@ public:
     void draw();
     
     // ENVIRONMENT
+    // TODO: add LIGHT
     Medium * getMedium();
     Surface * getSurface();
     Environment * environment;
     
     // PLAYER
     void setPlayer(Seed lSeed);
-    void setPlayerMovement(Seed lSeed);
-    void setPlayerLocation(Seed lSeed);
     Player player;
     
+    // TODO: remove hard-coded light, get from Seed
     Light moon;
     Seed seed;
     

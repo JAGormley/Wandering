@@ -15,10 +15,10 @@ Surface::Surface(Seed seed){this->seed = seed;};
 void Surface::generate(){
     switch (seed.getSurfaceShape()){
         case Seed::SPHERE:
-            rawShape = ofSpherePrimitive(1000, 32);
+            rawShape = ofSpherePrimitive(seed.shapeSize, 32);
             break;
         case Seed::PLANE:
-            rawShape = ofPlanePrimitive(1000, 1000, 30, 30);
+            rawShape = ofPlanePrimitive(seed.shapeSize*5, seed.shapeSize*5, 30, 30);
             break;
     }
 }

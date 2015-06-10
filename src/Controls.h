@@ -38,8 +38,6 @@ public:
     ofPoint handPos;
     ofPoint handNormal;
     float orbitRadius;
-    float orbiter;
-    float orbiter2;
     ofSpherePrimitive sp;
     ofSpherePrimitive sp2;
     ofVec3f rotated;

@@ -16,7 +16,7 @@ Player::Player(){
 void Player::move(){
     controls.move();
     // debug: lock camera in place:
-//    cam.setPosition(ofVec3f(Light::getLightPos().x+10, Light::getLightPos().y+30,Light::getLightPos().z+10));
+    //    cam.setPosition(ofVec3f(Light::getLightPos().x+10, Light::getLightPos().y+30,Light::getLightPos().z+10));
 }
 
 ofVec3f Player::getLocation(){
@@ -37,12 +37,15 @@ void Player::draw(){
 
 void Player::setMovementType(Seed lSeed){
     controls.type = lSeed.getTraversal();
+    if (lSeed.getTraversal() == Seed::ORBIT)
+        controls.setOrbitRadius(lSeed.getPlayerLocation()+50);
 }
+
 Seed::Traversal Player::getMovementType(){
     return controls.type;
 }
 
 void Player::setLocation(Seed lSeed){
-    cam.setPosition(ofVec3f(0, lSeed.getPlayerLocation(), 0));
+    cam.setPosition(ofVec3f(0, lSeed.getPlayerLocation()+50, 0));
 }
 

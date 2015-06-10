@@ -54,7 +54,6 @@ public:
     Traversal traversal;
     
     
-    
     // LIGHT
 
 };

@@ -27,8 +27,6 @@ void ofApp::setup(){
     
     Light::light.setup();
     scenario.setNew();
-    
-    
 }
 
 //--------------------------------------------------------------
@@ -81,9 +79,6 @@ void ofApp::draw(){
     else {
         scenario.player.stopCam();
     }
-    
-//
-    
 }
 
 //--------------------------------------------------------------
@@ -112,7 +107,6 @@ void ofApp::keyReleased(int key){
             lightOr = false;
             break;
     }
-
 }
 
 //--------------------------------------------------------------

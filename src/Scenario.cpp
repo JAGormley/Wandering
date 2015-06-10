@@ -14,9 +14,17 @@ Scenario::Scenario(){
 }
 
 void Scenario::setNew(){
+    
+    // ensure the seed is populated before anything else is set
     seed.populate();
+    
+    // set the environment to new seed values
     environment = new Environment(moon, *getSurface(), *getMedium());
+    
+    // set the player to new seed values
     setPlayer(seed);
+
+    
 //    history.addHistory(1);
     
 }
@@ -60,16 +68,4 @@ Surface * Scenario::getSurface(){
 void Scenario::setPlayer(Seed lSeed){
     player.setMovementType(lSeed);
     player.setLocation(lSeed);
-//    
-//    setPlayerMovement(lSeed);
-//    setPlayerLocation(lSeed);
 }
-
-//void Scenario::setPlayerMovement(Seed lSeed){
-//    
-//    
-//}
-//
-//void Scenario::setPlayerLocation(Seed lSeed){
-//    
-//}

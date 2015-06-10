@@ -9,10 +9,7 @@
 #include "Controls.h"
 #include <stdio.h>
 
-Controls::Controls(){
-    orbiter = 0;
-    sp.set(1050, 32);
-};
+Controls::Controls(){};
 
 void Controls::setCam(ofCamera &cam) {
     this->cam = &cam;
@@ -43,9 +40,8 @@ void Controls::move(){
 }
 
 void Controls::setOrbitRadius(float radius){
-    orbitRadius = radius;
+    sp.set(radius, 32);
 }
-
 
 void Controls::moveType(){
     float up = 0;
@@ -54,7 +50,6 @@ void Controls::moveType(){
     float pitch_lr = 0;
     float pitch_ud = 0;
     float strafe = 0;
-    
     
     if (type == Seed::FLOAT){
         // maybe this has a slow set forward z
@@ -88,8 +83,8 @@ void Controls::moveType(){
         transformer.setTranslation(sp.getUpDir()*(sp.getRadius()));
         cam->setTransformMatrix(transformer);
         
+        // DEBUG:
         sp.drawWireframe();
-        
     }
     
     if (type != Seed::ORBIT){
@@ -103,9 +98,4 @@ void Controls::moveType(){
                                     cam->getOrientationEuler().y,
                                     cam->getOrientationEuler().z));
     }
-    
-    
-    
-    
-    
 }
