@@ -20,6 +20,8 @@ class Environment {
 public:
     Environment();
     Environment(Light light, Surface &surface, Medium &medium);
+    void update();
+    
     
     enum Type {ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN};
     Type type;

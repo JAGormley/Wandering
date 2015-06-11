@@ -21,24 +21,23 @@ void ofApp::setup(){
 //    sprites.push_back(shared_ptr<Sprite>(new Animal(seed)));
     
     cam.setPosition(0, 0, -2500);
-    
-    Light::light.setup();
+    moon.setPosition(ofVec3f(600, 1200, 0));
+//    moon.lookAt(ofVec3f(0,0,0));
+//    moon.setSpotlight();
+//    Light::light.setup();
     scenario.setNew();
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    scenario.player.getLocation();
-    scenario.update();
-    
-    
+    scenario.update();    
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
     
     ofEnableLighting();
-    
+    moon.enable();
     if (outCam == true){
         cam.begin();
         scenario.player.draw();
@@ -47,17 +46,15 @@ void ofApp::draw(){
         scenario.player.startCam();
     }
     
-    scenario.player.move();
-    
-    Light::light.enable();
-    Light::light.draw();
+//    scenario.player.move();
     
     scenario.draw();
+    moon.draw();
     
 //    shader.begin();
 //    shader.end();
-
-    Light::light.disable();
+    
+    moon.disable();
     ofDisableLighting();
     
     if (outCam == true){
@@ -66,6 +63,8 @@ void ofApp::draw(){
     else {
         scenario.player.stopCam();
     }
+    
+    
     
     ofDrawBitmapString(ofToString(ofGetFrameRate())+"fps", 10, 15);
 }
@@ -100,13 +99,12 @@ void ofApp::keyReleased(int key){
 
 //--------------------------------------------------------------
 void ofApp::mouseMoved(int x, int y ){
-    lightOr = true;
     if (lightMove){
         
-        Light::light.setPosition(Light::light.getPosition().x, mouseX, mouseY);
+        moon.setPosition(moon.getPosition().x, mouseX, mouseY);
     }
     else if (lightOr){
-        Light::light.setOrientation(ofVec3f(mouseX, mouseY, 0));
+        moon.setOrientation(ofVec3f(mouseX, mouseY, 0));
     }
 }
 

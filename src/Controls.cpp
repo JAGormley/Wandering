@@ -16,6 +16,7 @@ void Controls::setCam(ofCamera &cam) {
 }
 
 void Controls::move(){
+    
     leap.open();
     simpleHands = leap.getSimpleHands();
     

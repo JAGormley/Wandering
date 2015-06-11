@@ -19,11 +19,17 @@ Environment::Environment(Light light, Surface &surface, Medium &medium){
 }
 
 void Environment::draw(){
-    
+//    light.enable();
     medium->draw();
     surface->draw();
+//    light.draw();
+//    light.disable();
 }
 
 int Environment::getType(){
     return type;
+}
+
+void Environment::update(){
+    light.update();
 }

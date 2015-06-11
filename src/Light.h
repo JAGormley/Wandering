@@ -13,6 +13,7 @@
 
 #include <stdio.h>
 #include "ofMain.h"
+#include <iostream>
 
 #endif /* defined(__Wandering2__Light__) */
 
@@ -22,10 +23,9 @@ public:
     enum Type {MOON, SUN, DIFFUSE};
     Type currentType;
     void setType(Type newType);
-    static ofVec3f getLightPos();
-    
-    static ofLight light;
-    
+    void update();
+    void draw();
+    ofLight light;    
     ofColor lightColor;
     
     

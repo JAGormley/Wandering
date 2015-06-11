@@ -21,7 +21,7 @@ void Scenario::setNew(){
     seed.populate();
     
     // set the environment to new seed values
-    environment = new Environment(moon, *getSurface(), *getMedium());
+    environment = new Environment(Light(), *getSurface(), *getMedium());
     
     // set the player to new seed values
     setPlayer(seed);
@@ -34,7 +34,6 @@ void Scenario::setNew(){
 }
 
 void Scenario::draw(){
-    
     environment->draw();
     
     for (int i = 0; i < sprites.size(); i++) {
@@ -45,6 +44,8 @@ void Scenario::draw(){
 
 void Scenario::update(){
     updateSprites();
+    environment->update();
+    player.move();
 }
 
 
@@ -95,9 +96,6 @@ void Scenario::updateSprites(){
         sprites[i]->move();
     }
 }
-
-
-
 
 // PLAYER
 

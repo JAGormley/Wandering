@@ -43,7 +43,7 @@ void Seed::setSurfaceShape(){
     shapeSize = 1000.f;
 }
 void Seed::setSurfaceType(){
-    sType = S_VOID;
+    sType = GROUND;
 }
 
 void Seed::setMedium(){
