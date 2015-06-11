@@ -10,8 +10,7 @@
 
 //ofLight Light::light = *new ofLight();
 Light::Light(){
-//    light.enable();
-    light.setSpotlight();
+//    light.setSpotlight();
 
     ofSetSmoothLighting(true);
     //    light.set
@@ -25,8 +24,8 @@ Light::Light(){
     
     lightColor.set(lightColor.white);
     lightColor.setBrightness( 255.f );
-//    light.setDiffuseColor(lightColor);
-//    light.setSpecularColor(lightColor);
+    light.setDiffuseColor(lightColor);
+    light.setSpecularColor(lightColor);
     
 }
 
@@ -34,10 +33,15 @@ void Light::update(){
     int newPos;
     newPos = light.getPosition().y + 1;
     newPos = newPos%1050;
-    light.setPosition(1200, newPos, 0);
-    light.lookAt(ofVec3f(0,0,0));
+    light.setPosition(1150, newPos, 0);
 }
 
 void Light::draw(){
     light.draw();
+}
+void Light::enable(){
+    light.enable();
+}
+void Light::disable(){
+    light.disable();
 }

@@ -10,11 +10,11 @@
 
 
 Air::Air(Seed seed) : Medium(seed){
-    
+    ofBackground(0, 127, 255);
 }
 
 void Air::draw(){
-    ofBackground(0, 127, 255);
+    
     
 }
 

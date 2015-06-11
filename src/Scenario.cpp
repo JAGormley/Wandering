@@ -21,7 +21,7 @@ void Scenario::setNew(){
     seed.populate();
     
     // set the environment to new seed values
-    environment = new Environment(Light(), *getSurface(), *getMedium());
+    environment = new Environment(*new Light(), *getSurface(), *getMedium());
     
     // set the player to new seed values
     setPlayer(seed);

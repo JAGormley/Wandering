@@ -11,19 +11,19 @@
 
 Environment::Environment(){}
 
-Environment::Environment(Light light, Surface &surface, Medium &medium){
-    this->light = light;
+Environment::Environment(Light &light, Surface &surface, Medium &medium){
+    this->light = &light;
     this->surface = &surface;
     this->medium = &medium;
     this->surface->generate();
 }
 
 void Environment::draw(){
-//    light.enable();
+    light->enable();
     medium->draw();
     surface->draw();
-//    light.draw();
-//    light.disable();
+    light->draw();
+    light->disable();
 }
 
 int Environment::getType(){
@@ -31,5 +31,5 @@ int Environment::getType(){
 }
 
 void Environment::update(){
-    light.update();
+    light->update();
 }

@@ -19,7 +19,7 @@
 class Environment {
 public:
     Environment();
-    Environment(Light light, Surface &surface, Medium &medium);
+    Environment(Light &light, Surface &surface, Medium &medium);
     void update();
     
     
@@ -31,5 +31,5 @@ public:
     
     Medium * medium;
     Surface * surface;
-    Light light;
+    Light * light;
 };

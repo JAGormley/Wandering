@@ -25,6 +25,8 @@ public:
     void setType(Type newType);
     void update();
     void draw();
+    void enable();
+    void disable();
     ofLight light;    
     ofColor lightColor;
     

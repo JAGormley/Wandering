@@ -10,11 +10,11 @@
 
 
 mWater::mWater(Seed seed) : Medium(seed){
-    
+    ofBackground(10, 200, 210);
 }
 
 void mWater::draw(){
-    ofBackground(10, 200, 210);
+    
 }
 
 
