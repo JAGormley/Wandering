@@ -18,6 +18,14 @@ void Water::update(){
     
 }
 
+void Water::draw(){
+    ofSetColor(0, 200, 255);
+    ofPushMatrix();
+    ofRotate(90, 1, 0, 0);
+    rawShape.draw();
+    ofPopMatrix();
+}
+
 vector<ofVec3f> Water::getMeshVerts(){
     return plane.getMesh().getVertices();
 }

@@ -9,6 +9,6 @@
 #include "Medium.h"
 
 
-Medium::Type Medium::getType(){
-    return type;
-}
+//Medium::Type Medium::getType(){
+////    return type;
+//}

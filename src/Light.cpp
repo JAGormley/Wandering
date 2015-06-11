@@ -21,8 +21,8 @@ Light::Light(){
     // specular color, the highlight/shininess color //
 //    light.setSpecularColor( ofColor(255.f, 255.f, 255.f));
     
-    lightColor.setBrightness( 255.f );
-    lightColor.setSaturation( 150.f );
+    lightColor.set(lightColor.white);
+    lightColor.setBrightness( 100.f );
     light.setDiffuseColor(lightColor);
     light.setSpecularColor(lightColor);
     

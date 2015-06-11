@@ -6,27 +6,34 @@
 //
 //
 
-#ifndef __Wandering2__Scenario__
-#define __Wandering2__Scenario__
+#pragma once
 
 #include <stdio.h>
 #include "Environment.h"
 #include "Player.h"
 #include "History.h"
+
+#include "Air.h"
+#include "mVoid.h"
+#include "mWater.h"
+
 #include "Void.h"
 #include "Ground.h"
 #include "Water.h"
+#include "Plant.h"
 
-#endif /* defined(__Wandering2__Scenario__) */
 
 class Scenario {
 public:
     
     Scenario();
     
-    void setNew();
     
+    // GLOBAL
+    void setNew();
     void draw();
+    void update();
+    
     
     // ENVIRONMENT
     // TODO: add LIGHT
@@ -38,9 +45,23 @@ public:
     void setPlayer(Seed lSeed);
     Player player;
     
+    
+    
+    // SPRITES
+    
+    void updateSprites();
+    void setSprites();
+    vector< shared_ptr<Sprite> > sprites;
+    
+    
+    
     // TODO: remove hard-coded light, get from Seed
     Light moon;
     Seed seed;
+    
+    
+    
+    
     
     
 

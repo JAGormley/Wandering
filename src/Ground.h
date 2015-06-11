@@ -26,6 +26,7 @@ public:
 //    void draw();
     void setColor(ofColor hue);
     void update();
+    void draw();
     vector<ofVec3f> getMeshVerts();
     
     ofMaterial material;

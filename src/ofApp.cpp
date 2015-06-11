@@ -10,17 +10,14 @@ void ofApp::setup(){
     outCam = false;
     
     ofSetFrameRate(60);
-    ofBackground(10, 80, 210);
+    
     ofEnableDepthTest();
     ofEnableLighting();
     
 //    light.setAttenuation(1.f, 0, 0.00005f);
     
     
-    // TODO: MOVE SPRITES OUT OF MAIN
-    for (int i = 0; i < 500; i++) {
-        sprites.push_back(shared_ptr<Sprite>(new Plant()));
-    }
+   
 //    sprites.push_back(shared_ptr<Sprite>(new Animal(seed)));
     
     cam.setPosition(0, 0, -2500);
@@ -32,16 +29,16 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
     scenario.player.getLocation();
+    scenario.update();
     
-    for (int i = 0; i < sprites.size(); i++) {
-        sprites[i]->move();
-    }
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    ofDrawBitmapString(ofToString(ofGetFrameRate())+"fps", 10, 15);
+    
     ofEnableLighting();
+    
     if (outCam == true){
         cam.begin();
         scenario.player.draw();
@@ -49,29 +46,19 @@ void ofApp::draw(){
     else {
         scenario.player.startCam();
     }
-//
     
     scenario.player.move();
     
     Light::light.enable();
-    
-    ofSetColor(0,0,0);
     Light::light.draw();
     
-    vboMesh.drawWireframe();
     scenario.draw();
     
 //    shader.begin();
-    for (int i = 0; i < sprites.size(); i++) {
-        sprites[i]->draw();
-    }
-    shader.end();
+//    shader.end();
 
-    
     Light::light.disable();
     ofDisableLighting();
-    
-    
     
     if (outCam == true){
         cam.end();
@@ -79,6 +66,8 @@ void ofApp::draw(){
     else {
         scenario.player.stopCam();
     }
+    
+    ofDrawBitmapString(ofToString(ofGetFrameRate())+"fps", 10, 15);
 }
 
 //--------------------------------------------------------------

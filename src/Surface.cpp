@@ -24,9 +24,5 @@ void Surface::generate(){
 }
 
 void Surface::draw(){
-    ofSetColor(255, 200, 0);
-    ofPushMatrix();
-    ofRotate(90, 1, 0, 0);
-    rawShape.draw();
-    ofPopMatrix();
+    
 }

@@ -2,40 +2,30 @@
 //  Void.h
 //  Wandering2
 //
-//  Created by J Andrew Gormley on 2015-06-01.
+//  Created by J Andrew Gormley on 2015-06-10.
 //
 //
-
-#pragma once
 
 #ifndef __Wandering2__Void__
 #define __Wandering2__Void__
 
 #include <stdio.h>
-#include "ofMain.h"
-
-#ifndef __Wandering2__Medium__
-#define __Wandering2__Medium__
-#include "Medium.h"
-#endif /* defined(__Wandering2__Medium__) */
-
+#include "Surface.h"
 
 #endif /* defined(__Wandering2__Void__) */
 
-class Void: public Medium {
+class Void: public Surface {
 public:
     Void(Seed seed);
-    void draw();
+    //    void draw();
     void setColor(ofColor hue);
     void update();
+    void draw();
     vector<ofVec3f> getMeshVerts();
     
-    float colorHue;
-//    ofMaterial material;
-    ofColor materialColor;
-//    ofSpherePrimitive outer;
-//    ofSpherePrimitive inner;
-    ofMaterial voidMaterial;
-    ofVboMesh voidMesh;
-
+    ofMaterial material;
+    
+    ofPlanePrimitive plane;
+    ofVboMesh groundMesh;
+    
 };

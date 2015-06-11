@@ -23,7 +23,6 @@ ofVec3f Player::getLocation(){
     ofVec3f pos = cam.getPosition();
     return pos;
 }
-
 void Player::startCam(){
     cam.begin();
 }

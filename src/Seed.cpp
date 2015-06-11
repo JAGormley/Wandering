@@ -11,14 +11,14 @@
 
 Seed::Seed(){
     
-    
-    sType = GROUND;
     medium = M_VOID;
 }
 
 void Seed::populate(){
     setTraversal();
     setSurfaceShape();
+    setSurfaceType();
+    setMedium();
 }
 
 
@@ -36,9 +36,6 @@ Seed::Medium Seed::getMedium(){
     return medium;
 }
 
-void Seed::setMedium(){
-    
-}
 void Seed::setSurfaceShape(){
     // TODO: set for other types of movement/shape
     
@@ -46,7 +43,11 @@ void Seed::setSurfaceShape(){
     shapeSize = 1000.f;
 }
 void Seed::setSurfaceType(){
-    
+    sType = S_VOID;
+}
+
+void Seed::setMedium(){
+    medium = M_WATER;
 }
 
 

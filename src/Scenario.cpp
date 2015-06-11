@@ -9,6 +9,8 @@
 #include "Scenario.h"
 
 
+// GLOBAL
+
 Scenario::Scenario(){
     
 }
@@ -23,15 +25,28 @@ void Scenario::setNew(){
     
     // set the player to new seed values
     setPlayer(seed);
-
     
-//    history.addHistory(1);
+    setSprites();
+    
+    
+    //    history.addHistory(1);
     
 }
 
 void Scenario::draw(){
+    
     environment->draw();
+    
+    for (int i = 0; i < sprites.size(); i++) {
+        sprites[i]->draw();
+    }
 }
+
+
+void Scenario::update(){
+    updateSprites();
+}
+
 
 
 // ENVIRONMENT
@@ -39,11 +54,13 @@ void Scenario::draw(){
 Medium * Scenario::getMedium(){
     switch (seed.getMedium()){
         case Seed::M_VOID:
-            return new Void(seed);
+            return new mVoid(seed);
             break;
         case Seed::AIR:
+            return new Air(seed);
             break;
         case Seed::M_WATER:
+            return new mWater(seed);
             break;
     }
 }
@@ -54,6 +71,7 @@ Surface * Scenario::getSurface(){
             return new Ground(seed);
             break;
         case Seed::S_VOID:
+            return new Void(seed);
             break;
         case Seed::S_WATER:
             return new Water(seed);
@@ -62,6 +80,24 @@ Surface * Scenario::getSurface(){
             break;
     }
 }
+
+
+// SPRITES
+
+void Scenario::setSprites(){
+    for (int i = 0; i < 500; i++) {
+        sprites.push_back(shared_ptr<Sprite>(new Plant()));
+    }
+}
+
+void Scenario::updateSprites(){
+    for (int i = 0; i < sprites.size(); i++) {
+        sprites[i]->move();
+    }
+}
+
+
+
 
 // PLAYER
 

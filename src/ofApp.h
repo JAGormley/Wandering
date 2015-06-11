@@ -3,9 +3,7 @@
 #include "ofMain.h"
 #include "ofxLeapMotion2.h"
 //#include "Player.h"
-#include "Sprite.h"
 //#include "Animal.h"
-#include "Plant.h"
 #include "Scenario.h"
 
 class ofApp : public ofBaseApp{
@@ -49,7 +47,7 @@ public:
     ofVboMesh vboMesh;
     ofVbo vbo;
     
-    vector< shared_ptr<Sprite> > sprites;
+    
     
     Light moon;
     Scenario scenario;
