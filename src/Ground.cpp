@@ -18,13 +18,20 @@ Ground::Ground(Seed seed) : Surface(seed){
 //    plane.rotate(90, 0, 0, 1);
 //    groundMesh = plane.getMesh();
     
+    material.setShininess(255);
+    material.setDiffuseColor(ofColor(255,255,255));
+    material.setSpecularColor(ofColor(0,30,0));
+    
 }
 
 void Ground::draw(){
+    material.begin();
     ofSetColor(150, 75, 0);
     ofPushMatrix();
-    ofRotate(90, 1, 0, 0);
+    ofRotate(-90, 1, 0, 0);
     rawShape.draw();
+    material.end();
+//    cout << "GROUNDUP: " << rawShape.getUpDir() << endl;
     ofPopMatrix();
 }
 

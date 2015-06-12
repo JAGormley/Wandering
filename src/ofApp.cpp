@@ -40,6 +40,7 @@ void ofApp::draw(){
 //    moon.enable();
     if (outCam == true){
         cam.begin();
+        cout << "LOOKDIR: " << cam.getLookAtDir() << endl;
         scenario.player.draw();
     }
     else {
@@ -99,7 +100,7 @@ void ofApp::keyReleased(int key){
 void ofApp::mouseMoved(int x, int y ){
     if (lightMove){
         
-//        moon.setPosition(moon.getPosition().x, mouseX, mouseY);
+        scenario.moveLight(x, y);
     }
     else if (lightOr){
 //        moon.setOrientation(ofVec3f(mouseX, mouseY, 0));

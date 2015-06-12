@@ -22,7 +22,7 @@ void Void::update(){
 void Void::draw(){
     ofSetColor(100, 100, 100);
     ofPushMatrix();
-    ofRotate(90, 1, 0, 0);
+    ofRotate(-90, 1, 0, 0);
     rawShape.draw();
     ofPopMatrix();
 }

@@ -10,6 +10,7 @@
 
 #include <stdio.h>
 #include "ofMain.h"
+#include "History.h"
 
 
 //#ifndef __Wandering2__Surface__
@@ -55,5 +56,17 @@ public:
     
     
     // LIGHT
+    enum LightType {SUN, MOON, CLOUDY};
+    void setLightType();
+    LightType getLightType();
+    LightType lightType;
+    
+    
+    // HISTORY
+    
+    History history;
+    
+    
+    
 
 };

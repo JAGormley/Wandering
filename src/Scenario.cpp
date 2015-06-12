@@ -12,7 +12,12 @@
 // GLOBAL
 
 Scenario::Scenario(){
-    
+
+}
+
+// TODO: REMOVE, DEBUG FUNCTION
+void Scenario::moveLight(int x, int y){
+    environment->light->setPosition(ofVec3f(environment->light->getPosition().x, x, y));
 }
 
 void Scenario::setNew(){
@@ -86,8 +91,12 @@ Surface * Scenario::getSurface(){
 // SPRITES
 
 void Scenario::setSprites(){
-    for (int i = 0; i < 500; i++) {
+    for (int i = 0; i < 200; i++) {
         sprites.push_back(shared_ptr<Sprite>(new Plant()));
+    }
+    
+    for (int i = 0; i < 200; i++) {
+        sprites.push_back(shared_ptr<Sprite>(new Animal()));
     }
 }
 

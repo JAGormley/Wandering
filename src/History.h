@@ -17,12 +17,21 @@
 #endif /* defined(__Wandering2__History__) */
 
 
-//class History {
-//public:
-//    History();
-//    void addHistory(int type);
-//    
-//    
-//    vector<int> envHistory;
-//    
-//};
+class History {
+public:
+    History();
+    void addHistory(int type);
+    
+    struct Present {
+        int traversal;
+        int medium;
+        int surface;
+    };
+    
+    Present getPresent();
+    
+    
+    
+    vector<vector<vector<int> > > present;
+    vector<int> envHistory;
+};

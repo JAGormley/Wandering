@@ -82,7 +82,9 @@ void Controls::moveType(){
         
         transformer = sp.getLocalTransformMatrix();
         transformer.setTranslation(sp.getUpDir()*(sp.getRadius()));
+        
         cam->setTransformMatrix(transformer);
+
         
         // DEBUG:
         sp.drawWireframe();
@@ -96,7 +98,7 @@ void Controls::moveType(){
                                  cam->getPosition().z));
         
         cam->setOrientation(ofVec3f(cam->getOrientationEuler().x,
-                                    cam->getOrientationEuler().y,
+                                    cam->getOrientationEuler().y-pitch_lr,
                                     cam->getOrientationEuler().z));
     }
 }

@@ -31,7 +31,7 @@ public:
     vector<ofVec3f> getVerts();
     
     ofMaterial material;
-    ofSpherePrimitive plant;
+    ofBoxPrimitive plant;
     ofColor materialColor;
     float colorHue;
     

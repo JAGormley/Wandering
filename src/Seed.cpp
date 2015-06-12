@@ -9,10 +9,7 @@
 #include "Seed.h"
 
 
-Seed::Seed(){
-    
-    medium = M_VOID;
-}
+Seed::Seed(){}
 
 void Seed::populate(){
     setTraversal();
@@ -38,29 +35,47 @@ Seed::Medium Seed::getMedium(){
 
 void Seed::setSurfaceShape(){
     // TODO: set for other types of movement/shape
+    if (traversal == ORBIT){
+        sShape = SPHERE;
+    }
+    else sShape = PLANE;
     
-    sShape = SPHERE;
-    shapeSize = 1000.f;
+    shapeSize = 500;
 }
 void Seed::setSurfaceType(){
-    sType = GROUND;
+    sType = Seed::SurfaceType(history.getPresent().surface);
 }
 
 void Seed::setMedium(){
-    medium = M_WATER;
+    medium = Seed::Medium(history.getPresent().medium);
 }
 
 
 // PLAYER
 
 void Seed::setTraversal(){
-    traversal = ORBIT;
+    traversal = WALK;
 }
 
 Seed::Traversal Seed::getTraversal(){
     return traversal;
 }
 
+
+// TODO: FIX THIS
 float Seed::getPlayerLocation(){
-    return shapeSize;
+    if (sShape == PLANE){
+        return 20;
+    }
+    else return shapeSize;
+}
+
+
+// LIGHT
+
+void Seed::setLightType(){
+    
+}
+Seed::LightType Seed::getLightType(){
+    return lightType;
 }

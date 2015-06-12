@@ -29,6 +29,7 @@ public:
     void disable();
     ofLight light;    
     ofColor lightColor;
+    void setPosition(ofVec3f pos);
     
     
 };

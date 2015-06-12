@@ -18,7 +18,8 @@ void Surface::generate(){
             rawShape = ofSpherePrimitive(seed.shapeSize, 64);
             break;
         case Seed::PLANE:
-            rawShape = ofPlanePrimitive(seed.shapeSize*5, seed.shapeSize*5, 30, 30);
+            rawShape = ofPlanePrimitive(seed.shapeSize*10, seed.shapeSize*10, 30, 30);
+//            rawShape =ofBoxPrimitive(seed.shapeSize, seed.shapeSize, seed.shapeSize);
             break;
     }
 }

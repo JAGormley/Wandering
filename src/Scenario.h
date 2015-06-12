@@ -21,6 +21,7 @@
 #include "Ground.h"
 #include "Water.h"
 #include "Plant.h"
+#include "Animal.h"
 
 
 class Scenario {
@@ -29,11 +30,12 @@ public:
     Scenario();
     
     
+    
     // GLOBAL
     void setNew();
     void draw();
     void update();
-    
+    void moveLight(int x, int y);
     
     // ENVIRONMENT
     // TODO: add LIGHT

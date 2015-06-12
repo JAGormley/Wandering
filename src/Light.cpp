@@ -30,10 +30,10 @@ Light::Light(){
 }
 
 void Light::update(){
-    int newPos;
-    newPos = light.getPosition().y + 1;
-    newPos = newPos%1050;
-    light.setPosition(1150, newPos, 0);
+//    int newPos;
+////    newPos = light.getPosition().y + 1;
+////    newPos = newPos%1050;
+//    light.setPosition(0, 1000, 0);
 }
 
 void Light::draw(){
@@ -44,4 +44,7 @@ void Light::enable(){
 }
 void Light::disable(){
     light.disable();
+}
+void Light::setPosition(ofVec3f pos){
+    light.setPosition(pos);
 }
