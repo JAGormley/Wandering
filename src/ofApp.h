@@ -47,9 +47,6 @@ public:
     ofVboMesh vboMesh;
     ofVbo vbo;
     
-    
-    
-    Light moon;
     Scenario scenario;
     
 };

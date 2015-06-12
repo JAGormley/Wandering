@@ -28,9 +28,9 @@ public:
     
     // ENVIRONMENT
     
-    enum Medium {M_WATER, M_VOID, AIR};
+    enum Medium {AIR, M_VOID, M_WATER};
     enum SurfaceShape {SPHERE, PLANE};
-    enum SurfaceType {S_WATER, S_VOID, GROUND, NONE};
+    enum SurfaceType {S_WATER, GROUND, S_VOID, NONE};
     
     Medium getMedium();
     SurfaceShape getSurfaceShape();
@@ -47,7 +47,7 @@ public:
     
     
     // PLAYER
-    enum Traversal {FLOAT, WALK, FLY, ORBIT};
+    enum Traversal {ORBIT, WALK, FLOAT, FLY};
     Traversal getTraversal();
     void setTraversal();
     float getPlayerLocation();

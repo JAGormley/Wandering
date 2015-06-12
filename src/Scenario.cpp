@@ -35,7 +35,6 @@ void Scenario::setNew(){
     
     
     //    history.addHistory(1);
-    
 }
 
 void Scenario::draw(){
@@ -46,14 +45,11 @@ void Scenario::draw(){
     }
 }
 
-
 void Scenario::update(){
     updateSprites();
     environment->update();
     player.move();
 }
-
-
 
 // ENVIRONMENT
 
@@ -86,7 +82,6 @@ Surface * Scenario::getSurface(){
             break;
     }
 }
-
 
 // SPRITES
 

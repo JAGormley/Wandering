@@ -29,9 +29,7 @@ public:
     };
     
     Present getPresent();
+    void setPresent();
+    Present present;
     
-    
-    
-    vector<vector<vector<int> > > present;
-    vector<int> envHistory;
 };

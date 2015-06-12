@@ -45,6 +45,8 @@ void Controls::setOrbitRadius(float radius){
 }
 
 void Controls::moveType(){
+    
+//    cout << type << endl;
     float up = 0;
     float down = 0;
     float back_forth = 0;
@@ -53,6 +55,7 @@ void Controls::moveType(){
     float strafe = 0;
     
     if (type == Seed::FLOAT){
+        cout << "FLOAT" << endl;
         // maybe this has a slow set forward z
         up = 1.f;
         down = 0.f;
@@ -61,6 +64,7 @@ void Controls::moveType(){
         back_forth = handPos.z/100;
     }
     else if (type == Seed::WALK){
+        cout << "WALK" << endl;
         // TODO needs indepedent head movement!!
         up = 1.f;
         down = 0.f;
@@ -69,6 +73,7 @@ void Controls::moveType(){
         back_forth = handPos.z/200;
     }
     else if (type == Seed::FLY){
+        cout << "FLY" << endl;
         up = 1.f;
         down = 0.f;
         pitch_lr = handPos.x/100;
@@ -76,7 +81,7 @@ void Controls::moveType(){
         back_forth = handPos.z/100;
     }
     else if (type == Seed::ORBIT){
-        
+        cout << "ORBIT" << endl;
         sp.rotate(handPos.z/1000, sp.getXAxis());
         sp.rotate(-handPos.x/1000, sp.getZAxis());
         

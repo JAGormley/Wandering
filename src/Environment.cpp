@@ -26,10 +26,6 @@ void Environment::draw(){
     light->disable();
 }
 
-int Environment::getType(){
-    return type;
-}
-
 void Environment::update(){
     light->update();
 }

@@ -12,6 +12,7 @@
 Seed::Seed(){}
 
 void Seed::populate(){
+    history.setPresent();
     setTraversal();
     setSurfaceShape();
     setSurfaceType();
@@ -54,13 +55,13 @@ void Seed::setMedium(){
 // PLAYER
 
 void Seed::setTraversal(){
-    traversal = WALK;
+    traversal = Seed::Traversal(history.getPresent().traversal);
+    cout << traversal;
 }
 
 Seed::Traversal Seed::getTraversal(){
     return traversal;
 }
-
 
 // TODO: FIX THIS
 float Seed::getPlayerLocation(){

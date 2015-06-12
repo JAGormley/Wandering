@@ -22,12 +22,7 @@ public:
     Environment(Light &light, Surface &surface, Medium &medium);
     void update();
     
-    
-    enum Type {ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN};
-    Type type;
-    
     void draw();
-    int getType();
     
     Medium * medium;
     Surface * surface;

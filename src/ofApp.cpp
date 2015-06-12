@@ -16,15 +16,7 @@ void ofApp::setup(){
     
 //    light.setAttenuation(1.f, 0, 0.00005f);
     
-    
-   
-//    sprites.push_back(shared_ptr<Sprite>(new Animal(seed)));
-    
     cam.setPosition(0, 0, -2500);
-//    moon.setPosition(ofVec3f(600, 1200, 0));
-//    moon.lookAt(ofVec3f(0,0,0));
-//    moon.setSpotlight();
-//    Light::light.setup();
     scenario.setNew();
 }
 
@@ -40,23 +32,18 @@ void ofApp::draw(){
 //    moon.enable();
     if (outCam == true){
         cam.begin();
-        cout << "LOOKDIR: " << cam.getLookAtDir() << endl;
+        // DEBUG: look direction
+//        cout << "LOOKDIR: " << cam.getLookAtDir() << endl;
         scenario.player.draw();
     }
     else {
         scenario.player.startCam();
     }
     
-//    scenario.player.move();
-    
     scenario.draw();
-//    moon.draw();
     
 //    shader.begin();
 //    shader.end();
-    
-//    moon.disable();
-    
     
     if (outCam == true){
         cam.end();
