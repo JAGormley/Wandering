@@ -59,7 +59,7 @@ public:
     
     // TODO: remove hard-coded light, get from Seed
     Seed seed;
-    
+    Light moon;
     
     
     

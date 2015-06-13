@@ -11,21 +11,27 @@
 
 Environment::Environment(){}
 
-Environment::Environment(Light &light, Surface &surface, Medium &medium){
-    this->light = &light;
+Environment::Environment(Surface &surface, Medium &medium){
     this->surface = &surface;
     this->medium = &medium;
-    this->surface->generate();
+    
+    // maybe dont need this, may just reconstruct the object each time.
+//    this->surface->generate();
 }
 
 void Environment::draw(){
-    light->enable();
     medium->draw();
     surface->draw();
-    light->draw();
-    light->disable();
 }
 
 void Environment::update(){
-    light->update();
+}
+
+
+vector<ofVec3f> Environment::getSurfaceVerts(){
+    return surface->getMeshVerts();
+}
+
+vector<ofVec3f> Environment::getSurfaceNorms(){
+    return surface->getMeshNorms();
 }

@@ -21,24 +21,17 @@ Animal::Animal() : Sprite(){
     
     animal.setPosition(xRand, 30, zRand);
     
-    materialColor.setBrightness(250.f);
-    materialColor.setSaturation(250);
-    
     //    box.setPosition(ofVec3f(0, , ));
     materialColor.setBrightness(250.f);
     materialColor.setSaturation(200);
-    colorHue = 100;
+    colorHue = 210;
     materialColor.setHue(colorHue);
-    material.setEmissiveColor(100);
-
-    
-    colorHue = ofRandom(0, 250);
-    materialColor.setHue(colorHue);
-    material.setEmissiveColor(materialColor);
+//    material.setEmissiveColor(materialColor);
     
     
-    
-    
+    material.setShininess(255);
+    material.setDiffuseColor(materialColor);
+    material.setSpecularColor(materialColor);
 }
 
 void Animal::move(){

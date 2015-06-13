@@ -9,16 +9,10 @@
 #include "Plant.h"
 
 Plant::Plant() : Sprite(){
-    
-    
     plant.set(5, 50, 5);
     
     float xRand = ofRandom(2000)-1000;
-    //    if (xRand < 0) xRand-=500; else xRand +=500;
-    //    float yRand = ofRandom(1000)-500;;
-    //    if (yRand < 0) yRand-=500; else yRand +=500;
     float zRand = ofRandom(2000)-1000;
-    //    if (zRand < 0) zRand-=500; else zRand +=500;
     
     
     plant.setPosition(xRand, 25, zRand);
@@ -27,8 +21,41 @@ Plant::Plant() : Sprite(){
     materialColor.setSaturation(200);
     colorHue = 100;
     materialColor.setHue(colorHue);
-    material.setEmissiveColor(materialColor);
+//    material.setEmissiveColor(materialColor);
+    
+    material.setShininess(255);
+    material.setDiffuseColor(materialColor);
+    material.setSpecularColor(materialColor);
 }
+
+Plant::Plant(ofVec3f pos, ofVec3f orient) : Sprite(){
+    plant.set(5, 50, 5);
+    
+    plant.setPosition(pos.x, pos.y+25, pos.z);
+    
+    orientt = orient;
+    ofQuaternion quat;
+    quat.makeRotate(plant.getOrientationEuler(), orient);
+    plant.rotate(quat);
+    cout << quat.getEuler() << endl;
+//    ofVec3f upDir = plant.getUpDir();
+//    ofVec3f rAxis = upDir * orient;
+//    float rAmt = upDir.dot(orient);
+//    plant.rotate(rAmt, rAxis);
+//    cout << "NORMAL: " << orient << endl;
+//    cout << "ORIENT: " << plant.getOrientationEuler() << endl;
+    
+    materialColor.setBrightness(250.f);
+    materialColor.setSaturation(200);
+    colorHue = 100;
+    materialColor.setHue(colorHue);
+    //    material.setEmissiveColor(materialColor);
+    
+    material.setShininess(255);
+    material.setDiffuseColor(materialColor);
+    material.setSpecularColor(materialColor);
+}
+
 
 void Plant::move(){
 }
@@ -40,6 +67,8 @@ void Plant::setActivated(bool activated){
 }
 
 void Plant::draw(){
+
+    ofDrawArrow(orientt, orientt*1200);
     material.begin();
 //    ofFill();
 //    ofSetColor(0, 255, 0, 100);

@@ -44,7 +44,8 @@ void Seed::setSurfaceShape(){
     shapeSize = 500;
 }
 void Seed::setSurfaceType(){
-    sType = Seed::SurfaceType(history.getPresent().surface);
+//    sType = Seed::SurfaceType(history.getPresent().surface);
+    sType = GROUND;
 }
 
 void Seed::setMedium(){
@@ -56,10 +57,11 @@ void Seed::setMedium(){
 
 void Seed::setTraversal(){
     traversal = Seed::Traversal(history.getPresent().traversal);
-    cout << traversal;
+    traversal = ORBIT;
 }
 
 Seed::Traversal Seed::getTraversal(){
+//    return ORBIT;
     return traversal;
 }
 

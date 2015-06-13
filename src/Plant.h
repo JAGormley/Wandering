@@ -23,6 +23,7 @@
 class Plant: public Sprite {
 public:
     Plant();
+    Plant(ofVec3f pos, ofVec3f orient);
     void move();
     void activate();
     void setActivated(bool activated);
@@ -34,5 +35,6 @@ public:
     ofBoxPrimitive plant;
     ofColor materialColor;
     float colorHue;
+    ofVec3f orientt;
     
 };

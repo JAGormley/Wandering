@@ -10,17 +10,32 @@
 
 Ground::Ground(Seed seed) : Surface(seed){
     
-//    int planeWidth = 4000;
-//    int planeHeight = 4000;
-//    int planeColums = 20;
-//    int planeRows = 20;
-//    plane.set(planeWidth, planeHeight, planeColums, planeRows, OF_PRIMITIVE_TRIANGLES);
-//    plane.rotate(90, 0, 0, 1);
-//    groundMesh = plane.getMesh();
-    
     material.setShininess(255);
     material.setDiffuseColor(ofColor(255,255,255));
     material.setSpecularColor(ofColor(0,30,0));
+    
+    groundMesh = rawShape.getMesh();
+    vector<ofVec3f> meshVerts = groundMesh.getVertices();
+    
+    for (int i = 0; i < groundMesh.getNumVertices(); i++) {
+        int rando = ofRandom(100);
+        ofVec3f tempVert = groundMesh.getVertices()[i];
+        if (seed.getSurfaceShape() == Seed::PLANE)
+            
+            // Hills
+            tempVert = ofVec3f(meshVerts[i].x, meshVerts[i].y, meshVerts[i].z+rando-70);
+        
+        // Sphere terrain
+        else tempVert = ofVec3f(meshVerts[i].x, meshVerts[i].y+rando, meshVerts[i].z);
+        
+        groundMesh.getVertices()[i] = tempVert;
+        
+        // CAVE!
+//        if (tempVert.y > 0){
+//            groundMesh.getVertices()[i] = tempVert;
+//        }
+//        else groundMesh.getVertices()[i] = ofVec3f(0,0,0);
+    }
     
 }
 
@@ -28,10 +43,9 @@ void Ground::draw(){
     material.begin();
     ofSetColor(150, 75, 0);
     ofPushMatrix();
-    ofRotate(-90, 1, 0, 0);
-    rawShape.draw();
+//    ofRotate(-90, 1, 0, 0);
+    groundMesh.draw();
     material.end();
-//    cout << "GROUNDUP: " << rawShape.getUpDir() << endl;
     ofPopMatrix();
 }
 
@@ -44,5 +58,9 @@ void Ground::update(){
 }
 
 vector<ofVec3f> Ground::getMeshVerts(){
-    return plane.getMesh().getVertices();
+    return groundMesh.getVertices();
+}
+
+vector<ofVec3f> Ground::getMeshNorms(){
+    return groundMesh.getNormals();
 }

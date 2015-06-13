@@ -21,6 +21,7 @@ public:
     void update();
     void draw();
     vector<ofVec3f> getMeshVerts();
+    vector<ofVec3f> getMeshNorms();
     
     ofMaterial material;
     

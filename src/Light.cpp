@@ -11,7 +11,7 @@
 //ofLight Light::light = *new ofLight();
 Light::Light(){
 //    light.setSpotlight();
-
+light.setPosition(0, 1500, 0);
     ofSetSmoothLighting(true);
     //    light.set
     
@@ -33,7 +33,7 @@ void Light::update(){
 //    int newPos;
 ////    newPos = light.getPosition().y + 1;
 ////    newPos = newPos%1050;
-    light.setPosition(0, 1500, 0);
+//    light.setPosition(0, 1500, 0);
 }
 
 void Light::draw(){

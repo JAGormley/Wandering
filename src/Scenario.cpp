@@ -17,7 +17,7 @@ Scenario::Scenario(){
 
 // TODO: REMOVE, DEBUG FUNCTION
 void Scenario::moveLight(int x, int y){
-    environment->light->setPosition(ofVec3f(environment->light->getPosition().x, x, y));
+    moon.setPosition(ofVec3f(moon.getPosition().x, x, y));
 }
 
 void Scenario::setNew(){
@@ -26,7 +26,7 @@ void Scenario::setNew(){
     seed.populate();
     
     // set the environment to new seed values
-    environment = new Environment(*new Light(), *getSurface(), *getMedium());
+    environment = new Environment(*getSurface(), *getMedium());
     
     // set the player to new seed values
     setPlayer(seed);
@@ -38,11 +38,15 @@ void Scenario::setNew(){
 }
 
 void Scenario::draw(){
+    moon.enable();
+    
     environment->draw();
     
     for (int i = 0; i < sprites.size(); i++) {
         sprites[i]->draw();
     }
+    
+    moon.disable();
 }
 
 void Scenario::update(){
@@ -86,13 +90,25 @@ Surface * Scenario::getSurface(){
 // SPRITES
 
 void Scenario::setSprites(){
-    for (int i = 0; i < 200; i++) {
-        sprites.push_back(shared_ptr<Sprite>(new Plant()));
-    }
+    vector<ofVec3f> sVerts;
+    vector<ofVec3f> sNorms;
+    sVerts = environment->getSurfaceVerts();
+    sNorms = environment->getSurfaceNorms();
+    
+   
+    
     
     for (int i = 0; i < 200; i++) {
-        sprites.push_back(shared_ptr<Sprite>(new Animal()));
+        int vertIndex = ofRandom(sVerts.size());
+        ofVec3f plantPos = sVerts[vertIndex];
+        ofVec3f plantOr = sNorms[vertIndex];
+        
+        sprites.push_back(shared_ptr<Sprite>(new Plant(plantPos, plantOr)));
     }
+    
+//    for (int i = 0; i < 200; i++) {
+//        sprites.push_back(shared_ptr<Sprite>(new Animal()));
+//    }
 }
 
 void Scenario::updateSprites(){

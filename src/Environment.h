@@ -19,12 +19,12 @@
 class Environment {
 public:
     Environment();
-    Environment(Light &light, Surface &surface, Medium &medium);
+    Environment(Surface &surface, Medium &medium);
     void update();
-    
+    vector<ofVec3f> getSurfaceVerts();
+    vector<ofVec3f> getSurfaceNorms();
     void draw();
     
     Medium * medium;
     Surface * surface;
-    Light * light;
 };

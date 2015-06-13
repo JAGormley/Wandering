@@ -29,3 +29,7 @@ void Water::draw(){
 vector<ofVec3f> Water::getMeshVerts(){
     return plane.getMesh().getVertices();
 }
+
+vector<ofVec3f> Water::getMeshNorms(){
+    return plane.getMesh().getNormals();
+}
