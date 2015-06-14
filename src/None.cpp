@@ -27,6 +27,6 @@ void None::draw(){
 //    ofPopMatrix();
 }
 
-vector<ofVec3f> None::getMeshVerts(){
-    return noneMesh.getVertices();
-}
+//vector<ofVec3f> None::getMeshVerts(){
+//    return noneMesh.getVertices();
+//}

@@ -77,8 +77,5 @@ void History::setPresent(){
         while (present.surface == 0 || present.surface == 1);
     }
     // DEBUG:
-    present.surface = 1;
-    
-//    present.medium = ofRandom(2);
-//    present.surface = ofRandom(4);
+//    present.surface = 1;
 }

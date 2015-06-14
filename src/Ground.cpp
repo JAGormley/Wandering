@@ -19,6 +19,7 @@ Ground::Ground(Seed seed) : Surface(seed){
     vector<ofVec3f> meshVerts = groundMesh.getVertices();
     
     for (int i = 0; i < groundMesh.getNumVertices(); i++) {
+        // TODO: DENSITY
         int rando = ofRandom(100);
         int rando2 = ofRandom(800);
         ofVec3f tempVert = groundMesh.getVertices()[i];

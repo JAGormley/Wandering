@@ -32,6 +32,8 @@ void Scenario::setNew(){
     // set the player to new seed values
     setPlayer(seed);
     
+    // TODO: FIX
+    sprites.clear();
     setSprites();
     
     
@@ -91,7 +93,8 @@ Surface * Scenario::getSurface(){
 
 // SPRITES
 void Scenario::setSprites(){
-    for (int i = 0; i < 500; i++) {
+    // TODO: DENSITY
+    for (int i = 0; i < 100; i++) {
         sprites.push_back(shared_ptr<Sprite>(new Plant(spriteSeed)));
     }
     

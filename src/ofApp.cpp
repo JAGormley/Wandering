@@ -68,6 +68,9 @@ void ofApp::keyPressed(int key){
         case 'o':
             outCam = !outCam;
             break;
+        case 'r':
+            scenario.setNew();
+            break;
     }
 }
 

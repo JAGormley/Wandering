@@ -11,6 +11,8 @@
 
 Surface::Surface(Seed seed){
     this->seed = seed;
+    
+    // TODO: DENSITY
     switch (seed.getSurfaceShape()){
         case Seed::SPHERE:
             rawShape = ofSpherePrimitive(seed.shapeSize, 64);

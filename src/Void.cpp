@@ -27,6 +27,6 @@ void Void::draw(){
     ofPopMatrix();
 }
 
-vector<ofVec3f> Void::getMeshVerts(){
-    return voidMesh.getVertices();
-}
+//vector<ofVec3f> Void::getMeshVerts(){
+//    return voidMesh.getVertices();
+//}

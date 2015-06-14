@@ -12,14 +12,14 @@ Plant::Plant(SpriteSeed spriteSeed) : Sprite(spriteSeed){
     sSeed = spriteSeed;
     
     // TODO: get plantSize from spriteSeed
-    plant.set(5, 100, 5);
+    plant.set(5, 500, 5);
     pos = sSeed.spritePos();
     plant.setPosition(pos.x, pos.y, pos.z);
     //    plant.setUseVbo(true);
     
     ofQuaternion q;
     if (sSeed.isOrbital()){
-        q.makeRotate(ofVec3f(0, 500, 0), pos);
+        q.makeRotate(ofVec3f(0, sSeed.getShapeSize(), 0), pos);
         plant.rotate(q);
     }
     else {

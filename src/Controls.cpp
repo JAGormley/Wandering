@@ -89,7 +89,7 @@ void Controls::moveType(){
         transformer.setTranslation(sp.getUpDir()*(sp.getRadius()));
         
         cam->setTransformMatrix(transformer);
-
+        cam->tilt(-30);
         
         // DEBUG:
         sp.drawWireframe();

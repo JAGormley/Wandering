@@ -35,7 +35,10 @@ Seed::Medium Seed::getMedium(){
 }
 
 void Seed::setSurfaceShape(){
+    
+    
     // TODO: set for other types of movement/shape
+    // TODO: get vals from ???
     if (traversal == ORBIT){
         sShape = SPHERE;
     }
