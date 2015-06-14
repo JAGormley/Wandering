@@ -20,7 +20,6 @@ SpriteSeed::SpriteSeed(Seed seed, vector<ofVec3f> surfaceVerts){
 //}
 
 bool SpriteSeed::isOrbital(){
-    cout << (seed.traversal == Seed::ORBIT);
     return (seed.traversal == Seed::ORBIT);
 }
 

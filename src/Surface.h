@@ -26,10 +26,11 @@ public:
     virtual void setColor(ofColor hue) =0;
     virtual void draw() =0;
     virtual void update() =0;
-    virtual vector<ofVec3f> getMeshVerts()=0;
-    virtual vector<ofVec3f> getMeshNorms()=0;
+    virtual vector<ofVec3f> getMeshVerts();
+    vector<ofVec3f> getMeshNorms();
 
     of3dPrimitive rawShape;
+    ofVboMesh rawMesh;
     Seed seed;
     
     

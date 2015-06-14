@@ -84,23 +84,14 @@ Surface * Scenario::getSurface(){
             return new Water(seed);
             break;
         case Seed::NONE:
+            return new None(seed);
             break;
     }
 }
 
 // SPRITES
-
 void Scenario::setSprites(){
-//    vector<ofVec3f> sVerts;
-//    vector<ofVec3f> sNorms;
-//    sVerts = environment->getSurfaceVerts();
-//    sNorms = environment->getSurfaceNorms();
-    
-    for (int i = 0; i < 200; i++) {
-//        int vertIndex = ofRandom(sVerts.size());
-//        ofVec3f plantPos = sVerts[vertIndex];
-//        ofVec3f plantOr = sNorms[vertIndex];
-        
+    for (int i = 0; i < 1000; i++) {
         sprites.push_back(shared_ptr<Sprite>(new Plant(spriteSeed)));
     }
     

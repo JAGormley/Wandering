@@ -25,11 +25,3 @@ void Water::draw(){
     rawShape.draw();
     ofPopMatrix();
 }
-
-vector<ofVec3f> Water::getMeshVerts(){
-    return plane.getMesh().getVertices();
-}
-
-vector<ofVec3f> Water::getMeshNorms(){
-    return plane.getMesh().getNormals();
-}

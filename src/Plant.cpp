@@ -33,7 +33,7 @@ Plant::Plant(SpriteSeed spriteSeed) : Sprite(spriteSeed){
     plant.set(5, 100, 5);
     pos = sSeed.spritePos();
     plant.setPosition(pos.x, pos.y, pos.z);
-    
+//    plant.setUseVbo(true);
     
     if (sSeed.isOrbital()){
         ofQuaternion q;
@@ -63,13 +63,15 @@ void Plant::setActivated(bool activated){
 }
 
 void Plant::draw(){
-//    ofPushMatrix();
-//    if (sSeed.isOrbital())
-//        ofRotate(-90, 1, 0, 0);
+    plant.rotate(-90, 0, 1, 0);
+    ofPushMatrix();
+    if (!sSeed.isOrbital()){
+        
+    }
     material.begin();
     plant.draw();
     material.end();
-//    ofPopMatrix();
+    ofPopMatrix();
 }
 ofVec3f Plant::getLocation(){
     plant.getPosition();

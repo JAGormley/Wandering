@@ -41,6 +41,11 @@ void Surface::draw(){
     
 }
 
+vector<ofVec3f> Surface::getMeshVerts(){
+    rawMesh = rawShape.getMesh();
+    return rawMesh.getVertices();
+}
+
 
 
 //vector<ofVec3f> Surface::getMeshNorms(){
