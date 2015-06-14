@@ -20,6 +20,9 @@ Ground::Ground(Seed seed) : Surface(seed){
     for (int i = 0; i < groundMesh.getNumVertices(); i++) {
         int rando = ofRandom(100);
         ofVec3f tempVert = groundMesh.getVertices()[i];
+        
+        
+        // TERRAIN MANIPULATION
         if (seed.getSurfaceShape() == Seed::PLANE)
             
             // Hills
@@ -30,11 +33,11 @@ Ground::Ground(Seed seed) : Surface(seed){
         
         groundMesh.getVertices()[i] = tempVert;
         
-        // CAVE!
-//        if (tempVert.y > 0){
-//            groundMesh.getVertices()[i] = tempVert;
-//        }
-//        else groundMesh.getVertices()[i] = ofVec3f(0,0,0);
+        //         CAVE!
+        //        if (tempVert.y > 0){
+        //            groundMesh.getVertices()[i] = tempVert;
+        //        }
+        //        else groundMesh.getVertices()[i] = ofVec3f(0,0,0);
     }
     
 }
@@ -43,7 +46,8 @@ void Ground::draw(){
     material.begin();
     ofSetColor(150, 75, 0);
     ofPushMatrix();
-//    ofRotate(-90, 1, 0, 0);
+    if (seed.getSurfaceShape() != Seed::SPHERE)
+        ofRotate(-90, 1, 0, 0);
     groundMesh.draw();
     material.end();
     ofPopMatrix();

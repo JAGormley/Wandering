@@ -57,8 +57,12 @@ public:
     
     
     
-    // TODO: remove hard-coded light, get from Seed
+    
     Seed seed;
+    SpriteSeed spriteSeed;
+    
+    
+    // TODO: remove hard-coded light, get from Seed
     Light moon;
     
     

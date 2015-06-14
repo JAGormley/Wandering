@@ -14,16 +14,14 @@
 #include <iostream>
 #include "ofMain.h"
 #include "Light.h"
+#include "Sprite.h"
 #endif /* defined(__Wandering2__Animal__) */
 
-#ifndef __Wandering2__Sprite__
-#define __Wandering2__Sprite__
-#include "Sprite.h"
-#endif /* defined(__Wandering2__Sprite__) */
+
 
 class Animal: public Sprite {
 public:
-    Animal();
+    Animal(SpriteSeed spriteSeed);
     void move();
     void activate();
     void setActivated(bool activated);

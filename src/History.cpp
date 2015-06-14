@@ -25,6 +25,9 @@ void History::setPresent(){
     // 0 = ORBIT, 1 = WALK, 2 = FLOAT, 3 = FLY
     present.traversal = ofRandom(4);
     
+    // DEBUG:
+//    present.traversal = 0;
+    
     // MEDIUM
     // 0 = AIR, 1 = VOID, 2 = WATER
     if (present.traversal == 0 || present.traversal == 1){
@@ -73,6 +76,8 @@ void History::setPresent(){
         }
         while (present.surface == 0 || present.surface == 1);
     }
+    // DEBUG:
+//    present.surface = 1;
     
 //    present.medium = ofRandom(2);
 //    present.surface = ofRandom(4);

@@ -24,9 +24,10 @@ void Scenario::setNew(){
     
     // ensure the seed is populated before anything else is set
     seed.populate();
-    
     // set the environment to new seed values
     environment = new Environment(*getSurface(), *getMedium());
+    spriteSeed = SpriteSeed(seed, environment->getSurfaceVerts());
+    
     
     // set the player to new seed values
     setPlayer(seed);
@@ -90,20 +91,17 @@ Surface * Scenario::getSurface(){
 // SPRITES
 
 void Scenario::setSprites(){
-    vector<ofVec3f> sVerts;
-    vector<ofVec3f> sNorms;
-    sVerts = environment->getSurfaceVerts();
-    sNorms = environment->getSurfaceNorms();
-    
-   
-    
+//    vector<ofVec3f> sVerts;
+//    vector<ofVec3f> sNorms;
+//    sVerts = environment->getSurfaceVerts();
+//    sNorms = environment->getSurfaceNorms();
     
     for (int i = 0; i < 200; i++) {
-        int vertIndex = ofRandom(sVerts.size());
-        ofVec3f plantPos = sVerts[vertIndex];
-        ofVec3f plantOr = sNorms[vertIndex];
+//        int vertIndex = ofRandom(sVerts.size());
+//        ofVec3f plantPos = sVerts[vertIndex];
+//        ofVec3f plantOr = sNorms[vertIndex];
         
-        sprites.push_back(shared_ptr<Sprite>(new Plant(plantPos, plantOr)));
+        sprites.push_back(shared_ptr<Sprite>(new Plant(spriteSeed)));
     }
     
 //    for (int i = 0; i < 200; i++) {

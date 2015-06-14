@@ -31,7 +31,6 @@ vector<ofVec3f> Void::getMeshVerts(){
     return plane.getMesh().getVertices();
 }
 
-
 vector<ofVec3f> Void::getMeshNorms(){
     return plane.getMesh().getNormals();
 }

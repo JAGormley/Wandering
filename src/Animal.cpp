@@ -9,7 +9,7 @@
 #include "Animal.h"
 
 
-Animal::Animal() : Sprite(){
+Animal::Animal(SpriteSeed spriteSeed) : Sprite(spriteSeed){
     animal.set(5, 10);
     float xRand = ofRandom(1000)-500;
 //    if (xRand < 0) xRand-=500; else xRand +=500;
