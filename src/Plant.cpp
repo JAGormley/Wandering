@@ -8,37 +8,25 @@
 
 #include "Plant.h"
 
-//Plant::Plant(SpriteSeed spriteSeed) : Sprite(spriteSeed){
-//    plant.set(5, 50, 5);
-//
-//    float xRand = ofRandom(2000)-1000;
-//    float zRand = ofRandom(2000)-1000;
-//
-//
-//    plant.setPosition(xRand, 25, zRand);
-//
-//    materialColor.setBrightness(250.f);
-//    materialColor.setSaturation(200);
-//    colorHue = 100;
-//    materialColor.setHue(colorHue);
-////    material.setEmissiveColor(materialColor);
-//
-//    material.setShininess(255);
-//    material.setDiffuseColor(materialColor);
-//    material.setSpecularColor(materialColor);
-//}
-
 Plant::Plant(SpriteSeed spriteSeed) : Sprite(spriteSeed){
     sSeed = spriteSeed;
+    
+    // TODO: get plantSize from spriteSeed
     plant.set(5, 100, 5);
     pos = sSeed.spritePos();
     plant.setPosition(pos.x, pos.y, pos.z);
-//    plant.setUseVbo(true);
+    //    plant.setUseVbo(true);
     
+    ofQuaternion q;
     if (sSeed.isOrbital()){
-        ofQuaternion q;
         q.makeRotate(ofVec3f(0, 500, 0), pos);
         plant.rotate(q);
+    }
+    else {
+        plant.rotate(90, 1, 0, 0);
+        
+        // TODO: get plantSize from spriteSeed
+        plant.move(ofVec3f(0, 0, 50));
     }
     
     materialColor.setBrightness(250.f);
@@ -63,11 +51,7 @@ void Plant::setActivated(bool activated){
 }
 
 void Plant::draw(){
-    plant.rotate(-90, 0, 1, 0);
     ofPushMatrix();
-    if (!sSeed.isOrbital()){
-        
-    }
     material.begin();
     plant.draw();
     material.end();

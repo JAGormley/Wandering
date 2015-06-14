@@ -15,10 +15,12 @@ Ground::Ground(Seed seed) : Surface(seed){
     material.setSpecularColor(ofColor(0,30,0));
     
     groundMesh = rawShape.getMesh();
+    
     vector<ofVec3f> meshVerts = groundMesh.getVertices();
     
     for (int i = 0; i < groundMesh.getNumVertices(); i++) {
         int rando = ofRandom(100);
+        int rando2 = ofRandom(800);
         ofVec3f tempVert = groundMesh.getVertices()[i];
         
         
@@ -26,7 +28,7 @@ Ground::Ground(Seed seed) : Surface(seed){
         if (seed.getSurfaceShape() == Seed::PLANE)
             
             // Hills
-            tempVert = ofVec3f(meshVerts[i].x, meshVerts[i].y, meshVerts[i].z+rando-70);
+            tempVert = ofVec3f(meshVerts[i].x+rando2-400, meshVerts[i].y+rando2-400, meshVerts[i].z+rando-70);
         
         // Sphere terrain
         else tempVert = ofVec3f(meshVerts[i].x, meshVerts[i].y+rando, meshVerts[i].z);
@@ -45,12 +47,12 @@ Ground::Ground(Seed seed) : Surface(seed){
 void Ground::draw(){
     material.begin();
     ofSetColor(150, 75, 0);
-    ofPushMatrix();
+//    ofPushMatrix();
     if (seed.getSurfaceShape() != Seed::SPHERE)
         ofRotate(-90, 1, 0, 0);
     groundMesh.draw();
     material.end();
-    ofPopMatrix();
+//    ofPopMatrix();
 }
 
 void Ground::setColor(ofColor hue){

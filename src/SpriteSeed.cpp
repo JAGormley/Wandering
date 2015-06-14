@@ -27,3 +27,7 @@ ofVec3f SpriteSeed::spritePos(){
     int vertIndex = ofRandom(sVerts.size());
     return sVerts[vertIndex];
 }
+
+int SpriteSeed::getShapeSize(){
+    return seed.shapeSize;
+}

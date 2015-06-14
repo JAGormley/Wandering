@@ -91,7 +91,7 @@ Surface * Scenario::getSurface(){
 
 // SPRITES
 void Scenario::setSprites(){
-    for (int i = 0; i < 1000; i++) {
+    for (int i = 0; i < 500; i++) {
         sprites.push_back(shared_ptr<Sprite>(new Plant(spriteSeed)));
     }
     

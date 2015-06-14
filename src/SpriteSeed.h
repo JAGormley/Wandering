@@ -19,12 +19,11 @@ class SpriteSeed {
 public:
     SpriteSeed();
     SpriteSeed(Seed seed, vector<ofVec3f> surfaceVerts);
-    Seed seed;
-//    Soil soil;
-    
+    int getShapeSize();
     bool isOrbital();
     ofVec3f spritePos();
+    
     vector<ofVec3f> sVerts;
-//    void populate();
+    Seed seed;
     
 };

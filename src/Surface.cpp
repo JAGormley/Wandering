@@ -37,9 +37,7 @@ void Surface::generate(){
 //    }
 }
 
-void Surface::draw(){
-    
-}
+void Surface::draw(){}
 
 vector<ofVec3f> Surface::getMeshVerts(){
     rawMesh = rawShape.getMesh();
