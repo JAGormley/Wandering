@@ -46,14 +46,16 @@ Ground::Ground(Seed seed) : Surface(seed){
 }
 
 void Ground::draw(){
-    material.begin();
-    ofSetColor(150, 75, 0);
-//    ofPushMatrix();
-    if (seed.getSurfaceShape() != Seed::SPHERE)
-        ofRotate(-90, 1, 0, 0);
-    groundMesh.draw();
-    material.end();
-//    ofPopMatrix();
+    if (!ofGetKeyPressed()){
+        material.begin();
+        ofSetColor(150, 75, 0);
+        //    ofPushMatrix();
+        if (seed.getSurfaceShape() != Seed::SPHERE)
+            ofRotate(-90, 1, 0, 0);
+        groundMesh.draw();
+        material.end();
+    }
+    //    ofPopMatrix();
 }
 
 void Ground::setColor(ofColor hue){

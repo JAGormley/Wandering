@@ -23,10 +23,13 @@ public:
     Light();
     Light(Seed seed);
     virtual void update();
-    virtual void draw()=0;
+    virtual void draw();
     virtual void enable();
     virtual void disable();
-    virtual void setPosition(ofVec3f pos);
+    virtual void drawChild()=0;
+    
+    void setPosition(ofVec3f pos);
+    ofVec3f getPosition();
     
 protected:
     of3dPrimitive facade;
@@ -35,11 +38,18 @@ protected:
     ofLight light;
     ofMaterial material;
     ofColor materialColor;
+    int lightSize;
+    int lightDistance;
+    
+    
+    
     ofQuaternion q;
     ofShader shaderBlurX;
     ofShader shaderBlurY;
     ofFbo fboBlurOnePass;
     ofFbo fboBlurTwoPass;
+    
+    
 };
 
 

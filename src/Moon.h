@@ -18,6 +18,5 @@
 class Moon : public Light {
 public:
     Moon(Seed seed);
-    
-    void draw();
+    void drawChild();
 };

@@ -19,6 +19,5 @@
 class Sun : public Light {
 public:
     Sun(Seed seed);
-    
-    void draw();
+    void drawChild();
 };

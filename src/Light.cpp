@@ -35,16 +35,36 @@ Light::Light(Seed seed){
 }
 
 void Light::update(){
-//    int newPos;
-////    newPos = light.getPosition().y + 1;
-////    newPos = newPos%1050;
-//    light.setPosition(0, 1500, 0);
-//    light.setPosition(ofVec3f(0, 0, -ofGetMouseX()));
+    //    int newPos;
+    ////    newPos = light.getPosition().y + 1;
+    ////    newPos = newPos%1050;
+    //    light.setPosition(0, 1500, 0);
+    //    light.setPosition(ofVec3f(0, 0, -ofGetMouseX()));
 }
 
-//void Light::draw(){
-//    light.draw();
-//}
+void Light::draw(){
+    ofPushMatrix();
+    
+    ofSetColor(255,255,255);
+    material.begin();
+    
+    ofRotate(90, 1, 0, 0);
+    
+    light.setPosition(0, lightSize, -lightDistance+400);
+    light.rotateAround(90, ofVec3f(1,0,0), ofVec3f(0,0,0));
+    ofTranslate(0, 0, -lightDistance);
+    
+    // flip facade so material faces light
+    ofRotate(180, 1, 0, 0);
+    
+    drawChild();
+    
+    material.end();
+    
+    ofPopMatrix();
+    //    light.draw();
+}
+
 void Light::enable(){
     light.enable();
 }
@@ -53,4 +73,7 @@ void Light::disable(){
 }
 void Light::setPosition(ofVec3f pos){
     light.setPosition(pos);
+}
+ofVec3f Light::getPosition(){
+    light.getPosition();
 }
