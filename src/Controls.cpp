@@ -81,14 +81,14 @@ void Controls::moveType(){
     }
     else if (type == Seed::ORBIT){
 //        cout << "ORBIT" << endl;
-        sp.rotate(handPos.z/1000, sp.getXAxis());
-        sp.rotate(-handPos.x/1000, sp.getZAxis());
+        sp.rotate(handPos.z/2000, sp.getXAxis());
+        sp.rotate(-handPos.x/2000, sp.getZAxis());
         
         transformer = sp.getLocalTransformMatrix();
         transformer.setTranslation(sp.getUpDir()*(sp.getRadius()));
         
         cam->setTransformMatrix(transformer);
-        cam->tilt(-30);
+        cam->tilt(-20);
         
         // DEBUG:
         sp.drawWireframe();

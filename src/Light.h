@@ -33,7 +33,13 @@ protected:
     ofVec3f position;
     ofColor lightColor;
     ofLight light;
-    
+    ofMaterial material;
+    ofColor materialColor;
+    ofQuaternion q;
+    ofShader shaderBlurX;
+    ofShader shaderBlurY;
+    ofFbo fboBlurOnePass;
+    ofFbo fboBlurTwoPass;
 };
 
 

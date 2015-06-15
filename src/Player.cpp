@@ -36,8 +36,10 @@ void Player::draw(){
 
 void Player::setMovementType(Seed lSeed){
     controls.type = lSeed.getTraversal();
-    if (lSeed.getTraversal() == Seed::ORBIT)
-        controls.setOrbitRadius(lSeed.getPlayerLocation()+200);
+    if (lSeed.getTraversal() == Seed::ORBIT){
+        controls.setOrbitRadius(lSeed.getPlayerLocation());
+        cam.tilt(-20);
+    }
 }
 
 Seed::Traversal Player::getMovementType(){
@@ -46,7 +48,7 @@ Seed::Traversal Player::getMovementType(){
 
 void Player::setLocation(Seed lSeed){
     if (lSeed.getTraversal() == Seed::ORBIT)
-        cam.setPosition(ofVec3f(0, lSeed.getPlayerLocation()+200, 0));
+        cam.setPosition(ofVec3f(0, lSeed.getPlayerLocation(), 0));
     else cam.setPosition(ofVec3f(0, lSeed.getPlayerLocation(), 0));
 }
 

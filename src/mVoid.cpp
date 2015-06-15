@@ -10,7 +10,6 @@
 
 mVoid::mVoid(Seed seed) : Medium(seed){
     ofBackground(0, 0, 0);
-    cout << "VOID";
 //    voidMaterial.setShininess(200);
     
 //    materialColor.setBrightness(100.f);

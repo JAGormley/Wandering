@@ -17,6 +17,7 @@ void Seed::populate(){
     setSurfaceShape();
     setSurfaceType();
     setMedium();
+    setLightType();
 }
 
 
@@ -71,14 +72,16 @@ float Seed::getPlayerLocation(){
     if (sShape == PLANE){
         return 20;
     }
-    else return shapeSize;
+    else return shapeSize+(shapeSize/3);
 }
 
 
 // LIGHT
 
 void Seed::setLightType(){
-    lightType = SUN;
+    if (medium == M_VOID)
+        lightType = MOON;
+    else lightType = SUN;
 }
 Seed::LightType Seed::getLightType(){
     return lightType;

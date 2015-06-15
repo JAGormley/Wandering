@@ -23,15 +23,15 @@ Animal::Animal(SpriteSeed spriteSeed) : Sprite(spriteSeed){
     
     //    box.setPosition(ofVec3f(0, , ));
     materialColor.setBrightness(250.f);
-    materialColor.setSaturation(200);
+    materialColor.setSaturation(255);
     colorHue = 210;
     materialColor.setHue(colorHue);
-//    material.setEmissiveColor(materialColor);
+    material.setEmissiveColor(materialColor);
     
     
-    material.setShininess(255);
-    material.setDiffuseColor(materialColor);
-    material.setSpecularColor(materialColor);
+//    material.setShininess(255);
+//    material.setDiffuseColor(materialColor);
+//    material.setSpecularColor(materialColor);
 }
 
 void Animal::move(){
@@ -47,10 +47,7 @@ void Animal::setActivated(bool activated){
 
 void Animal::draw(){
     material.begin();
-//    ofSetColor(255, 255, 0, 100);
     animal.draw();
- 
-//    ofFill();
     material.end();
 }
 ofVec3f Animal::getLocation(){

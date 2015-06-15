@@ -10,5 +10,14 @@
 #define __Wandering2__Moon__
 
 #include <stdio.h>
+#include "Light.h"
 
 #endif /* defined(__Wandering2__Moon__) */
+
+
+class Moon : public Light {
+public:
+    Moon(Seed seed);
+    
+    void draw();
+};

@@ -10,11 +10,29 @@
 
 
 
-Sun::Sun(Seed seed) : Light(seed){}
+Sun::Sun(Seed seed) : Light(seed){
+    
+    materialColor.setBrightness(250.f);
+    materialColor.setSaturation(255);
+    float colorHue = 42;
+    materialColor.setHue(colorHue);
+    material.setEmissiveColor(materialColor);
+    
+}
 
 void Sun::draw(){
-    ofSetColor(255, 255, 0);
     ofPushMatrix();
-    ofCircle(1000, 1000, 200);
+    material.begin();
+    light.setPosition(0, 1200, -1990);
+    ofTranslate(0, 0, -2000);
+    
+    light.rotate(180, 1, 0, 0);
+    ofRotate(180, 1, 0, 0);
+    
+    ofSetCircleResolution(100);
+    ofCircle(0, 0, 1200);
+    material.end();
     ofPopMatrix();
+    
+//    light.draw();
 }

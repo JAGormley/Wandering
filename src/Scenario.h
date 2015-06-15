@@ -26,6 +26,7 @@
 #include "Animal.h"
 
 #include "Sun.h"
+#include "Moon.h"
 
 
 class Scenario {

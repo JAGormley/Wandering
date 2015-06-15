@@ -11,7 +11,6 @@
 
 Air::Air(Seed seed) : Medium(seed){
     ofBackground(0, 127, 255);
-    cout << "AIR";
 }
 
 void Air::draw(){

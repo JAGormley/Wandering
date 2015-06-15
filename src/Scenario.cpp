@@ -23,7 +23,6 @@ void Scenario::moveLight(int x, int y){
 void Scenario::setNew(){
     reset();
     
-    
     // ensure the seed is populated before anything else is set
     seed.populate();
     // set the environment to new seed values
@@ -39,9 +38,6 @@ void Scenario::setNew(){
     // TODO: FIX
     sprites.clear();
     setSprites();
-    
-    
-    //    history.addHistory(1);
 }
 
 void Scenario::draw(){
@@ -59,6 +55,7 @@ void Scenario::draw(){
 void Scenario::update(){
     updateSprites();
     environment->update();
+    light->update();
     player.move();
 }
 
@@ -102,9 +99,9 @@ void Scenario::setSprites(){
         sprites.push_back(shared_ptr<Sprite>(new Plant(spriteSeed)));
     }
     
-//    for (int i = 0; i < 200; i++) {
-//        sprites.push_back(shared_ptr<Sprite>(new Animal()));
-//    }
+    for (int i = 0; i < 200; i++) {
+        sprites.push_back(shared_ptr<Sprite>(new Animal(spriteSeed)));
+    }
 }
 
 void Scenario::updateSprites(){
@@ -127,9 +124,9 @@ Light * Scenario::getLight(){
         case Seed::SUN:
             return new Sun(seed);
             break;
-//        case Seed::MOON:
-//            return new Moon(seed);
-//            break;
+        case Seed::MOON:
+            return new Moon(seed);
+            break;
 //        case Seed::CLOUDY:
 //            return new Cloudy(seed);
 //            break;
