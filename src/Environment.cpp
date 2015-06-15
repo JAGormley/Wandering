@@ -35,3 +35,8 @@ vector<ofVec3f> Environment::getSurfaceVerts(){
 vector<ofVec3f> Environment::getSurfaceNorms(){
 //    return surface->getMeshNorms();
 }
+
+Environment::~Environment(){
+    delete surface;
+    delete medium;
+}

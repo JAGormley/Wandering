@@ -19,6 +19,7 @@
 class Environment {
 public:
     Environment();
+    ~Environment();
     Environment(Surface &surface, Medium &medium);
     void update();
     vector<ofVec3f> getSurfaceVerts();

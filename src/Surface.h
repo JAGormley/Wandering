@@ -23,7 +23,8 @@ public:
     virtual void draw() =0;
     virtual void update() =0;
     virtual vector<ofVec3f> getMeshVerts();
-
+    virtual ~Surface();
+    
     of3dPrimitive rawShape;
     ofVboMesh rawMesh;
     Seed seed;

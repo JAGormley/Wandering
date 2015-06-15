@@ -29,7 +29,7 @@ public:
     void setColor(ofColor hue);
     void update();
     vector<ofVec3f> getMeshVerts();
-    
+//    ~mVoid();
     float colorHue;
     ofColor materialColor;
     ofMaterial voidMaterial;

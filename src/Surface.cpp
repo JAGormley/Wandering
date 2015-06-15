@@ -48,6 +48,4 @@ vector<ofVec3f> Surface::getMeshVerts(){
 
 
 
-//vector<ofVec3f> Surface::getMeshNorms(){
-//    
-//}
+Surface::~Surface(){}

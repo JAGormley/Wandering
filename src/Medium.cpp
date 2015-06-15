@@ -9,6 +9,10 @@
 #include "Medium.h"
 
 
+
+
 //Medium::Type Medium::getType(){
 ////    return type;
 //}
+Medium::Medium(Seed seed){}
+Medium::~Medium(){}

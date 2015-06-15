@@ -19,9 +19,10 @@
 
 class Medium {
 public:
-    Medium(Seed seed){};
+    Medium(Seed seed);
     virtual void setColor(ofColor hue) =0;
     virtual void draw() =0;
     virtual void update() =0;
     virtual vector<ofVec3f> getMeshVerts()=0;
+    virtual ~Medium();
 };

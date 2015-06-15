@@ -28,8 +28,6 @@ Light::Light(Seed seed){
     lightColor.setBrightness( 255.f );
     light.setDiffuseColor(lightColor);
     light.setSpecularColor(lightColor);
-
-
 }
 
 

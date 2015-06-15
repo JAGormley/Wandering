@@ -21,6 +21,8 @@ void Scenario::moveLight(int x, int y){
 }
 
 void Scenario::setNew(){
+    reset();
+    
     
     // ensure the seed is populated before anything else is set
     seed.populate();
@@ -134,3 +136,8 @@ Light * Scenario::getLight(){
     }
 }
 
+
+void Scenario::reset(){
+    delete light;
+    delete environment;
+}

@@ -11,6 +11,7 @@
 
 mWater::mWater(Seed seed) : Medium(seed){
     ofBackground(10, 200, 210);
+    cout << "WATER";
 }
 
 void mWater::draw(){
