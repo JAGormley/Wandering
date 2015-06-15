@@ -78,7 +78,7 @@ float Seed::getPlayerLocation(){
 // LIGHT
 
 void Seed::setLightType(){
-    
+    lightType = SUN;
 }
 Seed::LightType Seed::getLightType(){
     return lightType;

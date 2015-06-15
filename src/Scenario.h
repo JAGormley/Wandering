@@ -22,9 +22,10 @@
 #include "Water.h"
 #include "None.h"
 
-
 #include "Plant.h"
 #include "Animal.h"
+
+#include "Sun.h"
 
 
 class Scenario {
@@ -40,8 +41,11 @@ public:
     void update();
     void moveLight(int x, int y);
     
+    Seed seed;
+    SpriteSeed spriteSeed;
+    
+    
     // ENVIRONMENT
-    // TODO: add LIGHT
     Medium * getMedium();
     Surface * getSurface();
     Environment * environment;
@@ -51,7 +55,6 @@ public:
     Player player;
     
     
-    
     // SPRITES
     
     void updateSprites();
@@ -59,14 +62,11 @@ public:
     vector< shared_ptr<Sprite> > sprites;
     
     
+    // LIGHT
+//    void setLight(Seed seed);
+    Light * getLight();
+    Light * light;
     
-    
-    Seed seed;
-    SpriteSeed spriteSeed;
-    
-    
-    // TODO: remove hard-coded light, get from Seed
-    Light moon;
     
     
     

@@ -12,25 +12,27 @@
 #define __Wandering2__Light__
 
 #include <stdio.h>
-#include "ofMain.h"
 #include <iostream>
+#include "ofMain.h"
+#include "Seed.h"
 
 #endif /* defined(__Wandering2__Light__) */
 
 class Light : public ofLight{
 public:
     Light();
-    enum Type {MOON, SUN, DIFFUSE};
-    Type currentType;
-    void setType(Type newType);
-    void update();
-    void draw();
-    void enable();
-    void disable();
-    ofLight light;    
-    ofColor lightColor;
-    void setPosition(ofVec3f pos);
+    Light(Seed seed);
+    virtual void update();
+    virtual void draw()=0;
+    virtual void enable();
+    virtual void disable();
+    virtual void setPosition(ofVec3f pos);
     
+protected:
+    of3dPrimitive facade;
+    ofVec3f position;
+    ofColor lightColor;
+    ofLight light;
     
 };
 

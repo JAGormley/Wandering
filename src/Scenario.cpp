@@ -17,7 +17,7 @@ Scenario::Scenario(){
 
 // TODO: REMOVE, DEBUG FUNCTION
 void Scenario::moveLight(int x, int y){
-    moon.setPosition(ofVec3f(moon.getPosition().x, x, y));
+    light->setPosition(ofVec3f(light->getPosition().x, x, y));
 }
 
 void Scenario::setNew(){
@@ -28,6 +28,8 @@ void Scenario::setNew(){
     environment = new Environment(*getSurface(), *getMedium());
     spriteSeed = SpriteSeed(seed, environment->getSurfaceVerts());
     
+    // set light to new seed values
+    light = getLight();
     
     // set the player to new seed values
     setPlayer(seed);
@@ -41,15 +43,15 @@ void Scenario::setNew(){
 }
 
 void Scenario::draw(){
-    moon.enable();
+    light->enable();
     
     environment->draw();
     
     for (int i = 0; i < sprites.size(); i++) {
         sprites[i]->draw();
     }
-    
-    moon.disable();
+    light->draw();
+    light->disable();
 }
 
 void Scenario::update(){
@@ -115,3 +117,20 @@ void Scenario::setPlayer(Seed lSeed){
     player.setMovementType(lSeed);
     player.setLocation(lSeed);
 }
+
+// LIGHT
+
+Light * Scenario::getLight(){
+    switch (seed.getLightType()){
+        case Seed::SUN:
+            return new Sun(seed);
+            break;
+//        case Seed::MOON:
+//            return new Moon(seed);
+//            break;
+//        case Seed::CLOUDY:
+//            return new Cloudy(seed);
+//            break;
+    }
+}
+

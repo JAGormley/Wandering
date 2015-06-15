@@ -52,7 +52,6 @@ void Controls::moveType(){
     float back_forth = 0;
     float pitch_lr = 0;
     float pitch_ud = 0;
-    float strafe = 0;
     
     if (type == Seed::FLOAT){
 //        cout << "FLOAT" << endl;
@@ -97,10 +96,6 @@ void Controls::moveType(){
     
     if (type != Seed::ORBIT){
         cam->dolly(back_forth);
-        
-        cam->setPosition(ofVec3f(cam->getPosition().x+strafe,
-                                 cam->getPosition().y,
-                                 cam->getPosition().z));
         
         cam->setOrientation(ofVec3f(cam->getOrientationEuler().x,
                                     cam->getOrientationEuler().y-pitch_lr,
