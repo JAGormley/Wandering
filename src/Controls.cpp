@@ -35,7 +35,10 @@ void Controls::move(){
     
     if (simpleHands.size() > 0){
         moveType();
+        roller = simpleHands[0].roll;
     }
+    
+    
     
     leap.markFrameAsOld();
 }
@@ -43,7 +46,6 @@ void Controls::move(){
 void Controls::setOrbitRadius(float radius){
     sp.set(radius, 32);
 }
-
 void Controls::moveType(){
     
 //    cout << type << endl;
@@ -96,9 +98,17 @@ void Controls::moveType(){
     
     if (type != Seed::ORBIT){
         cam->dolly(back_forth);
+//        cam->pan(-pitch_lr);r
+        cam->tilt(pitch_ud);
+//        cam->roll(roller);
         
-        cam->setOrientation(ofVec3f(cam->getOrientationEuler().x,
-                                    cam->getOrientationEuler().y-pitch_lr,
-                                    cam->getOrientationEuler().z));
+        if ((cam->getLookAtDir().x < .7f && pitch_lr < 0)){
+            cam->pan(-pitch_lr);
+        }
+        else if ((cam->getLookAtDir().x > -.7f && pitch_lr > 0)){
+            cam->pan(-pitch_lr);
+        }
+        cout << "PIT: " << pitch_lr << endl;
+        cout << "LOOK: " << cam->getLookAtDir() << endl;
     }
 }

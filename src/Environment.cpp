@@ -16,7 +16,7 @@ Environment::Environment(Surface &surface, Medium &medium){
     this->medium = &medium;
     
     // maybe dont need this, may just reconstruct the object each time.
-//    this->surface->generate();
+    //    this->surface->generate();
 }
 
 void Environment::draw(){
@@ -33,7 +33,7 @@ vector<ofVec3f> Environment::getSurfaceVerts(){
 }
 
 vector<ofVec3f> Environment::getSurfaceNorms(){
-//    return surface->getMeshNorms();
+    //    return surface->getMeshNorms();
 }
 
 Environment::~Environment(){

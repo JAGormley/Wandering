@@ -23,7 +23,6 @@ Sun::Sun(Seed seed) : Light(seed){
     
 }
 
-
 void Sun::drawChild(){
     ofSetCircleResolution(100);
     ofCircle(0, 0, 1200);

@@ -41,6 +41,7 @@ public:
     ofSpherePrimitive sp;
     ofSpherePrimitive sp2;
     ofVec3f rotated;
+    float roller;
     
     
 private:

@@ -49,6 +49,8 @@ Seed::Traversal Player::getMovementType(){
 void Player::setLocation(Seed lSeed){
     if (lSeed.getTraversal() == Seed::ORBIT)
         cam.setPosition(ofVec3f(0, lSeed.getPlayerLocation(), 0));
-    else cam.setPosition(ofVec3f(0, lSeed.getPlayerLocation(), 0));
+    else {
+        cam.setPosition(ofVec3f(0, lSeed.getPlayerLocation(), 0));
+        cam.setGlobalOrientation(ofQuaternion(0, 0, -.93, 0));
+    }
 }
-

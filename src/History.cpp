@@ -23,10 +23,10 @@ void History::setPresent(){
     
     // TRAVERSAL
     // 0 = ORBIT, 1 = WALK, 2 = FLOAT, 3 = FLY
-//    present.traversal = ofRandom(4);
+    present.traversal = ofRandom(4);
     
     // DEBUG:
-    present.traversal = 0;
+    present.traversal = 3;
     
     // MEDIUM
     // 0 = AIR, 1 = VOID, 2 = WATER
