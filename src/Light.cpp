@@ -47,7 +47,6 @@ void Light::update(){
 }
 
 void Light::draw(){
-    
     ofPushMatrix();
     ofSetColor(255,255,255);
     material.begin();
@@ -64,6 +63,7 @@ void Light::draw(){
     
     if (seed.traversal != Seed::ORBIT)
         ofTranslate(0, 0, -seed.shapeSize);
+    else ofTranslate(0, 0, -lightDistance);
     
     // flip facade so material faces light
     ofRotate(180, 1, 0, 0);
@@ -73,7 +73,7 @@ void Light::draw(){
     material.end();
     
     ofPopMatrix();
-    //    light.draw();
+        light.draw();
     //    }
     
     

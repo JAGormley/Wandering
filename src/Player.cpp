@@ -12,6 +12,7 @@
 Player::Player(){
     controls.setCam(cam);
     
+    
 };
 
 void Player::move(){
@@ -37,6 +38,7 @@ void Player::draw(){
 }
 
 void Player::setMovementType(Seed lSeed){
+    cam.resetTransform();
     controls.type = lSeed.getTraversal();
     if (lSeed.getTraversal() == Seed::ORBIT){
         controls.setOrbitRadius(lSeed.getPlayerLocation());
@@ -49,12 +51,15 @@ Seed::Traversal Player::getMovementType(){
 }
 
 void Player::setLocation(Seed lSeed){
-    if (lSeed.getTraversal() == Seed::ORBIT)
+    
+    // IDEMPOTENT ONLY!!
+    
+    if (lSeed.getTraversal() == Seed::ORBIT){
         cam.setPosition(ofVec3f(0, lSeed.getPlayerLocation(), 0));
-    else {
-        
-        // HAVE TO SET THIS GLOBALLY, CANT PAN
-        cam.setPosition(ofVec3f(0, lSeed.getPlayerLocation(), 0));
-        cam.pan(180);
     }
+    else {
+        cam.setPosition(ofVec3f(0, lSeed.getPlayerLocation(), 0));
+        cam.lookAt(ofVec3f(0,0,283));
+    }
+    cout << "1: " << cam.getPosition() << endl;
 }

@@ -38,8 +38,6 @@ void Controls::move(){
         roller = simpleHands[0].roll;
     }
     
-    
-    
     leap.markFrameAsOld();
 }
 
@@ -47,6 +45,7 @@ void Controls::setOrbitRadius(float radius){
     sp.set(radius, 32);
 }
 void Controls::moveType(){
+    
     
 //    cout << type << endl;
     float up = 0;
@@ -94,9 +93,9 @@ void Controls::moveType(){
         
         // DEBUG:
         sp.drawWireframe();
+        
+        cout << "2: " << cam->getPosition() << endl;
     }
-    
-    
     
     // TODO: BREAK THIS INTO NEW METHOD
     
@@ -120,10 +119,5 @@ void Controls::moveType(){
         else if ((cam->getLookAtDir().y > -.5f && pitch_ud < 0)){
             cam->tilt(pitch_ud);
         }
-        
-        
-        
-        cout << "tilt: " << pitch_ud << endl;
-        cout << "LOOK: " << cam->getLookAtDir() << endl;
     }
 }

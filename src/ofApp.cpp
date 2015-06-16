@@ -48,7 +48,7 @@ void ofApp::draw(){
     ofRotate(90, 1, 0, 0);
     ofTranslate(0, 0, -100);
     ofSetColor(100, 0, 100, 200);
-    tube.draw();
+//    tube.draw();
     ofPopMatrix();
     
 //    shader.begin();
