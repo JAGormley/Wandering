@@ -12,6 +12,7 @@
 #define __Wandering2__Ground__
 #include <stdio.h>
 #include "ofMain.h"
+#include "Player.h"
 #endif /* defined(__Wandering2__Ground__) */
 
 #ifndef __Wandering2__Surface__
@@ -28,13 +29,10 @@ public:
     void update();
     void draw();
     vector<ofVec3f> getMeshVerts();
-    vector<ofVec3f> getMeshNorms();
     
     ofMaterial material;
     
     ofPlanePrimitive plane;
-    ofVboMesh groundMesh;
-    ofVboMesh repMesh;
-//    vector<ofVec3f>  meshVerts;
-
+    int groundCount;
+//    ofVec3f playerLoc;
 };

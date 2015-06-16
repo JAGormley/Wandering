@@ -57,33 +57,19 @@ void Controls::moveType(){
     float pitch_ud = 0;
     
     if (type == Seed::FLOAT){
-//        cout << "FLOAT" << endl;
+        cout << "FLOAT" << endl;
         // maybe this has a slow set forward z
-        up = 1.f;
-        down = 0.f;
-        pitch_lr = handPos.x/100;
-        pitch_ud = handPos.y/100;
-        back_forth = handPos.z/100;
+        moveHelper(handPos.z/100, -handPos.x/100, handPos.y/100);
     }
     else if (type == Seed::WALK){
-//        cout << "WALK" << endl;
+//                cout << "WALK" << endl;
         // TODO needs indepedent head movement!!
-        up = 1.f;
-        down = 0.f;
-        pitch_lr = handPos.x/100;
-        pitch_ud = 0;
-        back_forth = handPos.z/200;
+        moveHelper(handPos.z/200, handPos.x/100, 0);
     }
-    else if (type == Seed::FLY){
-//        cout << "FLY" << endl;
-        up = 1.f;
-        down = 0.f;
-        pitch_lr = handPos.x/500;
-        pitch_ud = handPos.y/500;
-        back_forth = handPos.z/100;
-    }
+    
+    
     else if (type == Seed::ORBIT){
-//        cout << "ORBIT" << endl;
+        //        cout << "ORBIT" << endl;
         sp.rotate(handPos.z/2000, sp.getXAxis());
         sp.rotate(-handPos.x/2000, sp.getZAxis());
         
@@ -98,13 +84,17 @@ void Controls::moveType(){
         sp.drawWireframe();
     }
     
-    // TODO: BREAK THIS INTO NEW METHOD
     
-    if (type == Seed::FLY){
+    else if (type == Seed::FLY){
+        
+        up = 1.f;
+        down = 0.f;
+        pitch_lr = handPos.x/500;
+        pitch_ud = handPos.y/500;
+        back_forth = handPos.z/100;
+        
         if (back_forth > 0) back_forth = 0;
         cam->dolly(back_forth);
-//        cam->pan(-pitch_lr);
-//        cam->tilt(pitch_ud);
 //        cam->roll(roller);
         
         if ((cam->getLookAtDir().x < .5f && pitch_lr < 0)){
@@ -121,4 +111,12 @@ void Controls::moveType(){
             cam->tilt(pitch_ud);
         }
     }
+}
+
+
+
+void Controls::moveHelper(float back_forth, float pan, float tilt){
+    cam->dolly(back_forth);
+    cam->pan(-pan);
+    cam->tilt(tilt);
 }

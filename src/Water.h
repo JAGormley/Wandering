@@ -24,6 +24,5 @@ public:
     ofMaterial material;
     
     ofPlanePrimitive plane;
-    ofVboMesh waterMesh;
     
 };

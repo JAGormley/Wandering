@@ -41,7 +41,7 @@ void Scenario::draw(){
     environment->draw();
     
     for (int i = 0; i < sprites.size(); i++) {
-        sprites[i]->draw();
+//        sprites[i]->draw();
     }
     light->draw();
     light->disable();
@@ -52,6 +52,7 @@ void Scenario::update(){
     environment->update();
     light->update();
     player.move();
+    player.setHeight(environment->getSurfaceVerts());
 }
 
 // ENVIRONMENT

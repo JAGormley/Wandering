@@ -53,9 +53,9 @@ void Light::draw(){
     
     
     ofRotate(90, 1, 0, 0);
-    if (seed.traversal != Seed::ORBIT){
+//    if (seed.traversal != Seed::ORBIT){
         ofRotate(95, 1, 0, 0);
-    }
+//    }
     
     
     light.setPosition(0, lightSize, -lightDistance+400);

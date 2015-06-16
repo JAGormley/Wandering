@@ -13,11 +13,13 @@
 #include "Light.h"
 #include <stdio.h>
 
+
+
 class Player {
 public:
     
     Player();
-    
+    void setHeight(vector<ofVec3f> groundVerts);
     void move();
     ofVec3f getLocation();
     void draw();
@@ -28,8 +30,16 @@ public:
     Seed::Traversal getMovementType();
     
     ofCamera cam;
+//    static ofVec3f playerLoc;
+    
+   static ofVec3f playerLoc;
+//    static void init(){
+//        
+//    }
 
 private:
     Controls controls;
     
+    
 };
+

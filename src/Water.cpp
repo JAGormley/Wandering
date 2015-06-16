@@ -9,7 +9,7 @@
 #include "Water.h"
 
 Water::Water(Seed seed) : Surface(seed){
-    waterMesh = rawShape.getMesh();
+    vboMesh = rawShape.getMesh();
 }
 
 void Water::setColor(ofColor hue){
@@ -17,9 +17,9 @@ void Water::setColor(ofColor hue){
 }
 
 void Water::update(){
-    for (int i = 0; i < waterMesh.getVertices().size(); i++) {
-        ofVec3f tempVert = waterMesh.getVertices()[i];
-        waterMesh.getVertices()[i] = ofVec3f(tempVert.x, tempVert.y, tempVert.z+ofRandom(10)-5);
+    for (int i = 0; i < vboMesh.getVertices().size(); i++) {
+        ofVec3f tempVert = vboMesh.getVertices()[i];
+        vboMesh.getVertices()[i] = ofVec3f(tempVert.x, tempVert.y, tempVert.z+ofRandom(10)-5);
     }
 }
 
@@ -28,6 +28,6 @@ void Water::draw(){
     ofPushMatrix();
     if (seed.getSurfaceShape() != Seed::SPHERE)
         ofRotate(-90, 1, 0, 0);
-    waterMesh.draw();
+    vboMesh.draw();
     ofPopMatrix();
 }

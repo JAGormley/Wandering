@@ -26,7 +26,7 @@ public:
     virtual ~Surface();
     
     of3dPrimitive rawShape;
-    ofVboMesh rawMesh;
+    ofVboMesh vboMesh;
     Seed seed;
     
     

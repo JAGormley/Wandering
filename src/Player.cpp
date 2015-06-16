@@ -8,6 +8,7 @@
 
 #include "Player.h"
 
+ofVec3f Player::playerLoc;
 
 Player::Player(){
     controls.setCam(cam);
@@ -17,6 +18,7 @@ Player::Player(){
 
 void Player::move(){
     controls.move();
+    Player::playerLoc = cam.getPosition();
     // debug: lock camera in place:
     //    cam.setPosition(ofVec3f(Light::getLightPos().x+10, Light::getLightPos().y+30,Light::getLightPos().z+10));
 }
@@ -34,7 +36,6 @@ void Player::stopCam(){
 
 void Player::draw(){
     cam.draw();
-    
 }
 
 void Player::setMovementType(Seed lSeed){
@@ -62,3 +63,30 @@ void Player::setLocation(Seed lSeed){
         cam.lookAt(ofVec3f(0,0,283));
     };
 }
+
+
+void Player::setHeight(vector<ofVec3f> groundVerts){
+    ofVec3f playerNode = cam.getPosition();
+//    cout << "PLAYER: " << playerNode << endl;
+    int heightCounter = 0;
+    float height;
+    for (int i = 0; i < groundVerts.size(); i++) {
+        ofVec3f currentVert = groundVerts[i].rotate(-90, ofVec3f(1,0,0));
+        if ( (abs(currentVert.x-playerNode.x) < 50 ) &&
+//            (abs(currentVert.y-playerNode.y) < 100 ) &&
+            (abs(currentVert.z-playerNode.z) < 50 )) {
+            
+            heightCounter++;
+            height += currentVert.y;
+            
+            cout << "VERT: " << currentVert << endl;
+        }
+    }
+    height /= heightCounter+1;
+    cam.setPosition(cam.getPosition().x, -height, cam.getPosition().z);
+}
+
+
+//ofVec3f Player::getPlayerLoc(){
+//    return Player::playerLoc;
+//}

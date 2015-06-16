@@ -25,6 +25,8 @@ Surface::Surface(Seed seed){
             rawShape = ofSpherePrimitive(1,1);
  
     }
+    
+    vboMesh = rawShape.getMesh();
 };
 
 
@@ -45,8 +47,7 @@ void Surface::generate(){
 void Surface::draw(){}
 
 vector<ofVec3f> Surface::getMeshVerts(){
-    rawMesh = rawShape.getMesh();
-    return rawMesh.getVertices();
+    return vboMesh.getVertices();
 }
 
 

@@ -9,7 +9,9 @@
 #include "Void.h"
 
 
-Void::Void(Seed seed) : Surface(seed){}
+Void::Void(Seed seed) : Surface(seed){
+    vboMesh = rawShape.getMesh();
+}
 
 void Void::setColor(ofColor hue){
     
