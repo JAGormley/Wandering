@@ -72,9 +72,9 @@ void Player::setHeight(vector<ofVec3f> groundVerts){
     float height;
     for (int i = 0; i < groundVerts.size(); i++) {
         ofVec3f currentVert = groundVerts[i].rotate(-90, ofVec3f(1,0,0));
-        if ( (abs(currentVert.x-playerNode.x) < 50 ) &&
+        if ( (abs(currentVert.x-playerNode.x) < 30 ) &&
 //            (abs(currentVert.y-playerNode.y) < 100 ) &&
-            (abs(currentVert.z-playerNode.z) < 50 )) {
+            (abs(currentVert.z-playerNode.z) < 30 )) {
             
             heightCounter++;
             height += currentVert.y;
@@ -83,6 +83,7 @@ void Player::setHeight(vector<ofVec3f> groundVerts){
         }
     }
     height /= heightCounter+1;
+    cout << height << endl;
     cam.setPosition(cam.getPosition().x, -height, cam.getPosition().z);
 }
 

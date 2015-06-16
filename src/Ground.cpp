@@ -49,39 +49,28 @@ Ground::Ground(Seed seed) : Surface(seed){
 
 void Ground::draw(){
     if (ofGetKeyPressed()){groundCount++;}
-    cout << Player::playerLoc << endl;
     ofVec3f playerNode;
     playerNode =  Player::playerLoc;
+    ofSpherePrimitive jimmy;
+    
+    jimmy.set(7, 3);
     vector<ofVec3f> groundVerts = vboMesh.getVertices();
-    for (int i = 0; i < groundVerts.size(); i++) {
-        ofVec3f currentVert = groundVerts[i].rotate(-90, ofVec3f(1,0,0));
-        ofSpherePrimitive jimmy;
-        jimmy.set(10, 10);
-        if ( (abs(currentVert.x-playerNode.x) < 500 ) &&
-            //            (abs(currentVert.y-playerNode.y) < 100 ) &&
-            (abs(currentVert.z-playerNode.z) < 500 )) {
-            ofSpherePrimitive jimmy;
-            jimmy.set(10, 10);
-            ofSetColor(255, 0,0);//
-            jimmy.setPosition(currentVert);
-            jimmy.draw();
-        }
-        else {
-//            ofSetColor(0, 0,255);//
+//    for (int i = 0; i < groundVerts.size(); i++) {
+//        ofVec3f currentVert = groundVerts[i].rotate(-90, ofVec3f(1,0,0));
+//        
+//        if ( (abs(currentVert.x-playerNode.x) < 150 ) &&
+//            //            (abs(currentVert.y-playerNode.y) < 100 ) &&
+//            (abs(currentVert.z-playerNode.z) < 150 )) {
+//            ofSetColor(255,0,0);
 //            jimmy.setPosition(currentVert);
 //            jimmy.draw();
-        }
-    }
-    
-    
-    
-    // MESH HEIGHT DEBUG:
-    ofVec3f groundNode = vboMesh.getVertices()[groundCount];
-    ofSpherePrimitive jimmy;
-    jimmy.set(10, 10);
-    ofSetColor(255, 0,0);//
-    jimmy.setPosition(groundNode);
-    jimmy.draw();
+//        }
+//        else {
+//            ofSetColor(0,0,255);
+//            jimmy.setPosition(currentVert);
+//            jimmy.draw();
+//        }
+//    }
     
     material.begin();
     ofSetColor(150, 75, 0);
