@@ -42,7 +42,9 @@ void Controls::move(){
 }
 
 void Controls::setOrbitRadius(float radius){
+    sp.resetTransform();
     sp.set(radius, 32);
+    orbitRadius = radius;
 }
 void Controls::moveType(){
     
@@ -85,16 +87,15 @@ void Controls::moveType(){
         sp.rotate(handPos.z/2000, sp.getXAxis());
         sp.rotate(-handPos.x/2000, sp.getZAxis());
         
+        
         transformer = sp.getLocalTransformMatrix();
-        transformer.setTranslation(sp.getUpDir()*(sp.getRadius()));
+        transformer.setTranslation(sp.getUpDir()*orbitRadius);
         
         cam->setTransformMatrix(transformer);
         cam->tilt(-20);
         
         // DEBUG:
         sp.drawWireframe();
-        
-        cout << "2: " << cam->getPosition() << endl;
     }
     
     // TODO: BREAK THIS INTO NEW METHOD

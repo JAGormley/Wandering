@@ -60,6 +60,5 @@ void Player::setLocation(Seed lSeed){
     else {
         cam.setPosition(ofVec3f(0, lSeed.getPlayerLocation(), 0));
         cam.lookAt(ofVec3f(0,0,283));
-    }
-    cout << "1: " << cam.getPosition() << endl;
+    };
 }
