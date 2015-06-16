@@ -23,7 +23,8 @@ Plant::Plant(SpriteSeed spriteSeed) : Sprite(spriteSeed){
         plant.rotate(q);
     }
     else {
-        plant.rotate(90, 1, 0, 0);
+//        plant.rotate(90, 1, 0, 0);
+        plant.rotateAround(-90, ofVec3f(1,0,0), ofVec3f(0,0,0));
         
         // TODO: get plantSize from spriteSeed
         plant.move(ofVec3f(0, 0, 50));

@@ -40,7 +40,6 @@ public:
     void setNew();
     void draw();
     void update();
-    void moveLight(int x, int y);
     void reset();
     
     Seed seed;

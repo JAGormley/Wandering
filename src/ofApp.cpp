@@ -18,6 +18,7 @@ void ofApp::setup(){
     
     cam.setPosition(0, 0, -2500);
     scenario.setNew();
+    tube.set(10, 10000, 10, 10);
 }
 
 //--------------------------------------------------------------
@@ -40,7 +41,15 @@ void ofApp::draw(){
         scenario.player.startCam();
     }
     
+    
     scenario.draw();
+    
+    ofPushMatrix();
+    ofRotate(90, 1, 0, 0);
+    ofTranslate(0, 0, -100);
+    ofSetColor(100, 0, 100, 200);
+    tube.draw();
+    ofPopMatrix();
     
 //    shader.begin();
 //    shader.end();
@@ -90,7 +99,6 @@ void ofApp::keyReleased(int key){
 void ofApp::mouseMoved(int x, int y ){
     if (lightMove){
         
-        scenario.moveLight(x, y);
     }
     else if (lightOr){
 //        moon.setOrientation(ofVec3f(mouseX, mouseY, 0));

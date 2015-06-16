@@ -11,6 +11,7 @@
 
 Player::Player(){
     controls.setCam(cam);
+    
 };
 
 void Player::move(){
@@ -32,6 +33,7 @@ void Player::stopCam(){
 
 void Player::draw(){
     cam.draw();
+    
 }
 
 void Player::setMovementType(Seed lSeed){
@@ -50,7 +52,9 @@ void Player::setLocation(Seed lSeed){
     if (lSeed.getTraversal() == Seed::ORBIT)
         cam.setPosition(ofVec3f(0, lSeed.getPlayerLocation(), 0));
     else {
+        
+        // HAVE TO SET THIS GLOBALLY, CANT PAN
         cam.setPosition(ofVec3f(0, lSeed.getPlayerLocation(), 0));
-        cam.setGlobalOrientation(ofQuaternion(0, 0, -.93, 0));
+        cam.pan(180);
     }
 }

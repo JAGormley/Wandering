@@ -12,6 +12,9 @@
 
 
 Light::Light(Seed seed){
+    this->seed = seed;
+    
+    
     light.setPosition(0, 1500, 0);
     ofSetSmoothLighting(true);
     
@@ -32,6 +35,7 @@ Light::Light(Seed seed){
     lightColor.setBrightness( 255.f );
     light.setDiffuseColor(lightColor);
     light.setSpecularColor(lightColor);
+    
 }
 
 void Light::update(){
@@ -43,16 +47,23 @@ void Light::update(){
 }
 
 void Light::draw(){
-    ofPushMatrix();
     
+    ofPushMatrix();
     ofSetColor(255,255,255);
     material.begin();
     
+    
     ofRotate(90, 1, 0, 0);
+    if (seed.traversal != Seed::ORBIT){
+        ofRotate(95, 1, 0, 0);
+    }
+    
     
     light.setPosition(0, lightSize, -lightDistance+400);
     light.rotateAround(90, ofVec3f(1,0,0), ofVec3f(0,0,0));
-    ofTranslate(0, 0, -lightDistance);
+    
+    if (seed.traversal != Seed::ORBIT)
+        ofTranslate(0, 0, -seed.shapeSize);
     
     // flip facade so material faces light
     ofRotate(180, 1, 0, 0);
@@ -63,6 +74,10 @@ void Light::draw(){
     
     ofPopMatrix();
     //    light.draw();
+    //    }
+    
+    
+    
 }
 
 void Light::enable(){

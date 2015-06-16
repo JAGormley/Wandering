@@ -48,6 +48,7 @@ protected:
     ofShader shaderBlurY;
     ofFbo fboBlurOnePass;
     ofFbo fboBlurTwoPass;
+    Seed seed;
     
     
 };

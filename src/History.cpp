@@ -70,11 +70,11 @@ void History::setPresent(){
         }
         while (present.surface == 1 || present.surface == 2);
     }
-    else if (present.traversal == 3 && present.medium == 3){
+    else if (present.traversal == 3 && present.medium == 2){
         do{
             present.surface = ofRandom(4);
         }
-        while (present.surface == 0 || present.surface == 1);
+        while (present.surface == 0 || present.surface == 2);
     }
     // DEBUG:
 //    present.surface = 1;

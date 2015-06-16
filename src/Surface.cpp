@@ -18,7 +18,7 @@ Surface::Surface(Seed seed){
             rawShape = ofSpherePrimitive(seed.shapeSize, 64);
             break;
         case Seed::PLANE:
-            rawShape = ofPlanePrimitive(seed.shapeSize*10, seed.shapeSize*10, 30, 30);
+            rawShape = ofPlanePrimitive(seed.shapeSize, seed.shapeSize, 30, 30);
             //            rawShape =ofBoxPrimitive(seed.shapeSize, seed.shapeSize, seed.shapeSize);
             break;
         default:

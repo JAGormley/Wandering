@@ -77,8 +77,8 @@ void Controls::moveType(){
 //        cout << "FLY" << endl;
         up = 1.f;
         down = 0.f;
-        pitch_lr = handPos.x/100;
-        pitch_ud = handPos.y/100;
+        pitch_lr = handPos.x/500;
+        pitch_ud = handPos.y/500;
         back_forth = handPos.z/100;
     }
     else if (type == Seed::ORBIT){
@@ -96,19 +96,34 @@ void Controls::moveType(){
         sp.drawWireframe();
     }
     
-    if (type != Seed::ORBIT){
+    
+    
+    // TODO: BREAK THIS INTO NEW METHOD
+    
+    if (type == Seed::FLY){
+        if (back_forth > 0) back_forth = 0;
         cam->dolly(back_forth);
-//        cam->pan(-pitch_lr);r
-        cam->tilt(pitch_ud);
+//        cam->pan(-pitch_lr);
+//        cam->tilt(pitch_ud);
 //        cam->roll(roller);
         
-        if ((cam->getLookAtDir().x < .7f && pitch_lr < 0)){
+        if ((cam->getLookAtDir().x < .5f && pitch_lr < 0)){
             cam->pan(-pitch_lr);
         }
-        else if ((cam->getLookAtDir().x > -.7f && pitch_lr > 0)){
+        else if ((cam->getLookAtDir().x > -.5f && pitch_lr > 0)){
             cam->pan(-pitch_lr);
         }
-        cout << "PIT: " << pitch_lr << endl;
+        
+        if ((cam->getLookAtDir().y < .5f && pitch_ud > 0)){
+            cam->tilt(pitch_ud);
+        }
+        else if ((cam->getLookAtDir().y > -.5f && pitch_ud < 0)){
+            cam->tilt(pitch_ud);
+        }
+        
+        
+        
+        cout << "tilt: " << pitch_ud << endl;
         cout << "LOOK: " << cam->getLookAtDir() << endl;
     }
 }

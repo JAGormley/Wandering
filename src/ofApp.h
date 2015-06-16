@@ -51,4 +51,7 @@ public:
     
     
     
+    ofCylinderPrimitive tube;
+    
+    
 };

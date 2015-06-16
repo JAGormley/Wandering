@@ -28,7 +28,8 @@ public:
     Seed::Traversal getMovementType();
     
     ofCamera cam;
-    
+
 private:
     Controls controls;
+    
 };

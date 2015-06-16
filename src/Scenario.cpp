@@ -15,11 +15,6 @@ Scenario::Scenario(){
 
 }
 
-// TODO: REMOVE, DEBUG FUNCTION
-void Scenario::moveLight(int x, int y){
-    light->setPosition(ofVec3f(light->getPosition().x, x, y));
-}
-
 void Scenario::setNew(){
     reset();
     

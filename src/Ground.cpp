@@ -49,13 +49,13 @@ void Ground::draw(){
     if (!ofGetKeyPressed()){
         material.begin();
         ofSetColor(150, 75, 0);
-        //    ofPushMatrix();
+        ofPushMatrix();
         if (seed.getSurfaceShape() != Seed::SPHERE)
             ofRotate(-90, 1, 0, 0);
         groundMesh.draw();
         material.end();
     }
-    //    ofPopMatrix();
+    ofPopMatrix();
 }
 
 void Ground::setColor(ofColor hue){

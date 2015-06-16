@@ -42,10 +42,14 @@ void Seed::setSurfaceShape(){
     // TODO: get vals from ???
     if (traversal == ORBIT){
         sShape = SPHERE;
+        shapeSize = 1000;
     }
-    else sShape = PLANE;
+    else {
+        sShape = PLANE;
+        shapeSize = 5000;
+    }
     
-    shapeSize = 1000;
+    
 }
 void Seed::setSurfaceType(){
     sType = Seed::SurfaceType(history.getPresent().surface);
