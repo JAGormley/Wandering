@@ -11,6 +11,7 @@
 #include "ofxLeapMotion2.h"
 #include "Controls.h"
 #include "Light.h"
+#include "ofxRay.h"
 #include <stdio.h>
 
 
@@ -19,7 +20,7 @@ class Player {
 public:
     
     Player();
-    void setHeight(vector<ofVec3f> groundVerts);
+    void setHeight(ofVboMesh groundMesh);
     void move();
     ofVec3f getLocation();
     void draw();
@@ -39,7 +40,8 @@ public:
 
 private:
     Controls controls;
-    
+    ofRay playerRay;
+    ofPlane intersectionPlane;
     
 };
 

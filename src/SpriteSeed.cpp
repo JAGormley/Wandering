@@ -10,8 +10,8 @@
 
 SpriteSeed::SpriteSeed(){};
 
-SpriteSeed::SpriteSeed(Seed seed, vector<ofVec3f> surfaceVerts){
-    sVerts = surfaceVerts;
+SpriteSeed::SpriteSeed(Seed seed, ofVboMesh surfaceMesh){
+    sVerts = surfaceMesh.getVertices();
     this->seed = seed;
 }
 //

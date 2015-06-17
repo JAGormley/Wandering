@@ -29,12 +29,8 @@ void Environment::update(){
 }
 
 
-vector<ofVec3f> Environment::getSurfaceVerts(){
-    return surface->getMeshVerts();
-}
-
-vector<ofVec3f> Environment::getSurfaceNorms(){
-    //    return surface->getMeshNorms();
+ofVboMesh Environment::getSurfaceMesh(){
+    return surface->getMesh();
 }
 
 Environment::~Environment(){

@@ -95,6 +95,8 @@ void Ground::draw(){
 //    vboMesh.getVertices()[3000] = ofVec3f(vboMesh.getVertices()[3000].x, vboMesh.getVertices()[3000].y, ofGetMouseX());
     
     vboMesh.draw();
+//    rawShape.drawAxes(100);
+//    ofDrawAxis(600);
     material.end();
     ofPopMatrix();
 }

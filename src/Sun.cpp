@@ -25,5 +25,18 @@ Sun::Sun(Seed seed) : Light(seed){
 
 void Sun::drawChild(){
     ofSetCircleResolution(100);
+    ofSetColor(255, 255, 255);
     ofCircle(0, 0, 1200);
+    ofNoFill();
+    ofEnableSmoothing();
+    ofCircle(0, 0, 1300);
+    ofFill();
+    ofDisableSmoothing();
+//    ofSetColor(255, 255, 255, 150);
+//    ofCircle(0, 0, 1100);
+//    ofSetColor(255, 255, 255, 200);
+//    ofCircle(0, 0, 1000);
+//    ofSetColor(255, 255, 255, 255);
+//    ofCircle(0, 0, 900);
+    
 }

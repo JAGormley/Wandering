@@ -22,7 +22,7 @@ void Scenario::setNew(){
     seed.populate();
     // set the environment to new seed values
     environment = new Environment(*getSurface(), *getMedium());
-    spriteSeed = SpriteSeed(seed, environment->getSurfaceVerts());
+    spriteSeed = SpriteSeed(seed, environment->getSurfaceMesh());
     
     // set light to new seed values
     light = getLight();
@@ -52,7 +52,7 @@ void Scenario::update(){
     environment->update();
     light->update();
     player.move();
-//    player.setHeight(environment->getSurfaceVerts());
+//    player.setHeight(environment->getSurfaceMesh());
 }
 
 // ENVIRONMENT
@@ -114,6 +114,8 @@ void Scenario::setPlayer(Seed lSeed){
 }
 
 // LIGHT
+
+// TODO: handle cloudy
 
 Light * Scenario::getLight(){
     switch (seed.getLightType()){

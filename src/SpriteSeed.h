@@ -18,7 +18,7 @@
 class SpriteSeed {
 public:
     SpriteSeed();
-    SpriteSeed(Seed seed, vector<ofVec3f> surfaceVerts);
+    SpriteSeed(Seed seed, ofVboMesh surfaceMesh);
     int getShapeSize();
     bool isOrbital();
     ofVec3f spritePos();

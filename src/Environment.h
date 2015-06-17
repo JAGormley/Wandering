@@ -22,8 +22,7 @@ public:
     ~Environment();
     Environment(Surface &surface, Medium &medium);
     void update();
-    vector<ofVec3f> getSurfaceVerts();
-    vector<ofVec3f> getSurfaceNorms();
+    ofVboMesh getSurfaceMesh();
     void draw();
     
     Medium * medium;

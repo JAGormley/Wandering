@@ -17,19 +17,19 @@
 class Surface {
 public:
     Surface(Seed seed);
-    virtual void generate();
     
     virtual void setColor(ofColor hue) =0;
     virtual void draw() =0;
     virtual void update() =0;
-    virtual vector<ofVec3f> getMeshVerts();
+    virtual ofVboMesh getMesh();
     virtual void noiseGen(int meshSize);
     virtual ~Surface();
+//    virtual ofPlanePrimitive getPlane();
     
     of3dPrimitive rawShape;
     ofVboMesh vboMesh;
     Seed seed;
-    ofImage img;
+    ofImage heightMap;
     
     
 };

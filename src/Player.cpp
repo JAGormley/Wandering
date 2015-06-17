@@ -65,26 +65,44 @@ void Player::setLocation(Seed lSeed){
 }
 
 
-void Player::setHeight(vector<ofVec3f> groundVerts){
-    ofVec3f playerNode = cam.getPosition();
-//    cout << "PLAYER: " << playerNode << endl;
-    int heightCounter = 0;
-    float height;
-    for (int i = 0; i < groundVerts.size(); i++) {
-        ofVec3f currentVert = groundVerts[i].rotate(-90, ofVec3f(1,0,0));
-        if ( (abs(currentVert.x-playerNode.x) < 30 ) &&
-//            (abs(currentVert.y-playerNode.y) < 100 ) &&
-            (abs(currentVert.z-playerNode.z) < 30 )) {
-            
-            heightCounter++;
-            height += currentVert.y;
-            
-            cout << "VERT: " << currentVert << endl;
-        }
-    }
-    height /= heightCounter+1;
-    cout << height << endl;
-    cam.setPosition(cam.getPosition().x, -height, cam.getPosition().z);
+void Player::setHeight(ofVboMesh groundMesh){
+//    intersectionPlane.setFrom(groundMesh);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+//    ofVec3f playerNode = cam.getPosition();
+////    cout << "PLAYER: " << playerNode << endl;
+//    int heightCounter = 0;
+//    float height;
+//    for (int i = 0; i < groundVerts.size(); i++) {
+//        ofVec3f currentVert = groundVerts[i].rotate(-90, ofVec3f(1,0,0));
+//        if ( (abs(currentVert.x-playerNode.x) < 30 ) &&
+////            (abs(currentVert.y-playerNode.y) < 100 ) &&
+//            (abs(currentVert.z-playerNode.z) < 30 )) {
+//            
+//            heightCounter++;
+//            height += currentVert.y;
+//            
+//            cout << "VERT: " << currentVert << endl;
+//        }
+//    }
+//    height /= heightCounter+1;
+//    cout << height << endl;
+//    cam.setPosition(cam.getPosition().x, -height, cam.getPosition().z);
+    
+    
+    
+    
 }
 
 
