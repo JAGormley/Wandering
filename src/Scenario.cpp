@@ -33,6 +33,10 @@ void Scenario::setNew(){
     // TODO: FIX
     sprites.clear();
     setSprites();
+    
+    
+    // DEBUG
+    player.setHeight(environment->getSurfaceMesh());
 }
 
 void Scenario::draw(){
@@ -52,7 +56,7 @@ void Scenario::update(){
     environment->update();
     light->update();
     player.move();
-//    player.setHeight(environment->getSurfaceMesh());
+    
 }
 
 // ENVIRONMENT

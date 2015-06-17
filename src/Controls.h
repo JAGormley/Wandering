@@ -30,7 +30,7 @@ public:
     void move();
     void moveType();
     void setOrbitRadius(float radius);
-    void moveHelper(float back_forth, float pan, float tilt);
+    void moveHelper(float dolly, float pan, float tilt, float boom, float truck);
     
     Seed::Traversal type;
     ofxLeapMotion leap;

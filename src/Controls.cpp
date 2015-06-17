@@ -59,14 +59,15 @@ void Controls::moveType(){
     if (type == Seed::FLOAT){
         cout << "FLOAT" << endl;
         // maybe this has a slow set forward z
-        moveHelper(handPos.z/100, -handPos.x/100, handPos.y/100);
+        
+        moveHelper(handPos.z/100, handPos.x/300, 0, handPos.y/100, 0);
     }
+    
     else if (type == Seed::WALK){
 //                cout << "WALK" << endl;
         // TODO needs indepedent head movement!!
-        moveHelper(handPos.z/200, handPos.x/100, 0);
+        moveHelper(handPos.z/200, handPos.x/100, 0, 0, 0);
     }
-    
     
     else if (type == Seed::ORBIT){
         //        cout << "ORBIT" << endl;
@@ -115,8 +116,10 @@ void Controls::moveType(){
 
 
 
-void Controls::moveHelper(float back_forth, float pan, float tilt){
-    cam->dolly(back_forth);
+void Controls::moveHelper(float dolly, float pan, float tilt, float boom, float truck){
+    cam->dolly(dolly);
     cam->pan(-pan);
     cam->tilt(tilt);
+    cam->boom(boom);
+//    cam->truck(-truck);
 }

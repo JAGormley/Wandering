@@ -46,11 +46,11 @@ void Light::draw(){
     ofSetColor(255,255,255);
     material.begin();
     
-    ofRotate(180, 1, 0, 0);
+    ofRotate(160, 1, 0, 0);
 
     light.setPosition(0, lightSize, -lightDistance-Player::playerLoc.z+200);
     // TODO: tie light rotation to sun rotation for movement
-    light.rotateAround(170, ofVec3f(1,0,0), ofVec3f(0,0,0));
+    light.rotateAround(150, ofVec3f(1,0,0), ofVec3f(0,0,0));
     
     if (seed.traversal == Seed::ORBIT) {
         ofTranslate(0, 0, -seed.shapeSize);

@@ -30,6 +30,5 @@ public:
     ofVboMesh vboMesh;
     Seed seed;
     ofImage heightMap;
-    
-    
+
 };

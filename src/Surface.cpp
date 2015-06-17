@@ -39,6 +39,9 @@ ofVboMesh Surface::getMesh(){
     return vboMesh;
 }
 
+
+/* code adapted from https://sites.google.com/site/ofauckland/examples/noise */
+
 // TODO: fix generate and surface so water is feasible at 60fps; lower the column resolution(?)
 void Surface::noiseGen(int meshSize){
     for (int y=0; y<500; y++) {

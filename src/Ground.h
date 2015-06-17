@@ -35,4 +35,5 @@ public:
     ofPlanePrimitive plane;
     int groundCount;
 //    ofVec3f playerLoc;
+    deque<ofVec3f> points;
 };
