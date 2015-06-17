@@ -32,13 +32,14 @@ Surface::Surface(Seed seed){
 };
 
 
+// TODO: static camera function to clip the horizon a bit earlier than the light
 void Surface::draw(){}
 
 ofVboMesh Surface::getMesh(){
     return vboMesh;
 }
 
-// TODO: fix generate and surface so it's feasible at 60fps; lower the column resolution
+// TODO: fix generate and surface so water is feasible at 60fps; lower the column resolution(?)
 void Surface::noiseGen(int meshSize){
     for (int y=0; y<500; y++) {
         for (int x=0; x<500; x++) {

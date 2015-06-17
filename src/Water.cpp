@@ -23,12 +23,12 @@ void Water::update(){
         ofVec3f tempVert = vboMesh.getVertices()[i];
         
         
-        float xCoord = ofMap(tempVert.x, -2500, 2500, 0, 500);
-        float yCoord = ofMap(tempVert.y, -2500, 2500, 0, 500);
+        float xCoord = ofMap(vboMesh.getVertices()[i].x, -seed.shapeSize/2, seed.shapeSize/2, 0, 500);
+        float yCoord = ofMap(vboMesh.getVertices()[i].y, -seed.shapeSize/2, seed.shapeSize/2, 0, 500);
         
-        float height = img.getColor(xCoord, yCoord).getBrightness()/200;
+        float height = heightMap.getColor(xCoord, yCoord).getBrightness()*2;
 //        cout << height << endl;
-        vboMesh.getVertices()[i] = ofVec3f(tempVert.x, tempVert.y, 200*height);
+        vboMesh.getVertices()[i] = ofVec3f(tempVert.x, tempVert.y, height);
     }
 }
 

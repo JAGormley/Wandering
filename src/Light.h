@@ -15,6 +15,7 @@
 #include <iostream>
 #include "ofMain.h"
 #include "Seed.h"
+#include "Player.h"
 
 #endif /* defined(__Wandering2__Light__) */
 

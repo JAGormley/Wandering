@@ -8,8 +8,7 @@
 
 #include "Light.h"
 
-
-
+// TODO: check sphere light now
 
 Light::Light(Seed seed){
     this->seed = seed;
@@ -39,11 +38,7 @@ Light::Light(Seed seed){
 }
 
 void Light::update(){
-    //    int newPos;
-    ////    newPos = light.getPosition().y + 1;
-    ////    newPos = newPos%1050;
-    //    light.setPosition(0, 1500, 0);
-    //    light.setPosition(ofVec3f(0, 0, -ofGetMouseX()));
+    
 }
 
 void Light::draw(){
@@ -51,20 +46,19 @@ void Light::draw(){
     ofSetColor(255,255,255);
     material.begin();
     
+    ofRotate(180, 1, 0, 0);
+
+    light.setPosition(0, lightSize, -lightDistance-Player::playerLoc.z+200);
+    // TODO: tie light rotation to sun rotation for movement
+    light.rotateAround(170, ofVec3f(1,0,0), ofVec3f(0,0,0));
     
-    ofRotate(90, 1, 0, 0);
-//    if (seed.traversal != Seed::ORBIT){
-        ofRotate(95, 1, 0, 0);
-//    }
-    
-    
-    light.setPosition(0, lightSize, -lightDistance+400);
-    light.rotateAround(148, ofVec3f(1,0,0), ofVec3f(0,0,0));
-    
-    if (seed.traversal != Seed::ORBIT)
+    if (seed.traversal == Seed::ORBIT) {
         ofTranslate(0, 0, -seed.shapeSize);
-    else ofTranslate(0, 0, -lightDistance);
-    
+    }
+    else {
+        ofTranslate(0, 0, -lightDistance-Player::playerLoc.z);
+    }
+    ;
     // flip facade so material faces light
     ofRotate(180, 1, 0, 0);
     
@@ -73,7 +67,7 @@ void Light::draw(){
     material.end();
     
     ofPopMatrix();
-//        light.draw();
+    light.draw();
     //    }
     
 }

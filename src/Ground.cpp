@@ -22,10 +22,12 @@ Ground::Ground(Seed seed) : Surface(seed){
     noiseGen(vboMesh.getNumVertices());
     for (int i = 0; i < vboMesh.getNumVertices(); i++) {
 
-        float xCoord = ofMap(vboMesh.getVertices()[i].x, -2500, 2500, 0, 500);
-        float yCoord = ofMap(vboMesh.getVertices()[i].y, -2500, 2500, 0, 500);
         
-        float height = img.getColor(xCoord, yCoord).getBrightness()*3;
+        
+        float xCoord = ofMap(vboMesh.getVertices()[i].x, -seed.shapeSize/2, seed.shapeSize/2, 0, 500);
+        float yCoord = ofMap(vboMesh.getVertices()[i].y, -seed.shapeSize/2, seed.shapeSize/2, 0, 500);
+        
+        float height = heightMap.getColor(xCoord, yCoord).getBrightness()*5;
         
         // TODO: DENSITY
         // TODO: change to sphere terrain
@@ -37,7 +39,7 @@ Ground::Ground(Seed seed) : Surface(seed){
         if (seed.getSurfaceShape() == Seed::PLANE){
             
             // Hills
-            tempVert = ofVec3f(meshVerts[i].x, meshVerts[i].y, meshVerts[i].z+height);
+            tempVert = ofVec3f(meshVerts[i].x, meshVerts[i].y, height);
         }
         
         

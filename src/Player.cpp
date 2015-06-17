@@ -13,7 +13,6 @@ ofVec3f Player::playerLoc;
 Player::Player(){
     controls.setCam(cam);
     
-    
 };
 
 void Player::move(){
@@ -61,24 +60,17 @@ void Player::setLocation(Seed lSeed){
     else {
         cam.setPosition(ofVec3f(0, lSeed.getPlayerLocation(), 0));
         cam.lookAt(ofVec3f(0,0,283));
+        
     };
 }
 
 
 void Player::setHeight(ofVboMesh groundMesh){
+    
+    
+
+    
 //    intersectionPlane.setFrom(groundMesh);
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
 //    ofVec3f playerNode = cam.getPosition();
 ////    cout << "PLAYER: " << playerNode << endl;
