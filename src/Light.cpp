@@ -59,7 +59,7 @@ void Light::draw(){
     
     
     light.setPosition(0, lightSize, -lightDistance+400);
-    light.rotateAround(90, ofVec3f(1,0,0), ofVec3f(0,0,0));
+    light.rotateAround(148, ofVec3f(1,0,0), ofVec3f(0,0,0));
     
     if (seed.traversal != Seed::ORBIT)
         ofTranslate(0, 0, -seed.shapeSize);
@@ -73,10 +73,8 @@ void Light::draw(){
     material.end();
     
     ofPopMatrix();
-        light.draw();
+//        light.draw();
     //    }
-    
-    
     
 }
 

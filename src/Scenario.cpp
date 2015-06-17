@@ -52,7 +52,7 @@ void Scenario::update(){
     environment->update();
     light->update();
     player.move();
-    player.setHeight(environment->getSurfaceVerts());
+//    player.setHeight(environment->getSurfaceVerts());
 }
 
 // ENVIRONMENT

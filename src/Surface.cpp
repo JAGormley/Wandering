@@ -10,6 +10,7 @@
 
 
 Surface::Surface(Seed seed){
+    img.allocate(500, 500, OF_IMAGE_GRAYSCALE);
     this->seed = seed;
     
     // TODO: DENSITY
@@ -19,12 +20,12 @@ Surface::Surface(Seed seed){
             break;
         case Seed::PLANE:
             rawShape = ofPlanePrimitive(seed.shapeSize, seed.shapeSize, 100, 100);
-
+            
             //            rawShape =ofBoxPrimitive(seed.shapeSize, seed.shapeSize, seed.shapeSize);
             break;
         default:
             rawShape = ofSpherePrimitive(1,1);
- 
+            
     }
     
     vboMesh = rawShape.getMesh();
@@ -34,15 +35,15 @@ Surface::Surface(Seed seed){
 
 // TODO: PROBABLY DELETE THIS FUNCTION
 void Surface::generate(){
-//    switch (seed.getSurfaceShape()){
-//        case Seed::SPHERE:
-//            rawShape = ofSpherePrimitive(seed.shapeSize, 64);
-//            break;
-//        case Seed::PLANE:
-//            rawShape = ofPlanePrimitive(seed.shapeSize*10, seed.shapeSize*10, 30, 30);
-//            //            rawShape =ofBoxPrimitive(seed.shapeSize, seed.shapeSize, seed.shapeSize);
-//            break;
-//    }
+    //    switch (seed.getSurfaceShape()){
+    //        case Seed::SPHERE:
+    //            rawShape = ofSpherePrimitive(seed.shapeSize, 64);
+    //            break;
+    //        case Seed::PLANE:
+    //            rawShape = ofPlanePrimitive(seed.shapeSize*10, seed.shapeSize*10, 30, 30);
+    //            //            rawShape =ofBoxPrimitive(seed.shapeSize, seed.shapeSize, seed.shapeSize);
+    //            break;
+    //    }
 }
 
 void Surface::draw(){}
@@ -50,7 +51,21 @@ void Surface::draw(){}
 vector<ofVec3f> Surface::getMeshVerts(){
     return vboMesh.getVertices();
 }
-
-
+// TODO: fix generate and surface so it's feasible at 60fps; lower the column resolution
+void Surface::noiseGen(int meshSize){
+    for (int y=0; y<500; y++) {
+        for (int x=0; x<500; x++) {
+            
+            float a = x * .005;
+            float b = y * .005;
+            float c = ofGetFrameNum() / 200.0;
+            
+            float noise = ofNoise(a,b,c) * 255;
+            float color = noise>75 ? ofMap(noise,75,255,0,255) : 0;
+            
+            img.getPixels()[y*500+x] = color;
+        }
+    }
+}
 
 Surface::~Surface(){}

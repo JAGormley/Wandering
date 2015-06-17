@@ -19,19 +19,27 @@ Ground::Ground(Seed seed) : Surface(seed){
     vboMesh = rawShape.getMesh();
     
     vector<ofVec3f> meshVerts = vboMesh.getVertices();
-    
+    noiseGen(vboMesh.getNumVertices());
     for (int i = 0; i < vboMesh.getNumVertices(); i++) {
+
+        float xCoord = ofMap(vboMesh.getVertices()[i].x, -2500, 2500, 0, 500);
+        float yCoord = ofMap(vboMesh.getVertices()[i].y, -2500, 2500, 0, 500);
+        
+        float height = img.getColor(xCoord, yCoord).getBrightness()*3;
+        
         // TODO: DENSITY
+        // TODO: change to sphere terrain
         int rando = ofRandom(100);
-        int rando2 = ofRandom(800);
         ofVec3f tempVert = vboMesh.getVertices()[i];
         
         
         // TERRAIN MANIPULATION
-        if (seed.getSurfaceShape() == Seed::PLANE)
+        if (seed.getSurfaceShape() == Seed::PLANE){
             
             // Hills
-            tempVert = ofVec3f(meshVerts[i].x+rando2-400, meshVerts[i].y+rando2-400, meshVerts[i].z+rando-70);
+            tempVert = ofVec3f(meshVerts[i].x, meshVerts[i].y, meshVerts[i].z+height);
+        }
+        
         
         // Sphere terrain
         else tempVert = ofVec3f(meshVerts[i].x, meshVerts[i].y+rando, meshVerts[i].z);
@@ -48,13 +56,15 @@ Ground::Ground(Seed seed) : Surface(seed){
 }
 
 void Ground::draw(){
-    if (ofGetKeyPressed()){groundCount++;}
-    ofVec3f playerNode;
-    playerNode =  Player::playerLoc;
-    ofSpherePrimitive jimmy;
+
     
-    jimmy.set(7, 3);
-    vector<ofVec3f> groundVerts = vboMesh.getVertices();
+// TERRAIN DEBUG ////////////
+
+//    ofVec3f playerNode;
+//    playerNode =  Player::playerLoc;
+//    ofSpherePrimitive jimmy;
+//    jimmy.set(7, 3);
+//    vector<ofVec3f> groundVerts = vboMesh.getVertices();
 //    for (int i = 0; i < groundVerts.size(); i++) {
 //        ofVec3f currentVert = groundVerts[i].rotate(-90, ofVec3f(1,0,0));
 //        
@@ -72,12 +82,18 @@ void Ground::draw(){
 //        }
 //    }
     
+    
+////////////////////////////
+    
     material.begin();
     ofSetColor(150, 75, 0);
     ofPushMatrix();
     
     if (seed.getSurfaceShape() != Seed::SPHERE)
         ofRotate(-90, 1, 0, 0);
+    // DEBUG
+//    vboMesh.getVertices()[3000] = ofVec3f(vboMesh.getVertices()[3000].x, vboMesh.getVertices()[3000].y, ofGetMouseX());
+    
     vboMesh.draw();
     material.end();
     ofPopMatrix();
@@ -94,3 +110,7 @@ void Ground::update(){
 vector<ofVec3f> Ground::getMeshVerts(){
     return vboMesh.getVertices();
 }
+
+
+
+

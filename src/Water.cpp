@@ -10,6 +10,7 @@
 
 Water::Water(Seed seed) : Surface(seed){
     vboMesh = rawShape.getMesh();
+    
 }
 
 void Water::setColor(ofColor hue){
@@ -17,9 +18,17 @@ void Water::setColor(ofColor hue){
 }
 
 void Water::update(){
+    noiseGen(vboMesh.getNumVertices());
     for (int i = 0; i < vboMesh.getVertices().size(); i++) {
         ofVec3f tempVert = vboMesh.getVertices()[i];
-        vboMesh.getVertices()[i] = ofVec3f(tempVert.x, tempVert.y, tempVert.z+ofRandom(10)-5);
+        
+        
+        float xCoord = ofMap(tempVert.x, -2500, 2500, 0, 500);
+        float yCoord = ofMap(tempVert.y, -2500, 2500, 0, 500);
+        
+        float height = img.getColor(xCoord, yCoord).getBrightness()/200;
+//        cout << height << endl;
+        vboMesh.getVertices()[i] = ofVec3f(tempVert.x, tempVert.y, 200*height);
     }
 }
 
