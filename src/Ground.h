@@ -30,6 +30,7 @@ public:
     void draw();
     vector<ofVec3f> getMeshVerts();
     
+    
     ofMaterial material;
     
     ofPlanePrimitive plane;

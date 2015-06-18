@@ -28,7 +28,10 @@ public:
     void stopCam();
     void setMovementType(Seed lSeed);
     void setLocation(Seed lSeed);
+    float getNewHeight(float posX, float posY, ofVec3f a, ofVec3f b, ofVec3f c);
+    float getHeightApprox(ofVec3f playerPos, ofVec3f a, ofVec3f b, ofVec3f c);
     Seed::Traversal getMovementType();
+    
     
     ofCamera cam;
 //    static ofVec3f playerLoc;
@@ -43,6 +46,6 @@ private:
     ofRay playerRay;
     ofPlane intersectionPlane;
     vector<pair<int, int> > distances;
-    
+    float safeY;
 };
 

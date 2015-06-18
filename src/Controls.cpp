@@ -65,7 +65,7 @@ void Controls::moveType(){
     else if (type == Seed::WALK){
 //                cout << "WALK" << endl;
         // TODO needs indepedent head movement!!
-        moveHelper(handPos.z/200, handPos.x/100, 0, 0, 0);
+        moveHelper(handPos.z/50, handPos.x/100, 0, 0, 0);
     }
     
     else if (type == Seed::ORBIT){

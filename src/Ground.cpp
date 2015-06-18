@@ -132,6 +132,3 @@ vector<ofVec3f> Ground::getMeshVerts(){
     return vboMesh.getVertices();
 }
 
-
-
-

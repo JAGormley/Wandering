@@ -18,7 +18,10 @@ Player::Player(){
 void Player::move(){
     controls.move();
     Player::playerLoc = cam.getPosition();
+    
+    // TODO set this automatically
     cam.setPosition(cam.getPosition().x, 1100, cam.getPosition().z);
+    
     // debug: lock camera in place:
     //    cam.setPosition(ofVec3f(Light::getLightPos().x+10, Light::getLightPos().y+30,Light::getLightPos().z+10));
 }
@@ -87,18 +90,50 @@ void Player::setHeight(ofVboMesh groundMesh){
     }
     sort(distances.begin(), distances.end());
     
+    
+//    float newHeight = 1100;
     if (distances.size() > 3){
         ofVec3f a = groundVerts[distances[0].second];
         ofVec3f b = groundVerts[distances[1].second];
         ofVec3f c = groundVerts[distances[2].second];
         
-        cam.setPosition(cam.getPosition().x, a.y+30, cam.getPosition().z);
+        float newHeight = getHeightApprox(playerNode, a, b, c);
+        cout << "height: " << newHeight << endl;
+//        newHeight = (newHeight > 50000) ? newHeight : cam.getPosition().y;
+        cam.setPosition(cam.getPosition().x, newHeight+30, cam.getPosition().z);
+        
     }
-    
     
     
 }
 
+
+/* adapted following two functions from here: http://stackoverflow.com/questions/26273131/smooth-terrain-collision-3d*/
+
+float Player::getNewHeight(float posX, float posZ, ofVec3f a, ofVec3f b, ofVec3f c){
+    // get triangle normal
+    ofVec3f nVec1 = b - a;
+    ofVec3f nVec2 = c - a;
+
+    ofVec3f nCross = nVec1.cross(nVec2);
+    nCross.normalize();
+    
+    float d = -(a.x * nCross.x + a.y * nCross.y + a.z * nCross.z);
+    
+    cout << "crossY: " << nCross.y << endl;
+    nCross.y = (nCross.y < -1 || nCross.y == 0 || nCross.y > 1) ? safeY : nCross.y;
+    safeY = nCross.y;
+    cout << "safeY: " << safeY << endl;
+    return -(d + nCross.z * posZ + nCross.x * posX)/nCross.y;
+}
+float Player::getHeightApprox(ofVec3f playerPos, ofVec3f a, ofVec3f b, ofVec3f c)
+{
+    return ( (getNewHeight(playerPos.x,playerPos.z, a,b,c)
+              + getNewHeight(playerPos.x + 1, playerPos.z, a,b,c)
+              + getNewHeight(playerPos.x - 1, playerPos.z, a,b,c)
+              + getNewHeight(playerPos.x, playerPos.z + 1, a,b,c)
+              + getNewHeight(playerPos.x, playerPos.z - 1, a,b,c)) / 5);
+}
 
 //ofVec3f Player::getPlayerLoc(){
 //    return Player::playerLoc;
