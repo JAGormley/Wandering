@@ -18,16 +18,15 @@ void Water::setColor(ofColor hue){
 }
 
 void Water::update(){
-    noiseGen(vboMesh.getNumVertices());
+    waterNoiseGen(vboMesh.getNumVertices());
     for (int i = 0; i < vboMesh.getVertices().size(); i++) {
         ofVec3f tempVert = vboMesh.getVertices()[i];
         
         
-        float xCoord = ofMap(vboMesh.getVertices()[i].x, -seed.shapeSize/2, seed.shapeSize/2, 0, 500);
-        float yCoord = ofMap(vboMesh.getVertices()[i].y, -seed.shapeSize/2, seed.shapeSize/2, 0, 500);
+        int xCoord = ofMap(vboMesh.getVertices()[i].x, -seed.shapeSize/2, seed.shapeSize/2, 0, 99);
+        int yCoord = ofMap(vboMesh.getVertices()[i].y, -seed.shapeSize/2, seed.shapeSize/2, 0, 99);
         
-        float height = heightMap.getColor(xCoord, yCoord).getBrightness()*2;
-//        cout << height << endl;
+        float height = heightMapi[xCoord][yCoord]*2;
         vboMesh.getVertices()[i] = ofVec3f(tempVert.x, tempVert.y, height);
     }
 }

@@ -69,6 +69,8 @@ void Player::setLocation(Seed lSeed){
 }
 
 
+// TODO: MOVE THIS LOGIC INTO SURFACE
+
 void Player::setHeight(ofVboMesh groundMesh){
     
     ofVec3f playerNode = Player::playerLoc;

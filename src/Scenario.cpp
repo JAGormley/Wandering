@@ -12,7 +12,7 @@
 // GLOBAL
 
 Scenario::Scenario(){
-
+    
 }
 
 void Scenario::setNew(){
@@ -23,7 +23,7 @@ void Scenario::setNew(){
     // set the environment to new seed values
     environment = new Environment(*getSurface(), *getMedium());
     spriteSeed = SpriteSeed(seed, environment->getSurfaceMesh());
-    
+    player.setHeight(environment->getSurfaceMesh());
     // set light to new seed values
     light = getLight();
     
@@ -44,7 +44,7 @@ void Scenario::draw(){
     environment->draw();
     
     for (int i = 0; i < sprites.size(); i++) {
-//        sprites[i]->draw();
+        sprites[i]->draw();
     }
     light->draw();
     light->disable();
@@ -55,7 +55,8 @@ void Scenario::update(){
     environment->update();
     light->update();
     player.move();
-    player.setHeight(environment->getSurfaceMesh());
+//    if (seed.getTraversal() != Seed::ORBIT)
+        player.setHeight(environment->getSurfaceMesh());
     
 }
 
@@ -129,9 +130,9 @@ Light * Scenario::getLight(){
         case Seed::MOON:
             return new Moon(seed);
             break;
-//        case Seed::CLOUDY:
-//            return new Cloudy(seed);
-//            break;
+            //        case Seed::CLOUDY:
+            //            return new Cloudy(seed);
+            //            break;
     }
 }
 

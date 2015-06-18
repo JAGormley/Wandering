@@ -60,42 +60,7 @@ Ground::Ground(Seed seed) : Surface(seed){
 void Ground::draw(){
     
     
-    // TERRAIN DEBUG ////////////
-    
-    ofVec3f playerNode = Player::playerLoc;
-    vector<ofVec3f> groundVerts = vboMesh.getVertices();
-    distances.clear();
-    
-    for (int i = 0; i < groundVerts.size(); i++) {
-        ofVec3f currentVert = groundVerts[i].rotate(-90, ofVec3f(1,0,0));
-        float distance = currentVert.distance(playerNode);
-        if (distance < 500)
-            distances.push_back(pair<int, int>(distance, i));
-        if (distances.size() > 6){
-            break;
-        }
-    }
-    sort(distances.begin(), distances.end());
-    
-    if (distances.size() > 3){
-
-        ofVec3f a = groundVerts[distances[0].second];
-        ofVec3f b = groundVerts[distances[1].second];
-        ofVec3f c = groundVerts[distances[2].second];
-        
-        ofSetColor(255,0,0);
-        
-        ofDrawSphere(a.x, a.y, a.z,7);
-        ofDrawSphere(b.x, b.y, b.z,7);
-        ofDrawSphere(c.x, c.y, c.z,7);
-    }
-    
-    
-    
-    
-    
-    
-    
+    terrainDebug();
     
     ////////////////////////////
     
@@ -132,3 +97,35 @@ vector<ofVec3f> Ground::getMeshVerts(){
     return vboMesh.getVertices();
 }
 
+
+void Ground::terrainDebug(){
+    // TERRAIN DEBUG ////////////
+    
+    ofVec3f playerNode = Player::playerLoc;
+    vector<ofVec3f> groundVerts = vboMesh.getVertices();
+    distances.clear();
+    
+    for (int i = 0; i < groundVerts.size(); i++) {
+        ofVec3f currentVert = groundVerts[i].rotate(-90, ofVec3f(1,0,0));
+        float distance = currentVert.distance(playerNode);
+        if (distance < 500)
+            distances.push_back(pair<int, int>(distance, i));
+        if (distances.size() > 6){
+            break;
+        }
+    }
+    sort(distances.begin(), distances.end());
+    
+    if (distances.size() > 3){
+        
+        ofVec3f a = groundVerts[distances[0].second];
+        ofVec3f b = groundVerts[distances[1].second];
+        ofVec3f c = groundVerts[distances[2].second];
+        
+        ofSetColor(255,0,0);
+        
+        ofDrawSphere(a.x, a.y, a.z,7);
+        ofDrawSphere(b.x, b.y, b.z,7);
+        ofDrawSphere(c.x, c.y, c.z,7);
+    }
+}

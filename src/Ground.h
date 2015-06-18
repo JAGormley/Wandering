@@ -29,7 +29,7 @@ public:
     void update();
     void draw();
     vector<ofVec3f> getMeshVerts();
-    
+    void terrainDebug();
     
     ofMaterial material;
     

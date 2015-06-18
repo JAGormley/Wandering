@@ -23,6 +23,7 @@ public:
     virtual void update() =0;
     virtual ofVboMesh getMesh();
     virtual void noiseGen(int meshSize);
+    virtual void waterNoiseGen(int meshSize);
     virtual ~Surface();
     
     //    virtual ofPlanePrimitive getPlane();
@@ -31,5 +32,6 @@ public:
     ofVboMesh vboMesh;
     Seed seed;
     ofImage heightMap;
+    int heightMapi[100][100];
     
 };

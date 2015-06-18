@@ -10,7 +10,9 @@
 
 
 Surface::Surface(Seed seed){
-    heightMap.allocate(500, 500, OF_IMAGE_GRAYSCALE);
+    if (seed.getSurfaceType() == Seed::S_WATER)
+        heightMap.allocate(500, 500, OF_IMAGE_GRAYSCALE);
+    else heightMap.allocate(500, 500, OF_IMAGE_GRAYSCALE);
     this->seed = seed;
     
     // TODO: DENSITY
@@ -55,6 +57,22 @@ void Surface::noiseGen(int meshSize){
             float color = noise>75 ? ofMap(noise,75,255,0,255) : 0;
             
             heightMap.getPixels()[y*500+x] = color;
+        }
+    }
+}
+
+void Surface::waterNoiseGen(int meshSize){
+    for (int y=0; y<100; y++) {
+        for (int x=0; x<100; x++) {
+            
+            float a = x * .05;
+            float b = y * .05;
+            float c = ofGetFrameNum() / 180.0;
+            
+            float noise = ofNoise(a,b,c) * 255;
+            float color = noise>0 ? ofMap(noise,0,255,0,255) : 0;
+//
+            heightMapi[x][y] = color;
         }
     }
 }
