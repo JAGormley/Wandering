@@ -13,11 +13,9 @@
 
 #include <stdio.h>
 #include "ofMain.h"
-
-#ifndef __Wandering2__Medium__
-#define __Wandering2__Medium__
+#include "Player.h"
 #include "Medium.h"
-#endif /* defined(__Wandering2__Medium__) */
+
 
 
 #endif /* defined(__Wandering2__mVoid__) */
@@ -34,5 +32,7 @@ public:
     ofColor materialColor;
     ofMaterial voidMaterial;
     ofVboMesh voidMesh;
+    vector<ofSpherePrimitive> stars;
+    ofVbo fStars;
 
 };
