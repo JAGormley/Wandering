@@ -71,10 +71,6 @@ void Player::setLocation(Seed lSeed){
 
 void Player::setHeight(ofVboMesh groundMesh){
     
-    //    groundMesh.ge
-    
-    //    cam.setPosition(cam.getPosition().x, 1100, cam.getPosition().z);
-    
     ofVec3f playerNode = Player::playerLoc;
     vector<ofVec3f> groundVerts = groundMesh.getVertices();
     distances.clear();
@@ -82,29 +78,20 @@ void Player::setHeight(ofVboMesh groundMesh){
     for (int i = 0; i < groundVerts.size(); i++) {
         ofVec3f currentVert = groundVerts[i].rotate(-90, ofVec3f(1,0,0));
         float distance = currentVert.distance(playerNode);
-        if (distance < 500)
-            distances.push_back(pair<int, int>(distance, i));
-        if (distances.size() > 6){
-            break;
-        }
+        if (distance < 1000)
+            distances.push_back(pair<float, int>(distance, i));
     }
+
     sort(distances.begin(), distances.end());
-    
-    
-//    float newHeight = 1100;
+
     if (distances.size() > 3){
         ofVec3f a = groundVerts[distances[0].second];
         ofVec3f b = groundVerts[distances[1].second];
         ofVec3f c = groundVerts[distances[2].second];
         
         float newHeight = getHeightApprox(playerNode, a, b, c);
-        cout << "height: " << newHeight << endl;
-//        newHeight = (newHeight > 50000) ? newHeight : cam.getPosition().y;
         cam.setPosition(cam.getPosition().x, newHeight+30, cam.getPosition().z);
-        
     }
-    
-    
 }
 
 
@@ -119,11 +106,7 @@ float Player::getNewHeight(float posX, float posZ, ofVec3f a, ofVec3f b, ofVec3f
     nCross.normalize();
     
     float d = -(a.x * nCross.x + a.y * nCross.y + a.z * nCross.z);
-    
-    cout << "crossY: " << nCross.y << endl;
-    nCross.y = (nCross.y < -1 || nCross.y == 0 || nCross.y > 1) ? safeY : nCross.y;
-    safeY = nCross.y;
-    cout << "safeY: " << safeY << endl;
+
     return -(d + nCross.z * posZ + nCross.x * posX)/nCross.y;
 }
 float Player::getHeightApprox(ofVec3f playerPos, ofVec3f a, ofVec3f b, ofVec3f c)
