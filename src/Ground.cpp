@@ -62,66 +62,33 @@ void Ground::draw(){
     
     // TERRAIN DEBUG ////////////
     
-    //    ofVec3f playerNode;
-    //    playerNode =  Player::playerLoc;
-    //    ofSpherePrimitive jimmy;
-    //    jimmy.set(7, 3);
-    //    vector<ofVec3f> groundVerts = vboMesh.getVertices();
-    //    for (int i = 0; i < groundVerts.size(); i++) {
-    //        ofVec3f currentVert = groundVerts[i].rotate(-90, ofVec3f(1,0,0));
-    //
-    //        if ( (abs(currentVert.x-playerNode.x) < 150 ) &&
-    //            //            (abs(currentVert.y-playerNode.y) < 100 ) &&
-    //            (abs(currentVert.z-playerNode.z) < 150 )) {
-    //            ofSetColor(255,0,0);
-    //            jimmy.setPosition(currentVert);
-    //            jimmy.draw();
-    //        }
-    //    }
-    
-    
     ofVec3f playerNode = Player::playerLoc;
-    //    cout << "PLAYER: " << playerNode << endl;
-    int heightCounter = 0;
-    float height;
-    //    deque<ofVec3f> points;
     vector<ofVec3f> groundVerts = vboMesh.getVertices();
-    // init vector with very far points
-    if (points.size() == 0)
-        for (int i = 0; i < 3; i++) {
-            points.push_back(ofVec3f(100000,100000,100000));
-        }
+    distances.clear();
     
-    ofSpherePrimitive jimmy;
-    jimmy.set(7, 3);
     for (int i = 0; i < groundVerts.size(); i++) {
         ofVec3f currentVert = groundVerts[i].rotate(-90, ofVec3f(1,0,0));
-        
-        std::deque<ofVec3f>::iterator it = points.begin();
-        
-        if (playerNode.distance(currentVert) < playerNode.distance(points[0])){
-            points.insert (it,currentVert);
-            cout << "1" << endl;
-        }
-        else if (playerNode.distance(currentVert) < playerNode.distance(points[1])){
-            it = points.begin()+1;
-            points.insert (it,currentVert);
-            cout << "2" << endl;
-        }
-        else if (playerNode.distance(currentVert) < playerNode.distance(points[2])){
-            it = points.begin()+2;
-            points.insert (it,currentVert);
-            cout << "3" << endl;
+        float distance = currentVert.distance(playerNode);
+        if (distance < 500)
+            distances.push_back(pair<int, int>(distance, i));
+        if (distances.size() > 6){
+            break;
         }
     }
-    ofSetColor(255,0,0);
-//    ofDrawSphere(points[0].x, points[0].y, points[0].z,7);
-//    ofDrawSphere(points[1].x, points[1].y, points[1].z,7);
-//    ofDrawSphere(points[2].x, points[2].y, points[2].z,7);
+    sort(distances.begin(), distances.end());
     
-    cout << "1:"<< points[0] << endl;
-    cout << "2:"<<  points[1] << endl;
-    cout << "3:"<<  points[2] << endl;
+    if (distances.size() > 3){
+
+        ofVec3f a = groundVerts[distances[0].second];
+        ofVec3f b = groundVerts[distances[1].second];
+        ofVec3f c = groundVerts[distances[2].second];
+        
+        ofSetColor(255,0,0);
+        
+        ofDrawSphere(a.x, a.y, a.z,7);
+        ofDrawSphere(b.x, b.y, b.z,7);
+        ofDrawSphere(c.x, c.y, c.z,7);
+    }
     
     
     
@@ -147,6 +114,11 @@ void Ground::draw(){
     material.end();
     ofPopMatrix();
 }
+
+
+
+
+
 
 void Ground::setColor(ofColor hue){
     

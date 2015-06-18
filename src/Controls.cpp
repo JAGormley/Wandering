@@ -57,7 +57,6 @@ void Controls::moveType(){
     float pitch_ud = 0;
     
     if (type == Seed::FLOAT){
-        cout << "FLOAT" << endl;
         // maybe this has a slow set forward z
         
         moveHelper(handPos.z/100, handPos.x/300, 0, handPos.y/100, 0);

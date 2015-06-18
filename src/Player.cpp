@@ -18,7 +18,7 @@ Player::Player(){
 void Player::move(){
     controls.move();
     Player::playerLoc = cam.getPosition();
-    
+    cam.setPosition(cam.getPosition().x, 1100, cam.getPosition().z);
     // debug: lock camera in place:
     //    cam.setPosition(ofVec3f(Light::getLightPos().x+10, Light::getLightPos().y+30,Light::getLightPos().z+10));
 }
@@ -68,65 +68,35 @@ void Player::setLocation(Seed lSeed){
 
 void Player::setHeight(ofVboMesh groundMesh){
     
-//    groundMesh.ge
-
+    //    groundMesh.ge
     
+    //    cam.setPosition(cam.getPosition().x, 1100, cam.getPosition().z);
     
-    
+    ofVec3f playerNode = Player::playerLoc;
     vector<ofVec3f> groundVerts = groundMesh.getVertices();
-    
-////    intersectionPlane.setFrom(groundMesh);
-//    
-    ofVec3f playerNode = cam.getPosition();
-//    cout << "PLAYER: " << playerNode << endl;
-    int heightCounter = 0;
-    float height;
-    deque<ofVec3f> points;
-    
-    // init vector with very far points
-    for (int i = 0; i < 3; i++) {
-        points.push_back(ofVec3f(100000,100000,100000));
-    }
+    distances.clear();
     
     for (int i = 0; i < groundVerts.size(); i++) {
         ofVec3f currentVert = groundVerts[i].rotate(-90, ofVec3f(1,0,0));
-        
-        std::deque<ofVec3f>::iterator it = points.begin();
-        
-        if (playerNode.distance(currentVert) < playerNode.distance(points[0])){
-            points.insert (it,currentVert);
-            cout << "1" << endl;
-        }
-        else if (playerNode.distance(currentVert) < playerNode.distance(points[1])){
-            it = points.begin()+1;
-            points.insert (it,currentVert);
-            cout << "2" << endl;
-        }
-        else if (playerNode.distance(currentVert) < playerNode.distance(points[2])){
-            it = points.begin()+2;
-            points.insert (it,currentVert);
-            cout << "3" << endl;
+        float distance = currentVert.distance(playerNode);
+        if (distance < 500)
+            distances.push_back(pair<int, int>(distance, i));
+        if (distances.size() > 6){
+            break;
         }
     }
+    sort(distances.begin(), distances.end());
+    
+    if (distances.size() > 3){
+        ofVec3f a = groundVerts[distances[0].second];
+        ofVec3f b = groundVerts[distances[1].second];
+        ofVec3f c = groundVerts[distances[2].second];
         
-        
-//        if ( (abs(currentVert.x-playerNode.x) < 200 ) &&
-////            (abs(currentVert.y-playerNode.y) < 100 ) &&
-//            (abs(currentVert.z-playerNode.z) < 200 )) {
-//            
-//            cam.setPosition(cam.getPosition().x, currentVert.y, cam.getPosition().z);
-    
-//            heightCounter++;
-//            height += currentVert.y;
-//            
-//            cout << "VERT: " << currentVert << endl;
-//        }
-//    }
-//    height /= heightCounter+1;
-//    cout << height << endl;
+        cam.setPosition(cam.getPosition().x, a.y+30, cam.getPosition().z);
+    }
     
     
-
+    
 }
 
 

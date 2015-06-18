@@ -24,11 +24,11 @@ public:
     virtual ofVboMesh getMesh();
     virtual void noiseGen(int meshSize);
     virtual ~Surface();
-//    virtual ofPlanePrimitive getPlane();
+    //    virtual ofPlanePrimitive getPlane();
     
     of3dPrimitive rawShape;
     ofVboMesh vboMesh;
     Seed seed;
     ofImage heightMap;
-
+    
 };

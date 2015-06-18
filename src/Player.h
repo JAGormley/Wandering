@@ -42,6 +42,7 @@ private:
     Controls controls;
     ofRay playerRay;
     ofPlane intersectionPlane;
+    vector<pair<int, int> > distances;
     
 };
 
