@@ -22,9 +22,9 @@ void Controls::move(){
     
     if( leap.isFrameNew() && simpleHands.size() ){
         
-        leap.setMappingX(-230, 230, -ofGetWidth()/2, ofGetWidth()/2);
+        leap.setMappingX(-230, 230, -ofGetWidth(), ofGetWidth());
         leap.setMappingY(90, 490, -ofGetHeight()/2, ofGetHeight()/2);
-        leap.setMappingZ(-150, 150, -200, 200);
+        leap.setMappingZ(-150, 150, -800, 800);
     }
     
     for(int i = 0; i < simpleHands.size(); i++){
@@ -64,7 +64,6 @@ void Controls::moveType(){
     
     else if (type == Seed::WALK){
 //                cout << "WALK" << endl;
-        // TODO needs indepedent head movement!!
         moveHelper(handPos.z/50, handPos.x/100, 0, 0, 0);
     }
     
@@ -79,9 +78,6 @@ void Controls::moveType(){
         
         cam->setTransformMatrix(transformer);
         cam->tilt(-20);
-        
-        // DEBUG:
-        sp.drawWireframe();
     }
     
     

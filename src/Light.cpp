@@ -8,8 +8,6 @@
 
 #include "Light.h"
 
-// TODO: check sphere light now
-
 Light::Light(Seed seed){
     this->seed = seed;
     
@@ -49,6 +47,7 @@ void Light::draw(){
     ofRotate(160, 1, 0, 0);
 
     light.setPosition(0, lightSize, -lightDistance-Player::playerLoc.z+200);
+    
     // TODO: tie light rotation to sun rotation for movement
     light.rotateAround(150, ofVec3f(1,0,0), ofVec3f(0,0,0));
     

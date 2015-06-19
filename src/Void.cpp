@@ -24,7 +24,8 @@ void Void::update(){
 void Void::draw(){
     ofSetColor(100, 100, 100);
     ofPushMatrix();
-    ofRotate(-90, 1, 0, 0);
+    if (seed.getSurfaceShape() != Seed::SPHERE)
+        ofRotate(-90, 1, 0, 0);
     rawShape.draw();
     ofPopMatrix();
 }

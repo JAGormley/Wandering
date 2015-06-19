@@ -10,26 +10,35 @@
 
 mVoid::mVoid(Seed seed) : Medium(seed){
     materialColor.setBrightness(250.f);
-    materialColor.setSaturation(200);
-    colorHue = 100;
-    materialColor.setHue(colorHue);
-    //    material.setEmissiveColor(materialColor);
+    materialColor.setSaturation(255);
+//    colorHue = 100;
+    ofColor c(255,255,255);
+    c.setBrightness( 255 );
+    ofFloatColor white = ofColor::white;
+//    materialColor.setHue(c);
+    
     
     voidMaterial.setShininess(255);
-    voidMaterial.setDiffuseColor(materialColor);
-    voidMaterial.setSpecularColor(materialColor);
+    voidMaterial.setDiffuseColor(c);
+    voidMaterial.setSpecularColor(c);
+    voidMaterial.setEmissiveColor(c);
     
     ofBackground(0, 0, 0);
-    for (int i = 0; i < 10000; i++) {
     
+
+    // STAR POPULATION
+    for (int i = 0; i < 2000; i++) {
+        ofSpherePrimitive sphere;
+//        sphere.
+        sphere.set(3, 3, OF_PRIMITIVE_TRIANGLES);
         ofMesh tempMesh;
-        tempMesh = ofMesh::sphere(3);
+        tempMesh = sphere.getMesh();
         
         vector<ofVec3f>tempVerts = tempMesh.getVertices();
         
-        float randoX = ofRandom(12000)-6000;
-        float randoY = ofRandom(12000)-6000;
-        float randoZ = ofRandom(12000)-6000;
+        float randoX = ofRandom(10000)-5000;
+        float randoY = ofRandom(10000)-5000;
+        float randoZ = ofRandom(10000)-5000;
         
         // move the sphere's vertices to new location
         for (int j = 0; j < tempVerts.size(); j++) {
@@ -41,17 +50,17 @@ mVoid::mVoid(Seed seed) : Medium(seed){
         
         // add the vertices to the mesh
         voidMesh.append(tempMesh);
-        
     }
+
+//    voidMesh.draw(OF_MESH_FILL);
 }
 
 void mVoid::draw(){
     ofSetColor(255, 255, 255);
-    //    for (int i = 0; i < stars.size(); i++) {
-    //        stars[i].draw();
-    //    }
     voidMaterial.begin();
-    voidMesh.draw();
+    voidMesh.setMode(OF_PRIMITIVE_TRIANGLES);
+    voidMesh.draw(OF_MESH_FILL);
+//    one.draw();
     voidMaterial.end();
 }
 

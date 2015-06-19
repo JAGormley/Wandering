@@ -18,16 +18,20 @@ void Water::setColor(ofColor hue){
 }
 
 void Water::update(){
-    waterNoiseGen(vboMesh.getNumVertices());
-    for (int i = 0; i < vboMesh.getVertices().size(); i++) {
-        ofVec3f tempVert = vboMesh.getVertices()[i];
+    
+    if (seed.getTraversal() != Seed::ORBIT) {
         
-        
-        int xCoord = ofMap(vboMesh.getVertices()[i].x, -seed.shapeSize/2, seed.shapeSize/2, 0, 99);
-        int yCoord = ofMap(vboMesh.getVertices()[i].y, -seed.shapeSize/2, seed.shapeSize/2, 0, 99);
-        
-        float height = heightMapi[xCoord][yCoord]*2;
-        vboMesh.getVertices()[i] = ofVec3f(tempVert.x, tempVert.y, height);
+        waterNoiseGen(vboMesh.getNumVertices());
+        for (int i = 0; i < vboMesh.getVertices().size(); i++) {
+            ofVec3f tempVert = vboMesh.getVertices()[i];
+            
+            
+            int xCoord = ofMap(vboMesh.getVertices()[i].x, -seed.shapeSize/2, seed.shapeSize/2, 0, 99);
+            int yCoord = ofMap(vboMesh.getVertices()[i].y, -seed.shapeSize/2, seed.shapeSize/2, 0, 99);
+            
+            float height = heightMapi[xCoord][yCoord]*2;
+            vboMesh.getVertices()[i] = ofVec3f(tempVert.x, tempVert.y, height);
+        }
     }
 }
 

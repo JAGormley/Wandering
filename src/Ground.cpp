@@ -24,10 +24,10 @@ Ground::Ground(Seed seed) : Surface(seed){
         
         
         
-        float xCoord = ofMap(vboMesh.getVertices()[i].x, -seed.shapeSize/2, seed.shapeSize/2, 0, 500);
-        float yCoord = ofMap(vboMesh.getVertices()[i].y, -seed.shapeSize/2, seed.shapeSize/2, 0, 500);
+        int xCoord = ofMap(vboMesh.getVertices()[i].x, -seed.shapeSize/2, seed.shapeSize/2, 0, 500);
+        int yCoord = ofMap(vboMesh.getVertices()[i].y, -seed.shapeSize/2, seed.shapeSize/2, 0, 500);
         
-        float height = heightMap.getColor(xCoord, yCoord).getBrightness()*7;
+        float height = heightMapi[xCoord][yCoord]*2;
         
         // TODO: DENSITY
         // TODO: change to sphere terrain
@@ -39,6 +39,7 @@ Ground::Ground(Seed seed) : Surface(seed){
         if (seed.getSurfaceShape() == Seed::PLANE){
             
             // Hills
+            
             tempVert = ofVec3f(meshVerts[i].x, meshVerts[i].y, height);
         }
         
@@ -70,11 +71,9 @@ void Ground::draw(){
     
     if (seed.getSurfaceShape() != Seed::SPHERE)
         ofRotate(-90, 1, 0, 0);
-    // DEBUG
-    //    vboMesh.getVertices()[3000] = ofVec3f(vboMesh.getVertices()[3000].x, vboMesh.getVertices()[3000].y, ofGetMouseX());
     
     vboMesh.draw();
-    //    rawShape.drawAxes(100);
+        
     //    ofDrawAxis(600);
     material.end();
     ofPopMatrix();

@@ -61,6 +61,7 @@ void ofApp::draw(){
         scenario.player.stopCam();
     }
     ofDisableLighting();
+    ofSetColor(ofColor::white);
     ofDrawBitmapString(ofToString(ofGetFrameRate())+"fps", 10, 15);
 }
 

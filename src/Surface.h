@@ -32,6 +32,6 @@ public:
     ofVboMesh vboMesh;
     Seed seed;
     ofImage heightMap;
-    int heightMapi[100][100];
+    int heightMapi[500][500];
     
 };

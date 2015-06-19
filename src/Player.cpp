@@ -19,9 +19,6 @@ void Player::move(){
     controls.move();
     Player::playerLoc = cam.getPosition();
     
-    // TODO set this automatically
-    cam.setPosition(cam.getPosition().x, 1100, cam.getPosition().z);
-    
     // debug: lock camera in place:
     //    cam.setPosition(ofVec3f(Light::getLightPos().x+10, Light::getLightPos().y+30,Light::getLightPos().z+10));
 }
@@ -63,7 +60,7 @@ void Player::setLocation(Seed lSeed){
     }
     else {
         cam.setPosition(ofVec3f(0, lSeed.getPlayerLocation(), 0));
-        cam.lookAt(ofVec3f(0,0,283));
+//        cam.lookAt(ofVec3f(0,0,283));
         
     };
 }

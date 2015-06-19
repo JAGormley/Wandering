@@ -35,7 +35,9 @@ Surface::Surface(Seed seed){
 
 
 // TODO: static camera function to clip the horizon a bit earlier than the light
-void Surface::draw(){}
+void Surface::draw(){
+    rawShape.drawAxes(100);
+}
 
 ofVboMesh Surface::getMesh(){
     return vboMesh;
@@ -44,7 +46,7 @@ ofVboMesh Surface::getMesh(){
 
 /* code adapted from https://sites.google.com/site/ofauckland/examples/noise */
 
-// TODO: fix generate and surface so water is feasible at 60fps; lower the column resolution(?)
+
 void Surface::noiseGen(int meshSize){
     for (int y=0; y<500; y++) {
         for (int x=0; x<500; x++) {
@@ -56,7 +58,7 @@ void Surface::noiseGen(int meshSize){
             float noise = ofNoise(a,b,c) * 255;
             float color = noise>75 ? ofMap(noise,75,255,0,255) : 0;
             
-            heightMap.getPixels()[y*500+x] = color;
+            heightMapi[x][y] = color;
         }
     }
 }
@@ -70,7 +72,7 @@ void Surface::waterNoiseGen(int meshSize){
             float c = ofGetFrameNum() / 180.0;
             
             float noise = ofNoise(a,b,c) * 255;
-            float color = noise>0 ? ofMap(noise,0,255,0,255) : 0;
+            float color = noise>50 ? ofMap(noise,50,255,0,255) : 0;
 //
             heightMapi[x][y] = color;
         }

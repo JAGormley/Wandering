@@ -4,7 +4,6 @@
 //
 //  Created by J Andrew Gormley on 2015-05-30.
 
-// TODO: SETTERS USE HISTORY AND SOIL TO GET THEIR VALUES
 
 #include "Seed.h"
 
@@ -38,7 +37,6 @@ Seed::Medium Seed::getMedium(){
 void Seed::setSurfaceShape(){
     
     
-    // TODO: set for other types of movement/shape
     // TODO: get vals from ???
     if (traversal == ORBIT){
         sShape = SPHERE;
@@ -71,10 +69,11 @@ Seed::Traversal Seed::getTraversal(){
     return traversal;
 }
 
-// TODO: FIX THIS
 float Seed::getPlayerLocation(){
+    
+    // TODO: set this using mesh:
     if (sShape == PLANE){
-        return 20;
+        return 1100;
     }
     else return shapeSize+(shapeSize/3);
 }
