@@ -41,7 +41,7 @@ protected:
     ofColor materialColor;
     int lightSize;
     int lightDistance;
-    
+    float previousZ;
     
     
     ofQuaternion q;

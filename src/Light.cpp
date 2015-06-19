@@ -26,12 +26,12 @@ Light::Light(Seed seed){
     // specular color, the highlight/shininess color //
     //    light.setSpecularColor( ofColor(255.f, 255.f, 255.f));
     
-    lightColor.set(lightColor.white);
-    lightColor.setBrightness( 50.f );
-    light.setAmbientColor(lightColor);
-    lightColor.setBrightness( 255.f );
-    light.setDiffuseColor(lightColor);
-    light.setSpecularColor(lightColor);
+//    lightColor.set(lightColor.white);
+//    lightColor.setBrightness( 50.f );
+//    light.setAmbientColor(lightColor);
+//    lightColor.setBrightness( 255.f );
+//    light.setDiffuseColor(lightColor);
+//    light.setSpecularColor(lightColor);
     
 }
 
@@ -48,7 +48,7 @@ void Light::draw(){
 
     light.setPosition(0, lightSize, -lightDistance-Player::playerLoc.z+200);
     
-    // TODO: tie light rotation to sun rotation for movement
+    // TODO: tie light rotation to facade rotation for movement
     light.rotateAround(150, ofVec3f(1,0,0), ofVec3f(0,0,0));
     
     if (seed.traversal == Seed::ORBIT) {

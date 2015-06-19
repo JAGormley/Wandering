@@ -12,9 +12,10 @@ Ground::Ground(Seed seed) : Surface(seed){
     
     groundCount = 0;
     
-    material.setShininess(255);
-    material.setDiffuseColor(ofColor(255,255,255));
-    material.setSpecularColor(ofColor(0,30,0));
+    ofColor matCol(205,133,63);
+    matCol.setBrightness(255);
+    material.setDiffuseColor(matCol);
+//    material.setSpecularColor(ofColor(255,255,255));
     
     vboMesh = rawShape.getMesh();
     
@@ -24,10 +25,10 @@ Ground::Ground(Seed seed) : Surface(seed){
         
         
         
-        int xCoord = ofMap(vboMesh.getVertices()[i].x, -seed.shapeSize/2, seed.shapeSize/2, 0, 500);
-        int yCoord = ofMap(vboMesh.getVertices()[i].y, -seed.shapeSize/2, seed.shapeSize/2, 0, 500);
+        int xCoord = ofMap(vboMesh.getVertices()[i].x, -seed.shapeSize/2, seed.shapeSize/2, 0, 499);
+        int yCoord = ofMap(vboMesh.getVertices()[i].y, -seed.shapeSize/2, seed.shapeSize/2, 0, 499);
         
-        float height = heightMapi[xCoord][yCoord]*2;
+        float height = heightMapi[xCoord][yCoord]*7;
         
         // TODO: DENSITY
         // TODO: change to sphere terrain

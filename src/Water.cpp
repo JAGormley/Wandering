@@ -11,6 +11,13 @@
 Water::Water(Seed seed) : Surface(seed){
     vboMesh = rawShape.getMesh();
     
+    
+    ofColor matCol(0,0,255);
+    matCol.setBrightness(255);
+    material.setDiffuseColor(matCol);
+    material.setShininess(80);
+    material.setSpecularColor(ofColor(0,255,150));
+    
 }
 
 void Water::setColor(ofColor hue){
@@ -40,6 +47,8 @@ void Water::draw(){
     ofPushMatrix();
     if (seed.getSurfaceShape() != Seed::SPHERE)
         ofRotate(-90, 1, 0, 0);
+    material.begin();
     vboMesh.draw();
+    material.end();
     ofPopMatrix();
 }

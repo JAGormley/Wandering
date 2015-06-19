@@ -59,7 +59,10 @@ void mVoid::draw(){
     ofSetColor(255, 255, 255);
     voidMaterial.begin();
     voidMesh.setMode(OF_PRIMITIVE_TRIANGLES);
+    ofPushMatrix();
+    ofTranslate(Player::playerLoc.x, Player::playerLoc.y, Player::playerLoc.z);
     voidMesh.draw(OF_MESH_FILL);
+    ofPopMatrix();
 //    one.draw();
     voidMaterial.end();
 }
