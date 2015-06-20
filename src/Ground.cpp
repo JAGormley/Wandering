@@ -9,6 +9,9 @@
 #include "Ground.h"
 
 Ground::Ground(Seed seed) : Surface(seed){
+    // DEBUG:
+    dLight.setPosition(Player::playerLoc.x, Player::playerLoc.y+200, Player::playerLoc.z);
+    
     groundID = 0;
     rawShape.drawAxes(100);
     groundCount = 0;
@@ -27,7 +30,8 @@ Ground::Ground(Seed seed) : Surface(seed){
         int xCoord = ofMap(vboMesh.getVertices()[i].x, -seed.shapeSize/2, seed.shapeSize/2, 0, 499);
         int yCoord = ofMap(vboMesh.getVertices()[i].y, -seed.shapeSize/2, seed.shapeSize/2, 0, 499);
         
-        float height = heightMapi[xCoord][yCoord]*7;
+        // TODO: change mult back to 7
+        float height = heightMapi[xCoord][yCoord]*.2;
         
         // TODO: DENSITY
         // TODO: change to sphere terrain
@@ -59,8 +63,8 @@ Ground::Ground(Seed seed) : Surface(seed){
 }
 
 void Ground::draw(){
-    
-    
+    cout << Player::playerLoc << endl;
+    dLight.enable();
     terrainDebug();
     
     ////////////////////////////
@@ -74,9 +78,10 @@ void Ground::draw(){
     
     vboMesh.draw();
         
-    //    ofDrawAxis(600);
+    ofDrawAxis(600);
     material.end();
     ofPopMatrix();
+    dLight.disable();
 }
 
 

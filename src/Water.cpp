@@ -27,7 +27,6 @@ void Water::setColor(ofColor hue){
 void Water::update(){
     
     if (seed.getTraversal() != Seed::ORBIT) {
-        
         waterNoiseGen(vboMesh.getNumVertices());
         for (int i = 0; i < vboMesh.getVertices().size(); i++) {
             ofVec3f tempVert = vboMesh.getVertices()[i];

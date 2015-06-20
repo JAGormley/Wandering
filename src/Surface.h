@@ -35,4 +35,5 @@ public:
     int heightMapi[10000][10000];
     int groundID;
     int waterID;
+    ofLight dLight;
 };

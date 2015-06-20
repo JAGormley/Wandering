@@ -119,7 +119,10 @@ void Player::setNewHeight(){
         // DEBUG: player position crash becaused  cross.y is 0 sometimes...
         // --> fixed?
 //        cout << "NH: " << newHeight << endl;
-        if (!isinf(newHeight) && !isnan(newHeight))
+        if (!isinf(newHeight)
+            && !isnan(newHeight)
+            && (newHeight > -8*100000)
+            && newHeight < 8*100000)
             cam.setPosition(cam.getPosition().x, newHeight+30, cam.getPosition().z);
     }
 }
