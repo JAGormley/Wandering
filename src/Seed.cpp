@@ -69,13 +69,8 @@ Seed::Traversal Seed::getTraversal(){
     return traversal;
 }
 
-float Seed::getPlayerLocation(){
-    
-    // TODO: set this using mesh:
-    if (sShape == PLANE){
-        return 1100;
-    }
-    else return shapeSize+(shapeSize/3);
+float Seed::getOrbitHeight(){
+    return shapeSize+(shapeSize/3);
 }
 
 

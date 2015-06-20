@@ -9,7 +9,8 @@
 #include "Ground.h"
 
 Ground::Ground(Seed seed) : Surface(seed){
-    
+    groundID = 0;
+    rawShape.drawAxes(100);
     groundCount = 0;
     
     ofColor matCol(205,133,63);
@@ -22,8 +23,6 @@ Ground::Ground(Seed seed) : Surface(seed){
     vector<ofVec3f> meshVerts = vboMesh.getVertices();
     noiseGen(vboMesh.getNumVertices());
     for (int i = 0; i < vboMesh.getNumVertices(); i++) {
-        
-        
         
         int xCoord = ofMap(vboMesh.getVertices()[i].x, -seed.shapeSize/2, seed.shapeSize/2, 0, 499);
         int yCoord = ofMap(vboMesh.getVertices()[i].y, -seed.shapeSize/2, seed.shapeSize/2, 0, 499);
@@ -79,10 +78,6 @@ void Ground::draw(){
     material.end();
     ofPopMatrix();
 }
-
-
-
-
 
 
 void Ground::setColor(ofColor hue){

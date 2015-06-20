@@ -7,3 +7,5 @@
 //
 
 #include "Cloudy.h"
+
+// THIS WILL BE MILD AMBIofRotateENT LIGHT ONLY, NO DIFFUSE OR SPECULAR

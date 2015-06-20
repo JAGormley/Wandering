@@ -10,7 +10,7 @@
 
 Water::Water(Seed seed) : Surface(seed){
     vboMesh = rawShape.getMesh();
-    
+    waterID = 0;
     
     ofColor matCol(0,0,255);
     matCol.setBrightness(255);
@@ -31,10 +31,8 @@ void Water::update(){
         waterNoiseGen(vboMesh.getNumVertices());
         for (int i = 0; i < vboMesh.getVertices().size(); i++) {
             ofVec3f tempVert = vboMesh.getVertices()[i];
-            
-            
-            int xCoord = ofMap(vboMesh.getVertices()[i].x, -seed.shapeSize/2, seed.shapeSize/2, 0, 99);
-            int yCoord = ofMap(vboMesh.getVertices()[i].y, -seed.shapeSize/2, seed.shapeSize/2, 0, 99);
+            int xCoord = ofMap(vboMesh.getVertices()[i].x, -seed.shapeSize/2, seed.shapeSize/2, 0, 299);
+            int yCoord = ofMap(vboMesh.getVertices()[i].y, -seed.shapeSize/2, seed.shapeSize/2, 0, 299);
             
             float height = heightMapi[xCoord][yCoord]*2;
             vboMesh.getVertices()[i] = ofVec3f(tempVert.x, tempVert.y, height);
@@ -45,6 +43,7 @@ void Water::update(){
 void Water::draw(){
     ofSetColor(0, 200, 255);
     ofPushMatrix();
+    rawShape.drawAxes(100);
     if (seed.getSurfaceShape() != Seed::SPHERE)
         ofRotate(-90, 1, 0, 0);
     material.begin();

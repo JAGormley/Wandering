@@ -50,7 +50,7 @@ public:
     enum Traversal {ORBIT, WALK, FLOAT, FLY};
     Traversal getTraversal();
     void setTraversal();
-    float getPlayerLocation();
+    float getOrbitHeight();
     
     Traversal traversal;
     

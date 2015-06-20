@@ -8,6 +8,8 @@
 
 #include "Light.h"
 
+// TODO: light placement logic for ORBIT
+
 Light::Light(Seed seed){
     this->seed = seed;
     
@@ -18,6 +20,8 @@ Light::Light(Seed seed){
     
     shaderBlurX.load("shadersGL2/shaderBlurX");
     shaderBlurY.load("shadersGL2/shaderBlurY");
+    
+    
     
     // Point lights emit light in all directions //
     // set the diffuse color, color reflected from the light source //

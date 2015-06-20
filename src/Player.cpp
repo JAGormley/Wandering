@@ -12,13 +12,14 @@ ofVec3f Player::playerLoc;
 
 Player::Player(){
     controls.setCam(cam);
+    cam.setFarClip(30000);
     
 };
 
 void Player::move(){
     controls.move();
     Player::playerLoc = cam.getPosition();
-    //    cout << cam.getPosition() << endl;
+//        cout << cam.getPosition() << endl;
     
     // debug: lock camera in place:
     //    cam.setPosition(ofVec3f(Light::getLightPos().x+10, Light::getLightPos().y+30,Light::getLightPos().z+10));
@@ -39,11 +40,15 @@ void Player::draw(){
     cam.draw();
 }
 
-void Player::setMovementType(Seed lSeed){
+void Player::setSeed(Seed seed){
+    this->seed = seed;
+}
+
+void Player::setMovementType(){
     cam.resetTransform();
-    controls.type = lSeed.getTraversal();
-    if (lSeed.getTraversal() == Seed::ORBIT){
-        controls.setOrbitRadius(lSeed.getPlayerLocation());
+    controls.type = seed.getTraversal();
+    if (seed.getTraversal() == Seed::ORBIT){
+        controls.setOrbitRadius(seed.getOrbitHeight());
         cam.tilt(-20);
     }
 }
@@ -52,27 +57,47 @@ Seed::Traversal Player::getMovementType(){
     return controls.type;
 }
 
-void Player::setLocation(Seed lSeed){
-    
-    // IDEMPOTENT ONLY!!
-    
-    if (lSeed.getTraversal() == Seed::ORBIT){
-        cam.setPosition(ofVec3f(0, lSeed.getPlayerLocation(), 0));
-    }
-    else {
-        cam.setPosition(ofVec3f(0, lSeed.getPlayerLocation(), 0));
-        //        cam.lookAt(ofVec3f(0,0,283));
-        
-    };
+void Player::setSurface(ofVboMesh surfaceMesh){
+    this->surfaceMesh = surfaceMesh;
 }
 
 
-// TODO: MOVE THIS LOGIC INTO SURFACE
+// SET INIT HEIGHTS BY TRAV TYPE
+void Player::setInitHeight(){
+    if (seed.getTraversal() == Seed::ORBIT){
+        setOrbitHeight();
+    }
+    else if (seed.getTraversal() == Seed::WALK){
+        setPlaneHeight();
+    }
+    else {
+        cam.setPosition(0, 950, 0);
+    }
+}
 
-void Player::setHeight(ofVboMesh groundMesh){
+void Player::setOrbitHeight(){
+        cam.setPosition(ofVec3f(0, seed.getOrbitHeight(), 0));
+}
+
+void Player::setPlaneHeight(){
     
     ofVec3f playerNode = Player::playerLoc;
-    vector<ofVec3f> groundVerts = groundMesh.getVertices();
+    vector<ofVec3f> groundVerts = surfaceMesh.getVertices();
+    ofVec3f candidate = ofVec3f(100000,100000,100000);
+    for (int i = 0; i < groundVerts.size(); i++) {
+        ofVec3f currentVert = groundVerts[i].rotate(-90, ofVec3f(1,0,0));
+        float distance = currentVert.distance(playerNode);
+        if (distance < playerNode.distance(candidate))
+            candidate = currentVert;
+    }
+    cout << candidate.y << endl;
+    cam.setPosition(cam.getPosition().x, candidate.y, cam.getPosition().y);
+}
+
+void Player::setNewHeight(){
+    
+    ofVec3f playerNode = Player::playerLoc;
+    vector<ofVec3f> groundVerts = surfaceMesh.getVertices();
     distances.clear();
     
     for (int i = 0; i < groundVerts.size(); i++) {
@@ -81,7 +106,6 @@ void Player::setHeight(ofVboMesh groundMesh){
         if (distance < 500)
             distances.push_back(pair<float, int>(distance, i));
     }
-    
     
     sort(distances.begin(), distances.end());
     
@@ -93,8 +117,9 @@ void Player::setHeight(ofVboMesh groundMesh){
         float newHeight = getHeightApprox(playerNode, a, b, c);
         
         // DEBUG: player position crash becaused  cross.y is 0 sometimes...
+        // --> fixed?
 //        cout << "NH: " << newHeight << endl;
-        if (!isinf(newHeight))
+        if (!isinf(newHeight) && !isnan(newHeight))
             cam.setPosition(cam.getPosition().x, newHeight+30, cam.getPosition().z);
     }
 }

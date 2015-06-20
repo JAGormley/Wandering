@@ -32,6 +32,7 @@ public:
     ofVboMesh vboMesh;
     Seed seed;
     ofImage heightMap;
-    int heightMapi[500][500];
-    
+    int heightMapi[10000][10000];
+    int groundID;
+    int waterID;
 };

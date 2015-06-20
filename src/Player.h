@@ -20,31 +20,31 @@ class Player {
 public:
     
     Player();
-    void setHeight(ofVboMesh groundMesh);
+    
     void move();
     ofVec3f getLocation();
     void draw();
     void startCam();
     void stopCam();
-    void setMovementType(Seed lSeed);
-    void setLocation(Seed lSeed);
+    void setMovementType();
+    void setInitHeight();
+    void setSurface(ofVboMesh surfaceMesh);
+    void setSeed(Seed seed);
     float getNewHeight(float posX, float posY, ofVec3f a, ofVec3f b, ofVec3f c);
     float getHeightApprox(ofVec3f playerPos, ofVec3f a, ofVec3f b, ofVec3f c);
+    void setNewHeight();
     Seed::Traversal getMovementType();
-    
+    ofVboMesh surfaceMesh;
     
     ofCamera cam;
-//    static ofVec3f playerLoc;
-    
    static ofVec3f playerLoc;
-//    static void init(){
-//        
-//    }
 
 private:
+    void setOrbitHeight();
+    void setPlaneHeight();
+    
     Controls controls;
-    ofRay playerRay;
-    ofPlane intersectionPlane;
+    Seed seed;
     vector<pair<float, int> > distances;
     float safeY;
 };

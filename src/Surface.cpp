@@ -36,7 +36,7 @@ Surface::Surface(Seed seed){
 
 // TODO: static camera function to clip the horizon a bit earlier than the light
 void Surface::draw(){
-    rawShape.drawAxes(100);
+    
 }
 
 ofVboMesh Surface::getMesh(){
@@ -48,15 +48,16 @@ ofVboMesh Surface::getMesh(){
 
 
 void Surface::noiseGen(int meshSize){
+    groundID++;
     for (int y=0; y<500; y++) {
         for (int x=0; x<500; x++) {
             
             float a = x * .005;
             float b = y * .005;
-            float c = ofGetFrameNum() / 200.0;
+            float c = groundID * .002;
             
             float noise = ofNoise(a,b,c) * 255;
-            float color = noise>75 ? ofMap(noise,75,255,0,255) : 0;
+            float color = noise>0 ? ofMap(noise,0,255,0,255) : 0;
             
             heightMapi[x][y] = color;
         }
@@ -64,15 +65,16 @@ void Surface::noiseGen(int meshSize){
 }
 
 void Surface::waterNoiseGen(int meshSize){
-    for (int y=0; y<100; y++) {
-        for (int x=0; x<100; x++) {
+    waterID++;
+    for (int y=0; y<200; y++) {
+        for (int x=0; x<200; x++) {
             
-            float a = x * .05;
-            float b = y * .05;
-            float c = ofGetFrameNum() / 180.0;
+            float a = x * .005;
+            float b = y * .005;
+            float c = waterID / 180.0;
             
             float noise = ofNoise(a,b,c) * 255;
-            float color = noise>50 ? ofMap(noise,50,255,0,255) : 0;
+            float color = noise>75 ? ofMap(noise,75,255,0,255) : 0;
 //
             heightMapi[x][y] = color;
         }

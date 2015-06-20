@@ -23,23 +23,22 @@ void Scenario::setNew(){
     
     // set the environment to new seed values
     environment = new Environment(*getSurface(), *getMedium());
+    
+    // TODO: move mesh into setSurface method for Sprites
     spriteSeed = SpriteSeed(seed, environment->getSurfaceMesh());
     
     // set light to new seed values
     light = getLight();
     
-    // set the player to new seed values
+    // set surface first, then set the player to new seed values
+    player.setSurface(environment->getSurfaceMesh());
     setPlayer(seed);
     
-    if (seed.getTraversal() != Seed::ORBIT)
-        player.setHeight(environment->getSurfaceMesh());
     
     // TODO: FIX
     sprites.clear();
     setSprites();
-    
-    
-    
+
 }
 
 void Scenario::draw(){
@@ -60,7 +59,7 @@ void Scenario::update(){
     light->update();
     player.move();
     if (seed.getTraversal() != Seed::ORBIT)
-        player.setHeight(environment->getSurfaceMesh());
+        player.setNewHeight();
     
 }
 
@@ -118,8 +117,9 @@ void Scenario::updateSprites(){
 // PLAYER
 
 void Scenario::setPlayer(Seed lSeed){
-    player.setMovementType(lSeed);
-    player.setLocation(lSeed);
+    player.setSeed(lSeed);
+    player.setMovementType();
+    player.setInitHeight();
 }
 
 // LIGHT
