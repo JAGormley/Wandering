@@ -121,8 +121,8 @@ void Player::setNewHeight(){
 //        cout << "NH: " << newHeight << endl;
         if (!isinf(newHeight)
             && !isnan(newHeight)
-            && (newHeight > -8*100000)
-            && newHeight < 8*100000)
+            && (newHeight > -10000)
+            && newHeight < 10000)
             cam.setPosition(cam.getPosition().x, newHeight+30, cam.getPosition().z);
     }
 }

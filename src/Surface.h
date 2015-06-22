@@ -24,6 +24,8 @@ public:
     virtual ofVboMesh getMesh();
     virtual void noiseGen(int meshSize);
     virtual void waterNoiseGen(int meshSize);
+    void addVRow();
+    void stitch();
     virtual ~Surface();
     
     //    virtual ofPlanePrimitive getPlane();
@@ -36,4 +38,5 @@ public:
     int groundID;
     int waterID;
     ofLight dLight;
+    
 };

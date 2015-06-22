@@ -9,6 +9,8 @@
 #include "Ground.h"
 
 Ground::Ground(Seed seed) : Surface(seed){
+    
+    
     // DEBUG:
     dLight.setPosition(Player::playerLoc.x, Player::playerLoc.y+200, Player::playerLoc.z);
     
@@ -59,11 +61,14 @@ Ground::Ground(Seed seed) : Surface(seed){
         //        }
         //        else vboMesh.getVertices()[i] = ofVec3f(0,0,0);
     }
+    addVRow();
     
 }
 
+// LEFT OFF: have a new vertex being added, extends into forever though now because draw calls over and over.
+
 void Ground::draw(){
-    cout << Player::playerLoc << endl;
+//    cout << Player::playerLoc << endl;
     dLight.enable();
     terrainDebug();
     
@@ -76,12 +81,39 @@ void Ground::draw(){
     if (seed.getSurfaceShape() != Seed::SPHERE)
         ofRotate(-90, 1, 0, 0);
     
-    vboMesh.draw();
-        
+    vboMesh.drawWireframe();
+    
+    ofSetColor(255, 0, 0);
+    for (int i = 0; i < seed.numCols+1; i++) {
+        ofVec3f temp = vboMesh.getVertices()[vboMesh.getVertices().size()-i];
+        ofSphere(temp, 2);
+    }
+    ofSetColor(0, 0, 255);
+    
+    ofSphere(vboMesh.getVertices()[vboMesh.getVertices().size()-groundCount], 5);
+    ofSphere(vboMesh.getVertices()[vboMesh.getVertices().size()-groundCount-1], 5);
+    ofSphere(vboMesh.getVertices()[vboMesh.getVertices().size()-groundCount-seed.numCols], 5);
+    cout << vboMesh.getVertices().size()-groundCount << endl;
+    cout << vboMesh.getVertices().size()-groundCount-1 << endl;
+    cout << vboMesh.getVertices().size()-groundCount-seed.numCols << endl;
+    
+    
+//    ofSphere(vboMesh.getVertices()[vboMesh.getVertices().size()-groundCount-1], 5);
+//    ofSphere(vboMesh.getVertices()[vboMesh.getVertices().size()-groundCount-seed.numCols], 5);
+//    ofSphere(vboMesh.getVertices()[vboMesh.getVertices().size()-groundCount-seed.numCols-1], 5);
+//    cout << vboMesh.getVertices().size()-groundCount-1 << endl;
+//    cout << vboMesh.getVertices().size()-groundCount-seed.numCols << endl;
+//    cout << vboMesh.getVertices().size()-groundCount-seed.numCols-1 << endl;
+    
+    
+    
+    
     ofDrawAxis(600);
     material.end();
     ofPopMatrix();
     dLight.disable();
+    
+        groundCount = ofGetMouseX()/100;
 }
 
 

@@ -44,6 +44,7 @@ public:
     SurfaceShape sShape;
     SurfaceType sType;
     float shapeSize;
+    int numCols;
     
     
     // PLAYER

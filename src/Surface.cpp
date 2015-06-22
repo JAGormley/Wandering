@@ -10,9 +10,6 @@
 
 
 Surface::Surface(Seed seed){
-    if (seed.getSurfaceType() == Seed::S_WATER)
-        heightMap.allocate(500, 500, OF_IMAGE_GRAYSCALE);
-    else heightMap.allocate(500, 500, OF_IMAGE_GRAYSCALE);
     this->seed = seed;
     
     // TODO: DENSITY
@@ -21,7 +18,7 @@ Surface::Surface(Seed seed){
             rawShape = ofSpherePrimitive(seed.shapeSize, 64);
             break;
         case Seed::PLANE:
-            rawShape = ofPlanePrimitive(seed.shapeSize, seed.shapeSize, 100, 100);
+            rawShape = ofPlanePrimitive(seed.shapeSize, seed.shapeSize, 10, 10);
             
             //            rawShape =ofBoxPrimitive(seed.shapeSize, seed.shapeSize, seed.shapeSize);
             break;
@@ -75,12 +72,46 @@ void Surface::waterNoiseGen(int meshSize){
             
             float noise = ofNoise(a,b,c) * 255;
             float color = noise>75 ? ofMap(noise,75,255,0,255) : 0;
-//
+            //
             heightMapi[x][y] = color;
         }
     }
 }
 
+void Surface::addVRow(){
+    float spacing = (seed.shapeSize/(seed.numCols-1));
+    int vecSize = vboMesh.getVertices().size();
+    cout << vecSize << endl;
+    for (int i = seed.numCols; i > 0; i--) {
+        cout << i << endl;
+        //add vertex
+        ofVec3f temp = vboMesh.getVertices()[vecSize-i];
+        temp = ofVec3f(temp.x, temp.y + spacing, temp.z);
+        vboMesh.addVertex(temp);
+    }
+    //stitch new verts into the mesh
+    stitch();
+}
+
+void Surface::stitch(){
+
+    
+    // EVEN, STILL NEED TO DO ODD
+        for (int i = 1; i < seed.numCols; i++) {
+            vector<ofVec3f> meshVerts = vboMesh.getVertices();
+            int mSize = meshVerts.size();
+            vboMesh.addTriangle(mSize-i, mSize-i-seed.numCols,  mSize-i-seed.numCols-1);
+            vboMesh.addTriangle(mSize-i, mSize-i-1, mSize-i-seed.numCols-1);
+            
+//            cout << "1: " << mSize-i-seed.numCols-1 << endl;
+//            cout << "2: " << mSize-i-seed.numCols << endl;
+//            cout << "3: " <<  mSize-i << endl;
+    
+        }
+    
+    
+    
+}
 
 
 Surface::~Surface(){}
