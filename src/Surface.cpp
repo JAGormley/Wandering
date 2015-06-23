@@ -12,13 +12,14 @@
 Surface::Surface(Seed seed){
     this->seed = seed;
     
+    
     // TODO: DENSITY
     switch (seed.getSurfaceShape()){
         case Seed::SPHERE:
             rawShape = ofSpherePrimitive(seed.shapeSize, 64);
             break;
         case Seed::PLANE:
-            rawShape = ofPlanePrimitive(seed.shapeSize, seed.shapeSize, 10, 10);
+            rawShape = ofPlanePrimitive(seed.shapeSize, seed.shapeSize, seed.numCols, seed.numCols);
             
             //            rawShape =ofBoxPrimitive(seed.shapeSize, seed.shapeSize, seed.shapeSize);
             break;
@@ -27,7 +28,14 @@ Surface::Surface(Seed seed){
             
     }
     
+    if ((seed.numCols % 2) != 0){
+        even = false;
+    }
+    else even = true;
+    
     vboMesh = rawShape.getMesh();
+    
+    
 };
 
 
@@ -81,37 +89,38 @@ void Surface::waterNoiseGen(int meshSize){
 void Surface::addVRow(){
     float spacing = (seed.shapeSize/(seed.numCols-1));
     int vecSize = vboMesh.getVertices().size();
-    cout << vecSize << endl;
     for (int i = seed.numCols; i > 0; i--) {
-        cout << i << endl;
         //add vertex
         ofVec3f temp = vboMesh.getVertices()[vecSize-i];
         temp = ofVec3f(temp.x, temp.y + spacing, temp.z);
         vboMesh.addVertex(temp);
+        vboMesh.addNormal(temp);
     }
+    
     //stitch new verts into the mesh
     stitch();
 }
 
 void Surface::stitch(){
-
-    
-    // EVEN, STILL NEED TO DO ODD
+    if (even){
         for (int i = 1; i < seed.numCols; i++) {
             vector<ofVec3f> meshVerts = vboMesh.getVertices();
             int mSize = meshVerts.size();
             vboMesh.addTriangle(mSize-i, mSize-i-seed.numCols,  mSize-i-seed.numCols-1);
             vboMesh.addTriangle(mSize-i, mSize-i-1, mSize-i-seed.numCols-1);
-            
-//            cout << "1: " << mSize-i-seed.numCols-1 << endl;
-//            cout << "2: " << mSize-i-seed.numCols << endl;
-//            cout << "3: " <<  mSize-i << endl;
-    
         }
-    
-    
-    
+    }
+    else {
+        for (int i = seed.numCols-1; i > 0 ; i--) {
+            vector<ofVec3f> meshVerts = vboMesh.getVertices();
+            int mSize = meshVerts.size();
+            vboMesh.addTriangle(mSize-seed.numCols-i-1, mSize-seed.numCols-i, mSize-i-1);
+            vboMesh.addTriangle(mSize-seed.numCols-i, mSize-i-1,  mSize-i);
+        }
+    }
+    even = !even;
 }
+
 
 
 Surface::~Surface(){}

@@ -39,4 +39,7 @@ public:
     int waterID;
     ofLight dLight;
     
+    // debug
+    bool newRow;
+    bool even;
 };
