@@ -26,14 +26,14 @@ Ground::Ground(Seed seed) : Surface(seed){
     vboMesh = rawShape.getMesh();
     
     vector<ofVec3f> meshVerts = vboMesh.getVertices();
-    noiseGen(vboMesh.getNumVertices());
+//    noiseGen(vboMesh.getNumVertices());
     for (int i = 0; i < vboMesh.getNumVertices(); i++) {
         
         int xCoord = ofMap(vboMesh.getVertices()[i].x, -seed.shapeSize/2, seed.shapeSize/2, 0, 499);
         int yCoord = ofMap(vboMesh.getVertices()[i].y, -seed.shapeSize/2, seed.shapeSize/2, 0, 499);
         
         // TODO: change mult back to 7
-        float height = heightMapi[xCoord][yCoord]*.2;
+        float height = heightMapi[xCoord][yCoord]*7;
         
         // TODO: DENSITY
         // TODO: change to sphere terrain
@@ -64,7 +64,6 @@ Ground::Ground(Seed seed) : Surface(seed){
 }
 
 void Ground::draw(){
-//    cout << Player::playerLoc << endl;
     dLight.enable();
     terrainDebug();
     

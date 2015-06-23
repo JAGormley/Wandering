@@ -82,9 +82,9 @@ void Surface::waterNoiseGen(int meshSize){
     for (int y=0; y<200; y++) {
         for (int x=0; x<200; x++) {
             
-            float a = x * .005;
-            float b = y * .005;
-            float c = waterID / 180.0;
+            float a = x * .03;
+            float b = y * .03;
+            float c = waterID / 220.0;
             
             float noise = ofNoise(a,b,c) * 255;
             float color = noise>75 ? ofMap(noise,75,255,0,255) : 0;
@@ -104,6 +104,10 @@ void Surface::addVRow(){
         vboMesh.addVertex(temp);
         vboMesh.addNormal(ofVec3f(0,0,1));
         vboMesh.enableColors();
+    }
+    
+    for (int i = 0; i < seed.numCols; i++){
+        vboMesh.removeVertex(0);
     }
     
     //stitch new verts into the mesh
