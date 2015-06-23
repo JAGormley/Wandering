@@ -52,8 +52,14 @@ ofVboMesh Surface::getMesh(){
 /* code adapted from https://sites.google.com/site/ofauckland/examples/noise */
 
 
+
+//void Surface::newVertexHeight(ofVec3f ){
+//    
+//}
+
 void Surface::noiseGen(int meshSize){
     groundID++;
+    
     for (int y=0; y<500; y++) {
         for (int x=0; x<500; x++) {
             
@@ -68,6 +74,8 @@ void Surface::noiseGen(int meshSize){
         }
     }
 }
+
+
 
 void Surface::waterNoiseGen(int meshSize){
     waterID++;
@@ -94,7 +102,8 @@ void Surface::addVRow(){
         ofVec3f temp = vboMesh.getVertices()[vecSize-i];
         temp = ofVec3f(temp.x, temp.y + spacing, temp.z);
         vboMesh.addVertex(temp);
-        vboMesh.addNormal(temp);
+        vboMesh.addNormal(ofVec3f(0,0,1));
+        vboMesh.enableColors();
     }
     
     //stitch new verts into the mesh
