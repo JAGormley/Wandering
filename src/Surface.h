@@ -24,23 +24,28 @@ public:
     virtual ofVboMesh getMesh();
     virtual void noiseGen(int meshSize);
     virtual void waterNoiseGen(int meshSize);
+    virtual ~Surface();
+    
     void addVRow();
     void stitch();
     ofVec3f setNoiseHeight(ofVec3f temp);
-    virtual ~Surface();
-    
-    //    virtual ofPlanePrimitive getPlane();
     
     of3dPrimitive rawShape;
     ofVboMesh vboMesh;
     Seed seed;
+    
+    
     ofImage heightMap;
     int heightMapi[10000][10000];
-    int groundID;
-    int waterID;
-    ofLight dLight;
+    
+    int surfaceID;
+    int surfaceRes;
+    int surfaceHeightMult;
+    
     
     // debug
+    ofLight dLight;
+    
     bool newRow;
     bool even;
 };

@@ -9,8 +9,11 @@
 #include "Water.h"
 
 Water::Water(Seed seed) : Surface(seed){
+    surfaceRes = 199;
+    surfaceHeightMult = 1;
+    
     vboMesh = rawShape.getMesh();
-    waterID = 0;
+    surfaceID = 0;
     
     ofColor matCol(0,0,255);
     matCol.setBrightness(255);
@@ -32,16 +35,11 @@ void Water::update(){
         waterNoiseGen(vboMesh.getNumVertices());
         for (int i = 0; i < vboMesh.getVertices().size(); i++) {
             ofVec3f tempVert = vboMesh.getVertices()[i];
-            int xCoord = ofMap(vboMesh.getVertices()[i].x, -seed.shapeSize/2, seed.shapeSize/2, 0, 199);
-            int yCoord = ofMap(vboMesh.getVertices()[i].y, -seed.shapeSize/2, seed.shapeSize/2, 0, 199);
-            
-            float height = heightMapi[xCoord][yCoord]*2;
-            vboMesh.getVertices()[i] = ofVec3f(tempVert.x, tempVert.y, height);
+            vboMesh.getVertices()[i] = setNoiseHeight(tempVert);
         }
     }
     if (ofGetKeyPressed()){
         addVRow();
-        waterMove++;
     }
 }
 
@@ -52,7 +50,7 @@ void Water::draw(){
     if (seed.getSurfaceShape() != Seed::SPHERE)
         ofRotate(-90, 1, 0, 0);
     material.begin();
-    vboMesh.drawWireframe();
+    vboMesh.draw();
     material.end();
     ofPopMatrix();
 }

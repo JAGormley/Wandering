@@ -49,49 +49,7 @@ ofVboMesh Surface::getMesh(){
 }
 
 
-/* code adapted from https://sites.google.com/site/ofauckland/examples/noise */
 
-
-
-//void Surface::newVertexHeight(ofVec3f ){
-//    
-//}
-
-void Surface::noiseGen(int meshSize){
-    groundID = ofGetFrameNum();
-    for (int y=0; y<500; y++) {
-        for (int x=0; x<500; x++) {
-            
-            float a = x * .005;
-            float b = y * .005;
-            float c = groundID * .002;
-            
-            float noise = ofNoise(a,b,c) * 255;
-            float color = noise>0 ? ofMap(noise,0,255,0,255) : 0;
-            
-            heightMapi[x][y] = color;
-        }
-    }
-}
-
-
-
-void Surface::waterNoiseGen(int meshSize){
-    waterID++;
-    for (int y=0; y<200; y++) {
-        for (int x=0; x<200; x++) {
-            
-            float a = x * .03;
-            float b = y * .03;
-            float c = waterID / 220.0;
-            
-            float noise = ofNoise(a,b,c) * 255;
-            float color = noise>75 ? ofMap(noise,75,255,0,255) : 0;
-            
-            heightMapi[x][y] = color;
-        }
-    }
-}
 
 void Surface::addVRow(){
     float spacing = (seed.shapeSize/(seed.numCols-1));
@@ -133,26 +91,67 @@ void Surface::stitch(){
     even = !even;
 }
 
-ofVec3f Surface::setNoiseHeight(ofVec3f temp){
-    // TODO change 499 to groundRes (same with water)
-    int xCoord = ofMap(temp.x, -seed.shapeSize/2, seed.shapeSize/2, 0, 499);
-    int yCoord = ofMap(temp.y, -seed.shapeSize/2, seed.shapeSize/2, 0, 499);
-    
-    float a = xCoord * .005;
-    float b = yCoord * .005;
-    float c = groundID * .002;
-    
-    float noise = ofNoise(a,b,c) * 255;
-    float color = noise>0 ? ofMap(noise,0,255,0,255) : 0;
-    
-    return ofVec3f(temp.x, temp.y, color*3);
-    
-    
+/* noise functions adapted from https://sites.google.com/site/ofauckland/examples/noise */
+
+void Surface::noiseGen(int meshSize){
+    surfaceID = ofGetFrameNum();
+    for (int y=0; y<500; y++) {
+        for (int x=0; x<500; x++) {
+            
+            float a = x * .005;
+            float b = y * .005;
+            float c = surfaceID * .002;
+            
+            float noise = ofNoise(a,b,c) * 255;
+            float color = noise>0 ? ofMap(noise,0,255,0,255) : 0;
+            
+            heightMapi[x][y] = color;
+        }
+    }
 }
 
+void Surface::waterNoiseGen(int meshSize){
+    surfaceID++;
+    for (int y=0; y<200; y++) {
+        for (int x=0; x<200; x++) {
+            
+            float a = x * .03;
+            float b = y * .03;
+            float c = surfaceID / 220.0;
+            
+            float noise = ofNoise(a,b,c) * 255;
+            float color = noise>75 ? ofMap(noise,75,255,0,255) : 0;
+            
+            heightMapi[x][y] = color;
+        }
+    }
+}
 
-
-
+ofVec3f Surface::setNoiseHeight(ofVec3f temp){
+    float mult;
+    float div;
+    if (seed.getSurfaceType() == Seed::S_WATER){
+        mult = .03;
+        div = .00454;
+    }
+    else {
+        mult = .005;
+        div = .002;
+    }
+    
+    int xCoord = ofMap(temp.x, -seed.shapeSize/2, seed.shapeSize/2, 0, surfaceRes);
+    int yCoord = ofMap(temp.y, -seed.shapeSize/2, seed.shapeSize/2, 0, surfaceRes);
+    
+    float a = xCoord * mult;
+    float b = yCoord * mult;
+    float c = surfaceID * div;
+    
+    float noise = ofNoise(a,b,c) * 255;
+    float color = noise>75 ? ofMap(noise,75,255,0,255) : 0;
+    
+    return ofVec3f(temp.x, temp.y, color*surfaceHeightMult);
+    
+}
 
 
 Surface::~Surface(){}
