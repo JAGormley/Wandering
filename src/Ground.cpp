@@ -21,19 +21,19 @@ Ground::Ground(Seed seed) : Surface(seed){
     ofColor matCol(205,133,63);
     matCol.setBrightness(255);
     material.setDiffuseColor(matCol);
-//    material.setSpecularColor(ofColor(255,255,255));
+    //    material.setSpecularColor(ofColor(255,255,255));
     
     vboMesh = rawShape.getMesh();
     
     vector<ofVec3f> meshVerts = vboMesh.getVertices();
-//    noiseGen(vboMesh.getNumVertices());
+    noiseGen(vboMesh.getNumVertices());
     for (int i = 0; i < vboMesh.getNumVertices(); i++) {
         
         int xCoord = ofMap(vboMesh.getVertices()[i].x, -seed.shapeSize/2, seed.shapeSize/2, 0, 499);
         int yCoord = ofMap(vboMesh.getVertices()[i].y, -seed.shapeSize/2, seed.shapeSize/2, 0, 499);
         
         // TODO: change mult back to 7
-        float height = heightMapi[xCoord][yCoord]*7;
+        float height = heightMapi[xCoord][yCoord]*3;
         
         // TODO: DENSITY
         // TODO: change to sphere terrain
@@ -63,6 +63,18 @@ Ground::Ground(Seed seed) : Surface(seed){
     }
 }
 
+
+void Ground::update(){
+    if (ofGetKeyPressed()){
+        addVRow();
+    }
+}
+
+
+
+
+
+
 void Ground::draw(){
     dLight.enable();
     terrainDebug();
@@ -90,7 +102,7 @@ void Ground::draw(){
     ofPopMatrix();
     dLight.disable();
     
-        groundCount = ofGetMouseX()/10;
+    groundCount = ofGetMouseX()/10;
 }
 
 
@@ -98,19 +110,17 @@ void Ground::setColor(ofColor hue){
     
 }
 
-void Ground::update(){
-    if (ofGetKeyPressed()){
-        addVRow();
-    }
-}
-
 vector<ofVec3f> Ground::getMeshVerts(){
     return vboMesh.getVertices();
 }
 
 
+
+
+
+// DEBUG FUNCTION
+
 void Ground::terrainDebug(){
-    // TERRAIN DEBUG ////////////
     
     ofVec3f playerNode = Player::playerLoc;
     vector<ofVec3f> groundVerts = vboMesh.getVertices();

@@ -58,8 +58,7 @@ ofVboMesh Surface::getMesh(){
 //}
 
 void Surface::noiseGen(int meshSize){
-    groundID++;
-    
+    groundID = ofGetFrameNum();
     for (int y=0; y<500; y++) {
         for (int x=0; x<500; x++) {
             
@@ -88,7 +87,7 @@ void Surface::waterNoiseGen(int meshSize){
             
             float noise = ofNoise(a,b,c) * 255;
             float color = noise>75 ? ofMap(noise,75,255,0,255) : 0;
-            //
+            
             heightMapi[x][y] = color;
         }
     }
@@ -101,7 +100,7 @@ void Surface::addVRow(){
         //add vertex
         ofVec3f temp = vboMesh.getVertices()[vecSize-i];
         temp = ofVec3f(temp.x, temp.y + spacing, temp.z);
-        vboMesh.addVertex(temp);
+        vboMesh.addVertex(setNoiseHeight(temp));
         vboMesh.addNormal(ofVec3f(0,0,1));
         vboMesh.enableColors();
     }
@@ -133,6 +132,26 @@ void Surface::stitch(){
     }
     even = !even;
 }
+
+ofVec3f Surface::setNoiseHeight(ofVec3f temp){
+    // TODO change 499 to groundRes (same with water)
+    int xCoord = ofMap(temp.x, -seed.shapeSize/2, seed.shapeSize/2, 0, 499);
+    int yCoord = ofMap(temp.y, -seed.shapeSize/2, seed.shapeSize/2, 0, 499);
+    
+    float a = xCoord * .005;
+    float b = yCoord * .005;
+    float c = groundID * .002;
+    
+    float noise = ofNoise(a,b,c) * 255;
+    float color = noise>0 ? ofMap(noise,0,255,0,255) : 0;
+    
+    return ofVec3f(temp.x, temp.y, color*3);
+    
+    
+}
+
+
+
 
 
 

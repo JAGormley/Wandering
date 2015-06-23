@@ -26,6 +26,7 @@ public:
     virtual void waterNoiseGen(int meshSize);
     void addVRow();
     void stitch();
+    ofVec3f setNoiseHeight(ofVec3f temp);
     virtual ~Surface();
     
     //    virtual ofPlanePrimitive getPlane();

@@ -20,9 +20,10 @@ public:
     void setColor(ofColor hue);
     void update();
     void draw();
-    
+    ofPlanePrimitive plane;
     ofMaterial material;
     
-    ofPlanePrimitive plane;
+    int waterMove;
+
     
 };

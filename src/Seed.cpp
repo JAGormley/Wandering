@@ -44,8 +44,8 @@ void Seed::setSurfaceShape(){
     }
     else {
         sShape = PLANE;
-        shapeSize = 500;
-        numCols = 10;
+        shapeSize = 3000;
+        numCols = 100;
     }
     
     
