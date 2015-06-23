@@ -38,19 +38,28 @@ void Water::update(){
             vboMesh.getVertices()[i] = setNoiseHeight(tempVert);
         }
     }
-    if (ofGetKeyPressed()){
+    if (abs(Player::playerLoc.z + vboMesh.getVertices()[vboMesh.getVertices().size()-30].y) < 15000){
         addVRow();
     }
+    
+    dLight.setPosition(Player::playerLoc.x, Player::playerLoc.y+200, Player::playerLoc.z);
 }
 
 void Water::draw(){
+    dLight.draw();
+    dLight.enable();
     ofSetColor(0, 200, 255);
     ofPushMatrix();
     rawShape.drawAxes(100);
-    if (seed.getSurfaceShape() != Seed::SPHERE)
+    if (seed.getSurfaceShape() != Seed::SPHERE){
         ofRotate(-90, 1, 0, 0);
+//        ofRotate(180, 0, 1, 0);
+    }
     material.begin();
     vboMesh.draw();
     material.end();
+    ofSetColor(255, 0, 0);
+    ofDrawSphere(vboMesh.getVertices()[vboMesh.getVertices().size()-30], 7);
     ofPopMatrix();
+    dLight.disable();
 }

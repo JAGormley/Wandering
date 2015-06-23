@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include "ofMain.h"
 #include "Seed.h"
+#include "Player.h"
 
 
 class Surface {

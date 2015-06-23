@@ -13,8 +13,6 @@
 Light::Light(Seed seed){
     this->seed = seed;
     
-    
-    light.setPosition(0, 1500, 0);
     ofSetSmoothLighting(true);
     
     
@@ -46,32 +44,15 @@ void Light::update(){
 void Light::draw(){
     ofPushMatrix();
     ofSetColor(255,255,255);
+    light.setPosition(30, Player::playerLoc.y+1000, Player::playerLoc.z-5000);
+    
     material.begin();
-    
-    ofRotate(160, 1, 0, 0);
-
-    light.setPosition(0, lightSize, -lightDistance-Player::playerLoc.z+200);
-    
-    // TODO: tie light rotation to facade rotation for movement
-    light.rotateAround(150, ofVec3f(1,0,0), ofVec3f(0,0,0));
-    
-    if (seed.traversal == Seed::ORBIT) {
-        ofTranslate(0, 0, -seed.shapeSize);
-    }
-    else {
-        ofTranslate(0, 0, -lightDistance-Player::playerLoc.z);
-    }
-    ;
-    // flip facade so material faces light
-    ofRotate(180, 1, 0, 0);
-    
     drawChild();
-    
     material.end();
     
     ofPopMatrix();
     light.draw();
-    //    }
+
     
 }
 

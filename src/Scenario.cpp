@@ -58,7 +58,7 @@ void Scenario::update(){
     environment->update();
     light->update();
     player.move();
-    if (seed.getTraversal() != Seed::ORBIT)
+    if (seed.getTraversal() == Seed::WALK)
         player.setNewHeight();
     
 }

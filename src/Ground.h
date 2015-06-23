@@ -12,7 +12,6 @@
 #define __Wandering2__Ground__
 #include <stdio.h>
 #include "ofMain.h"
-#include "Player.h"
 #endif /* defined(__Wandering2__Ground__) */
 
 #ifndef __Wandering2__Surface__

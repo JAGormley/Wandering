@@ -33,7 +33,7 @@ public:
     ofVec3f getPosition();
     
 protected:
-    of3dPrimitive facade;
+    ofCylinderPrimitive facade;
     ofVec3f position;
     ofColor lightColor;
     ofLight light;
