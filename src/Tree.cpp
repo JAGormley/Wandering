@@ -16,7 +16,9 @@ Tree::Tree(SpriteSeed spriteSeed) : Plant(spriteSeed){
     stem.setPosition(pos.x, pos.y, pos.z);
     
     top.setParent(stem);
-    top.set(100, 100, 100);
+    addLeaves();
+    top.set(10, 10, 10);
+    top.boom(150);
     
     materialColor.setBrightness(250.f);
     materialColor.setSaturation(200);
@@ -41,7 +43,22 @@ void Tree::setup(){
     else {
         //        plant.rotate(90, 1, 0, 0);
         stem.rotateAround(-90, ofVec3f(1,0,0), ofVec3f(0,0,0));
-        
-        stem.move(ofVec3f(0, 0, 50));
     }
+}
+
+
+void Tree::addLeaves(){
+    ofConePrimitive tempLeaf;
+    ofVboMesh vLeaf;
+    for (int i = 0; i < 20; i++) {
+        tempLeaf.set(6, 6);
+        tempLeaf.setScale(.5, 1, 1);
+        tempLeaf.setParent(top);
+        tempLeaf.setPosition(ofVec3f(ofRandom(50), ofRandom(20), ofRandom(20)));
+        vLeaf = tempLeaf.getMesh();
+        leaves.push_back(tempLeaf);
+    }
+    
+    
+    
 }

@@ -28,6 +28,8 @@ public:
     virtual void setActivated(bool activated);
     virtual void draw();
     virtual void setup();
+    void addLeaves();
+    
     
     ofMaterial material;
     ofBoxPrimitive stem;
@@ -37,5 +39,6 @@ public:
     ofVec3f pos;
     SpriteSeed sSeed;
     of3dPrimitive nodePlant;
+    vector<ofConePrimitive> leaves;   
     
 };

@@ -25,10 +25,14 @@ void Plant::setActivated(bool activated){
 }
 
 void Plant::draw(){
+    
     ofPushMatrix();
     material.begin();
     stem.draw();
     top.draw();
+    for (int i = 0; i < leaves.size(); i++) {
+        
+    }
     material.end();
     ofPopMatrix();
 }
