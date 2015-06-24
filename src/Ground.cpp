@@ -67,9 +67,11 @@ Ground::Ground(Seed seed) : Surface(seed){
 
 
 void Ground::update(){
-    if (ofGetKeyPressed()){
-        addVRow();
-    }
+//    if (ofGetKeyPressed()){
+//        addVRow();
+//    }
+    // DEBUG
+    dLight.setPosition(Player::playerLoc.x, Player::playerLoc.y+200, Player::playerLoc.z);
 }
 
 void Ground::draw(){

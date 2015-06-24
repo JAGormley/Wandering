@@ -42,7 +42,7 @@ void Water::update(){
         addVRow();
     }
     
-    dLight.setPosition(Player::playerLoc.x, Player::playerLoc.y+200, Player::playerLoc.z);
+    
 }
 
 void Water::draw(){

@@ -23,7 +23,8 @@ public:
     
     float colorHue;
     ofColor materialColor;
-    ofMaterial AirMaterial;
-    ofVboMesh AirMesh;
-    
+    ofMaterial airMaterial;
+    ofVboMesh airMesh;
+    vector<ofCylinderPrimitive> clouds;
+    ofCylinderPrimitive testCloud;
 };

@@ -54,8 +54,6 @@ mVoid::mVoid(Seed seed) : Medium(seed){
             voidMesh.append(tempMesh);
         }
     }
-    
-    //    voidMesh.draw(OF_MESH_FILL);
 }
 
 void mVoid::draw(){

@@ -41,7 +41,6 @@ Surface::Surface(Seed seed){
 
 // TODO: static camera function to clip the horizon a bit earlier than the light
 void Surface::draw(){
-    
 }
 
 ofVboMesh Surface::getMesh(){

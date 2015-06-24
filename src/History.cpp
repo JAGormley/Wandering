@@ -26,7 +26,7 @@ void History::setPresent(){
     present.traversal = ofRandom(4);
     
     // DEBUG:
-    present.traversal = 3;
+    present.traversal = 1;
     
     // MEDIUM
     // 0 = AIR, 1 = VOID, 2 = WATER
@@ -40,6 +40,9 @@ void History::setPresent(){
         while (present.medium == 1);
     }
     else present.medium = ofRandom(3);
+    
+    // DEBUG:
+    present.medium = 0;
     
     
     // SURFACE_TYPE

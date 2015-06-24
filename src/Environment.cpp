@@ -26,6 +26,7 @@ void Environment::draw(){
 
 void Environment::update(){
     surface->update();
+    medium->update();
 }
 
 

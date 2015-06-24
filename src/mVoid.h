@@ -34,6 +34,5 @@ public:
     ofVboMesh voidMesh;
     vector<ofSpherePrimitive> stars;
     ofSpherePrimitive one;
-    ofVbo fStars;
 
 };
