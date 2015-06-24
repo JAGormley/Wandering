@@ -10,12 +10,9 @@
 
 #include <stdio.h>
 #include "ofMain.h"
-
-
-#ifndef __Wandering2__Seed__
+#include "Player.h"
 #include "Seed.h"
-#define __Wandering2__Seed__
-#endif /* defined(__Wandering2__Seed__) */
+
 
 class Medium {
 public:

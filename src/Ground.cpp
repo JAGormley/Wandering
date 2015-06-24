@@ -27,15 +27,9 @@ Ground::Ground(Seed seed) : Surface(seed){
     //    material.setSpecularColor(ofColor(255,255,255));
     
     vboMesh = rawShape.getMesh();
-    
     vector<ofVec3f> meshVerts = vboMesh.getVertices();
     noiseGen(vboMesh.getNumVertices());
     for (int i = 0; i < vboMesh.getNumVertices(); i++) {
-        
-        int xCoord = ofMap(vboMesh.getVertices()[i].x, -seed.shapeSize/2, seed.shapeSize/2, 0, surfaceRes);
-        int yCoord = ofMap(vboMesh.getVertices()[i].y, -seed.shapeSize/2, seed.shapeSize/2, 0, surfaceRes);
-        
-        float height = heightMapi[xCoord][yCoord]*surfaceHeightMult;
         
         // TODO: DENSITY
         // TODO: change to sphere terrain
@@ -47,7 +41,9 @@ Ground::Ground(Seed seed) : Surface(seed){
         if (seed.getSurfaceShape() == Seed::PLANE){
             
             // Hills
-            
+            int xCoord = ofMap(vboMesh.getVertices()[i].x, -seed.shapeSize/2, seed.shapeSize/2, 0, surfaceRes);
+            int yCoord = ofMap(vboMesh.getVertices()[i].y, -seed.shapeSize/2, seed.shapeSize/2, 0, surfaceRes);
+            float height = heightMapi[xCoord][yCoord]*surfaceHeightMult;
             tempVert = ofVec3f(meshVerts[i].x, meshVerts[i].y, height);
         }
         
@@ -75,7 +71,8 @@ void Ground::update(){
 }
 
 void Ground::draw(){
-    dLight.enable();
+//    dLight.enable();
+    
     terrainDebug();
     
     ////////////////////////////
@@ -99,7 +96,8 @@ void Ground::draw(){
     ofDrawAxis(600);
     material.end();
     ofPopMatrix();
-    dLight.disable();
+    
+//    dLight.disable();
 }
 
 

@@ -16,8 +16,8 @@ Light::Light(Seed seed){
     ofSetSmoothLighting(true);
     
     
-    shaderBlurX.load("shadersGL2/shaderBlurX");
-    shaderBlurY.load("shadersGL2/shaderBlurY");
+//    shaderBlurX.load("shadersGL2/shaderBlurX");
+//    shaderBlurY.load("shadersGL2/shaderBlurY");
     
     
     
@@ -38,13 +38,14 @@ Light::Light(Seed seed){
 }
 
 void Light::update(){
-    
+    light.setPosition(30, Player::playerLoc.y+8000, Player::playerLoc.z-20000);
+//    light2.setPosition(30, Player::playerLoc.y+6000, Player::playerLoc.z-20000);
 }
 
 void Light::draw(){
     ofPushMatrix();
     ofSetColor(255,255,255);
-    light.setPosition(30, Player::playerLoc.y+1000, Player::playerLoc.z-20000);
+    
     
     material.begin();
     drawChild();

@@ -22,7 +22,8 @@
 #include "Water.h"
 #include "None.h"
 
-#include "Plant.h"
+
+#include "Tree.h"
 #include "Animal.h"
 
 #include "Sun.h"

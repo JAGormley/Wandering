@@ -25,13 +25,14 @@ mVoid::mVoid(Seed seed) : Medium(seed){
     
     ofBackground(0, 0, 0);
     
+    ofSpherePrimitive sphere;
+    sphere.set(6, 3, OF_PRIMITIVE_TRIANGLES);
+    ofMesh tempMesh;
     
+    // TODO: set stars using sphere math, not generate and test
     // STAR POPULATION
     for (int i = 0; i < 10000; i++) {
-        ofSpherePrimitive sphere;
-        //        sphere.
-        sphere.set(6, 3, OF_PRIMITIVE_TRIANGLES);
-        ofMesh tempMesh;
+        
         tempMesh = sphere.getMesh();
         
         vector<ofVec3f>tempVerts = tempMesh.getVertices();

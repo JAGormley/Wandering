@@ -23,19 +23,19 @@
 class Plant: public Sprite {
 public:
     Plant(SpriteSeed spriteSeed);
-//    Plant(ofVec3f pos, ofVec3f orient);
-    void move();
-    void activate();
-    void setActivated(bool activated);
-    void draw();
-    ofVec3f getLocation();
-    vector<ofVec3f> getVerts();
+    virtual void update();
+    virtual void activate();
+    virtual void setActivated(bool activated);
+    virtual void draw();
+    virtual void setup();
     
     ofMaterial material;
-    ofBoxPrimitive plant;
+    ofBoxPrimitive stem;
+    ofBoxPrimitive top;
     ofColor materialColor;
     float colorHue;
     ofVec3f pos;
     SpriteSeed sSeed;
+    of3dPrimitive nodePlant;
     
 };

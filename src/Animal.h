@@ -22,12 +22,10 @@
 class Animal: public Sprite {
 public:
     Animal(SpriteSeed spriteSeed);
-    void move();
+    void update();
     void activate();
     void setActivated(bool activated);
     void draw();
-    ofVec3f getLocation();
-    vector<ofVec3f> getVerts();
     
     ofMaterial material;
     ofSpherePrimitive animal;

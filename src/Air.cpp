@@ -31,7 +31,7 @@ Air::Air(Seed seed) : Medium(seed){
     ofVboMesh vCloud;
     for (int i = 0; i < 10; i++) {
         float angle = ofRandom(360);
-        int rando = ofRandom(6000)-3000;
+        int rando = ofRandom(500);
         int rando2 = ofRandom(100)-50;
         int rando3 = ofRandom(100)-50;
         
@@ -40,9 +40,9 @@ Air::Air(Seed seed) : Medium(seed){
         
         //        // move the cloud's vertices to new location
         for (int j = 0; j < tempVerts.size(); j++) {
-            //            ofVboMesh tempCloud = generateCloud();
-            ofVec3f tempster = ofVec3f(tempVerts[j].x+20000*cos(angle)+rando2, tempVerts[j].y+1000, tempVerts[j].z+20000*sin(angle)+rando3);
-//            tempster.rotateRad(angle, ofVec3f(0,1,0));
+            ofVec3f tempster = ofVec3f(tempVerts[j].x+20000*cos(angle)+rando2,
+                                       tempVerts[j].y+1000+rando,
+                                       tempVerts[j].z+20000*sin(angle)+rando3);
             vCloud.getVertices()[j] = tempster;
         }
         
@@ -54,12 +54,16 @@ Air::Air(Seed seed) : Medium(seed){
 }
 
 void Air::draw(){
-    ofSetColor(255, 255, 255, 200);
+    ofSetColor(255, 255, 255, 150);
     //    testCloud.draw();
     
     airMaterial.begin();
     airMesh.setMode(OF_PRIMITIVE_TRIANGLES);
+    ofPushMatrix();
+    ofTranslate(Player::playerLoc.x, 0, Player::playerLoc.z);
+    ofRotate(ofGetFrameNum()/50.0, 0, 1, 0);
     airMesh.draw(OF_MESH_FILL);
+    ofPopMatrix();
     airMaterial.end();
 }
 
@@ -68,17 +72,13 @@ void Air::setColor(ofColor hue){
     
 }
 void Air::update(){
-    //    float map = ofMap(ofGetMouseX(), -130, 3069, 0, 6);
-    //    testCloud.setPosition(8000*cos(map), ofGetMouseY()*100, 8000*sin(map));
-    //    testCloud.lookAt(ofVec3f(0, 0, 0));
-    //    testCloud.rotate(90, testCloud.getXAxis());
     
 }
 
 
 ofVboMesh Air::generateCloud(){
     ofVboMesh vCloud;
-    float cloudSize = 2000.0;
+    float cloudSize = ofRandom(1000.0)+1000.0;
     int numSpheres = ofRandom(10)+20;
     int prevWidth = 0;
     
@@ -87,9 +87,9 @@ ofVboMesh Air::generateCloud(){
     ofVboMesh tempMesh;
     
     for (int i = 0; i < numSpheres; i++) {
-        float height = ofRandom(cloudSize*3.0);
-        float width = ofRandom(cloudSize*4);
-        float depth = ofRandom(cloudSize*2);
+        float height = ofRandom(cloudSize*3);
+        float width = ofRandom(cloudSize*4)+cloudSize;
+        float depth = ofRandom(cloudSize*6)-cloudSize*3;
         
         tempMesh = cloud.getMesh();
         vector<ofVec3f>tempVerts = tempMesh.getVertices();

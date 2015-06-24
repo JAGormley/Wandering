@@ -34,7 +34,7 @@ Animal::Animal(SpriteSeed spriteSeed) : Sprite(spriteSeed){
 //    material.setSpecularColor(materialColor);
 }
 
-void Animal::move(){
+void Animal::update(){
     ofVec3f loc = animal.getPosition();
     animal.setPosition(loc.x-0.1f, loc.y, loc.z);
 }
@@ -49,11 +49,4 @@ void Animal::draw(){
     material.begin();
     animal.draw();
     material.end();
-}
-ofVec3f Animal::getLocation(){
-    animal.getPosition();
-}
-
-vector<ofVec3f> Animal::getVerts(){
-    return animal.getMesh().getVertices();
 }

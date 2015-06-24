@@ -37,6 +37,7 @@ protected:
     ofVec3f position;
     ofColor lightColor;
     ofLight light;
+    ofLight light2;
     ofMaterial material;
     ofColor materialColor;
     int lightSize;
