@@ -54,13 +54,13 @@ ofVboMesh Surface::getMesh(){
 void Surface::addVRow(){
     float spacing = (seed.shapeSize/(seed.numCols-1));
     int vecSize = vboMesh.getVertices().size();
+    vector<ofVec3f> verts = vboMesh.getVertices();
     for (int i = seed.numCols; i > 0; i--) {
         //add vertex
-        ofVec3f temp = vboMesh.getVertices()[vecSize-i];
+        ofVec3f temp = verts[vecSize-i];
         temp = ofVec3f(temp.x, temp.y + spacing, temp.z);
         vboMesh.addVertex(setNoiseHeight(temp));
         vboMesh.addNormal(ofVec3f(0,0,1));
-        vboMesh.enableColors();
     }
     
     for (int i = 0; i < seed.numCols; i++){
@@ -72,9 +72,9 @@ void Surface::addVRow(){
 }
 
 void Surface::stitch(){
+    vector<ofVec3f> meshVerts = vboMesh.getVertices();
     if (even){
         for (int i = 1; i < seed.numCols; i++) {
-            vector<ofVec3f> meshVerts = vboMesh.getVertices();
             int mSize = meshVerts.size();
             vboMesh.addTriangle(mSize-i, mSize-i-seed.numCols,  mSize-i-seed.numCols-1);
             vboMesh.addTriangle(mSize-i, mSize-i-1, mSize-i-seed.numCols-1);
@@ -82,7 +82,6 @@ void Surface::stitch(){
     }
     else {
         for (int i = seed.numCols-1; i > 0 ; i--) {
-            vector<ofVec3f> meshVerts = vboMesh.getVertices();
             int mSize = meshVerts.size();
             vboMesh.addTriangle(mSize-seed.numCols-i-1, mSize-seed.numCols-i, mSize-i-1);
             vboMesh.addTriangle(mSize-seed.numCols-i, mSize-i-1,  mSize-i);
@@ -131,7 +130,7 @@ ofVec3f Surface::setNoiseHeight(ofVec3f temp){
     float mult;
     float div;
     if (seed.getSurfaceType() == Seed::S_WATER){
-        mult = .03;
+        mult = .1;
         div = .00454;
     }
     else {

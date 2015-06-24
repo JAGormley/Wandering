@@ -89,6 +89,10 @@ void Controls::moveType(){
         pitch_ud = handPos.y/500;
         back_forth = handPos.z/100;
         
+        
+        
+        
+        
         if (back_forth > 0) back_forth = 0;
         cam->dolly(back_forth);
 //        cam->roll(roller);
