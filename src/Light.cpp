@@ -44,7 +44,7 @@ void Light::update(){
 void Light::draw(){
     ofPushMatrix();
     ofSetColor(255,255,255);
-    light.setPosition(30, Player::playerLoc.y+1000, Player::playerLoc.z-5000);
+    light.setPosition(30, Player::playerLoc.y+1000, Player::playerLoc.z-20000);
     
     material.begin();
     drawChild();

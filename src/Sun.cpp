@@ -12,7 +12,7 @@
 
 Sun::Sun(Seed seed) : Light(seed){
     
-    facade.set(1000, 5, 100, 1);
+    facade.set(10000, 5, 100, 1);
     facade.rotate(90, 1, 0, 0);
     
     materialColor.setBrightness(250.f);
