@@ -30,7 +30,7 @@ mVoid::mVoid(Seed seed) : Medium(seed){
     for (int i = 0; i < 10000; i++) {
         ofSpherePrimitive sphere;
         //        sphere.
-        sphere.set(3, 3, OF_PRIMITIVE_TRIANGLES);
+        sphere.set(6, 3, OF_PRIMITIVE_TRIANGLES);
         ofMesh tempMesh;
         tempMesh = sphere.getMesh();
         

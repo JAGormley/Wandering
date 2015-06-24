@@ -29,9 +29,9 @@ Air::Air(Seed seed) : Medium(seed){
     airMaterial.setEmissiveColor(c);
     
     
-    for (int i = 0; i < 2; i++) {
-        ofCylinderPrimitive cloud;
-        cloud.set(1000, 5, 200, 5);
+    for (int i = 0; i < 500; i++) {
+        ofSpherePrimitive cloud;
+        cloud.set(1000, 5, OF_PRIMITIVE_TRIANGLES);
         ofVboMesh tempMesh;
         tempMesh = cloud.getMesh();
         
@@ -39,11 +39,13 @@ Air::Air(Seed seed) : Medium(seed){
         
         float angle = ofRandom(6.0);
         int rando = ofRandom(6000)-3000;
+        int rando2 = ofRandom(100)-50;
+        int rando3 = ofRandom(100)-50;
         
-        // move the cylinder's vertices to new location
+        // move the sphere's vertices to new location
         for (int j = 0; j < tempVerts.size(); j++) {
-            
-            ofVec3f tempster = ofVec3f(tempVerts[j].x+8000*cos(angle), tempVerts[j].y+rando, tempVerts[j].z+8000*cos(angle));
+//            ofVboMesh tempCloud = generateCloud();
+            ofVec3f tempster = ofVec3f(tempVerts[j].x+8000*cos(angle)+rando2, tempVerts[j].y+1000, tempVerts[j].z+8000*sin(angle)+rando3);
             tempMesh.getVertices()[j] = tempster;
         }
         
@@ -57,7 +59,7 @@ void Air::draw(){
 //    testCloud.draw();
     
     airMaterial.begin();
-    airMesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+    airMesh.setMode(OF_PRIMITIVE_TRIANGLES);
     airMesh.draw(OF_MESH_FILL);
     airMaterial.end();
 }
@@ -71,6 +73,11 @@ void Air::update(){
 //    testCloud.setPosition(8000*cos(map), ofGetMouseY()*100, 8000*sin(map));
 //    testCloud.lookAt(ofVec3f(0, 0, 0));
 //    testCloud.rotate(90, testCloud.getXAxis());
+    
+}
+
+
+ofVboMesh Air::generateCloud(){
     
 }
 

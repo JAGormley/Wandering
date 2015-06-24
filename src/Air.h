@@ -20,6 +20,7 @@ public:
     void setColor(ofColor hue);
     void update();
     vector<ofVec3f> getMeshVerts();
+    ofVboMesh generateCloud();
     
     float colorHue;
     ofColor materialColor;
