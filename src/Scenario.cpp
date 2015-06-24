@@ -49,6 +49,15 @@ void Scenario::draw(){
     for (int i = 0; i < sprites.size(); i++) {
         sprites[i]->draw();
     }
+//    DEBUG
+    ofSetColor(255, 0, 0);
+    ofDrawArrow(ofVec3f(800, 700, -3000), ofVec3f(800, 700, 3000));
+    ofDrawArrow(ofVec3f(-800, 700, -3000), ofVec3f(-800, 700, 3000));
+    
+    ofSetColor(0, 255, 0);
+    ofDrawArrow(player.cam.getLookAtDir().normalize(), player.cam.getLookAtDir().normalize()*10000);
+    
+    
     light->draw();
     light->disable();
 }

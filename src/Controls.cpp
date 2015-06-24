@@ -35,7 +35,7 @@ void Controls::move(){
     
     if (simpleHands.size() > 0){
         moveType();
-        roller = simpleHands[0].roll;
+        roller = simpleHands[0].roll/5;
     }
     
     leap.markFrameAsOld();
@@ -49,7 +49,7 @@ void Controls::setOrbitRadius(float radius){
 void Controls::moveType(){
     
     
-//    cout << type << endl;
+    //    cout << type << endl;
     float up = 0;
     float down = 0;
     float back_forth = 0;
@@ -63,7 +63,7 @@ void Controls::moveType(){
     }
     
     else if (type == Seed::WALK){
-//                cout << "WALK" << endl;
+        //                cout << "WALK" << endl;
         moveHelper(handPos.z/200, handPos.x/400, 0, 0, 0);
     }
     
@@ -85,22 +85,37 @@ void Controls::moveType(){
         
         up = 1.f;
         down = 0.f;
-        pitch_lr = handPos.x/500;
-        pitch_ud = handPos.y/500;
-        back_forth = handPos.z/100;
+        pitch_lr = handPos.x/1000;
+        pitch_ud = handPos.y/1000;
+        back_forth = handPos.z/20;
         
         
-        
-        
+        // FLIGHT CORRAL: limit the player's travel to a "tube"
+        ofVec3f camPos = cam->getPosition();
+        if (camPos.y < 400){
+            cam->setPosition(camPos.x, 400, camPos.z);
+        }
+        if (camPos.y > 1000){
+            cam->setPosition(camPos.x, 1000, camPos.z);
+        }
+        if (camPos.x < -800 ){
+            cam->setPosition(-800, camPos.y, camPos.z);
+        }
+        if (camPos.x > 800 ){
+            cam->setPosition(800, camPos.y, camPos.z);
+        }
         
         if (back_forth > 0) back_forth = 0;
         cam->dolly(back_forth);
-//        cam->roll(roller);
         
-        if ((cam->getLookAtDir().x < .5f && pitch_lr < 0)){
+        if (cam->getRoll() < 30 && cam->getRoll() > -30)
+            cam->roll(roller);
+        
+        
+        if ((cam->getLookAtDir().x > -.4f && pitch_lr < 0)){
             cam->pan(-pitch_lr);
         }
-        else if ((cam->getLookAtDir().x > -.5f && pitch_lr > 0)){
+        else if ((cam->getLookAtDir().x < .4f && pitch_lr > 0)){
             cam->pan(-pitch_lr);
         }
         
@@ -120,5 +135,5 @@ void Controls::moveHelper(float dolly, float pan, float tilt, float boom, float 
     cam->pan(-pan);
     cam->tilt(tilt);
     cam->boom(boom);
-//    cam->truck(-truck);
+    //    cam->truck(-truck);
 }

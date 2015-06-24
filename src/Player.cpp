@@ -38,6 +38,7 @@ void Player::stopCam(){
 
 void Player::draw(){
     cam.draw();
+    
 }
 
 void Player::setSeed(Seed seed){
