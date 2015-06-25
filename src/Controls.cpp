@@ -16,7 +16,6 @@ void Controls::setCam(ofCamera &cam) {
 }
 
 void Controls::move(){
-    
     leap.open();
     simpleHands = leap.getSimpleHands();
     
@@ -26,7 +25,7 @@ void Controls::move(){
         leap.setMappingY(90, 490, -ofGetHeight()/2, ofGetHeight()/2);
         leap.setMappingZ(-150, 150, -800, 800);
     }
-    
+    fingerType fingerTypes[] = {THUMB, INDEX, MIDDLE, RING, PINKY};
     for(int i = 0; i < simpleHands.size(); i++){
         bool isLeft        = simpleHands[i].isLeft;
         handPos    = simpleHands[i].handPos;
@@ -34,6 +33,7 @@ void Controls::move(){
     }
     
     if (simpleHands.size() > 0){
+
         moveType();
         roller = simpleHands[0].roll/5;
     }
@@ -47,9 +47,6 @@ void Controls::setOrbitRadius(float radius){
     orbitRadius = radius;
 }
 void Controls::moveType(){
-    
-    
-    //    cout << type << endl;
     float up = 0;
     float down = 0;
     float back_forth = 0;
@@ -57,8 +54,6 @@ void Controls::moveType(){
     float pitch_ud = 0;
     
     if (type == Seed::FLOAT){
-        // maybe this has a slow set forward z
-        
         moveHelper(handPos.z/100, handPos.x/300, 0, handPos.y/100, 0);
     }
     

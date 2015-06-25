@@ -33,16 +33,25 @@ void Plant::draw(){
     ofSetColor(143,188,143);
     ofConePrimitive oldTop = top;
     ofVec3f tempV;
+    
+    
+    // TODO: move this into tree(?), test in orbit mode
     for (int i = 0; i < 35; i++) {
         tempV = top.getMesh().getVertices()[i];
-        float jimmy = noiseGen(tempV.x, tempV.y);
-        tempV = ofVec3f(tempV.x+jimmy, tempV.y, tempV.z+jimmy);
+        float jimmy = noiseGen(tempV.x, tempV.y)/10;
+        tempV = ofVec3f(tempV.x+jimmy, tempV.y+jimmy, tempV.z+jimmy);
         top.getMesh().getVertices()[i] = tempV;
     }
     
+    
+    stem.transformGL();
     top.draw();
+    stem.restoreTransformGL();
     top = oldTop;
-    leaves.draw();
+    
+//    top.transformGL();
+//    leaves.draw();
+//    top.restoreTransformGL();
     material.end();
     ofPopMatrix();
 }
@@ -50,12 +59,3 @@ void Plant::draw(){
 void Plant::setup(){
 }
 
-float Plant::noiseGen(float x, float y){
-    float a = x * .03;
-    float b = y * .05;
-    float c = ofGetFrameNum() / 500.0;
-    
-    float noise = ofNoise(a,b,c) * 255;
-    float color = noise>75 ? ofMap(noise,75,255,0,255) : 0;
-    return color;
-}

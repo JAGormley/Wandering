@@ -17,6 +17,8 @@ Scenario::Scenario(){
 
 void Scenario::setNew(){
     reset();
+//    sound.playMusic();
+    
     
     // ensure the seed is populated before anything else is set
     seed.populate();
@@ -108,8 +110,9 @@ Surface * Scenario::getSurface(){
 void Scenario::setSprites(){
     // TODO: DENSITY
     for (int i = 0; i < 50; i++) {
-        sprites.push_back(shared_ptr<Sprite>(new Tree(spriteSeed)));
         sprites.push_back(shared_ptr<Sprite>(new Crystal(spriteSeed)));
+        sprites.push_back(shared_ptr<Sprite>(new Tree(spriteSeed)));
+        
     }
 }
 

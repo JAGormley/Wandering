@@ -78,7 +78,7 @@ void Ground::draw(){
     ////////////////////////////
     
     material.begin();
-    ofSetColor(150, 75, 0);
+    ofSetColor(222,184,135);
     ofPushMatrix();
     
     if (seed.getSurfaceShape() != Seed::SPHERE)

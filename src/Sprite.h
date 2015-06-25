@@ -12,7 +12,7 @@
 #include <iostream>
 #include "ofMain.h"
 #include "SpriteSeed.h"
-
+#include "Sound.h"
 
 
 class Sprite {
@@ -23,4 +23,9 @@ public:
     virtual void activate() =0;
     virtual void setActivated(bool activated) =0;
     virtual void draw() =0;
+    virtual float noiseGen(float x, float y);
+    
+    
+    Sound player;
+    bool activated;
 };

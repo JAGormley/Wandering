@@ -30,7 +30,7 @@ Tree::Tree(SpriteSeed spriteSeed) : Plant(spriteSeed){
     stem.set(4*size, 300*size);
     stem.setPosition(pos);
     
-    top.setParent(stem);
+//    top.setParent(stem);
     top.set(50*size, 200*size);
     top.boom(150*size);
     top.rotate(180, ofVec3f(1,0,0));
@@ -38,7 +38,7 @@ Tree::Tree(SpriteSeed spriteSeed) : Plant(spriteSeed){
     this->setup();
     
     // Debug: fix this
-//    leaves = generateLeaves();
+    leaves = generateLeaves();
 }
 
 void Tree::setup(){
@@ -78,7 +78,7 @@ ofVboMesh Tree::generateLeaves(){
         
         for (int j = 0; j < tempVerts.size(); j++) {
             ofVec3f tempster = ofVec3f(tempVerts[j].x,
-                                       tempVerts[j].y+200,
+                                       tempVerts[j].y,
                                        tempVerts[j].z);
             
             
@@ -91,7 +91,7 @@ ofVboMesh Tree::generateLeaves(){
 //            tempster.rotate(angle, axis);
             
 //            float angle = tempster.angle(stem.getUpDir());
-            tempster.rotate(-30, ofVec3f(1,0,0));
+//            tempster.rotate(-30, ofVec3f(1,0,0));
             tempMesh.getVertices()[j] = tempster;
         }
         vLeaves.append(tempMesh);

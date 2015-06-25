@@ -5,8 +5,6 @@ void ofApp::setup(){
     
     shader.load("shadersGL2/shader");
     
-    //    ofSetVerticalSync(true);
-    
     outCam = false;
     
     ofSetFrameRate(60);
@@ -14,11 +12,8 @@ void ofApp::setup(){
     ofEnableDepthTest();
     ofEnableLighting();
     
-//    light.setAttenuation(1.f, 0, 0.00005f);
-    
     cam.setPosition(0, 0, -2500);
     scenario.setNew();
-    tube.set(10, 10000, 10, 10);
 }
 
 //--------------------------------------------------------------
@@ -30,17 +25,17 @@ void ofApp::update(){
 void ofApp::draw(){
     
     ofEnableLighting();
-//    moon.enable();
+    
     if (outCam == true){
+        // DEBUG CAM
         cam.begin();
-        // DEBUG: look direction
-//        cout << "LOOKDIR: " << cam.getLookAtDir() << endl;
         scenario.player.draw();
     }
+    
     else {
+        // PLAYER CAM
         scenario.player.startCam();
     }
-    
     
     scenario.draw();
     
@@ -48,11 +43,7 @@ void ofApp::draw(){
     ofRotate(90, 1, 0, 0);
     ofTranslate(0, 0, -100);
     ofSetColor(100, 0, 100, 200);
-//    tube.draw();
     ofPopMatrix();
-    
-//    shader.begin();
-//    shader.end();
     
     if (outCam == true){
         cam.end();

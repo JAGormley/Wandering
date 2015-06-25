@@ -10,7 +10,7 @@
 
 
 Air::Air(Seed seed) : Medium(seed){
-    ofBackground(0, 127, 255);
+    ofBackground(135,206,250);
     testCloud.set(1000, 5, 100, 1);
     //    testCloud.rotate(90, 1, 0, 0);
     

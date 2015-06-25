@@ -31,7 +31,7 @@ public:
     void moveType();
     void setOrbitRadius(float radius);
     void moveHelper(float dolly, float pan, float tilt, float boom, float truck);
-    
+    vector <int> fingersFound;
     Seed::Traversal type;
     ofxLeapMotion leap;
     vector <ofxLeapMotionSimpleHand> simpleHands;

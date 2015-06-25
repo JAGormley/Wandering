@@ -40,7 +40,7 @@ void Seed::setSurfaceShape(){
     // TODO: get vals from ???
     if (traversal == ORBIT){
         sShape = SPHERE;
-        shapeSize = 1000;
+        shapeSize = 5000;
     }
     else {
         sShape = PLANE;
