@@ -26,9 +26,6 @@ Sun::Sun(Seed seed) : Light(seed){
     light.setDiffuseColor(ofColor(255,255,255));
     light.setSpecularColor(ofColor(255,255,200));
     
-    // Max sun distance without clipping
-    lightDistance = 6200;
-    
 }
 
 

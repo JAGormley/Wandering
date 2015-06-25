@@ -22,14 +22,22 @@
 class Animal: public Sprite {
 public:
     Animal(SpriteSeed spriteSeed);
-    void update();
-    void activate();
-    void setActivated(bool activated);
-    void draw();
+    virtual void update();
+    virtual void activate();
+    virtual void setActivated(bool activated);
+    virtual void draw();
+    virtual void setup();
     
     ofMaterial material;
     ofSpherePrimitive animal;
-    
     ofColor materialColor;
     float colorHue;
+    
+    
+    
+    ofVec3f pos;
+    SpriteSeed sSeed;
+    of3dPrimitive nodePlant;
+    ofQuaternion q;
+    float size;
 };

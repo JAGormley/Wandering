@@ -23,7 +23,6 @@ Moon::Moon(Seed seed) : Light(seed){
 //    light.setSpecularColor(ofColor(0,0,255));
 
     lightSize = 600;
-    lightDistance = 6300;
     
 }
 

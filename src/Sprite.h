@@ -23,5 +23,4 @@ public:
     virtual void activate() =0;
     virtual void setActivated(bool activated) =0;
     virtual void draw() =0;
-    
 };

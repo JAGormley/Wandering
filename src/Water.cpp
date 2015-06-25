@@ -49,9 +49,6 @@ void Water::draw(){
     dLight.draw();
     dLight.enable();
     
-    
-    
-    
     ofSetColor(0, 200, 255);
     ofPushMatrix();
     rawShape.drawAxes(100);

@@ -20,13 +20,4 @@ void None::update(){
 }
 
 void None::draw(){
-//    ofSetColor(100, 100, 100);
-//    ofPushMatrix();
-//    ofRotate(-90, 1, 0, 0);
-////    rawShape.draw();
-//    ofPopMatrix();
 }
-
-//vector<ofVec3f> None::getMeshVerts(){
-//    return noneMesh.getVertices();
-//}

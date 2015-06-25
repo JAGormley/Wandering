@@ -109,11 +109,8 @@ void Scenario::setSprites(){
     // TODO: DENSITY
     for (int i = 0; i < 50; i++) {
         sprites.push_back(shared_ptr<Sprite>(new Tree(spriteSeed)));
+        sprites.push_back(shared_ptr<Sprite>(new Crystal(spriteSeed)));
     }
-    
-//    for (int i = 0; i < 200; i++) {
-//        sprites.push_back(shared_ptr<Sprite>(new Animal(spriteSeed)));
-//    }
 }
 
 void Scenario::updateSprites(){

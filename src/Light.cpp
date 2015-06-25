@@ -14,11 +14,9 @@ Light::Light(Seed seed){
     this->seed = seed;
     
     ofSetSmoothLighting(true);
-    
-    
-//    shaderBlurX.load("shadersGL2/shaderBlurX");
-//    shaderBlurY.load("shadersGL2/shaderBlurY");
-    
+    lightDistance = (seed.getTraversal() == Seed::FLY) ?
+        lightDistance = 20000
+        :lightDistance = 15000;
     
     
     // Point lights emit light in all directions //
@@ -27,18 +25,12 @@ Light::Light(Seed seed){
     
     // specular color, the highlight/shininess color //
     //    light.setSpecularColor( ofColor(255.f, 255.f, 255.f));
-    
-//    lightColor.set(lightColor.white);
-//    lightColor.setBrightness( 50.f );
-//    light.setAmbientColor(lightColor);
-//    lightColor.setBrightness( 255.f );
-//    light.setDiffuseColor(lightColor);
-//    light.setSpecularColor(lightColor);
+
     
 }
 
 void Light::update(){
-    light.setPosition(30, Player::playerLoc.y+8000, Player::playerLoc.z-20000);
+    light.setPosition(30, Player::playerLoc.y+8000, Player::playerLoc.z-lightDistance);
 //    light2.setPosition(30, Player::playerLoc.y+6000, Player::playerLoc.z-20000);
 }
 

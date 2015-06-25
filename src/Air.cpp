@@ -40,17 +40,15 @@ Air::Air(Seed seed) : Medium(seed){
         
         //        // move the cloud's vertices to new location
         for (int j = 0; j < tempVerts.size(); j++) {
-            ofVec3f tempster = ofVec3f(tempVerts[j].x+20000*cos(angle)+rando2,
+            ofVec3f tempster = ofVec3f(tempVerts[j].x+15000*cos(angle)+rando2,
                                        tempVerts[j].y+1000+rando,
-                                       tempVerts[j].z+20000*sin(angle)+rando3);
+                                       tempVerts[j].z+15000*sin(angle)+rando3);
             vCloud.getVertices()[j] = tempster;
         }
         
         // add the vertices to the mesh
         airMesh.append(vCloud);
     }
-    
-    
 }
 
 void Air::draw(){
@@ -78,7 +76,7 @@ void Air::update(){
 
 ofVboMesh Air::generateCloud(){
     ofVboMesh vCloud;
-    float cloudSize = ofRandom(1000.0)+1000.0;
+    float cloudSize = ofRandom(500.0)+1000.0;
     int numSpheres = ofRandom(10)+20;
     int prevWidth = 0;
     
@@ -89,11 +87,10 @@ ofVboMesh Air::generateCloud(){
     for (int i = 0; i < numSpheres; i++) {
         float height = ofRandom(cloudSize*3);
         float width = ofRandom(cloudSize*4)+cloudSize;
-        float depth = ofRandom(cloudSize*6)-cloudSize*3;
+        float depth = ofRandom(cloudSize);
         
         tempMesh = cloud.getMesh();
         vector<ofVec3f>tempVerts = tempMesh.getVertices();
-        
         for (int j = 0; j < tempVerts.size(); j++) {
             //            ofVboMesh tempCloud = generateCloud();
             ofVec3f tempster = ofVec3f(tempVerts[j].x+width+prevWidth, tempVerts[j].y+height, tempVerts[j].z+depth);

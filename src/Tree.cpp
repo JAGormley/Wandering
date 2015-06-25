@@ -10,6 +10,17 @@
 
 
 Tree::Tree(SpriteSeed spriteSeed) : Plant(spriteSeed){
+    materialColor.setBrightness(250.f);
+    materialColor.setSaturation(200);
+    ofColor matCol(0,128,0);
+//    matCol.setBrightness(200);
+    //    material.setEmissiveColor(materialColor);
+    material.setShininess(10);
+    material.setDiffuseColor(matCol);
+//    material.setSpecularColor(matCol);
+    
+    
+    
     float sizeDiv = (sSeed.isOrbital()) ? 1000.0 : 2000.0;
     size = sSeed.getShapeSize()/sizeDiv;
     pos = sSeed.spritePos();
@@ -23,20 +34,11 @@ Tree::Tree(SpriteSeed spriteSeed) : Plant(spriteSeed){
     top.set(50*size, 200*size);
     top.boom(150*size);
     top.rotate(180, ofVec3f(1,0,0));
-    
-    materialColor.setBrightness(250.f);
-    materialColor.setSaturation(200);
-    colorHue = 100;
-    materialColor.setHue(colorHue);
-    //    material.setEmissiveColor(materialColor);
-    
-    material.setShininess(255);
-    material.setDiffuseColor(materialColor);
-    material.setSpecularColor(materialColor);
-    
+    top.setMode(OF_PRIMITIVE_LINE_LOOP);
     this->setup();
     
-    leaves = generateLeaves();
+    // Debug: fix this
+//    leaves = generateLeaves();
 }
 
 void Tree::setup(){
@@ -46,14 +48,12 @@ void Tree::setup(){
         stem.boom(100);
     }
     else {
-        //        plant.rotate(90, 1, 0, 0);
         stem.rotateAround(-90, ofVec3f(1,0,0), ofVec3f(0,0,0));
     }
 }
 
 
-// DEBUG: Rotation not working
-
+// DEBUG: Translation but not rotation working
 ofVboMesh Tree::generateLeaves(){
     ofVboMesh vLeaves;
     vLeaves.setMode(OF_PRIMITIVE_TRIANGLES);
@@ -74,21 +74,24 @@ ofVboMesh Tree::generateLeaves(){
         tempMesh = leaf.getMesh();
         vector<ofVec3f>tempVerts = tempMesh.getVertices();
         
+        
+        
         for (int j = 0; j < tempVerts.size(); j++) {
             ofVec3f tempster = ofVec3f(tempVerts[j].x,
-                                       tempVerts[j].y,
+                                       tempVerts[j].y+200,
                                        tempVerts[j].z);
             
             
             // DEBUG: q has no useful value in it
-            float angle = 2 * acos(q.w());
-            cout << q.y() << endl;
-            float x = q.x() / sqrt(1-q.w()*q.w());
-            float y = q.y() / sqrt(1-q.w()*q.w());
-            float z = q.z() / sqrt(1-q.w()*q.w());
-            ofVec3f axis(x,y,z);
+//            float angle = 2 * acos(q.w());
+//            float x = q.x() / sqrt(1-q.w()*q.w());
+//            float y = q.y() / sqrt(1-q.w()*q.w());
+//            float z = q.z() / sqrt(1-q.w()*q.w());
+//            ofVec3f axis(x,y,z);
+//            tempster.rotate(angle, axis);
             
-            tempster.rotate(angle, axis);
+//            float angle = tempster.angle(stem.getUpDir());
+            tempster.rotate(-30, ofVec3f(1,0,0));
             tempMesh.getVertices()[j] = tempster;
         }
         vLeaves.append(tempMesh);

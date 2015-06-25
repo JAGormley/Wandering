@@ -28,6 +28,7 @@ public:
     virtual void setActivated(bool activated);
     virtual void draw();
     virtual void setup();
+    virtual float noiseGen(float x, float y);
     ofVboMesh generateLeaves();
     
     ofVboMesh leaves;
