@@ -30,9 +30,9 @@ void Plant::draw(){
     material.begin();
     stem.draw();
     top.draw();
-    for (int i = 0; i < leaves.size(); i++) {
-        
-    }
+    
+    
+    leaves.draw();
     material.end();
     ofPopMatrix();
 }

@@ -20,5 +20,5 @@ public:
     
     Tree(SpriteSeed spriteSeed);
     void setup();
-    void addLeaves();
+    ofVboMesh generateLeaves();
 };

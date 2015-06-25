@@ -11,12 +11,11 @@
 
 Tree::Tree(SpriteSeed spriteSeed) : Plant(spriteSeed){
     stem = ofBoxPrimitive();
-    stem.set(5, 500, 5);
+    stem.set(5, 300, 5);
     pos = sSeed.spritePos();
-    stem.setPosition(pos.x, pos.y, pos.z);
+    stem.setPosition(pos);
     
     top.setParent(stem);
-    addLeaves();
     top.set(10, 10, 10);
     top.boom(150);
     
@@ -31,14 +30,15 @@ Tree::Tree(SpriteSeed spriteSeed) : Plant(spriteSeed){
     material.setSpecularColor(materialColor);
     
     this->setup();
+    
+    leaves = generateLeaves();
 }
 
 void Tree::setup(){
-    ofQuaternion q;
     if (sSeed.isOrbital()){
         q.makeRotate(ofVec3f(0, sSeed.getShapeSize(), 0), pos);
         stem.rotate(q);
-        stem.boom(200);
+        stem.boom(100);
     }
     else {
         //        plant.rotate(90, 1, 0, 0);
@@ -47,18 +47,42 @@ void Tree::setup(){
 }
 
 
-void Tree::addLeaves(){
-    ofConePrimitive tempLeaf;
-    ofVboMesh vLeaf;
-    for (int i = 0; i < 20; i++) {
-        tempLeaf.set(6, 6);
-        tempLeaf.setScale(.5, 1, 1);
-        tempLeaf.setParent(top);
-        tempLeaf.setPosition(ofVec3f(ofRandom(50), ofRandom(20), ofRandom(20)));
-        vLeaf = tempLeaf.getMesh();
-        leaves.push_back(tempLeaf);
+ofVboMesh Tree::generateLeaves(){
+    ofVboMesh vLeaves;
+    vLeaves.setMode(OF_PRIMITIVE_TRIANGLES);
+    float leafSize = 6;
+    int numLeaves = ofRandom(10)+20;
+    
+    ofConePrimitive leaf;
+    leaf.set(leafSize, leafSize);
+    leaf.setMode(OF_PRIMITIVE_TRIANGLES);
+    ofVboMesh tempMesh;
+    ofVec3f stemPos = stem.getPosition();
+    
+    for (int i = 0; i < numLeaves; i++) {
+        float height = ofRandom(50);
+        float width = ofRandom(50);
+        float depth = ofRandom(50);
+
+        tempMesh = leaf.getMesh();
+        vector<ofVec3f>tempVerts = tempMesh.getVertices();
+        
+        for (int j = 0; j < tempVerts.size(); j++) {
+            ofVec3f tempster = ofVec3f(tempVerts[j].x,
+                                       tempVerts[j].y,
+                                       tempVerts[j].z);
+            
+            float angle = 2 * acos(q.w());
+            cout << q.y() << endl;
+            float x = q.x() / sqrt(1-q.w()*q.w());
+            float y = q.y() / sqrt(1-q.w()*q.w());
+            float z = q.z() / sqrt(1-q.w()*q.w());
+            ofVec3f axis(x,y,z);
+            
+            tempster.rotate(angle, axis);
+            tempMesh.getVertices()[j] = tempster;
+        }
+        vLeaves.append(tempMesh);
     }
-    
-    
-    
+    return vLeaves;
 }

@@ -28,9 +28,9 @@ public:
     virtual void setActivated(bool activated);
     virtual void draw();
     virtual void setup();
-    void addLeaves();
+    ofVboMesh generateLeaves();
     
-    
+    ofVboMesh leaves;
     ofMaterial material;
     ofBoxPrimitive stem;
     ofBoxPrimitive top;
@@ -39,6 +39,6 @@ public:
     ofVec3f pos;
     SpriteSeed sSeed;
     of3dPrimitive nodePlant;
-    vector<ofConePrimitive> leaves;   
+    ofQuaternion q;
     
 };
