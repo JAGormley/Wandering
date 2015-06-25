@@ -10,14 +10,19 @@
 
 
 Tree::Tree(SpriteSeed spriteSeed) : Plant(spriteSeed){
-    stem = ofBoxPrimitive();
-    stem.set(5, 300, 5);
+    float sizeDiv = (sSeed.isOrbital()) ? 1000.0 : 2000.0;
+    size = sSeed.getShapeSize()/sizeDiv;
     pos = sSeed.spritePos();
+    float sizeMult =  ofRandom(.7) + .5;
+    size *= sizeMult;
+    
+    stem.set(4*size, 300*size);
     stem.setPosition(pos);
     
     top.setParent(stem);
-    top.set(10, 10, 10);
-    top.boom(150);
+    top.set(50*size, 200*size);
+    top.boom(150*size);
+    top.rotate(180, ofVec3f(1,0,0));
     
     materialColor.setBrightness(250.f);
     materialColor.setSaturation(200);
@@ -47,6 +52,8 @@ void Tree::setup(){
 }
 
 
+// DEBUG: Rotation not working
+
 ofVboMesh Tree::generateLeaves(){
     ofVboMesh vLeaves;
     vLeaves.setMode(OF_PRIMITIVE_TRIANGLES);
@@ -72,6 +79,8 @@ ofVboMesh Tree::generateLeaves(){
                                        tempVerts[j].y,
                                        tempVerts[j].z);
             
+            
+            // DEBUG: q has no useful value in it
             float angle = 2 * acos(q.w());
             cout << q.y() << endl;
             float x = q.x() / sqrt(1-q.w()*q.w());

@@ -15,7 +15,6 @@ Plant::Plant(SpriteSeed spriteSeed) : Sprite(spriteSeed){
 
 
 void Plant::update(){
-    
 }
 void Plant::activate(){
     
@@ -30,8 +29,6 @@ void Plant::draw(){
     material.begin();
     stem.draw();
     top.draw();
-    
-    
     leaves.draw();
     material.end();
     ofPopMatrix();

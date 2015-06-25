@@ -32,13 +32,14 @@ public:
     
     ofVboMesh leaves;
     ofMaterial material;
-    ofBoxPrimitive stem;
-    ofBoxPrimitive top;
+    ofCylinderPrimitive stem;
+    ofConePrimitive top;
     ofColor materialColor;
     float colorHue;
     ofVec3f pos;
     SpriteSeed sSeed;
     of3dPrimitive nodePlant;
     ofQuaternion q;
+    float size;
     
 };
