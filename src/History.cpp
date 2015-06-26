@@ -21,23 +21,61 @@ void History::addHistory(int t, int m, int s){
 vector<int> History::calculatePresent() {
     vector<int> newPresent;
     
-    
+    // NOTE: KEEP IN THIS ORDER:
     
     // set Traversal
-    newPresent.push_back(0);
+    int t = calculateTraversal();
+    newPresent.push_back(t);
     
     // set Medium
-    newPresent.push_back(1);
+    int m = calculateMedium(t);
+    newPresent.push_back(m);
+
+    // set Surface
+    int s = calculateSurface(m);
+    newPresent.push_back(s);
+    
+
+    cout << "T: " << t << endl;
+    cout << "M: " << m << endl;
+    cout << "S: " << s << endl;
+    
+    
+    
+    
+    
     
     // set Surface
-    newPresent.push_back(2);
-    
-    
+    newPresent.push_back(0);
     
     
     return newPresent;
 }
 
+int History::calculateTraversal(){
+    int aSize = 4;
+    int smallest = past.traversal[0];
+    int sIndex = 0;
+    for (int i = 0; i < aSize; i++) {
+        if (past.traversal[i] < smallest){
+            smallest = past.traversal[i];
+            sIndex = i;
+        }
+    }
+    return sIndex;
+}
+int History::calculateMedium(int nt){
+    int aSize = 3;
+    for (int i = 0; i < aSize; i++) {
+        
+    }
+}
+int History::calculateSurface(int nm){
+    int aSize = 4;
+    for (int i = 0; i < aSize; i++) {
+        
+    }
+}
 
 History::Present History::getPresent(){
     return present;

@@ -49,9 +49,7 @@ public:
     ofVbo vbo;
     
     Scenario scenario;
-    
-    
-    
+
     ofCylinderPrimitive tube;
     
     

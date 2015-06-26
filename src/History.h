@@ -22,7 +22,9 @@ public:
     History();
     void addHistory(int t, int m, int s);
     vector<int> calculatePresent();
-    
+    int calculateTraversal();
+    int calculateMedium(int nt);
+    int calculateSurface(int nm);
     
     struct Present {
         int traversal;

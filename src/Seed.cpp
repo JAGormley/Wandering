@@ -10,8 +10,9 @@
 
 Seed::Seed(){}
 
-void Seed::populate(){
-    history.setPresent();
+void Seed::populate(History &history){
+    this->history = &history;
+    this->history->setPresent();
     setTraversal();
     setSurfaceShape();
     setSurfaceType();
@@ -51,18 +52,18 @@ void Seed::setSurfaceShape(){
     
 }
 void Seed::setSurfaceType(){
-    sType = Seed::SurfaceType(history.getPresent().surface);
+    sType = Seed::SurfaceType(history->getPresent().surface);
 }
 
 void Seed::setMedium(){
-    medium = Seed::Medium(history.getPresent().medium);
+    medium = Seed::Medium(history->getPresent().medium);
 }
 
 
 // PLAYER
 
 void Seed::setTraversal(){
-    traversal = Seed::Traversal(history.getPresent().traversal);
+    traversal = Seed::Traversal(history->getPresent().traversal);
 
 }
 

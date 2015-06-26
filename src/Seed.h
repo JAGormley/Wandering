@@ -24,7 +24,7 @@ class Seed {
 public:
     
     Seed();
-    void populate();
+    void populate(History &history);
     
     // ENVIRONMENT
     
@@ -65,7 +65,7 @@ public:
     
     // HISTORY
     
-    History history;
+    History * history;
     
     
     

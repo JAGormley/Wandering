@@ -91,7 +91,6 @@ void Player::setPlaneHeight(){
         if (distance < playerNode.distance(candidate))
             candidate = currentVert;
     }
-    cout << candidate.y << endl;
     cam.setPosition(cam.getPosition().x, candidate.y, cam.getPosition().y);
 }
 

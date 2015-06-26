@@ -71,7 +71,7 @@ public:
     // SOUND
     
     Sound sound;
-    
+    History history;
     
     
     

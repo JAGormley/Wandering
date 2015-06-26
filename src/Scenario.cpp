@@ -20,7 +20,7 @@ void Scenario::setNew(){
     
     
     // ensure the seed is populated before anything else is set
-    seed.populate();
+    seed.populate(history);
     
     // set the environment to new seed values
     environment = new Environment(*getSurface(), *getMedium());
