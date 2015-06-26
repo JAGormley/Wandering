@@ -20,12 +20,14 @@ public:
     
     Sprite(SpriteSeed spriteSeed){};
     virtual void update() =0;
-    virtual void activate() =0;
+    virtual void activate();
     virtual void setActivated(bool activated) =0;
     virtual void draw() =0;
     virtual float noiseGen(float x, float y);
     
-    
+    ofMaterial material;
+    int alphFill;
     Sound player;
     bool activated;
+    ofColor actCol;
 };

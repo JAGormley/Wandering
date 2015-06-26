@@ -24,5 +24,5 @@ public:
     ofMaterial material;
     
     ofPlanePrimitive plane;
-    
+    void move();
 };

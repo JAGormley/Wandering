@@ -23,3 +23,10 @@ float Sprite::noiseGen(float x, float y){
     float color = noise>75 ? ofMap(noise,75,255,0,255) : 0;
     return color;
 }
+
+
+void Sprite::activate(){
+    activated = true;
+    material.setEmissiveColor(actCol);
+    alphFill = 155;
+}

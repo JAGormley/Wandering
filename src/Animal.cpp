@@ -7,7 +7,7 @@
 //
 
 #include "Animal.h"
-
+#include "Player.h"
 
 Animal::Animal(SpriteSeed spriteSeed) : Sprite(spriteSeed){
     sSeed = spriteSeed;
@@ -17,9 +17,7 @@ Animal::Animal(SpriteSeed spriteSeed) : Sprite(spriteSeed){
 
 void Animal::update(){
 }
-void Animal::activate(){
-    
-}
+
 void Animal::setActivated(bool activated){
     
 }

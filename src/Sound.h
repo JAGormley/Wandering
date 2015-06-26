@@ -18,7 +18,7 @@
 
 class Sound {
 public:
-    
+    void loadMusic();
     void playMusic();
     void playSE(int sId);
     

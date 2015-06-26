@@ -18,7 +18,6 @@ void Void::setColor(ofColor hue){
 }
 
 void Void::update(){
-    
 }
 
 void Void::draw(){
@@ -26,10 +25,18 @@ void Void::draw(){
     ofPushMatrix();
     if (seed.getSurfaceShape() != Seed::SPHERE)
         ofRotate(-90, 1, 0, 0);
-    rawShape.draw();
+    move();
+    vboMesh.draw();
     ofPopMatrix();
 }
 
-//vector<ofVec3f> Void::getMeshVerts(){
-//    return voidMesh.getVertices();
-//}
+void Void::move(){
+    vector<ofVec3f> meshVerts = vboMesh.getVertices();
+    for (int i = 0; i < meshVerts.size(); i++) {
+        
+        float noise = voidNoiseGen(meshVerts[i].x, meshVerts[i].y);
+        
+        vboMesh.getVertices()[i].rotate(meshVerts[i].y/2000, rawShape.getYAxis());
+        
+    }
+}

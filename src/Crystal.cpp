@@ -10,6 +10,7 @@
 
 
 Crystal::Crystal(SpriteSeed spriteSeed) : Animal(spriteSeed){
+    activated = false;
     alphFill = 0;
     materialColor.setBrightness(250.f);
     materialColor.setSaturation(200);
@@ -18,6 +19,9 @@ Crystal::Crystal(SpriteSeed spriteSeed) : Animal(spriteSeed){
     material.setShininess(255);
     //    material.setDiffuseColor(materialColor);
     material.setSpecularColor(materialColor);
+    
+    actCol = ofColor(219,112,147);
+    actCol.setBrightness(150);
     
     pos = sSeed.spritePos();
     body.set(100, 2);
@@ -32,7 +36,7 @@ Crystal::Crystal(SpriteSeed spriteSeed) : Animal(spriteSeed){
     ring2.setParent(body);
     
     this->setup();
-    body.boom(100);
+    body.boom(sSeed.getOrbitHeight());
     ring1.boom(40);
     ring2.boom(-40);
 }
@@ -40,9 +44,9 @@ Crystal::Crystal(SpriteSeed spriteSeed) : Animal(spriteSeed){
 
 
 void Crystal::update(){
-    body.rotate(1, 0, 1, 0);
+    body.rotate(1, body.getYAxis());
     if (activated)
-        body.rotate(.5, 1, 0, 0);
+        body.rotate(.5, body.getZAxis());
     if (body.getPosition().distance(Player::playerLoc) < 300){
         if (!activated) {
             player.playSE(1);
@@ -60,13 +64,6 @@ void Crystal::draw(){
     ring2.draw();
     material.end();
     
-}
-
-void Crystal::activate(){
-    activated = true;
-    ofColor c(255,20,147);
-    material.setEmissiveColor(c);
-    alphFill = 155;
 }
 
 void Crystal::setup(){

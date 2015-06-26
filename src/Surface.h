@@ -25,6 +25,7 @@ public:
     virtual ofVboMesh getMesh();
     virtual void noiseGen(int meshSize);
     virtual void waterNoiseGen(int meshSize);
+    float voidNoiseGen(float x, float y);
     virtual ~Surface();
     
     void addVRow();

@@ -17,7 +17,7 @@ Scenario::Scenario(){
 
 void Scenario::setNew(){
     reset();
-//    sound.playMusic();
+    
     
     
     // ensure the seed is populated before anything else is set
@@ -40,6 +40,8 @@ void Scenario::setNew(){
     // TODO: FIX
     sprites.clear();
     setSprites();
+//    sound.loadMusic();
+//    sound.playMusic();
 
 }
 

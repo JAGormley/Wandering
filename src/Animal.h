@@ -23,12 +23,11 @@ class Animal: public Sprite {
 public:
     Animal(SpriteSeed spriteSeed);
     virtual void update();
-    virtual void activate();
     virtual void setActivated(bool activated);
     virtual void draw();
     virtual void setup();
     
-    ofMaterial material;
+    
     ofSpherePrimitive animal;
     ofColor materialColor;
     float colorHue;

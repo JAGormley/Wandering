@@ -29,43 +29,54 @@ mVoid::mVoid(Seed seed) : Medium(seed){
     sphere.set(6, 3, OF_PRIMITIVE_TRIANGLES);
     ofMesh tempMesh;
     
-    // TODO: set stars using sphere math, not generate and test
-    // STAR POPULATION
-    for (int i = 0; i < 10000; i++) {
+//    // TODO: set stars using sphere math, not generate and test
+//    // STAR POPULATION
+    
+    for (int i = 0; i < 15000; i++) {
         
+        
+        float angle = ofRandom(360);
+        int zHeight = ofRandom(10000)+4000;
+        int starDist = ofRandom(15000)-5000;
+        
+        float x = (seed.shapeSize+starDist) * cos(angle) * sin(zHeight);
+        float y = (seed.shapeSize+starDist) * sin(angle) * sin(zHeight);
+        float z = (seed.shapeSize+starDist) * cos(zHeight);
+        
+        
+        sphere.setPosition(x, y, z);
+        ofVec3f sPos = sphere.getPosition();
         tempMesh = sphere.getMesh();
         
         vector<ofVec3f>tempVerts = tempMesh.getVertices();
         
-        float randoX = ofRandom(12000)-6000;
-        float randoY = ofRandom(12000)-6000;
-        float randoZ = ofRandom(12000)-6000;
-        
-        ofVec3f candidate(randoX,randoY,randoZ);
-        if (Player::playerLoc.distance(candidate) > 5000){
-            
             // move the sphere's vertices to new location
             for (int j = 0; j < tempVerts.size(); j++) {
-                
-                ofVec3f tempster = ofVec3f(tempVerts[j].x+randoX, tempVerts[j].y+randoY, tempVerts[j].z+randoZ);
+                ofVec3f tempster = ofVec3f(tempVerts[j].x+sPos.x,
+                                           tempVerts[j].y+sPos.y,
+                                           tempVerts[j].z+sPos.z);
                 tempMesh.getVertices()[j] = tempster;
             }
             
             // add the vertices to the mesh
             voidMesh.append(tempMesh);
-        }
     }
+    
+    
+    
+    
+    
 }
 
 void mVoid::draw(){
     ofSetColor(255, 255, 255);
     voidMaterial.begin();
     voidMesh.setMode(OF_PRIMITIVE_TRIANGLES);
-    ofPushMatrix();
-    ofTranslate(Player::playerLoc.x, 0, Player::playerLoc.z);
+//    ofPushMatrix();
+//    ofTranslate(Player::playerLoc.x, 0, Player::playerLoc.z);
     voidMesh.draw(OF_MESH_FILL);
-    ofPopMatrix();
-    //    one.draw();
+//    ofPopMatrix();
+    ofDrawAxis(600);
     voidMaterial.end();
 }
 

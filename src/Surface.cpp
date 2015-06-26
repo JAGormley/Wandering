@@ -151,5 +151,15 @@ ofVec3f Surface::setNoiseHeight(ofVec3f temp){
     
 }
 
+float Surface::voidNoiseGen(float x, float y){
+    float a = x * .03;
+    float b = y * .05;
+    float c = ofGetFrameNum() / 500.0;
+    
+    float noise = ofNoise(a,b,c) * 255;
+    float color = noise>75 ? ofMap(noise,75,255,0,255) : 0;
+    return color;
+}
+
 
 Surface::~Surface(){}

@@ -22,10 +22,10 @@ public:
     void setup();
     void update();
     void draw();
-    void activate();
     // body
     ofSpherePrimitive body;
     ofCylinderPrimitive ring1;
     ofCylinderPrimitive ring2;
-    int alphFill;
+    
+    
 };

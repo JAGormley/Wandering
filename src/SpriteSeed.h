@@ -22,8 +22,11 @@ public:
     int getShapeSize();
     bool isOrbital();
     ofVec3f spritePos();
+    int getMoveDiv();
+    float getOrbitHeight();
     
     vector<ofVec3f> sVerts;
+    
     Seed seed;
     
 };

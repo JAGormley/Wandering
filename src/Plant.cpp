@@ -33,12 +33,12 @@ void Plant::draw(){
     ofSetColor(143,188,143);
     ofConePrimitive oldTop = top;
     ofVec3f tempV;
-    
+    vector<ofVec3f> meshVs = top.getMesh().getVertices();
     
     // TODO: move this into tree(?), test in orbit mode
-    for (int i = 0; i < 35; i++) {
-        tempV = top.getMesh().getVertices()[i];
-        float jimmy = noiseGen(tempV.x, tempV.y)/10;
+    for (int i = 0; i < meshVs.size(); i++) {
+        tempV = meshVs[i];
+        float jimmy = noiseGen(tempV.x, tempV.y)/sSeed.getMoveDiv();
         tempV = ofVec3f(tempV.x+jimmy, tempV.y+jimmy, tempV.z+jimmy);
         top.getMesh().getVertices()[i] = tempV;
     }

@@ -10,9 +10,12 @@
 
 
 Sound::Sound(){
-//    music.loadSound("sound/eno.mp3");
     se1.loadSound("sound/activation.wav");
     music.setLoop(true);
+}
+
+void Sound::loadMusic(){
+    music.loadSound("sound/eno.mp3");
 }
 
 void Sound::playMusic(){
@@ -25,7 +28,6 @@ void Sound::playSE(int sId){
         case 1:
             if (!se1.getIsPlaying()){
                 se1.play();
-                cout << "here" << endl;
             }
             break;
         case 2:

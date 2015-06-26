@@ -23,6 +23,13 @@ bool SpriteSeed::isOrbital(){
     return (seed.traversal == Seed::ORBIT);
 }
 
+float SpriteSeed::getOrbitHeight(){
+    if (this->isOrbital())
+        return seed.getOrbitHeight()-seed.shapeSize-10;
+    else
+        return 100;
+}
+
 ofVec3f SpriteSeed::spritePos(){
     int vertIndex = ofRandom(sVerts.size());
     return sVerts[vertIndex];
@@ -30,4 +37,11 @@ ofVec3f SpriteSeed::spritePos(){
 
 int SpriteSeed::getShapeSize(){
     return seed.shapeSize;
+}
+
+int SpriteSeed::getMoveDiv(){
+    if (seed.traversal == Seed::ORBIT){
+        return 3;
+    }
+    else return 1;
 }

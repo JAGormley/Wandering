@@ -59,7 +59,7 @@ void Controls::moveType(){
     
     else if (type == Seed::WALK){
         //                cout << "WALK" << endl;
-        moveHelper(handPos.z/200, handPos.x/400, 0, 0, 0);
+        moveHelper(handPos.z/200, handPos.x/800, 0, 0, 0);
     }
     
     else if (type == Seed::ORBIT){
