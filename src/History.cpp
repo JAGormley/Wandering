@@ -8,25 +8,52 @@
 
 #include "History.h"
 
-History::History(){};
+History::History(){
+};
 
 
-void History::addHistory(int type){
-    
+void History::addHistory(int t, int m, int s){
+    past.traversal[t]++;
+    past.medium[m]++;
+    past.surface[s]++;
 }
+
+vector<int> History::calculatePresent() {
+    vector<int> newPresent;
+    
+    
+    
+    // set Traversal
+    newPresent.push_back(0);
+    
+    // set Medium
+    newPresent.push_back(1);
+    
+    // set Surface
+    newPresent.push_back(2);
+    
+    
+    
+    
+    return newPresent;
+}
+
 
 History::Present History::getPresent(){
     return present;
 }
 
 void History::setPresent(){
+    vector<int> newPresent = calculatePresent();
+    
+//    addHistory(1);
     
     // TRAVERSAL
     // 0 = ORBIT, 1 = WALK, 2 = FLOAT, 3 = FLY
-    present.traversal = ofRandom(4);
+    present.traversal = newPresent[0];
     
     // DEBUG:
-    present.traversal = 1;
+//    present.traversal = 0;
     
     // MEDIUM
     // 0 = AIR, 1 = VOID, 2 = WATER
@@ -42,7 +69,7 @@ void History::setPresent(){
     else present.medium = ofRandom(3);
     
     // DEBUG:
-    present.medium = 0;
+    present.medium = newPresent[1];
     
     
     // SURFACE_TYPE
@@ -80,5 +107,11 @@ void History::setPresent(){
         while (present.surface == 0 || present.surface == 2);
     }
     // DEBUG:
-    present.surface = 1;
+    present.surface = newPresent[2];
+    
+    
+    addHistory(newPresent[0], newPresent[1], newPresent[2]);
 }
+
+
+

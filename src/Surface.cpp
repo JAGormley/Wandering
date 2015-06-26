@@ -101,9 +101,9 @@ void Surface::noiseGen(int meshSize){
             float c = surfaceID * .002;
             
             float noise = ofNoise(a,b,c) * 255;
-            float color = noise>0 ? ofMap(noise,0,255,0,255) : 0;
+//            float color = noise>0 ? ofMap(noise,0,255,0,255) : 0;
             
-            heightMapi[x][y] = color;
+            heightMapi[x][y] = noise;
         }
     }
 }

@@ -20,7 +20,9 @@
 class History {
 public:
     History();
-    void addHistory(int type);
+    void addHistory(int t, int m, int s);
+    vector<int> calculatePresent();
+    
     
     struct Present {
         int traversal;
@@ -28,8 +30,14 @@ public:
         int surface;
     };
     
+    struct Past {
+        int traversal[4]={};
+        int medium[3]={};
+        int surface[4]={};
+    };
+    
     Present getPresent();
     void setPresent();
     Present present;
-    
+    Past past;
 };

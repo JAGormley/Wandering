@@ -19,7 +19,6 @@ void Scenario::setNew(){
     reset();
     
     
-    
     // ensure the seed is populated before anything else is set
     seed.populate();
     

@@ -47,7 +47,7 @@ void Seed::setSurfaceShape(){
         shapeSize = 30000;
         numCols = 100;
     }
-    
+
     
 }
 void Seed::setSurfaceType(){
