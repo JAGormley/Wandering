@@ -31,7 +31,7 @@ Sun::Sun(Seed seed) : Light(seed){
 
 void Sun::drawChild(){
     
-    facade.setPosition(ofVec3f(light.getPosition().x, Player::playerLoc.y+2000, Player::playerLoc.z-15000));
+    facade.setPosition(ofVec3f(light.getPosition().x, Player::playerLoc.y+2000, Player::playerLoc.z-20000));
     facade.draw();
     
     

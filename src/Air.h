@@ -21,11 +21,13 @@ public:
     void update();
     vector<ofVec3f> getMeshVerts();
     ofVboMesh generateCloud();
+    vector<ofSpherePrimitive> generateSCloud();
     
     float colorHue;
     ofColor materialColor;
     ofMaterial airMaterial;
     ofVboMesh airMesh;
-    vector<ofCylinderPrimitive> clouds;
+//    vector<ofCylinderPrimitive> clouds;
     ofCylinderPrimitive testCloud;
+    vector<ofSpherePrimitive> clouds;
 };

@@ -28,27 +28,32 @@ Air::Air(Seed seed) : Medium(seed){
     airMaterial.setSpecularColor(c);
     airMaterial.setEmissiveColor(c);
     
-    ofVboMesh vCloud;
     for (int i = 0; i < 10; i++) {
+        vector<ofSpherePrimitive> tempClouds;
+        tempClouds = generateSCloud();
         float angle = ofRandom(360);
-        int rando = ofRandom(500);
-        int rando2 = ofRandom(100)-50;
-        int rando3 = ofRandom(100)-50;
+        int depth = ofRandom(500)-200;
+        int height = ofRandom(1000)+150;
         
-        vCloud = generateCloud();
-        vector<ofVec3f>tempVerts = vCloud.getVertices();
-        
-        //        // move the cloud's vertices to new location
-        for (int j = 0; j < tempVerts.size(); j++) {
-            ofVec3f tempster = ofVec3f(tempVerts[j].x+15000*cos(angle)+rando2,
-                                       tempVerts[j].y+1000+rando,
-                                       tempVerts[j].z+15000*sin(angle)+rando3);
-            vCloud.getVertices()[j] = tempster;
+        for (int j = 0; j < tempClouds.size(); j++) {
+            ofVboMesh vCloud;
+            tempClouds[j].dolly(seed.shapeSize/2+depth);
+            tempClouds[j].rotateAround(angle, ofVec3f(0,1,0), ofVec3f(0,0,0));
+            tempClouds[j].boom(height);
+            tempClouds[j].setMode(OF_PRIMITIVE_TRIANGLES);
+            ofVec3f cloudPos = tempClouds[j].getPosition();
+            
+            vector<ofVec3f>tempVerts = tempClouds[j].getMesh().getVertices();
+            for (int k = 0; k < tempVerts.size(); k++) {
+                ofVec3f tempster = ofVec3f(tempVerts[k].x+cloudPos.x,
+                                           tempVerts[k].y+cloudPos.y,
+                                           tempVerts[k].z+cloudPos.z);
+                tempClouds[j].getMesh().getVertices()[k] = tempster;
+            }
+            airMesh.append(tempClouds[j].getMesh());
         }
-        
-        // add the vertices to the mesh
-        airMesh.append(vCloud);
     }
+    
 }
 
 void Air::draw(){
@@ -73,34 +78,27 @@ void Air::update(){
     
 }
 
-
-ofVboMesh Air::generateCloud(){
-    ofVboMesh vCloud;
+vector<ofSpherePrimitive> Air::generateSCloud(){
+    vector<ofSpherePrimitive> vCloud;
     float cloudSize = ofRandom(500.0)+1000.0;
     int numSpheres = ofRandom(10)+20;
     int prevWidth = 0;
     
     ofSpherePrimitive cloud;
     cloud.set(cloudSize, 5, OF_PRIMITIVE_TRIANGLES);
-    ofVboMesh tempMesh;
     
     for (int i = 0; i < numSpheres; i++) {
         float height = ofRandom(cloudSize*3);
         float width = ofRandom(cloudSize*4)+cloudSize;
         float depth = ofRandom(cloudSize);
         
-        tempMesh = cloud.getMesh();
-        vector<ofVec3f>tempVerts = tempMesh.getVertices();
-        for (int j = 0; j < tempVerts.size(); j++) {
-            //            ofVboMesh tempCloud = generateCloud();
-            ofVec3f tempster = ofVec3f(tempVerts[j].x+width+prevWidth, tempVerts[j].y+height, tempVerts[j].z+depth);
-            tempMesh.getVertices()[j] = tempster;
-        }
+        ofVec3f tempster = ofVec3f(width+prevWidth, height, depth);
+        cloud.setPosition(tempster);
         prevWidth = width;
-        
-        vCloud.append(tempMesh);
+        vCloud.push_back(cloud);
     }
     return vCloud;
+    
 }
 
 
