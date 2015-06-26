@@ -12,11 +12,6 @@ Ground::Ground(Seed seed) : Surface(seed){
     surfaceRes = 499;
     surfaceHeightMult = 7;
     
-    
-    
-    // DEBUG:
-    dLight.setPosition(Player::playerLoc.x, Player::playerLoc.y+200, Player::playerLoc.z);
-    
     surfaceID = 0;
     rawShape.drawAxes(100);
     groundCount = 0;
@@ -66,12 +61,9 @@ void Ground::update(){
 //    if (ofGetKeyPressed()){
 //        addVRow();
 //    }
-    // DEBUG
-    dLight.setPosition(Player::playerLoc.x, Player::playerLoc.y+200, Player::playerLoc.z);
 }
 
 void Ground::draw(){
-//    dLight.enable();
     
     terrainDebug();
     
@@ -97,7 +89,6 @@ void Ground::draw(){
     material.end();
     ofPopMatrix();
     
-//    dLight.disable();
 }
 
 

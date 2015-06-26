@@ -31,14 +31,12 @@ Light::Light(Seed seed){
 
 void Light::update(){
     light.setPosition(30, Player::playerLoc.y+8000, Player::playerLoc.z-lightDistance);
-//    light2.setPosition(30, Player::playerLoc.y+6000, Player::playerLoc.z-20000);
 }
 
 void Light::draw(){
     ofPushMatrix();
     ofSetColor(255,255,255);
-    
-    
+
     material.begin();
     drawChild();
     material.end();

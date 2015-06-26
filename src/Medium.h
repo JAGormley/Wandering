@@ -22,4 +22,6 @@ public:
     virtual void update() =0;
     virtual vector<ofVec3f> getMeshVerts()=0;
     virtual ~Medium();
+    
+    Seed seed;
 };

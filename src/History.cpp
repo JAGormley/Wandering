@@ -80,5 +80,5 @@ void History::setPresent(){
         while (present.surface == 0 || present.surface == 2);
     }
     // DEBUG:
-    present.surface = 2;
+    present.surface = 1;
 }

@@ -29,11 +29,13 @@ Sun::Sun(Seed seed) : Light(seed){
 }
 
 
-// TODO: fix sun movement, when flying it gradually backs out behind the clipping plane
 void Sun::drawChild(){
     
     facade.setPosition(ofVec3f(light.getPosition().x, Player::playerLoc.y+2000, Player::playerLoc.z-15000));
     facade.draw();
+    
+    
+    
     
     // DEBUG: ALPHA BEING WEIRD...
     //    for (int i = 0; i < 1; i++) {
@@ -43,29 +45,5 @@ void Sun::drawChild(){
     //        ofSetColor(255, 255, 255, 80);
     //        cy.draw();
     //    }
-    
-//    ofPushMatrix();
-//    previousZ = Player::playerLoc.z;
-//    ofTranslate(0, 0, previousZ-Player::playerLoc.z);
-//    ofSetCircleResolution(100);
-//    ofSetColor(255, 255, 255);
-//    ofCircle(0, 0, 1200);
-//    
-//
-//    ofPushMatrix();
-//    ofTranslate(0, 0, -5);
-//    ofSetColor(50, 50, 0, 100);
-//    ofCircle(0, 0, 1300);
-//    ofPopMatrix();
-//    
-//    ofPushMatrix();
-//    ofTranslate(0, 0, -10);
-//    ofSetColor(50, 50, 0, 50);
-//    ofCircle(0, 0, 1400);
-//    ofPopMatrix();
-//    ofPopMatrix();
-    
-    
-    
     
 }
