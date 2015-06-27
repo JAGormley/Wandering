@@ -21,7 +21,7 @@ void History::addHistory(int t, int m, int s){
 vector<int> History::calculatePresent() {
     vector<int> newPresent;
     
-    // NOTE: KEEP IN THIS ORDER:
+    // THESE CALCULATION FNS SHOULD RETURN LEAST-VISITED OR RANDOM WITH SOME PROBABILITY
     
     // set Traversal
     int t = calculateTraversal();
@@ -33,14 +33,12 @@ vector<int> History::calculatePresent() {
     
     // set Surface
     int s = calculateSurface(t, m);
-    newPresent.push_back(0);
+    newPresent.push_back(s);
     
+    cout << "T: " << t << endl;
+    cout << "M: " << m << endl;
+    cout << "S: " << s << endl;
     
-//    cout << "T: " << t << endl;
-//    cout << "M: " << m << endl;
-//    cout << "S: " << s << endl;
-    
-
     return newPresent;
 }
 
@@ -55,9 +53,14 @@ int History::calculateTraversal(){
             sIndex = i;
         }
     }
-    return sIndex;
+    
+    if (ofRandom(1.0) < .5){
+        return ofRandom(4);
+        
+    } else return sIndex;
 }
 
+// TODO: CONSOLIDATE CALCULATION FUNCTIONS
 
 int History::calculateMedium(int nt){
     int aSize = 3;
@@ -79,7 +82,11 @@ int History::calculateMedium(int nt){
             sIndex = i;
         }
     }
-    return sIndex;
+    if (ofRandom(1.0) < .5){
+        cout << "here" << endl;
+        int random = ofRandom(permitted.size());
+        return permitted[random];
+    } else return sIndex;
 }
 
 
@@ -110,14 +117,22 @@ int History::calculateSurface(int nt, int nm){
     int smallest = past.surface[0];
     int sIndex = 0;
     for (int i = 0; i < aSize; i++) {
-        if (past.medium[i] < smallest &&
+        if (past.surface[i] < smallest &&
             find(permitted.begin(), permitted.end(), i)
             !=permitted.end()){
-            smallest = past.medium[i];
+            smallest = past.surface[i];
             sIndex = i;
         }
     }
-    return sIndex;}
+    if (ofRandom(1.0) < .5){
+        cout << "here2" << endl;
+        int random = ofRandom(permitted.size());
+        return permitted[random];
+    }
+    
+    return sIndex;
+}
+
 
 History::Present History::getPresent(){
     return present;
@@ -134,44 +149,8 @@ void History::setPresent(){
     // 0 = AIR, 1 = VOID, 2 = WATER
     present.medium = newPresent[1];
     
-    
-    
-    
     // SURFACE_TYPE
     // 0 = WATER, 1 = GROUND, 2 = VOID, 3 = NONE
-    
-    // ORBIT
-    if (present.traversal == 0){
-        do{
-            present.surface = ofRandom(4);
-        }
-        while (present.surface == 3);
-    }
-    // WALK
-    else if (present.traversal == 1){
-        present.surface = 1;
-    }
-    // FLOAT
-    else if (present.traversal == 2){
-        do{
-            present.surface = ofRandom(4);
-        }
-        while (present.surface == 0 || present.surface == 2);
-    }
-    // FLY:
-    else if (present.traversal == 3 && present.medium == 0){
-        do{
-            present.surface = ofRandom(4);
-        }
-        while (present.surface == 1 || present.surface == 2);
-    }
-    else if (present.traversal == 3 && present.medium == 2){
-        do{
-            present.surface = ofRandom(4);
-        }
-        while (present.surface == 0 || present.surface == 2);
-    }
-    // DEBUG:
     present.surface = newPresent[2];
     
     

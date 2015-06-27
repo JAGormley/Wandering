@@ -37,10 +37,11 @@ void Water::update(){
             ofVec3f tempVert = vboMesh.getVertices()[i];
             vboMesh.getVertices()[i] = setNoiseHeight(tempVert);
         }
+        if (abs(Player::playerLoc.z + vboMesh.getVertices()[vboMesh.getVertices().size()-30].y) < 15000){
+            addVRow();
+        }
     }
-    if (abs(Player::playerLoc.z + vboMesh.getVertices()[vboMesh.getVertices().size()-30].y) < 15000){
-        addVRow();
-    }
+    
     
     
 }
