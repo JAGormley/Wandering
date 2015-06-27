@@ -10,7 +10,6 @@
 
 #ifndef __Wandering2__History__
 #define __Wandering2__History__
-
 #include <stdio.h>
 #include "ofMain.h"
 
@@ -24,7 +23,7 @@ public:
     vector<int> calculatePresent();
     int calculateTraversal();
     int calculateMedium(int nt);
-    int calculateSurface(int nm);
+    int calculateSurface(int nt, int nm);
     
     struct Present {
         int traversal;

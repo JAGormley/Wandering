@@ -30,31 +30,24 @@ vector<int> History::calculatePresent() {
     // set Medium
     int m = calculateMedium(t);
     newPresent.push_back(m);
-
-    // set Surface
-    int s = calculateSurface(m);
-    newPresent.push_back(s);
-    
-
-    cout << "T: " << t << endl;
-    cout << "M: " << m << endl;
-    cout << "S: " << s << endl;
-    
-    
-    
-    
-    
     
     // set Surface
+    int s = calculateSurface(t, m);
     newPresent.push_back(0);
     
     
+//    cout << "T: " << t << endl;
+//    cout << "M: " << m << endl;
+//    cout << "S: " << s << endl;
+    
+
     return newPresent;
 }
 
 int History::calculateTraversal(){
     int aSize = 4;
     int smallest = past.traversal[0];
+    
     int sIndex = 0;
     for (int i = 0; i < aSize; i++) {
         if (past.traversal[i] < smallest){
@@ -64,18 +57,67 @@ int History::calculateTraversal(){
     }
     return sIndex;
 }
+
+
 int History::calculateMedium(int nt){
     int aSize = 3;
+    
+    // SET ALLOWED MEDIUMS
+    vector<int> permitted;
+    permitted.push_back(0);
+    permitted.push_back(1);
+    if (nt == 2 || nt == 3)
+        permitted.push_back(2);
+    
+    int smallest = past.medium[0];
+    int sIndex = 0;
     for (int i = 0; i < aSize; i++) {
-        
+        if (past.medium[i] < smallest &&
+            find(permitted.begin(), permitted.end(), i)
+            !=permitted.end()){
+            smallest = past.medium[i];
+            sIndex = i;
+        }
     }
+    return sIndex;
 }
-int History::calculateSurface(int nm){
+
+
+int History::calculateSurface(int nt, int nm){
     int aSize = 4;
-    for (int i = 0; i < aSize; i++) {
-        
+    
+    // SET ALLOWED SURFACES
+    vector<int> permitted;
+    
+    switch (nt) {
+        case 0:
+            permitted.push_back(0);
+            permitted.push_back(2);
+        case 1:
+            permitted.push_back(1);
+            break;
+        case 3:
+            if (nm == 0)
+                permitted.push_back(0);
+            if (nm == 2)
+                permitted.push_back(1);
+        case 2:
+            permitted.push_back(3);
+            break;
     }
-}
+    
+    
+    int smallest = past.surface[0];
+    int sIndex = 0;
+    for (int i = 0; i < aSize; i++) {
+        if (past.medium[i] < smallest &&
+            find(permitted.begin(), permitted.end(), i)
+            !=permitted.end()){
+            smallest = past.medium[i];
+            sIndex = i;
+        }
+    }
+    return sIndex;}
 
 History::Present History::getPresent(){
     return present;
@@ -84,30 +126,15 @@ History::Present History::getPresent(){
 void History::setPresent(){
     vector<int> newPresent = calculatePresent();
     
-//    addHistory(1);
-    
     // TRAVERSAL
     // 0 = ORBIT, 1 = WALK, 2 = FLOAT, 3 = FLY
     present.traversal = newPresent[0];
     
-    // DEBUG:
-//    present.traversal = 0;
-    
     // MEDIUM
     // 0 = AIR, 1 = VOID, 2 = WATER
-    if (present.traversal == 0 || present.traversal == 1){
-        present.medium = ofRandom(2);
-    }
-    else if (present.traversal == 3){
-        do{
-            present.medium = ofRandom(3);
-        }
-        while (present.medium == 1);
-    }
-    else present.medium = ofRandom(3);
-    
-    // DEBUG:
     present.medium = newPresent[1];
+    
+    
     
     
     // SURFACE_TYPE
