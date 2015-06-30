@@ -23,14 +23,13 @@ Tree::Tree(SpriteSeed spriteSeed) : Plant(spriteSeed){
     
     float sizeDiv = (sSeed.isOrbital()) ? 1000.0 : 2000.0;
     size = sSeed.getShapeSize()/sizeDiv;
-    pos = sSeed.spritePos();
+    pos = sSeed.plantPos();
     float sizeMult =  ofRandom(.7) + .5;
     size *= sizeMult;
     
     stem.set(4*size, 300*size);
     stem.setPosition(pos);
     
-//    top.setParent(stem);
     top.set(50*size, 200*size);
     top.boom(150*size);
     top.rotate(180, ofVec3f(1,0,0));
@@ -75,23 +74,11 @@ ofVboMesh Tree::generateLeaves(){
         vector<ofVec3f>tempVerts = tempMesh.getVertices();
         
         
-        
         for (int j = 0; j < tempVerts.size(); j++) {
             ofVec3f tempster = ofVec3f(tempVerts[j].x,
                                        tempVerts[j].y,
                                        tempVerts[j].z);
             
-            
-            // DEBUG: q has no useful value in it
-//            float angle = 2 * acos(q.w());
-//            float x = q.x() / sqrt(1-q.w()*q.w());
-//            float y = q.y() / sqrt(1-q.w()*q.w());
-//            float z = q.z() / sqrt(1-q.w()*q.w());
-//            ofVec3f axis(x,y,z);
-//            tempster.rotate(angle, axis);
-            
-//            float angle = tempster.angle(stem.getUpDir());
-//            tempster.rotate(-30, ofVec3f(1,0,0));
             tempMesh.getVertices()[j] = tempster;
         }
         vLeaves.append(tempMesh);

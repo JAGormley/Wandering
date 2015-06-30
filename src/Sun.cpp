@@ -13,7 +13,7 @@
 Sun::Sun(Seed seed) : Light(seed){
     
     facade.set(8000, 5, 100, 1);
-    facade.rotate(90, 1, 0, 0);
+    facade.rotate(-90, 1, 0, 0);
     
     materialColor.setBrightness(250.f);
     materialColor.setSaturation(255);
@@ -30,7 +30,6 @@ Sun::Sun(Seed seed) : Light(seed){
 
 
 void Sun::drawChild(){
-    
     facade.setPosition(ofVec3f(light.getPosition().x, Player::playerLoc.y+2000, Player::playerLoc.z-20000));
     facade.draw();
     

@@ -24,6 +24,7 @@
 
 #include "Tree.h"
 #include "Crystal.h"
+#include "Bird.h"
 
 #include "Sun.h"
 #include "Moon.h"

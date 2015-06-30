@@ -25,12 +25,11 @@ Light::Light(Seed seed){
     
     // specular color, the highlight/shininess color //
     //    light.setSpecularColor( ofColor(255.f, 255.f, 255.f));
-
     
 }
 
 void Light::update(){
-    light.setPosition(30, Player::playerLoc.y+8000, Player::playerLoc.z-lightDistance);
+    light.setPosition(30, Player::playerLoc.y+8000, Player::playerLoc.z-lightDistance-5000);
 }
 
 void Light::draw(){

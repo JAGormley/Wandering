@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include "Seed.h"
+#include "Player.h"
 
 #endif /* defined(__Wandering2__SpriteSeed__) */
 
@@ -21,7 +22,8 @@ public:
     SpriteSeed(Seed seed, ofVboMesh surfaceMesh);
     int getShapeSize();
     bool isOrbital();
-    ofVec3f spritePos();
+    ofVec3f plantPos();
+    ofVec3f animalPos();
     int getMoveDiv();
     float getOrbitHeight();
     

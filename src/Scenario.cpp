@@ -111,7 +111,7 @@ Surface * Scenario::getSurface(){
 void Scenario::setSprites(){
     // TODO: DENSITY
     for (int i = 0; i < 50; i++) {
-        sprites.push_back(shared_ptr<Sprite>(new Crystal(spriteSeed)));
+        sprites.push_back(shared_ptr<Sprite>(new Bird(spriteSeed)));
         sprites.push_back(shared_ptr<Sprite>(new Tree(spriteSeed)));
         
     }

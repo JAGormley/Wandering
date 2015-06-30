@@ -53,6 +53,15 @@ Ground::Ground(Seed seed) : Surface(seed){
         //            vboMesh.getVertices()[i] = tempVert;
         //        }
         //        else vboMesh.getVertices()[i] = ofVec3f(0,0,0);
+
+    }
+    
+    for (int i = 0; i < vboMesh.getIndices().size(); i++) {
+        int inSize = vboMesh.getIndices().size();
+        int patchSize = inSize/600;
+        int colDex = (i-patchSize < 0) ? 0: i-patchSize;
+        if (ofRandom(1.0) < .01)
+            vboMesh.setColorForIndices(colDex, i, ofColor(222,184,135));
     }
 }
 

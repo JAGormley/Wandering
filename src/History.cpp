@@ -44,7 +44,7 @@ vector<int> History::calculatePresent() {
 
 int History::calculateTraversal(){
     int aSize = 4;
-    int smallest = past.traversal[0];
+    int smallest = 10000;
     
     int sIndex = 0;
     for (int i = 0; i < aSize; i++) {
@@ -72,7 +72,7 @@ int History::calculateMedium(int nt){
     if (nt == 2 || nt == 3)
         permitted.push_back(2);
     
-    int smallest = past.medium[0];
+    int smallest = 10000;
     int sIndex = 0;
     for (int i = 0; i < aSize; i++) {
         if (past.medium[i] < smallest &&
@@ -83,7 +83,6 @@ int History::calculateMedium(int nt){
         }
     }
     if (ofRandom(1.0) < .5){
-        cout << "here" << endl;
         int random = ofRandom(permitted.size());
         return permitted[random];
     } else return sIndex;
@@ -95,26 +94,25 @@ int History::calculateSurface(int nt, int nm){
     
     // SET ALLOWED SURFACES
     vector<int> permitted;
-    
     switch (nt) {
         case 0:
             permitted.push_back(0);
             permitted.push_back(2);
         case 1:
+            cout << "eeep" << endl;
             permitted.push_back(1);
             break;
         case 3:
-            if (nm == 0)
+//            if (nm == 0)
                 permitted.push_back(0);
-            if (nm == 2)
+//            if (nm == 2)
                 permitted.push_back(1);
         case 2:
             permitted.push_back(3);
             break;
     }
     
-    
-    int smallest = past.surface[0];
+    int smallest = 10000;
     int sIndex = 0;
     for (int i = 0; i < aSize; i++) {
         if (past.surface[i] < smallest &&

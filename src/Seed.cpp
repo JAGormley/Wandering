@@ -81,7 +81,8 @@ float Seed::getOrbitHeight(){
 void Seed::setLightType(){
     if (medium == M_VOID)
         lightType = MOON;
-    else lightType = SUN;
+    else if (medium == AIR)
+        lightType = SUN;
 }
 Seed::LightType Seed::getLightType(){
     return lightType;

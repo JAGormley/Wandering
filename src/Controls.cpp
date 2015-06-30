@@ -54,7 +54,7 @@ void Controls::moveType(){
     float pitch_ud = 0;
     
     if (type == Seed::FLOAT){
-        moveHelper(handPos.z/100, handPos.x/300, 0, handPos.y/100, 0);
+        moveHelper(handPos.z/200, handPos.x/800, 0, handPos.y/100, 0);
     }
     
     else if (type == Seed::WALK){
@@ -85,21 +85,28 @@ void Controls::moveType(){
         pitch_ud = handPos.y/1000;
         back_forth = handPos.z/20;
         
+
+        // DEBUG: TEST THIS!!
         
         // FLIGHT CORRAL: limit the player's travel to a "tube"
         ofVec3f camPos = cam->getPosition();
-        if (camPos.y < 400){
-            cam->setPosition(camPos.x, 400, camPos.z);
-        }
-        if (camPos.y > 1000){
-            cam->setPosition(camPos.x, 1000, camPos.z);
-        }
-        if (camPos.x < -800 ){
-            cam->setPosition(-800, camPos.y, camPos.z);
-        }
-        if (camPos.x > 800 ){
-            cam->setPosition(800, camPos.y, camPos.z);
-        }
+        int clampX = ofClamp(camPos.x, -2000, 2000);
+        int clampY = ofClamp(camPos.y, 400, 2000);
+        cam->setPosition(clampY, 400, camPos.z);
+        
+//        if (camPos.y < 400){
+//            cam->setPosition(camPos.x, 400, camPos.z);
+//        }
+//        if (camPos.y > 1000){
+//            cam->setPosition(camPos.x, 1000, camPos.z);
+//        }
+//        if (camPos.x < -800 ){
+//            cam->setPosition(-800, camPos.y, camPos.z);
+//        }
+//        if (camPos.x > 800 ){
+//            cam->setPosition(800, camPos.y, camPos.z);
+//        }
+        
         
         if (back_forth > 0) back_forth = 0;
         cam->dolly(back_forth);
@@ -107,14 +114,12 @@ void Controls::moveType(){
         if (cam->getRoll() < 30 && cam->getRoll() > -30)
             cam->roll(roller);
         
-        
-        if ((cam->getLookAtDir().x > -.4f && pitch_lr < 0)){
+        if ((cam->getLookAtDir().x > -.5f && pitch_lr < 0)){
             cam->pan(-pitch_lr);
         }
-        else if ((cam->getLookAtDir().x < .4f && pitch_lr > 0)){
+        else if ((cam->getLookAtDir().x < .5f && pitch_lr > 0)){
             cam->pan(-pitch_lr);
         }
-        
         if ((cam->getLookAtDir().y < .5f && pitch_ud > 0)){
             cam->tilt(pitch_ud);
         }

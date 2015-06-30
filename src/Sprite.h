@@ -6,6 +6,14 @@
 //
 //
 
+
+// sprite placement and movement based on movement type
+// if flying, sprites populate close to player
+// if floating, random
+// if orbiting, set orbit height
+
+
+
 #pragma once
 
 #include <stdio.h>

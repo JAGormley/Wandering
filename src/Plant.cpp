@@ -10,7 +10,7 @@
 
 Plant::Plant(SpriteSeed spriteSeed) : Sprite(spriteSeed){
     // TODO: get plantSize from spriteSeed
-    sSeed = spriteSeed;  
+    sSeed = spriteSeed;
 }
 
 
@@ -36,12 +36,13 @@ void Plant::draw(){
     vector<ofVec3f> meshVs = top.getMesh().getVertices();
     
     // TODO: move this into tree(?), test in orbit mode
-    for (int i = 0; i < meshVs.size(); i++) {
-        tempV = meshVs[i];
-        float jimmy = noiseGen(tempV.x, tempV.y)/sSeed.getMoveDiv();
-        tempV = ofVec3f(tempV.x+jimmy, tempV.y+jimmy, tempV.z+jimmy);
-        top.getMesh().getVertices()[i] = tempV;
-    }
+//    if (stem.getPosition().distance(Player::playerLoc) < 5000)
+        for (int i = 0; i < meshVs.size(); i++) {
+            tempV = meshVs[i];
+            float jimmy = noiseGen(tempV.x, tempV.y)/sSeed.getMoveDiv();
+            tempV = ofVec3f(tempV.x+jimmy, tempV.y+jimmy, tempV.z+jimmy);
+            top.getMesh().getVertices()[i] = tempV;
+        }
     
     
     stem.transformGL();
@@ -49,9 +50,9 @@ void Plant::draw(){
     stem.restoreTransformGL();
     top = oldTop;
     
-//    top.transformGL();
-//    leaves.draw();
-//    top.restoreTransformGL();
+    //    top.transformGL();
+    //    leaves.draw();
+    //    top.restoreTransformGL();
     material.end();
     ofPopMatrix();
 }

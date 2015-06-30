@@ -41,9 +41,6 @@ void Water::update(){
             addVRow();
         }
     }
-    
-    
-    
 }
 
 void Water::draw(){
@@ -55,13 +52,11 @@ void Water::draw(){
     rawShape.drawAxes(100);
     if (seed.getSurfaceShape() != Seed::SPHERE){
         ofRotate(-90, 1, 0, 0);
-//        ofRotate(180, 0, 1, 0);
     }
     material.begin();
     vboMesh.draw();
     material.end();
-    ofSetColor(255, 0, 0);
-    ofDrawSphere(vboMesh.getVertices()[vboMesh.getVertices().size()-30], 7);
+
     ofPopMatrix();
     dLight.disable();
 }
