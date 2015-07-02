@@ -3,7 +3,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     
-    shader.load("shadersGL2/shader");
+//    shader.load("shadersGL2/shader");
     
     outCam = false;
     

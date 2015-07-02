@@ -23,7 +23,7 @@ bool SpriteSeed::isOrbital(){
 
 
 
-// set Sprite position depending on
+// set Sprite position depending on seed data
 
 float SpriteSeed::getOrbitHeight(){
     if (this->isOrbital())
@@ -58,8 +58,6 @@ ofVec3f SpriteSeed::animalPos(){
         return flyLoc;
     }
 }
-
-
 
 
 int SpriteSeed::getShapeSize(){

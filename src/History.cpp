@@ -35,9 +35,9 @@ vector<int> History::calculatePresent() {
     int s = calculateSurface(t, m);
     newPresent.push_back(s);
     
-    cout << "T: " << t << endl;
-    cout << "M: " << m << endl;
-    cout << "S: " << s << endl;
+//    cout << "T: " << t << endl;
+//    cout << "M: " << m << endl;
+//    cout << "S: " << s << endl;
     
     return newPresent;
 }
@@ -99,7 +99,6 @@ int History::calculateSurface(int nt, int nm){
             permitted.push_back(0);
             permitted.push_back(2);
         case 1:
-            cout << "eeep" << endl;
             permitted.push_back(1);
             break;
         case 3:
@@ -123,7 +122,6 @@ int History::calculateSurface(int nt, int nm){
         }
     }
     if (ofRandom(1.0) < .5){
-        cout << "here2" << endl;
         int random = ofRandom(permitted.size());
         return permitted[random];
     }
@@ -150,6 +148,13 @@ void History::setPresent(){
     // SURFACE_TYPE
     // 0 = WATER, 1 = GROUND, 2 = VOID, 3 = NONE
     present.surface = newPresent[2];
+    
+    
+    // DEBUG
+//    present.traversal = 0;
+//    present.medium = 0;
+//    present.surface = 0;
+    
     
     
     addHistory(newPresent[0], newPresent[1], newPresent[2]);

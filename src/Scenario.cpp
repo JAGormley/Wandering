@@ -35,8 +35,6 @@ void Scenario::setNew(){
     player.setSurface(environment->getSurfaceMesh());
     setPlayer(seed);
     
-    
-    // TODO: FIX
     sprites.clear();
     setSprites();
 //    sound.loadMusic();
@@ -52,13 +50,6 @@ void Scenario::draw(){
     for (int i = 0; i < sprites.size(); i++) {
         sprites[i]->draw();
     }
-//    DEBUG
-//    ofSetColor(255, 0, 0);
-//    ofDrawArrow(ofVec3f(800, 700, -3000), ofVec3f(800, 700, 3000));
-//    ofDrawArrow(ofVec3f(-800, 700, -3000), ofVec3f(-800, 700, 3000));
-//    ofSetColor(0, 255, 0);
-//    ofDrawArrow(player.cam.getLookAtDir().normalize(), player.cam.getLookAtDir().normalize()*10000);
-    
     
     light->draw();
     light->disable();
@@ -111,7 +102,7 @@ Surface * Scenario::getSurface(){
 void Scenario::setSprites(){
     // TODO: DENSITY
     for (int i = 0; i < 50; i++) {
-        sprites.push_back(shared_ptr<Sprite>(new Bird(spriteSeed)));
+        sprites.push_back(shared_ptr<Sprite>(new Crystal(spriteSeed)));
         sprites.push_back(shared_ptr<Sprite>(new Tree(spriteSeed)));
         
     }

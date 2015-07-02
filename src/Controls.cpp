@@ -85,27 +85,12 @@ void Controls::moveType(){
         pitch_ud = handPos.y/1000;
         back_forth = handPos.z/20;
         
-
-        // DEBUG: TEST THIS!!
         
         // FLIGHT CORRAL: limit the player's travel to a "tube"
         ofVec3f camPos = cam->getPosition();
         int clampX = ofClamp(camPos.x, -2000, 2000);
         int clampY = ofClamp(camPos.y, 400, 2000);
         cam->setPosition(clampY, 400, camPos.z);
-        
-//        if (camPos.y < 400){
-//            cam->setPosition(camPos.x, 400, camPos.z);
-//        }
-//        if (camPos.y > 1000){
-//            cam->setPosition(camPos.x, 1000, camPos.z);
-//        }
-//        if (camPos.x < -800 ){
-//            cam->setPosition(-800, camPos.y, camPos.z);
-//        }
-//        if (camPos.x > 800 ){
-//            cam->setPosition(800, camPos.y, camPos.z);
-//        }
         
         
         if (back_forth > 0) back_forth = 0;

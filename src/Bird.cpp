@@ -46,7 +46,7 @@ Bird::Bird(SpriteSeed spriteSeed) : Animal(spriteSeed){
 void Bird::update(){
 //    body.move(0, 0, -1*noiseGen(body.getPosition().x, body.getPosition().y)/10);
     
-    body.move(0, 0, -20);
+    body.move(0, 0, -30);
     
     if (activated)
 
